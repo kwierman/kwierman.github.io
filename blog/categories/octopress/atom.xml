@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Kevin Wierman]]></title>
-  <link href="http://kwierman.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Octopress | Kevin Wierman]]></title>
+  <link href="http://kwierman.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://kwierman.github.io/"/>
   <updated>2014-08-04T10:19:50-04:00</updated>
   <id>http://kwierman.github.io/</id>
