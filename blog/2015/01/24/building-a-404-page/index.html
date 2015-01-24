@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Kevin Wierman</title>
+  <title>Building a 404 Page - Kevin Wierman</title>
   <meta name="author" content="Kevin Wierman">
 
   
@@ -19,7 +19,7 @@ rake new_page[404] The following had to be inserted into &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kwierman.github.io/">
+  <link rel="canonical" href="http://kwierman.github.io/blog/2015/01/24/building-a-404-page/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Kevin Wierman" type="application/atom+xml">
@@ -94,15 +94,12 @@ rake new_page[404] The following had to be inserted into &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/01/24/building-a-404-page/">Building a 404 Page</a></h1>
+      <h1 class="entry-title">Building a 404 Page</h1>
     
     
       <p class="meta">
@@ -118,7 +115,7 @@ rake new_page[404] The following had to be inserted into &hellip;">
   </header>
 
 
-  <div class="entry-content"><p>In order to get a 404 page working with github, the following commands had to be issued</p>
+<div class="entry-content"><p>In order to get a 404 page working with github, the following commands had to be issued</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rake new_page[404]</span></code></pre></td></tr></table></div></figure>
@@ -159,89 +156,46 @@ rake new_page[404] The following had to be inserted into &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Kevin Wierman</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-01-24T15:49:02-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:49 pm</span></time>
+      
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2015/01/24/using-octopress-on-fedora-20/">Using Octopress on Fedora 20</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-24T15:36:07-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:36 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The syntax for adding code in is:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>  ``` [language] [title] [url] [link text]
-</span><span class='line'>  code snippet
-</span><span class='line'>  ```</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So, for example, if you were to document a ruby code snippet:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>``` html An html code snippet www.google.com And a link to google.com
-</span><span class='line'>&lt;div&gt; Some html-y stuff&lt;/div&gt;
-</span><span class='line'>```</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Would render to</p>
-
-<figure class='code'><figcaption><span>An html code snippet www.google.com And a link to google.com</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div&gt;</span> Some html-y stuff<span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>These instructions can be found at: <a href="http://octopress.org/docs/blogging/code/">The Octopress Site</a></p>
-
-<p>In addition, the following was added to the source/_includes/header for LATEX support:</p>
-
-<figure class='code'><figcaption><span>An html code snippet www.google.com And a link to google.com</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
-</span><span class='line'>        <span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This now allows us to things like $$ \frac{\Delta x}{\Delta p} \ge \frac{\hbar}{2}$$</p>
-
-<p>This was done thank you to: <a href="http://kqueue.org/blog/2012/01/05/hello-world/#internal-post-linking"> Another Octopress blog</a>.</p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kwierman.github.io/blog/2015/01/24/building-a-404-page/" data-via="" data-counturl="http://kwierman.github.io/blog/2015/01/24/building-a-404-page/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/01/24/using-octopress-on-fedora-20/" title="Previous Post: Using Octopress on Fedora 20">&laquo; Using Octopress on Fedora 20</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -303,6 +257,7 @@ rake new_page[404] The following had to be inserted into &hellip;">
 
   
 </aside>
+
 
     </div>
   </div>

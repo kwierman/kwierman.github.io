@@ -4,7 +4,7 @@
   <title><![CDATA[Kevin Wierman]]></title>
   <link href="http://kwierman.github.io/atom.xml" rel="self"/>
   <link href="http://kwierman.github.io/"/>
-  <updated>2015-01-24T15:40:39-05:00</updated>
+  <updated>2015-01-24T16:35:25-05:00</updated>
   <id>http://kwierman.github.io/</id>
   <author>
     <name><![CDATA[Kevin Wierman]]></name>
@@ -14,11 +14,101 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Building a 404 Page]]></title>
+    <link href="http://kwierman.github.io/blog/2015/01/24/building-a-404-page/"/>
+    <updated>2015-01-24T15:49:02-05:00</updated>
+    <id>http://kwierman.github.io/blog/2015/01/24/building-a-404-page</id>
+    <content type="html"><![CDATA[<p>In order to get a 404 page working with github, the following commands had to be issued</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake new_page[404]</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The following had to be inserted into the YAML header located within the markdown file in the 404 folder</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>---
+</span><span class='line'>layout: page
+</span><span class='line'>title: "404"
+</span><span class='line'>date: 2015-01-24 13:45
+</span><span class='line'>comments: true
+</span><span class='line'>sharing: true
+</span><span class='line'>footer: true
+</span><span class='line'>title: Oops, you wondered down the wrong path 
+</span><span class='line'>permalink: /404.html
+</span><span class='line'>---</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In order to get the link to work back to the homepage, the following was inserted into the page code</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>Go back to the beginning and try again<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Using Octopress on Fedora 20]]></title>
     <link href="http://kwierman.github.io/blog/2015/01/24/using-octopress-on-fedora-20/"/>
     <updated>2015-01-24T15:36:07-05:00</updated>
     <id>http://kwierman.github.io/blog/2015/01/24/using-octopress-on-fedora-20</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<p>The syntax for adding code in is:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  ``` [language] [title] [url] [link text]
+</span><span class='line'>  code snippet
+</span><span class='line'>  ```</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, for example, if you were to document a ruby code snippet:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>``` html An html code snippet www.google.com And a link to google.com
+</span><span class='line'>&lt;div&gt; Some html-y stuff&lt;/div&gt;
+</span><span class='line'>```</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Would render to</p>
+
+<figure class='code'><figcaption><span>An html code snippet www.google.com And a link to google.com</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div&gt;</span> Some html-y stuff<span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>These instructions can be found at: <a href="http://octopress.org/docs/blogging/code/">The Octopress Site</a></p>
+
+<p>In addition, the following was added to the source/_includes/header for LATEX support:</p>
+
+<figure class='code'><figcaption><span>An html code snippet www.google.com And a link to google.com</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
+</span><span class='line'>        <span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This now allows us to things like $$ \frac{\Delta x}{\Delta p} \ge \frac{\hbar}{2}$$</p>
+
+<p>This was done thank you to: <a href="http://kqueue.org/blog/2012/01/05/hello-world/#internal-post-linking"> Another Octopress blog</a>.</p>
 ]]></content>
   </entry>
   

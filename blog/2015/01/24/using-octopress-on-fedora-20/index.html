@@ -9,8 +9,9 @@
   <meta name="author" content="Kevin Wierman">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="The syntax for adding code in is: 1
+2
+3 ``` [language] [title] [url] [link text] code snippet ``` So, for example, if you were to document a ruby &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -57,6 +58,10 @@
     <h2>Physicist. Brewer. Enthusiast.</h2>
   
 </hgroup>
+
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 </header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
@@ -111,7 +116,49 @@
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><p>The syntax for adding code in is:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  ``` [language] [title] [url] [link text]
+</span><span class='line'>  code snippet
+</span><span class='line'>  ```</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, for example, if you were to document a ruby code snippet:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>``` html An html code snippet www.google.com And a link to google.com
+</span><span class='line'>&lt;div&gt; Some html-y stuff&lt;/div&gt;
+</span><span class='line'>```</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Would render to</p>
+
+<figure class='code'><figcaption><span>An html code snippet www.google.com And a link to google.com</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div&gt;</span> Some html-y stuff<span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>These instructions can be found at: <a href="http://octopress.org/docs/blogging/code/">The Octopress Site</a></p>
+
+<p>In addition, the following was added to the source/_includes/header for LATEX support:</p>
+
+<figure class='code'><figcaption><span>An html code snippet www.google.com And a link to google.com</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
+</span><span class='line'>        <span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This now allows us to things like $$ \frac{\Delta x}{\Delta p} \ge \frac{\hbar}{2}$$</p>
+
+<p>This was done thank you to: <a href="http://kqueue.org/blog/2012/01/05/hello-world/#internal-post-linking"> Another Octopress blog</a>.</p>
 </div>
 
 
@@ -145,6 +192,8 @@
     <p class="meta">
       
       
+        <a class="basic-alignment right" href="/blog/2015/01/24/building-a-404-page/" title="Next Post: Building a 404 Page">Building a 404 Page &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -156,6 +205,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/01/24/building-a-404-page/">Building a 404 Page</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/01/24/using-octopress-on-fedora-20/">Using Octopress on Fedora 20</a>

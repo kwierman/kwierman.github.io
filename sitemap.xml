@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://kwierman.github.io/blog/2015/01/24/building-a-404-page/</loc>
+    <lastmod>2015-01-24T15:49:02-05:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://kwierman.github.io/blog/2015/01/24/using-octopress-on-fedora-20/</loc>
     <lastmod>2015-01-24T15:36:07-05:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>http://kwierman.github.io/blog/archives/</loc>
-    <lastmod>2015-01-24T15:40:39-05:00</lastmod>
+    <lastmod>2015-01-24T16:35:25-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://kwierman.github.io/</loc>
-    <lastmod>2015-01-24T15:40:39-05:00</lastmod>
+    <lastmod>2015-01-24T16:35:25-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://kwierman.github.io/404.html</loc>
-    <lastmod>2015-01-24T15:40:39-05:00</lastmod>
+    <lastmod>2015-01-24T16:35:25-05:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
