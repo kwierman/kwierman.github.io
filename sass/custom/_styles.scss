@@ -1,2 +1,53 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+
+
+//header[role="banner"] {
+//     background-image: url(/images/personal.png);
+//     background-repeat: no-repeat;
+//     background-position: right;
+//}
+
+
+
+body > header h1{
+    font-size: 2.8em;
+}
+
+body > header h2{
+    font-size: 0.5em;
+    letter-spacing: 1px;
+    margin-top: -1.4em;
+    padding-left: 20px;
+}
+
+
+table {
+	width: 100%;
+	> tr {
+		> th {
+
+		}
+		> td {
+		 font-size: 80%;
+		}
+	}
+}
+
+
+.CodeRay pre, p code, li code {
+ background: #efefef;
+ color: #000;
+ border: 1px solid #565656;
+ border-top-color: #cbcbcb;
+ border-left-color: #a5a5a5;
+ border-right-color: #a5a5a5;
+}
+
+/* fixes issue where the whole line wouldn't get colored in a diff */
+.CodeRay span.insert, .CodeRay span.change, .CodeRay span.delete {
+ width: auto;
+}
+
+@import "coderay"
