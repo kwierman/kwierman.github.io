@@ -58,10 +58,6 @@ rake new_page[404] The following had to be inserted into &hellip;">
   
 </hgroup>
 
-<script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
 </header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
@@ -117,44 +113,41 @@ rake new_page[404] The following had to be inserted into &hellip;">
 
 <div class="entry-content"><p>In order to get a 404 page working with github, the following commands had to be issued</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake new_page[404]</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">rake new_page[404]</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>The following had to be inserted into the YAML header located within the markdown file in the 404 folder</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>---
-</span><span class='line'>layout: page
-</span><span class='line'>title: "404"
-</span><span class='line'>date: 2015-01-24 13:45
-</span><span class='line'>comments: true
-</span><span class='line'>sharing: true
-</span><span class='line'>footer: true
-</span><span class='line'>title: Oops, you wondered down the wrong path 
-</span><span class='line'>permalink: /404.html
-</span><span class='line'>---</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">---
+</span><span class="line">layout: page
+</span><span class="line">title: "404"
+</span><span class="line">date: 2015-01-24 13:45
+</span><span class="line">comments: true
+</span><span class="line">sharing: true
+</span><span class="line">footer: true
+</span><span class="line">title: Oops, you wondered down the wrong path 
+</span><span class="line">permalink: /404.html
+</span><span class="line">---</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>In order to get the link to work back to the homepage, the following was inserted into the page code</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>Go back to the beginning and try again<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div&gt;</span>
+</span><span class="line">	<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>Go back to the beginning and try again<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 </div>
 
 
