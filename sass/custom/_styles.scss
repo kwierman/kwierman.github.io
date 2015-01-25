@@ -45,6 +45,7 @@ table {
  border-right-color: #a5a5a5;
 }
 
+
 /* fixes issue where the whole line wouldn't get colored in a diff */
 .CodeRay span.insert, .CodeRay span.change, .CodeRay span.delete {
  width: auto;
