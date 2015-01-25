@@ -9,7 +9,7 @@
   <meta name="author" content="Kevin Wierman">
 
   
-  <meta name="description" content="In order to get a 404 page working with github, the following commands had to be issued rake new_page[404] The following had to be inserted into the &hellip;">
+  <meta name="description" content="In order to get a 404 page working with github, the following commands had to be issued 1 rake new_page[404] The following had to be inserted into &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -127,29 +127,55 @@
 
 <div class="entry-content"><p>In order to get a 404 page working with github, the following commands had to be issued</p>
 
-<pre lang="shell"><code>rake new_page[404]
-</code></pre>
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>rake new_page[404]
+</pre></td>
+</tr></table>
+</div>
 
 <p>The following had to be inserted into the YAML header located within the markdown file in the 404 folder</p>
 
-<pre lang="markdown"><code>---
-layout: page
-title: "404"
-date: 2015-01-24 13:45
-comments: true
-sharing: true
-footer: true
-title: Oops, you wondered down the wrong path 
-permalink: /404.html
----
-</code></pre>
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre>    ---
+    layout: page
+    title: &quot;404&quot;
+    date: 2015-01-24 13:45
+    comments: true
+    sharing: true
+    footer: true
+    title: Oops, you wondered down the wrong path 
+    permalink: /404.html
+    ---
+</pre></td>
+</tr></table>
+</div>
 
 <p>In order to get the link to work back to the homepage, the following was inserted into the page code</p>
 
-<pre lang="html"><code>&lt;div&gt;
-	&lt;li&gt;&lt;a href="/"&gt;Go back to the beginning and try again&lt;/a&gt;&lt;/li&gt;
-&lt;/div&gt;
-</code></pre>
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Go back to the beginning and try again<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div>
 </div>
 
 
