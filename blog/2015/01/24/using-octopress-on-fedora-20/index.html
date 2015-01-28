@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="Prerequisites In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs: 1
-2 sudo yum install curl &hellip;">
+2 $ sudo yum install curl &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,17 +89,17 @@
 <ul class="main-navigation">
   <li><a href="/">Home</a></li>
   <li><a href="/blog/archives">Archives</a></li>	
-  <li><a href="/about-me.html">About Me</a></li>
+  <li><a href="/about-me/">About Me</a></li>
   <li>
-  	<a href="/projects.html">Projects</a>
+  	<a href="/projects/">Projects</a>
   	<!--ul>&#x25BE;
   		<li><a href="/projects.html">Tritium</a></li>
   		<li><a href="/projects.html">TriDroid</a></li>
   		<li><a href="/projects.html">Sci-Duino</a></li>
   	</ul-->
   </li>
-  <li><a href="/brewing.html">Brewing</a></li>
-  <li><a href="/contact.html">Contact Me</a></li>
+  <li><a href="/brewing/">Brewing</a></li>
+  <li><a href="/contact-me/">Contact Me</a></li>
 </ul>
 
 </nav>
@@ -134,18 +134,18 @@
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
 <a href="#n2" name="n2">2</a>
 </pre></td>
-  <td class="code"><pre>sudo yum install curl wget git-core
-    sudo yum install gcc zlib-devel make openssl autoconf automake
+  <td class="code"><pre>$ sudo yum install curl wget git-core
+$ sudo yum install gcc zlib-devel make openssl autoconf automake
 </pre></td>
 </tr></table>
 </div>
 
-<p>Intall RVM</p>
+<p>Install RVM</p>
 
 <div class="highlighter-coderay"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
 </pre></td>
-  <td class="code"><pre>su -c &quot;curl -L https://get.rvm.io | bash -s stable&quot;
+  <td class="code"><pre>$ su -c &quot;curl -L https://get.rvm.io | bash -s stable&quot;
 </pre></td>
 </tr></table>
 </div>
@@ -157,7 +157,7 @@
 <div class="highlighter-coderay"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
 </pre></td>
-  <td class="code"><pre>rvm -v
+  <td class="code"><pre>$ rvm -v
 </pre></td>
 </tr></table>
 </div>
@@ -170,9 +170,9 @@
 <a href="#n3" name="n3">3</a>
 <a href="#n4" name="n4">4</a>
 </pre></td>
-  <td class="code"><pre>type rvm | head -1
+  <td class="code"><pre>$ type rvm | head -1
 # expected: rvm is a function
-which rvm
+$ which rvm
 # expected: /home/[USERNAME]/.rvm/bin/rvm
 </pre></td>
 </tr></table>
@@ -186,8 +186,8 @@ which rvm
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
 <a href="#n2" name="n2">2</a>
 </pre></td>
-  <td class="code"><pre>rvm pkg install openssl
-rvm pkg install iconv
+  <td class="code"><pre>$ rvm pkg install openssl
+$ rvm pkg install iconv
 </pre></td>
 </tr></table>
 </div>
@@ -198,8 +198,8 @@ rvm pkg install iconv
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
 <a href="#n2" name="n2">2</a>
 </pre></td>
-  <td class="code"><pre>rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr,--with-iconv-dir=$HOME/.rvm/usr
-rvm rubygems latest
+  <td class="code"><pre>$ rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr,--with-iconv-dir=$HOME/.rvm/usr
+$ rvm rubygems latest
 </pre></td>
 </tr></table>
 </div>
@@ -211,9 +211,9 @@ rvm rubygems latest
 <a href="#n2" name="n2">2</a>
 <a href="#n3" name="n3">3</a>
 </pre></td>
-  <td class="code"><pre>rvm use 1.9.2 --default
-    rvm reload
-    gem install bundler
+  <td class="code"><pre>$ rvm use 1.9.2 --default
+$ rvm reload
+$ gem install bundler
 </pre></td>
 </tr></table>
 </div>
@@ -225,7 +225,7 @@ rvm rubygems latest
 <div class="highlighter-coderay"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
 </pre></td>
-  <td class="code"><pre>git clone git://github.com/imathis/octopress.git &lt;your_blogname (namely, yourgithubname.github.io)&gt;
+  <td class="code"><pre>$ git clone git://github.com/imathis/octopress.git &lt;your_blogname (namely, yourgithubname.github.io)&gt;
 </pre></td>
 </tr></table>
 </div>
@@ -235,7 +235,7 @@ rvm rubygems latest
 <div class="highlighter-coderay"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
 </pre></td>
-  <td class="code"><pre>gem install bundler
+  <td class="code"><pre>$ gem install bundler
 </pre></td>
 </tr></table>
 </div>
@@ -245,7 +245,7 @@ rvm rubygems latest
 <div class="highlighter-coderay"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
 </pre></td>
-  <td class="code"><pre>bundle install
+  <td class="code"><pre>$ bundle install
 </pre></td>
 </tr></table>
 </div>
@@ -255,7 +255,7 @@ rvm rubygems latest
 <div class="highlighter-coderay"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
 </pre></td>
-  <td class="code"><pre>rake install
+  <td class="code"><pre>$ rake install
 </pre></td>
 </tr></table>
 </div>
@@ -279,7 +279,7 @@ First, in order to get the font to be ubuntu, the following was added to <code>s
 <a href="#n3" name="n3">3</a>
 </pre></td>
   <td class="code"><pre>~~~ &lt;language&gt;
-  code
+code
 ~~~
 </pre></td>
 </tr></table>
@@ -401,6 +401,8 @@ What they lack is telling you that single backticks can be used for inline code 
 </pre></td>
 </tr></table>
 </div>
+
+<p>Markdown can be accessed here: <a href="https://daringfireball.net/projects/markdown/basics" title="The Markdown Basics page">Another Octopress blog</a></p>
 </div>
 
 
@@ -447,6 +449,10 @@ What they lack is telling you that single backticks can be used for inline code 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/01/27/sphinx/">Using Sphinx for Inline Documentation</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/01/24/building-a-404-page/">Building a 404 Page</a>

@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Kevin Wierman</title>
+  <title>Using Sphinx for Inline Documentation - Kevin Wierman</title>
   <meta name="author" content="Kevin Wierman">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kwierman.github.io/">
+  <link rel="canonical" href="http://kwierman.github.io/blog/2015/01/27/sphinx/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Kevin Wierman" type="application/atom+xml">
@@ -104,15 +104,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/01/27/sphinx/">Using Sphinx for Inline Documentation</a></h1>
+      <h1 class="entry-title">Using Sphinx for Inline Documentation</h1>
     
     
       <p class="meta">
@@ -128,7 +125,7 @@
   </header>
 
 
-  <div class="entry-content"><h2 id="brief-history">Brief History</h2>
+<div class="entry-content"><h2 id="brief-history">Brief History</h2>
 
 <p>Previously, in my python based endeavors, I’ve used <a href="http://www.stack.nl/~dimitri/doxygen/" title="doxyen">doxygen</a>, an inline code documentation engine for generating web pages and pdfs. Many people recommend this for c++ API documentation, and in fact, I use it my self all the time.However, to my eternal consternation, it does not play well with python. I’ve used various little tricks and hacks to get around this, but a more streamlined approach would be nice. Eventually, I’d like to use something that works with multiple languages, but I guess today is just not that day.</p>
 
@@ -641,402 +638,52 @@ git push
 
 <p>The acceptable syntax can be found at <a href="http://sphinx-doc.org/rest.html">sphinx</a>.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/24/building-a-404-page/">Building a 404 Page</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-24T15:49:02-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:49 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In order to get a 404 page working with github, the following commands had to be issued</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>rake new_page[404]
-</pre></td>
-</tr></table>
-</div>
-
-<p>The following had to be inserted into the YAML header located within the markdown file in the 404 folder</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-</pre></td>
-  <td class="code"><pre>    ---
-    layout: page
-    title: &quot;404&quot;
-    date: 2015-01-24 13:45
-    comments: true
-    sharing: true
-    footer: true
-    title: Oops, you wondered down the wrong path 
-    permalink: /404.html
-    ---
-</pre></td>
-</tr></table>
-</div>
-
-<p>In order to get the link to work back to the homepage, the following was inserted into the page code</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div&gt;</span>
-    <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Go back to the beginning and try again<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-</div>
-  
   
 
+<span class="byline author vcard">Posted by <span class="fn">Kevin Wierman</span></span>
 
-    </article>
-  
-  
-    <article>
       
-  <header>
+
+
+
+
+<time class='entry-date' datetime='2015-01-27T17:01:32-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:01 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/sphinx/'>sphinx</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2015/01/24/using-octopress-on-fedora-20/">Using Octopress on Fedora 20</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-24T15:36:07-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:36 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Prerequisites</p>
-
-<p>In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-</pre></td>
-  <td class="code"><pre>$ sudo yum install curl wget git-core
-$ sudo yum install gcc zlib-devel make openssl autoconf automake
-</pre></td>
-</tr></table>
-</div>
-
-<p>Install RVM</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ su -c &quot;curl -L https://get.rvm.io | bash -s stable&quot;
-</pre></td>
-</tr></table>
-</div>
-
-<p>Start a new terminal.</p>
-
-<p>Make sure that terminal is capable of running rvm as a function (not as hash)</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ rvm -v
-</pre></td>
-</tr></table>
-</div>
-
-<p>or </p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-</pre></td>
-  <td class="code"><pre>$ type rvm | head -1
-# expected: rvm is a function
-$ which rvm
-# expected: /home/[USERNAME]/.rvm/bin/rvm
-</pre></td>
-</tr></table>
-</div>
-
-<p>Voila.</p>
-
-<p>Install openssl and iconv:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-</pre></td>
-  <td class="code"><pre>$ rvm pkg install openssl
-$ rvm pkg install iconv
-</pre></td>
-</tr></table>
-</div>
-
-<p>Install ruby and rubygems:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-</pre></td>
-  <td class="code"><pre>$ rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr,--with-iconv-dir=$HOME/.rvm/usr
-$ rvm rubygems latest
-</pre></td>
-</tr></table>
-</div>
-
-<p>Setup rvm for octopress:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-</pre></td>
-  <td class="code"><pre>$ rvm use 1.9.2 --default
-$ rvm reload
-$ gem install bundler
-</pre></td>
-</tr></table>
-</div>
-
-<p>Getting octopress onto your machine</p>
-
-<p>Run the following commmand:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ git clone git://github.com/imathis/octopress.git &lt;your_blogname (namely, yourgithubname.github.io)&gt;
-</pre></td>
-</tr></table>
-</div>
-
-<p>Install the bundler gem in that folder:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ gem install bundler
-</pre></td>
-</tr></table>
-</div>
-
-<p>Bundle install</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ bundle install
-</pre></td>
-</tr></table>
-</div>
-
-<p>Rake install</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ rake install
-</pre></td>
-</tr></table>
-</div>
-
-<p>Theme styling:
-First, in order to get the font to be ubuntu, the following was added to <code>source/_includes/custom/head.html</code></p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;link</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">'</span><span class="content">http://fonts.googleapis.com/css?family=Ubuntu</span><span class="delimiter">'</span></span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">'</span><span class="content">stylesheet</span><span class="delimiter">'</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">'</span><span class="content">text/css</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-
-<p>The syntax for adding code in is:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-</pre></td>
-  <td class="code"><pre>~~~ &lt;language&gt;
-code
-~~~
-</pre></td>
-</tr></table>
-</div>
-
-<p>or </p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-</pre></td>
-  <td class="code"><pre>~~~
-def what?
-  42
-end
-~~~
-{:.language-ruby}
-</pre></td>
-</tr></table>
-</div>
-
-<p>There’s also a code blocks snippet that can be used via <code>/plugins/code_ray_blocks.rb</code> with documentation in the interior</p>
-
-<p>These instructions can be found at: <a href="http://blog.codebykat.com/2013/05/23/gorgeous-octopress-codeblocks-with-coderay/">The Octopress Site</a>.
-What they lack is telling you that single backticks can be used for inline code blocking.</p>
-
-<p>An excellent inline tutorial on markdown syntax can be found here: <a href="https://raw.githubusercontent.com/jewelsjacobs/jewelsjacobs.github.io/source/source/resources/index.markdown">Here</a>.</p>
-
-<p>In addition, the following was added to the source/_includes/header for LATEX support:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-mathjax-config</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-<span class="inline">    MathJax.Hub.Config({
-      <span class="key">jax</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">input/TeX</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">output/HTML-CSS</span><span class="delimiter">&quot;</span></span>],
-      <span class="key">tex2jax</span>: {
-        <span class="key">inlineMath</span>: [ [<span class="string"><span class="delimiter">'</span><span class="content">$</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">$</span><span class="delimiter">'</span></span>], [<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">(</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">)</span><span class="delimiter">&quot;</span></span>] ],
-        <span class="key">displayMath</span>: [ [<span class="string"><span class="delimiter">'</span><span class="content">$$</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">$$</span><span class="delimiter">'</span></span>], [<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">[</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">]</span><span class="delimiter">&quot;</span></span>] ],
-        <span class="key">processEscapes</span>: <span class="predefined-constant">true</span>,
-        <span class="key">skipTags</span>: [<span class="string"><span class="delimiter">'</span><span class="content">script</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">noscript</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">style</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">textarea</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">pre</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">code</span><span class="delimiter">'</span></span>]
-      }
-      <span class="comment">//,</span>
-      <span class="comment">//displayAlign: &quot;left&quot;,</span>
-      <span class="comment">//displayIndent: &quot;2em&quot;</span>
-    });</span>
-<span class="tag">&lt;/script&gt;</span>
-<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-
-<p>This now allows us to things like <script type="math/tex"> \frac{\Delta x}{\Delta p} \ge \frac{\hbar}{2}</script></p>
-
-<p>This was done thank you to: <a href="http://kqueue.org/blog/2012/01/05/hello-world/#internal-post-linking"> Another Octopress blog</a>.</p>
-
-<p>Finally, in order to fix an interesting right click issue, make the following switch</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-<a href="#n17" name="n17">17</a>
-<a href="#n18" name="n18">18</a>
-<a href="#n19" name="n19">19</a>
-<strong><a href="#n20" name="n20">20</a></strong>
-</pre></td>
-  <td class="code"><pre> body {
-<span class="line delete"><span class="delete">-</span>  &gt; div {</span>
-     background: $sidebar-bg $noise-bg;
-     border-bottom: 1px solid $page-border-bottom;
-     &gt; div {
-       background: $main-bg $noise-bg;
-       border-right: 1px solid $sidebar-border;
-     }
-   }
- }
- body {
-<span class="line insert"><span class="insert">+</span>  &gt; div#main {</span>
-     background: $sidebar-bg $noise-bg;
-     border-bottom: 1px solid $page-border-bottom;
-     &gt; div {
-       background: $main-bg $noise-bg;
-       border-right: 1px solid $sidebar-border;
-     }
-   }
- }
-</pre></td>
-</tr></table>
-</div>
-
-<p>Markdown can be accessed here: <a href="https://daringfireball.net/projects/markdown/basics" title="The Markdown Basics page">Another Octopress blog</a></p>
-</div>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kwierman.github.io/blog/2015/01/27/sphinx/" data-via="" data-counturl="http://kwierman.github.io/blog/2015/01/27/sphinx/" >Tweet</a>
   
   
-
-
-    </article>
   
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/01/24/building-a-404-page/" title="Previous Post: Building a 404 Page">&laquo; Building a 404 Page</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -1102,6 +749,7 @@ What they lack is telling you that single backticks can be used for inline code 
 
   
 </aside>
+
 
     </div>
   </div>
