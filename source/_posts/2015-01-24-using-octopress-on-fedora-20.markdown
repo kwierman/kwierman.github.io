@@ -11,14 +11,14 @@ Prerequisites
 In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs:
 
 ~~~ shell
-sudo yum install curl wget git-core
-    sudo yum install gcc zlib-devel make openssl autoconf automake
+$ sudo yum install curl wget git-core
+$ sudo yum install gcc zlib-devel make openssl autoconf automake
 ~~~
 
-Intall RVM
+Install RVM
 
 ~~~ shell
-su -c "curl -L https://get.rvm.io | bash -s stable"
+$ su -c "curl -L https://get.rvm.io | bash -s stable"
 ~~~
 
 Start a new terminal.
@@ -26,15 +26,15 @@ Start a new terminal.
 Make sure that terminal is capable of running rvm as a function (not as hash)
 
 ~~~ shell
-rvm -v
+$ rvm -v
 ~~~
 
 or 
 
 ~~~ shell
-type rvm | head -1
+$ type rvm | head -1
 # expected: rvm is a function
-which rvm
+$ which rvm
 # expected: /home/[USERNAME]/.rvm/bin/rvm
 ~~~
 
@@ -43,24 +43,24 @@ Voila.
 Install openssl and iconv:
 
 ~~~ shell
-rvm pkg install openssl
-rvm pkg install iconv
+$ rvm pkg install openssl
+$ rvm pkg install iconv
 ~~~
 
 Install ruby and rubygems:
 
 ~~~ shell
-rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr,--with-iconv-dir=$HOME/.rvm/usr
-rvm rubygems latest
+$ rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr,--with-iconv-dir=$HOME/.rvm/usr
+$ rvm rubygems latest
 ~~~
 
 
 Setup rvm for octopress:
 
 ~~~ shell
-rvm use 1.9.2 --default
-    rvm reload
-    gem install bundler
+$ rvm use 1.9.2 --default
+$ rvm reload
+$ gem install bundler
 ~~~
 
 Getting octopress onto your machine
@@ -68,26 +68,26 @@ Getting octopress onto your machine
 Run the following commmand:
 
 ~~~ shell
-git clone git://github.com/imathis/octopress.git <your_blogname (namely, yourgithubname.github.io)>
+$ git clone git://github.com/imathis/octopress.git <your_blogname (namely, yourgithubname.github.io)>
 ~~~
 
 Install the bundler gem in that folder:
 
 ~~~ shell
-gem install bundler
+$ gem install bundler
 ~~~
 
 
 Bundle install
 
 ~~~ shell
-bundle install
+$ bundle install
 ~~~
 
 Rake install
 
 ~~~ shell
-rake install
+$ rake install
 ~~~
 
 Theme styling:
@@ -103,7 +103,7 @@ The syntax for adding code in is:
 
 ~~~~~ markdown
 ~~~ <language>
-  code
+code
 ~~~
 ~~~~~
 
@@ -178,3 +178,6 @@ Finally, in order to fix an interesting right click issue, make the following sw
    }
  }
 ~~~
+
+
+Markdown can be accessed here: [Another Octopress blog](https://daringfireball.net/projects/markdown/basics "The Markdown Basics page")
