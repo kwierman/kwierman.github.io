@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Sphinx | Kevin Wierman]]></title>
   <link href="http://kwierman.github.io/blog/categories/sphinx/atom.xml" rel="self"/>
   <link href="http://kwierman.github.io/"/>
-  <updated>2015-01-29T13:03:12-05:00</updated>
+  <updated>2015-01-29T13:33:11-05:00</updated>
   <id>http://kwierman.github.io/</id>
   <author>
     <name><![CDATA[Kevin Wierman]]></name>
@@ -125,7 +125,7 @@ sphinx-apidoc -o source/ ../Cards
 
 <p>Quickstart starts the process of making the build system for the documentation. The steps are easy to go through, and self-explanatory. Meanwhile apidoc searches the code for symbols and adds them automatically to documentation files.</p>
 
-<blockquote><p>apidoc will need to be rerun every time you add new classes and symbols to the project.</p></blockquote>
+<p><blockquote><p>apidoc will need to be rerun every time you add new classes and symbols to the project.</p></blockquote></p>
 
 <p>Now, the directories should look this:</p>
 
@@ -309,7 +309,7 @@ git push
 
 <h3 id="module-documentation">Module Documentation</h3>
 
-<blockquote><p>Sphinx extracts docstrings from the files themselves, so if you&#8217;re already following python documentation procedure, then skip forward to symbolic reference.</p></blockquote>
+<p><blockquote><p>Sphinx extracts docstrings from the files themselves, so if you’re already following python documentation procedure, then skip forward to symbolic reference.</p></blockquote></p>
 
 <p>For example, for the module <code>Cards.Card</code>, the doc string is:</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Kevin Wierman]]></title>
   <link href="http://kwierman.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://kwierman.github.io/"/>
-  <updated>2015-01-29T13:03:12-05:00</updated>
+  <updated>2015-01-29T13:33:11-05:00</updated>
   <id>http://kwierman.github.io/</id>
   <author>
     <name><![CDATA[Kevin Wierman]]></name>
@@ -18,7 +18,7 @@
     <link href="http://kwierman.github.io/blog/2015/01/29/presentations-in-latex/"/>
     <updated>2015-01-29T12:56:05-05:00</updated>
     <id>http://kwierman.github.io/blog/2015/01/29/presentations-in-latex</id>
-    <content type="html"><![CDATA[<p>Typically </p>
+    <content type="html"><![CDATA[<p>Typically presentations in <script type="math/tex"> \LaTeX </script> depend on the <a href="http://en.wikipedia.org/wiki/Beamer_%28LaTeX%29">Beamer</a> document class. While this is all fine and well, this package is a bit restrictive. After a little digging, I found a KOMA script based document template that works well.</p>
 
 <p>This template requires <code>texlive</code> to build. In addition, the optional package <code>lastpage</code> is missing from some texlive builds. OSX should ship these with <code>mktex</code>, while fedora and ubuntu require the following commands:</p>
 
