@@ -137,8 +137,26 @@
 
 <div class="highlighter-coderay"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
 </pre></td>
-  <td class="code"><pre><span class="keyword">import</span> <span class="include">urllib2</span>,<span class="include">os</span>,<span class="include">hashlib</span>; h = <span class="string"><span class="delimiter">'</span><span class="content">2deb499853c4371624f5a07e27c334aa</span><span class="delimiter">'</span></span> + <span class="string"><span class="delimiter">'</span><span class="content">bf8c4e67d14fb0525ba4f89698a6d7e1</span><span class="delimiter">'</span></span>; pf = <span class="string"><span class="delimiter">'</span><span class="content">Package Control.sublime-package</span><span class="delimiter">'</span></span>; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(ipp) <span class="keyword">else</span> <span class="predefined-constant">None</span>; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( <span class="string"><span class="delimiter">'</span><span class="content">http://packagecontrol.io/</span><span class="delimiter">'</span></span> + pf.replace(<span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">%20</span><span class="delimiter">'</span></span>)).read(); dh = hashlib.sha256(by).hexdigest(); <span class="predefined">open</span>( os.path.join( ipp, pf), <span class="string"><span class="delimiter">'</span><span class="content">wb</span><span class="delimiter">'</span></span> ).write(by) <span class="keyword">if</span> dh == h <span class="keyword">else</span> <span class="predefined-constant">None</span>; print(<span class="string"><span class="delimiter">'</span><span class="content">Error validating download (got %s instead of %s), please try manual install</span><span class="delimiter">'</span></span> % (dh, h) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="string"><span class="delimiter">'</span><span class="content">Please restart Sublime Text to finish installation</span><span class="delimiter">'</span></span>) 
+  <td class="code"><pre><span class="keyword">import</span> <span class="include">urllib2</span>,<span class="include">os</span>,<span class="include">hashlib</span>; 
+h = <span class="string"><span class="delimiter">'</span><span class="content">2deb499853c4371624f5a07e27c334aa</span><span class="delimiter">'</span></span> + <span class="string"><span class="delimiter">'</span><span class="content">bf8c4e67d14fb0525ba4f89698a6d7e1</span><span class="delimiter">'</span></span>; 
+pf = <span class="string"><span class="delimiter">'</span><span class="content">Package Control.sublime-package</span><span class="delimiter">'</span></span>; 
+ipp = sublime.installed_packages_path(); 
+os.makedirs( ipp ) <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(ipp) <span class="keyword">else</span> <span class="predefined-constant">None</span>; 
+urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); 
+by = urllib2.urlopen( <span class="string"><span class="delimiter">'</span><span class="content">http://packagecontrol.io/</span><span class="delimiter">'</span></span> + pf.replace(<span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">%20</span><span class="delimiter">'</span></span>)).read(); 
+dh = hashlib.sha256(by).hexdigest(); 
+<span class="predefined">open</span>( os.path.join( ipp, pf), <span class="string"><span class="delimiter">'</span><span class="content">wb</span><span class="delimiter">'</span></span> ).write(by) <span class="keyword">if</span> dh == h <span class="keyword">else</span> <span class="predefined-constant">None</span>; 
+print(<span class="string"><span class="delimiter">'</span><span class="content">Error validating download (got %s instead of %s), please try manual install</span><span class="delimiter">'</span></span> % (dh, h) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="string"><span class="delimiter">'</span><span class="content">Please restart Sublime Text to finish installation</span><span class="delimiter">'</span></span>) 
 </pre></td>
 </tr></table>
 </div>
@@ -167,22 +185,10 @@ Package Control: Install Package
 </tr></table>
 </div>
 
-<p>Fragmentation between linux distros causes the steps to become necessary. Edit the <code>LaTex.sublime-settings</code>. Search for <code>Platform Settings</code></p>
+<p>Fragmentation between linux distros causes the steps to become necessary. Edit the <code>LaTex.sublime-settings</code>. Search for <code>Platform Settings</code>. Occasionally the build system needs to be put into each platforms directory. <code>texpath</code> should be set up correctly to point to mktex. See the <a href="https://github.com/SublimeText/LaTeXTools">GitHub repo</a> for more details.</p>
 
-<p>You also need to edit the file LaTeX.sublime-settings in the User directory to make sure that the configuration reflects your preferred TeX distribution. Open that file and scroll down to the section titled “Platform settings.” Look at the block for your OS, namely “linux”. Within that block, verify that the “texpath” setting is correct. Notice that this must include $PATH somewhere, or things will not work.</p>
+<p>Evince at the moment is the only viewer supported. Okular is coming up next, so we might have to try and see if that comes around soon.</p>
 
-<p>You may also have to set the command option in “builder_settings”, which tells the builder how to invoke latexmk. By default (i.e., if command is empty or not given) it is [“latexmk”, “-cd”, “-e”, “$pdflatex = ‘%E -interaction=nonstopmode -synctex=1 %S %O’”, “-f”, “-pdf”]. Users have reported the following possible issues and fixes (thanks!), so if you get a “Cannot compile!” error, try the following.</p>
-
-<pre><code>some distros do not want a space before and after the = in $pdflatex = %E. But some do want the space there (sigh!)
-sometimes latexmk is not on the PATH, or the path is not correctly picked up by ST. In this case, instead of "latexmk", use "/usr/bin/latexmk" or wherever latexmk is in your system.
-some distros require quoting the $pdflatex assignment, as in "$pdflatex = \"'%E -interaction=nonstopmode -synctex=1 %S %O'\""
-</code></pre>
-
-<p>There are several variants to deal with; each distro is a little bit different, so there are basically no universal defaults. There’s not much I can do about it. Good luck!</p>
-
-<p>Only the Evince PDF viewer is supported; it’s installed by default on Ubuntu or, more generally, any distro that provides the Gnome desktop, and you don’t need to configure anything. Backward and forward search Work For Me ™. Hopefully they will work for you, too, but let me know if this is not the case.</p>
-
-<p>Note: I already have patches to support Okular. Indeed, Okular is very easy to support, as it provides a sane command-line interface; Evince insists on using DBus, which requires considerable gyrations (luckily, it was relatively easy to adapt solutions already existing for other editors to ST). What is harder is supporting both Evince and Okular. This would need a revamp of the building-related facilites of the plugin, basically supporting user settings to select a particular viewer. But the incentive to add such support is very low as far as other platforms are concerned: only SumatraPDF supports forward/inverse search on Windows, and Skim is the easiest-to-control and most powerful/complete PDF viewer on OS X that does. Bottom line: multiple viewer support is probably not coming in the near future. Sorry!</p>
 </div>
 
 

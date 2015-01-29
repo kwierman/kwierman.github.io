@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Kevin Wierman]]></title>
   <link href="http://kwierman.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://kwierman.github.io/"/>
-  <updated>2015-01-29T13:33:11-05:00</updated>
+  <updated>2015-01-29T13:45:44-05:00</updated>
   <id>http://kwierman.github.io/</id>
   <author>
     <name><![CDATA[Kevin Wierman]]></name>
@@ -262,26 +262,24 @@ ubuntu$ sudo apt-get install texlive-lastpage
 <a href="#n227" name="n227">227</a>
 <a href="#n228" name="n228">228</a>
 <a href="#n229" name="n229">229</a>
-<strong><a href="#n230" name="n230">230</a></strong>
 </pre></td>
   <td class="code"><pre>\documentclass[
-paper=128mm:96mm, % The same paper size as used in the beamer class
+paper=128mm:96mm, 
 fontsize=11pt, % Font size
 pagesize, % Write page size to dvi or pdf
 parskip=half-, % Paragraphs separated by half a line
 ]{scrartcl} % KOMA script (article)
 
-\linespread{1.12} % Increase line spacing for readability
+\linespread{1.12} 
 
 %------------------------------------------------
 % Colors
-\usepackage[svgnames]{xcolor}     % Required for custom colors
-% Define a few colors for making text stand out within the presentation
+\usepackage[svgnames]{xcolor}
 \definecolor{mygreen}{RGB}{44,85,17}
 \definecolor{myblue}{RGB}{34,31,217}
 \definecolor{mybrown}{RGB}{194,164,113}
 \definecolor{myred}{RGB}{255,66,56}
-% Use these colors within the presentation by enclosing text in the commands below
+
 \newcommand*{\mygreen}[1]{\textcolor{mygreen}{#1}}
 \newcommand*{\myblue}[1]{\textcolor{myblue}{#1}}
 \newcommand*{\mybrown}[1]{\textcolor{mybrown}{#1}}
@@ -303,100 +301,91 @@ footskip=8.5mm
 
 %------------------------------------------------
 % Fonts
-\usepackage[T1]{fontenc}     % For correct hyphenation and T1 encoding
-\usepackage{lmodern} % Default font: latin modern font
-%\usepackage{fourier} % Alternative font: utopia
-%\usepackage{charter} % Alternative font: low-resolution roman font
-\renewcommand{\familydefault}{\sfdefault} % Sans serif - this may need to be commented to see the alternative fonts
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} 
+%\usepackage{fourier} 
+%\usepackage{charter} 
+\renewcommand{\familydefault}{\sfdefault} 
 %------------------------------------------------
 
 %------------------------------------------------
 % Various required packages
-\usepackage{amsthm} % Required for theorem environments
-\usepackage{bm} % Required for bold math symbols (used in the footer of the slides)
-\usepackage{graphicx} % Required for including images in figures
+\usepackage{amsthm} 
+\usepackage{bm}
+\usepackage{graphicx} 
 \usepackage{tikz} % Required for colored boxes
-\usepackage{booktabs} % Required for horizontal rules in tables
-\usepackage{multicol} % Required for creating multiple columns in slides
-\usepackage{lastpage} % For printing the total number of pages at the bottom of each slide
-\usepackage[english]{babel} % Document language - required for customizing section titles
+\usepackage{booktabs} 
+\usepackage{multicol} 
+\usepackage{lastpage} 
+\usepackage[english]{babel} 
 \usepackage{microtype} % Better typography
-\usepackage{tocstyle} % Required for customizing the table of contents
+\usepackage{tocstyle} 
 %------------------------------------------------
 
 %------------------------------------------------
 % Slide layout configuration
-\usepackage{scrpage2} % Required for customization of the header and footer
-\pagestyle{scrheadings} % Activates the pagestyle from scrpage2 for custom headers and footers
-\clearscrheadfoot % Remove the default header and footer
-\setkomafont{pageheadfoot}{\normalfont\color{black}\sffamily} % Font settings for the header and footer
+\usepackage{scrpage2} 
+\pagestyle{scrheadings} 
+\clearscrheadfoot 
+\setkomafont{pageheadfoot}{\normalfont\color{black}\sffamily}
 
-% Sets vertical centering of slide contents with increased space between paragraphs/lists
+
 \makeatletter
 \renewcommand*{\@textbottom}{\vskip \z@ \@plus 1fil}
 \newcommand*{\@texttop}{\vskip \z@ \@plus .5fil}
 \addtolength{\parskip}{\z@\@plus .25fil}
 \makeatother
 
-% Remove page numbers and the dots leading to them from the outline slide
+
 \makeatletter
-\newtocstyle[noonewithdot]{nodotnopagenumber}{\settocfeature{pagenumberbox}{\@gobble}}
+\newtocstyle[noonewithdot]{nodotnopagenumber}
+{\settocfeature{pagenumberbox}{\@gobble}}
 \makeatother
 \usetocstyle{nodotnopagenumber}
 
-\AtBeginDocument{\renewcaptionname{english}{\contentsname}{\Large Outline}} % Change the name of the table of contents
+\AtBeginDocument{\renewcaptionname{english}
+{\contentsname}{\Large Outline}}
 %------------------------------------------------
 
 %------------------------------------------------
 % Footer configuration
 \newlength{\footheight}
-\setlength{\footheight}{8mm} % Height of the footer
-%\addtokomafont{pagefoot}{\footnotesize} % Small font size for the footnote
+\setlength{\footheight}{8mm} 
 
 \ifoot{   % Left side
 \hspace{-2mm}
 \begin{tikzpicture}[remember picture,overlay]
-\node [xshift=\paperwidth/2,yshift=\footheight] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=3pt,top color=CornflowerBlue,bottom color=White]{}; % Green bar
+\node [xshift=\paperwidth/2,yshift=\footheight] 
+at (current page.south west)
+[rectangle,fill,inner sep=0pt,
+minimum width=\paperwidth,
+minimum height=3pt,
+top color=CornflowerBlue,bottom color=White]{}; 
 \end{tikzpicture}
-\myauthor\ \raisebox{0.2mm}{$\bm{\vert}$}\ \myuni % Left side text
+\myauthor\ \raisebox{0.2mm}{$\bm{\vert}$}\ \myuni
 }
 
-\ofoot[\pagemark/\pageref{LastPage}\hspace{-2mm}]{\pagemark/\pageref{LastPage}\hspace{-2mm}} % Right side
+\ofoot[\pagemark/\pageref{LastPage}\hspace{-2mm}]
+{\pagemark/\pageref{LastPage}\hspace{-2mm}} 
 %------------------------------------------------
 
 %------------------------------------------------
-% Section spacing - deeper section titles are given less space due to lesser importance
-\usepackage{titlesec} % Required for customizing section spacing
-\titlespacing{\section}{0mm}{0mm}{0mm} % Lengths are: left, before, after
-\titlespacing{\subsection}{0mm}{0mm}{-1mm} % Lengths are: left, before, after
-\titlespacing{\subsubsection}{0mm}{0mm}{-2mm} % Lengths are: left, before, after
-\setcounter{secnumdepth}{0} % How deep sections are numbered, set to no numbering by default - change to 1 for numbering sections, 2 for numbering sections and subsections, etc
+\usepackage{titlesec} 
+\titlespacing{\section}{0mm}{0mm}{0mm} 
+\titlespacing{\subsection}{0mm}{0mm}{-1mm} 
+\titlespacing{\subsubsection}{0mm}{0mm}{-2mm}
+\setcounter{secnumdepth}{0} 
 %------------------------------------------------
 
 %------------------------------------------------
-% Theorem style
-\newtheoremstyle{mythmstyle} % Defines a new theorem style used in this template
-{0.5em} % Space above
-{0.5em} % Space below
-{} % Body font
-{} % Indent amount
-{\sffamily\bfseries} % Head font
-{} % Punctuation after head
-{\newline} % Space after head
-{\thmname{#1}\ \thmnote{(#3)}} % Head spec
-           
-\theoremstyle{mythmstyle} % Change the default style of the theorem to the one defined above
-\newtheorem{theorem}{Theorem}[section] % Label for theorems
-\newtheorem{remark}[theorem]{Remark} % Label for remarks
-\newtheorem{algorithm}[theorem]{Algorithm} % Label for algorithms
-\makeatletter % Correct qed adjustment
-%------------------------------------------------
-
-%------------------------------------------------
-% The code for the box which can be used to highlight an element of a slide (such as a theorem)
-\newcommand*{\mybox}[2]{ % The box takes two arguments: width and content
+\newcommand*{\mybox}[2]{
 \par\noindent
-\begin{tikzpicture}[mynodestyle/.style={rectangle,draw=mygreen,thick,inner sep=2mm,text justified,top color=white,bottom color=white,above}]\node[mynodestyle,at={(0.5*#1+2mm+0.4pt,0)}]{ % Box formatting
+\begin{tikzpicture}
+[mynodestyle/.style={
+rectangle,draw=mygreen,
+thick,inner sep=2mm,
+text justified,top color=white,bottom color=white,above}]
+\node[mynodestyle,at={(0.5*#1+2mm+0.4pt,0)}]{ 
 \begin{minipage}[t]{#1}
 #2
 \end{minipage}
@@ -405,28 +394,33 @@ footskip=8.5mm
 \par\vspace{-1.3em}}
 %------------------------------------------------
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------
 %    PRESENTATION INFORMATION
-%----------------------------------------------------------------------------------------
+%------------------------------------------------
 
-\newcommand*{\mytitle}{ORCA Workflow Improvements} % Title
-\newcommand*{\runninghead}{ORCA Workflow} % Running head displayed on almost all slides
-\newcommand*{\myauthor}{Kevin Wierman} % Presenters name(s)
-\newcommand*{\mydate}{\today} % Presentation date
-\newcommand*{\myuni}{UNC/TUNL} % University or department
+\newcommand*{\mytitle}{ORCA Workflow Improvements}
+\newcommand*{\runninghead}{ORCA Workflow} 
+\newcommand*{\myauthor}{Kevin Wierman} 
+\newcommand*{\mydate}{\today} 
+\newcommand*{\myuni}{UNC/TUNL}
 
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------
 
 \begin{document}
 
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------
 %    TITLE SLIDE
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------
 
-% Title slide - you may have to tweak a few of the numbers if you wish to make changes to the layout
-\thispagestyle{empty} % No slide header and footer
-\begin{tikzpicture}[remember picture,overlay] % Background box
-\node [xshift=\paperwidth/2,yshift=\paperheight/2] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=\paperheight/3,top color=CornflowerBlue,bottom color=CornflowerBlue]{}; % Change the height of the box, its colors and position on the page here
+
+\thispagestyle{empty} 
+\begin{tikzpicture}[remember picture,overlay]
+\node [xshift=\paperwidth/2,yshift=\paperheight/2] at 
+(current page.south west)
+[rectangle,fill,inner sep=0pt,
+minimum width=\paperwidth,
+minimum height=\paperheight/3,
+top color=CornflowerBlue,bottom color=CornflowerBlue]{}; 
 \end{tikzpicture}
 % Text within the box
 \begin{flushright}
@@ -442,9 +436,9 @@ footskip=8.5mm
 
 \clearpage
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------
 %    TABLE OF CONTENTS
-%----------------------------------------------------------------------------------------
+%-----------------------------------------
 
 \thispagestyle{empty}
 \begin{multicols}{2}% \setlength{\columnseprule}{0pt}
@@ -452,16 +446,15 @@ footskip=8.5mm
 \end{multicols}
 \clearpage
 
-%----------------------------------------------------------------------------------------
+%------------------------------------------------
 %    PRESENTATION SLIDES
-%----------------------------------------------------------------------------------------
+%------------------------------------------------
 
 \section{Data Back End in Nuclear Physics}
-          %put up the information from oscillation experiments
+
 \clearpage
 %------------------------------------------------
 \section{Current Standards in Nuclear Physics}
-         %Put up stuff on Dirac or Majorana Neutrinos
 \clearpage
 %------------------------------------------------
 
@@ -480,18 +473,23 @@ footskip=8.5mm
 
 \thispagestyle{empty} % No slide header and footer
 
-\begin{tikzpicture}[remember picture,overlay] % Background box
-\node [xshift=\paperwidth/2,yshift=\paperheight/2] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=\paperheight/3,top color=CornflowerBlue,bottom color=SkyBlue]{}; % Change the height of the box, its colors and position on the page here
+\begin{tikzpicture}[remember picture,overlay] 
+\node [xshift=\paperwidth/2,yshift=\paperheight/2] at
+ (current page.south west)
+[rectangle,fill,inner sep=0pt,
+minimum width=\paperwidth,
+minimum height=\paperheight/3,
+top color=CornflowerBlue,bottom color=SkyBlue]{}; 
 \end{tikzpicture}
 % Text within the box
 \begin{flushright}
 \vspace{0.6cm}
 \color{white}\sffamily
-{\bfseries\LARGE Questions?\par} % Request for questions text
+{\bfseries\LARGE Questions?\par} 
 \vfill
 \end{flushright}
 
-%----------------------------------------------------------------------------------------
+%----------------------------------------------
 
 \end{document}
 </pre></td>

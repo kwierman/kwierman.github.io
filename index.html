@@ -140,8 +140,26 @@
 
 <div class="highlighter-coderay"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
 </pre></td>
-  <td class="code"><pre><span class="keyword">import</span> <span class="include">urllib2</span>,<span class="include">os</span>,<span class="include">hashlib</span>; h = <span class="string"><span class="delimiter">'</span><span class="content">2deb499853c4371624f5a07e27c334aa</span><span class="delimiter">'</span></span> + <span class="string"><span class="delimiter">'</span><span class="content">bf8c4e67d14fb0525ba4f89698a6d7e1</span><span class="delimiter">'</span></span>; pf = <span class="string"><span class="delimiter">'</span><span class="content">Package Control.sublime-package</span><span class="delimiter">'</span></span>; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(ipp) <span class="keyword">else</span> <span class="predefined-constant">None</span>; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( <span class="string"><span class="delimiter">'</span><span class="content">http://packagecontrol.io/</span><span class="delimiter">'</span></span> + pf.replace(<span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">%20</span><span class="delimiter">'</span></span>)).read(); dh = hashlib.sha256(by).hexdigest(); <span class="predefined">open</span>( os.path.join( ipp, pf), <span class="string"><span class="delimiter">'</span><span class="content">wb</span><span class="delimiter">'</span></span> ).write(by) <span class="keyword">if</span> dh == h <span class="keyword">else</span> <span class="predefined-constant">None</span>; print(<span class="string"><span class="delimiter">'</span><span class="content">Error validating download (got %s instead of %s), please try manual install</span><span class="delimiter">'</span></span> % (dh, h) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="string"><span class="delimiter">'</span><span class="content">Please restart Sublime Text to finish installation</span><span class="delimiter">'</span></span>) 
+  <td class="code"><pre><span class="keyword">import</span> <span class="include">urllib2</span>,<span class="include">os</span>,<span class="include">hashlib</span>; 
+h = <span class="string"><span class="delimiter">'</span><span class="content">2deb499853c4371624f5a07e27c334aa</span><span class="delimiter">'</span></span> + <span class="string"><span class="delimiter">'</span><span class="content">bf8c4e67d14fb0525ba4f89698a6d7e1</span><span class="delimiter">'</span></span>; 
+pf = <span class="string"><span class="delimiter">'</span><span class="content">Package Control.sublime-package</span><span class="delimiter">'</span></span>; 
+ipp = sublime.installed_packages_path(); 
+os.makedirs( ipp ) <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(ipp) <span class="keyword">else</span> <span class="predefined-constant">None</span>; 
+urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); 
+by = urllib2.urlopen( <span class="string"><span class="delimiter">'</span><span class="content">http://packagecontrol.io/</span><span class="delimiter">'</span></span> + pf.replace(<span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">%20</span><span class="delimiter">'</span></span>)).read(); 
+dh = hashlib.sha256(by).hexdigest(); 
+<span class="predefined">open</span>( os.path.join( ipp, pf), <span class="string"><span class="delimiter">'</span><span class="content">wb</span><span class="delimiter">'</span></span> ).write(by) <span class="keyword">if</span> dh == h <span class="keyword">else</span> <span class="predefined-constant">None</span>; 
+print(<span class="string"><span class="delimiter">'</span><span class="content">Error validating download (got %s instead of %s), please try manual install</span><span class="delimiter">'</span></span> % (dh, h) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="string"><span class="delimiter">'</span><span class="content">Please restart Sublime Text to finish installation</span><span class="delimiter">'</span></span>) 
 </pre></td>
 </tr></table>
 </div>
@@ -170,22 +188,10 @@ Package Control: Install Package
 </tr></table>
 </div>
 
-<p>Fragmentation between linux distros causes the steps to become necessary. Edit the <code>LaTex.sublime-settings</code>. Search for <code>Platform Settings</code></p>
+<p>Fragmentation between linux distros causes the steps to become necessary. Edit the <code>LaTex.sublime-settings</code>. Search for <code>Platform Settings</code>. Occasionally the build system needs to be put into each platforms directory. <code>texpath</code> should be set up correctly to point to mktex. See the <a href="https://github.com/SublimeText/LaTeXTools">GitHub repo</a> for more details.</p>
 
-<p>You also need to edit the file LaTeX.sublime-settings in the User directory to make sure that the configuration reflects your preferred TeX distribution. Open that file and scroll down to the section titled “Platform settings.” Look at the block for your OS, namely “linux”. Within that block, verify that the “texpath” setting is correct. Notice that this must include $PATH somewhere, or things will not work.</p>
+<p>Evince at the moment is the only viewer supported. Okular is coming up next, so we might have to try and see if that comes around soon.</p>
 
-<p>You may also have to set the command option in “builder_settings”, which tells the builder how to invoke latexmk. By default (i.e., if command is empty or not given) it is [“latexmk”, “-cd”, “-e”, “$pdflatex = ‘%E -interaction=nonstopmode -synctex=1 %S %O’”, “-f”, “-pdf”]. Users have reported the following possible issues and fixes (thanks!), so if you get a “Cannot compile!” error, try the following.</p>
-
-<pre><code>some distros do not want a space before and after the = in $pdflatex = %E. But some do want the space there (sigh!)
-sometimes latexmk is not on the PATH, or the path is not correctly picked up by ST. In this case, instead of "latexmk", use "/usr/bin/latexmk" or wherever latexmk is in your system.
-some distros require quoting the $pdflatex assignment, as in "$pdflatex = \"'%E -interaction=nonstopmode -synctex=1 %S %O'\""
-</code></pre>
-
-<p>There are several variants to deal with; each distro is a little bit different, so there are basically no universal defaults. There’s not much I can do about it. Good luck!</p>
-
-<p>Only the Evince PDF viewer is supported; it’s installed by default on Ubuntu or, more generally, any distro that provides the Gnome desktop, and you don’t need to configure anything. Backward and forward search Work For Me ™. Hopefully they will work for you, too, but let me know if this is not the case.</p>
-
-<p>Note: I already have patches to support Okular. Indeed, Okular is very easy to support, as it provides a sane command-line interface; Evince insists on using DBus, which requires considerable gyrations (luckily, it was relatively easy to adapt solutions already existing for other editors to ST). What is harder is supporting both Evince and Okular. This would need a revamp of the building-related facilites of the plugin, basically supporting user settings to select a particular viewer. But the incentive to add such support is very low as far as other platforms are concerned: only SumatraPDF supports forward/inverse search on Windows, and Skim is the easiest-to-control and most powerful/complete PDF viewer on OS X that does. Bottom line: multiple viewer support is probably not coming in the near future. Sorry!</p>
 </div>
   
   
@@ -458,26 +464,24 @@ ubuntu$ sudo apt-get install texlive-lastpage
 <a href="#n227" name="n227">227</a>
 <a href="#n228" name="n228">228</a>
 <a href="#n229" name="n229">229</a>
-<strong><a href="#n230" name="n230">230</a></strong>
 </pre></td>
   <td class="code"><pre>\documentclass[
-paper=128mm:96mm, % The same paper size as used in the beamer class
+paper=128mm:96mm, 
 fontsize=11pt, % Font size
 pagesize, % Write page size to dvi or pdf
 parskip=half-, % Paragraphs separated by half a line
 ]{scrartcl} % KOMA script (article)
 
-\linespread{1.12} % Increase line spacing for readability
+\linespread{1.12} 
 
 %------------------------------------------------
 % Colors
-\usepackage[svgnames]{xcolor}     % Required for custom colors
-% Define a few colors for making text stand out within the presentation
+\usepackage[svgnames]{xcolor}
 \definecolor{mygreen}{RGB}{44,85,17}
 \definecolor{myblue}{RGB}{34,31,217}
 \definecolor{mybrown}{RGB}{194,164,113}
 \definecolor{myred}{RGB}{255,66,56}
-% Use these colors within the presentation by enclosing text in the commands below
+
 \newcommand*{\mygreen}[1]{\textcolor{mygreen}{#1}}
 \newcommand*{\myblue}[1]{\textcolor{myblue}{#1}}
 \newcommand*{\mybrown}[1]{\textcolor{mybrown}{#1}}
@@ -499,100 +503,91 @@ footskip=8.5mm
 
 %------------------------------------------------
 % Fonts
-\usepackage[T1]{fontenc}     % For correct hyphenation and T1 encoding
-\usepackage{lmodern} % Default font: latin modern font
-%\usepackage{fourier} % Alternative font: utopia
-%\usepackage{charter} % Alternative font: low-resolution roman font
-\renewcommand{\familydefault}{\sfdefault} % Sans serif - this may need to be commented to see the alternative fonts
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} 
+%\usepackage{fourier} 
+%\usepackage{charter} 
+\renewcommand{\familydefault}{\sfdefault} 
 %------------------------------------------------
 
 %------------------------------------------------
 % Various required packages
-\usepackage{amsthm} % Required for theorem environments
-\usepackage{bm} % Required for bold math symbols (used in the footer of the slides)
-\usepackage{graphicx} % Required for including images in figures
+\usepackage{amsthm} 
+\usepackage{bm}
+\usepackage{graphicx} 
 \usepackage{tikz} % Required for colored boxes
-\usepackage{booktabs} % Required for horizontal rules in tables
-\usepackage{multicol} % Required for creating multiple columns in slides
-\usepackage{lastpage} % For printing the total number of pages at the bottom of each slide
-\usepackage[english]{babel} % Document language - required for customizing section titles
+\usepackage{booktabs} 
+\usepackage{multicol} 
+\usepackage{lastpage} 
+\usepackage[english]{babel} 
 \usepackage{microtype} % Better typography
-\usepackage{tocstyle} % Required for customizing the table of contents
+\usepackage{tocstyle} 
 %------------------------------------------------
 
 %------------------------------------------------
 % Slide layout configuration
-\usepackage{scrpage2} % Required for customization of the header and footer
-\pagestyle{scrheadings} % Activates the pagestyle from scrpage2 for custom headers and footers
-\clearscrheadfoot % Remove the default header and footer
-\setkomafont{pageheadfoot}{\normalfont\color{black}\sffamily} % Font settings for the header and footer
+\usepackage{scrpage2} 
+\pagestyle{scrheadings} 
+\clearscrheadfoot 
+\setkomafont{pageheadfoot}{\normalfont\color{black}\sffamily}
 
-% Sets vertical centering of slide contents with increased space between paragraphs/lists
+
 \makeatletter
 \renewcommand*{\@textbottom}{\vskip \z@ \@plus 1fil}
 \newcommand*{\@texttop}{\vskip \z@ \@plus .5fil}
 \addtolength{\parskip}{\z@\@plus .25fil}
 \makeatother
 
-% Remove page numbers and the dots leading to them from the outline slide
+
 \makeatletter
-\newtocstyle[noonewithdot]{nodotnopagenumber}{\settocfeature{pagenumberbox}{\@gobble}}
+\newtocstyle[noonewithdot]{nodotnopagenumber}
+{\settocfeature{pagenumberbox}{\@gobble}}
 \makeatother
 \usetocstyle{nodotnopagenumber}
 
-\AtBeginDocument{\renewcaptionname{english}{\contentsname}{\Large Outline}} % Change the name of the table of contents
+\AtBeginDocument{\renewcaptionname{english}
+{\contentsname}{\Large Outline}}
 %------------------------------------------------
 
 %------------------------------------------------
 % Footer configuration
 \newlength{\footheight}
-\setlength{\footheight}{8mm} % Height of the footer
-%\addtokomafont{pagefoot}{\footnotesize} % Small font size for the footnote
+\setlength{\footheight}{8mm} 
 
 \ifoot{   % Left side
 \hspace{-2mm}
 \begin{tikzpicture}[remember picture,overlay]
-\node [xshift=\paperwidth/2,yshift=\footheight] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=3pt,top color=CornflowerBlue,bottom color=White]{}; % Green bar
+\node [xshift=\paperwidth/2,yshift=\footheight] 
+at (current page.south west)
+[rectangle,fill,inner sep=0pt,
+minimum width=\paperwidth,
+minimum height=3pt,
+top color=CornflowerBlue,bottom color=White]{}; 
 \end{tikzpicture}
-\myauthor\ \raisebox{0.2mm}{$\bm{\vert}$}\ \myuni % Left side text
+\myauthor\ \raisebox{0.2mm}{$\bm{\vert}$}\ \myuni
 }
 
-\ofoot[\pagemark/\pageref{LastPage}\hspace{-2mm}]{\pagemark/\pageref{LastPage}\hspace{-2mm}} % Right side
+\ofoot[\pagemark/\pageref{LastPage}\hspace{-2mm}]
+{\pagemark/\pageref{LastPage}\hspace{-2mm}} 
 %------------------------------------------------
 
 %------------------------------------------------
-% Section spacing - deeper section titles are given less space due to lesser importance
-\usepackage{titlesec} % Required for customizing section spacing
-\titlespacing{\section}{0mm}{0mm}{0mm} % Lengths are: left, before, after
-\titlespacing{\subsection}{0mm}{0mm}{-1mm} % Lengths are: left, before, after
-\titlespacing{\subsubsection}{0mm}{0mm}{-2mm} % Lengths are: left, before, after
-\setcounter{secnumdepth}{0} % How deep sections are numbered, set to no numbering by default - change to 1 for numbering sections, 2 for numbering sections and subsections, etc
+\usepackage{titlesec} 
+\titlespacing{\section}{0mm}{0mm}{0mm} 
+\titlespacing{\subsection}{0mm}{0mm}{-1mm} 
+\titlespacing{\subsubsection}{0mm}{0mm}{-2mm}
+\setcounter{secnumdepth}{0} 
 %------------------------------------------------
 
 %------------------------------------------------
-% Theorem style
-\newtheoremstyle{mythmstyle} % Defines a new theorem style used in this template
-{0.5em} % Space above
-{0.5em} % Space below
-{} % Body font
-{} % Indent amount
-{\sffamily\bfseries} % Head font
-{} % Punctuation after head
-{\newline} % Space after head
-{\thmname{#1}\ \thmnote{(#3)}} % Head spec
-           
-\theoremstyle{mythmstyle} % Change the default style of the theorem to the one defined above
-\newtheorem{theorem}{Theorem}[section] % Label for theorems
-\newtheorem{remark}[theorem]{Remark} % Label for remarks
-\newtheorem{algorithm}[theorem]{Algorithm} % Label for algorithms
-\makeatletter % Correct qed adjustment
-%------------------------------------------------
-
-%------------------------------------------------
-% The code for the box which can be used to highlight an element of a slide (such as a theorem)
-\newcommand*{\mybox}[2]{ % The box takes two arguments: width and content
+\newcommand*{\mybox}[2]{
 \par\noindent
-\begin{tikzpicture}[mynodestyle/.style={rectangle,draw=mygreen,thick,inner sep=2mm,text justified,top color=white,bottom color=white,above}]\node[mynodestyle,at={(0.5*#1+2mm+0.4pt,0)}]{ % Box formatting
+\begin{tikzpicture}
+[mynodestyle/.style={
+rectangle,draw=mygreen,
+thick,inner sep=2mm,
+text justified,top color=white,bottom color=white,above}]
+\node[mynodestyle,at={(0.5*#1+2mm+0.4pt,0)}]{ 
 \begin{minipage}[t]{#1}
 #2
 \end{minipage}
@@ -601,28 +596,33 @@ footskip=8.5mm
 \par\vspace{-1.3em}}
 %------------------------------------------------
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------
 %    PRESENTATION INFORMATION
-%----------------------------------------------------------------------------------------
+%------------------------------------------------
 
-\newcommand*{\mytitle}{ORCA Workflow Improvements} % Title
-\newcommand*{\runninghead}{ORCA Workflow} % Running head displayed on almost all slides
-\newcommand*{\myauthor}{Kevin Wierman} % Presenters name(s)
-\newcommand*{\mydate}{\today} % Presentation date
-\newcommand*{\myuni}{UNC/TUNL} % University or department
+\newcommand*{\mytitle}{ORCA Workflow Improvements}
+\newcommand*{\runninghead}{ORCA Workflow} 
+\newcommand*{\myauthor}{Kevin Wierman} 
+\newcommand*{\mydate}{\today} 
+\newcommand*{\myuni}{UNC/TUNL}
 
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------
 
 \begin{document}
 
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------
 %    TITLE SLIDE
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------
 
-% Title slide - you may have to tweak a few of the numbers if you wish to make changes to the layout
-\thispagestyle{empty} % No slide header and footer
-\begin{tikzpicture}[remember picture,overlay] % Background box
-\node [xshift=\paperwidth/2,yshift=\paperheight/2] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=\paperheight/3,top color=CornflowerBlue,bottom color=CornflowerBlue]{}; % Change the height of the box, its colors and position on the page here
+
+\thispagestyle{empty} 
+\begin{tikzpicture}[remember picture,overlay]
+\node [xshift=\paperwidth/2,yshift=\paperheight/2] at 
+(current page.south west)
+[rectangle,fill,inner sep=0pt,
+minimum width=\paperwidth,
+minimum height=\paperheight/3,
+top color=CornflowerBlue,bottom color=CornflowerBlue]{}; 
 \end{tikzpicture}
 % Text within the box
 \begin{flushright}
@@ -638,9 +638,9 @@ footskip=8.5mm
 
 \clearpage
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------
 %    TABLE OF CONTENTS
-%----------------------------------------------------------------------------------------
+%-----------------------------------------
 
 \thispagestyle{empty}
 \begin{multicols}{2}% \setlength{\columnseprule}{0pt}
@@ -648,16 +648,15 @@ footskip=8.5mm
 \end{multicols}
 \clearpage
 
-%----------------------------------------------------------------------------------------
+%------------------------------------------------
 %    PRESENTATION SLIDES
-%----------------------------------------------------------------------------------------
+%------------------------------------------------
 
 \section{Data Back End in Nuclear Physics}
-          %put up the information from oscillation experiments
+
 \clearpage
 %------------------------------------------------
 \section{Current Standards in Nuclear Physics}
-         %Put up stuff on Dirac or Majorana Neutrinos
 \clearpage
 %------------------------------------------------
 
@@ -676,18 +675,23 @@ footskip=8.5mm
 
 \thispagestyle{empty} % No slide header and footer
 
-\begin{tikzpicture}[remember picture,overlay] % Background box
-\node [xshift=\paperwidth/2,yshift=\paperheight/2] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=\paperheight/3,top color=CornflowerBlue,bottom color=SkyBlue]{}; % Change the height of the box, its colors and position on the page here
+\begin{tikzpicture}[remember picture,overlay] 
+\node [xshift=\paperwidth/2,yshift=\paperheight/2] at
+ (current page.south west)
+[rectangle,fill,inner sep=0pt,
+minimum width=\paperwidth,
+minimum height=\paperheight/3,
+top color=CornflowerBlue,bottom color=SkyBlue]{}; 
 \end{tikzpicture}
 % Text within the box
 \begin{flushright}
 \vspace{0.6cm}
 \color{white}\sffamily
-{\bfseries\LARGE Questions?\par} % Request for questions text
+{\bfseries\LARGE Questions?\par} 
 \vfill
 \end{flushright}
 
-%----------------------------------------------------------------------------------------
+%----------------------------------------------
 
 \end{document}
 </pre></td>
