@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Sphinx - Kevin Wierman</title>
+  <title>Beer Color Calculation - Kevin Wierman</title>
   <meta name="author" content="Kevin Wierman">
 
   
-  <meta name="description" content="Category: sphinx">
+  <meta name="description" content="Degrees Lovibond Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale introduced by Joseph Lovibond &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kwierman.github.io/blog/categories/sphinx/">
+  <link rel="canonical" href="http://kwierman.github.io/blog/2015/01/31/beer-color-calculation/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Kevin Wierman" type="application/atom+xml">
@@ -105,35 +105,92 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Sphinx</h1>
+    
+      <h1 class="entry-title">Beer Color Calculation</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-31T15:01:30-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>3:01 pm</span></time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h2 id="degrees-lovibond">Degrees Lovibond</h2>
 
-  
-  <h2>2015</h2>
+<p>Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale  introduced by Joseph Lovibond in the ’60s. 
+Usually a “Tintometer” is used, which is just a set of tinted slides, and much like going to optometrist, you get answer “1 or 2” until you get the closest matching tint.
+While this method has been applied to many substances, the brewing industry remains a prolific user of it today.</p>
 
-<article>
-  
-<h1><a href="/blog/2015/01/27/sphinx/">Using Sphinx for Inline Documentation</a></h1>
-<time datetime="2015-01-27T17:01:32-05:00" pubdate><span class='month'>Jan</span> <span class='day'>27</span> <span class='year'>2015</span></time>
+<p>To get a feel for this scale, a lager would be a <code>2</code>, while a stout would show as a <code>40</code> (although anything above 25 is just black). In most cases, the L associated with a grain comes from a batch of wort prepared with that grain.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/sphinx/'>sphinx</a></span>
-</footer>
+<h2 id="malt-color-units">Malt Color Units</h2>
 
+<p><code>MCU</code>s are used as a method of finding the contribution of each part of a recipe to the color as a whole.
+For the weight of grain in lbs (<script type="math/tex">W_{lbs}</script>), and volume in gallons, <script type="math/tex">V_{gal}</script>.</p>
 
-</article>
+<script type="math/tex; mode=display">MCU = (W_{lbs}) * (L) / (V_{gal})</script>
+
+<p>Simply add the MCU of each part to get the total MCU. Since the volume is the same for each (for instance, if you had a 6 gallon batch, use 6 gallons for the volume variable), this resembles an average color rating.</p>
+
+<h2 id="standard-reference-method">Standard Reference Method</h2>
+
+<p>SRM is the newly adapted model for color estimation. Although SRM and L are very close, they tend to diverge around 6-8 (roughly golden brown/copper). So, the Morey equation provides a good estimate of the SRM based on MCU.</p>
+
+<script type="math/tex; mode=display"> SRM=1.4922\times (MCU^{0.6859}) </script>
+
+<p>So, based on the ingredients (subscript <script type="math/tex"> i</script>), you can estimate the color output</p>
+
+<script type="math/tex; mode=display"> SRM=1.4922\times \left[\left(\sum_i (W_{lbs})_i * (L)_i / (V_{gal}) \right)^{0.6859}\right]  </script>
+
+<p><a href="http://eddiesalehouse.com/images/eddie-s-alehouse-beer-infographic-srm.jpg">Eddie’s Ale House</a> has a fantastic chart for comparing SRM colors for beers.</p>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Kevin Wierman</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-01-31T15:01:30-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>3:01 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kwierman.github.io/blog/2015/01/31/beer-color-calculation/" data-via="" data-counturl="http://kwierman.github.io/blog/2015/01/31/beer-color-calculation/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/01/31/jasmine-ipa/" title="Previous Post: Jasmine IPA">&laquo; Jasmine IPA</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>
