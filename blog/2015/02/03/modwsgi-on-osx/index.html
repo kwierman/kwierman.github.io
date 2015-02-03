@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>WireTree Brewing - Kevin Wierman</title>
+  <title>ModWSGI on OSX - Kevin Wierman</title>
   <meta name="author" content="Kevin Wierman">
 
   
-  <meta name="description" content="WireTree Brewing Aug 4th, 2014 7:48 am At Home Brewing with Adrian and Kevin In 2013, Adrian Ogletree and Kevin Wierman started brewing beer from &hellip;">
+  <meta name="description" content="The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2] DO NOT FOLLOW THE INSTRUCTIONS. Just unload it to a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kwierman.github.io/brewing/">
+  <link rel="canonical" href="http://kwierman.github.io/blog/2015/02/03/modwsgi-on-osx/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Kevin Wierman" type="application/atom+xml">
@@ -105,109 +105,91 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">WireTree Brewing</h1>
-    <p class="meta">
+    
+      <h1 class="entry-title">ModWSGI on OSX</h1>
+    
+    
+      <p class="meta">
+        
 
 
 
 
-<time class='entry-date' datetime='2014-08-04T07:48:00-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:48 am</span></time></p>
+<time class='entry-date' datetime='2015-02-03T09:38:04-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:38 am</span></time>
+        
+      </p>
+    
   </header>
-  
-  <h2 id="at-home-brewing-with-adrian-and-kevin">At Home Brewing with Adrian and Kevin</h2>
 
-<p>In 2013, Adrian Ogletree and Kevin Wierman started brewing beer from home as a hobby.
-The original setup used 2 gallon stock pots to boil the wort and the snow outside to cool the wort before pitching.</p>
 
-<p>Step-by-step the apparatus has been growing to include more sophisticated methods of controlling brewing processes, and to allow more exotic recipes to be tried and tested. Kevin thoroughly believes in building as much by hand as possible in order to maintain a working knowledge of the apparatus and an air of homebrew authenticity.</p>
+<div class="entry-content"><p>The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]</p>
 
-<p>As the old adage goes, “Three hours in the Library saves three months in the lab.” So, Adrian has undertaken the rather daunting task of reaching out to beer-oriented review magazines in hope of quantifying the data we will need to become the brewers we hope to be one day.</p>
+<blockquote><p>DO NOT FOLLOW THE INSTRUCTIONS.</p></blockquote>
 
-<p>Adrian and Kevin have become ardent brewing enthusiasts and spend much of their spare time supporting the local brewing communities. They hope to grow out own operation into something more people can enjoy.</p>
+<p>Just unload it to a source directory and install it to the apache module directory</p>
 
-<h2 id="the-dream">The Dream</h2>
-
-<p>We’re investigating what we could accomplish if we invested our research into a commercial brewery.
-Walk into a brewery anywhere and ask to see their menu.
-In any given season, breweries will offer a selection of beers indicative of the local preferences, and the season in which they were brewed.</p>
-
-<blockquote><p>In many cases the selection will follow a narrow trend. Think of every time you&#8217;ve walked into a bar and seen ten different IPAs. We&#8217;re going to change that.</p></blockquote>
-
-<p>The core concepts we’d like to deploy are these:</p>
-
-<ul>
-  <li>Selection
-    <ul>
-      <li>Especially with grain selection</li>
-    </ul>
-  </li>
-  <li>Locale
-    <ul>
-      <li>This doesn’t mean that </li>
-      <li>However, you should be able to get good a steam ale in california, an IPA in the Pacific Northwest or an ESB in the northeast</li>
-      <li>The</li>
-    </ul>
-  </li>
-  <li>Seasonality</li>
-  <li>Promoting Beer Community</li>
-</ul>
-
-<h2 id="recipes">Recipes</h2>
+<p>Now add the following line to <code>/etc/apache2/httpd.conf</code></p>
 
 <div class="highlighter-coderay"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
 </pre></td>
-  <td class="code"><pre>We'll start posting here in the near-ish future
+  <td class="code"><pre>LoadModule wsgi_module modules/mod_wsgi.so
 </pre></td>
 </tr></table>
 </div>
 
-<h2 id="the-yeast">The Yeast</h2>
+<p>And restart the apache server</p>
 
-<p>Every brewer will tell you that yeast are touchy creatures.</p>
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>    apachectl restart
+</pre></td>
+</tr></table>
+</div>
 
-<h2 id="production-automation">Production Automation</h2>
-
-<p>Brewing is an exact profession.
-Our goal is to produce consistent flavor and body that matches the profile we’ve created for each beer.</p>
-
-<h2 id="the-business-plan">The Business Plan</h2>
-
-<p>We’ve developed a small business plan with 3 and 5 year plans.
-This will be sources here in the future.</p>
+</div>
 
 
-  
-    <footer>
-      <p class="meta">
-        
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Adrian Ogletree and Kevin Wierman</span></span>
-
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-04T07:48:00-04:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:48 am</span></time>
-        
-      </p>
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kwierman.github.io/brewing/index.html" data-via="" data-counturl="http://kwierman.github.io/brewing/index.html" >Tweet</a>
+
+<span class="byline author vcard">Posted by <span class="fn">Kevin Wierman</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-02-03T09:38:04-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:38 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kwierman.github.io/blog/2015/02/03/modwsgi-on-osx/" data-via="" data-counturl="http://kwierman.github.io/blog/2015/02/03/modwsgi-on-osx/" >Tweet</a>
   
   
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2015/01/31/grain-mass-calculations/" title="Previous Post: Grain Mass Calculations">&laquo; Grain Mass Calculations</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/02/03/ssl-keys-on-osx/" title="Next Post: SSL Keys on OSX">SSL Keys on OSX &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 </div>

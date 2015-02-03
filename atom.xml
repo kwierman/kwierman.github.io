@@ -4,7 +4,7 @@
   <title><![CDATA[Kevin Wierman]]></title>
   <link href="http://kwierman.github.io/atom.xml" rel="self"/>
   <link href="http://kwierman.github.io/"/>
-  <updated>2015-01-31T15:20:55-05:00</updated>
+  <updated>2015-02-03T09:45:23-05:00</updated>
   <id>http://kwierman.github.io/</id>
   <author>
     <name><![CDATA[Kevin Wierman]]></name>
@@ -14,111 +14,144 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Beer Color Calculation]]></title>
-    <link href="http://kwierman.github.io/blog/2015/01/31/beer-color-calculation/"/>
-    <updated>2015-01-31T15:01:30-05:00</updated>
-    <id>http://kwierman.github.io/blog/2015/01/31/beer-color-calculation</id>
-    <content type="html"><![CDATA[<h2 id="degrees-lovibond">Degrees Lovibond</h2>
+    <title type="html"><![CDATA[SSL Keys on OSX]]></title>
+    <link href="http://kwierman.github.io/blog/2015/02/03/ssl-keys-on-osx/"/>
+    <updated>2015-02-03T09:42:45-05:00</updated>
+    <id>http://kwierman.github.io/blog/2015/02/03/ssl-keys-on-osx</id>
+    <content type="html"><![CDATA[<h2 id="generate-a-host-key">Generate a host key</h2>
 
-<p>Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale  introduced by Joseph Lovibond in the ’60s. 
-Usually a “Tintometer” is used, which is just a set of tinted slides, and much like going to optometrist, you get answer “1 or 2” until you get the closest matching tint.
-While this method has been applied to many substances, the brewing industry remains a prolific user of it today.</p>
+<p>First, make a home for the new SSL files. I use <code>/etc/apache2/ssl</code>. Open up a terminal window, <code>cd</code> to the new directory and issue the following command to create a host key file.</p>
 
-<p>To get a feel for this scale, a lager would be a <code>2</code>, while a stout would show as a <code>40</code> (although anything above 25 is just black). In most cases, the L associated with a grain comes from a batch of wort prepared with that grain.</p>
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>sudo ssh-keygen -f host.key
+</pre></td>
+</tr></table>
+</div>
 
-<h2 id="malt-color-units">Malt Color Units</h2>
+<h2 id="generate-a-certificate-request-file">Generate a certificate request file</h2>
 
-<p><code>MCU</code>s are used as a method of finding the contribution of each part of a recipe to the color as a whole</p>
+<p>This command create a certificate request file. A certificate request file contains information about your organization that will be used in the SSL certificate.</p>
 
-<script type="math/tex; mode=display">MCU = (Weight of grain in lbs) * (Color of grain in degrees lovibond) / (volume in gallons)</script>
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>sudo openssl req -new -key host.key -out request.csr
+</pre></td>
+</tr></table>
+</div>
 
-<p>Simply add the MCU of each part to get the total MCU. Since the volume is the same for each (for instance, if you had a 6 gallon batch, use 6 gallons for the volume variable), this resembles an average color rating.</p>
+<h2 id="create-the-ssl-certificate">Create the SSL certificate</h2>
 
-<h2 id="standard-reference-method">Standard Reference Method</h2>
+<p>Create a self signed SSL certificate using the request file.</p>
 
-<p>SRM is the newly adapted model for color estimation. Although SRM and L are very close, they tend to diverge around 6-8 (roughly golden brown/copper). So, the Morey equation provides a good estimate of the SRM based on MCU.</p>
+<p>sudo openssl x509 -req -days 365 -in request.csr -signkey host.key -out server.crt</p>
 
-<script type="math/tex; mode=display"> SRM=1.4922\times (MCU^{0.6859}) </script>
+<h2 id="configure-apache">Configure Apache</h2>
 
-<p>So, based on the ingredients (subscript <script type="math/tex"> i</script>), you can estimate the color output</p>
+<p>Create a backup of <code>/etc/apache2/httpd.conf</code>.</p>
 
-<script type="math/tex; mode=display"> SRM=1.4922\times \left[\left(\sum_i (Weight of grain in lbs)_i * (Color of grain in degrees lovibond)_i / (volume in gallons) \right)^{0.6859}\right]  </script>
+<p>Append the contents of <code>/etc/apache2/extra/httpd-ssl.conf</code> to <code>/etc/apache2/httpd.conf</code>.</p>
+
+<p>In <code>/etc/apache2/httpd.conf</code>, make sure the loading of SSL is enabled (remove the #)</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>LoadModule ssl_module libexec/apache2/mod_ssl.so
+</pre></td>
+</tr></table>
+</div>
+
+<p>Also, edit SSL section to use the new certificate.</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre>SSLEngine on
+SSLCertificateFile /etc/apache2/ssl/server.crt
+SSLCertificateKeyFile /etc/apache2/ssl/host.key
+</pre></td>
+</tr></table>
+</div>
+
+<p>Check the config and restart Apache to try the new certificate.</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre>sudo apachectl configtest
+sudo apachectl restart
+</pre></td>
+</tr></table>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ModWSGI on OSX]]></title>
+    <link href="http://kwierman.github.io/blog/2015/02/03/modwsgi-on-osx/"/>
+    <updated>2015-02-03T09:38:04-05:00</updated>
+    <id>http://kwierman.github.io/blog/2015/02/03/modwsgi-on-osx</id>
+    <content type="html"><![CDATA[<p>The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]</p>
+
+<blockquote><p>DO NOT FOLLOW THE INSTRUCTIONS.</p></blockquote>
+
+<p>Just unload it to a source directory and install it to the apache module directory</p>
+
+<p>Now add the following line to <code>/etc/apache2/httpd.conf</code></p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>LoadModule wsgi_module modules/mod_wsgi.so
+</pre></td>
+</tr></table>
+</div>
+
+<p>And restart the apache server</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>    apachectl restart
+</pre></td>
+</tr></table>
+</div>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Jasmine IPA]]></title>
-    <link href="http://kwierman.github.io/blog/2015/01/31/jasmine-ipa/"/>
-    <updated>2015-01-31T13:11:55-05:00</updated>
-    <id>http://kwierman.github.io/blog/2015/01/31/jasmine-ipa</id>
-    <content type="html"><![CDATA[<h2 id="background">Background</h2>
+    <title type="html"><![CDATA[Grain Mass Calculations]]></title>
+    <link href="http://kwierman.github.io/blog/2015/01/31/grain-mass-calculations/"/>
+    <updated>2015-01-31T19:13:11-05:00</updated>
+    <id>http://kwierman.github.io/blog/2015/01/31/grain-mass-calculations</id>
+    <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
 
-<p>One of our favorite beers of all time is the <a href="http://www.elysianbrewing.com/elysian-beers/avatar-jasmine-ipa/">Avatar Jasmine IPA</a>from <a href="http://www.elysianbrewing.com/">Elysian Brewing</a>. So much so, in fact, that we’re going to try and replicate it from a series of other recipes. We’ve tried this before (to great success, might I add). This time around, we’re making some modifications to the now named,</p>
+<p>Alright, so, you’ve assembled your recipes in terms of grains and percents. Now, you want to figure out how much of your grain recipe you want to add to the mash.</p>
 
-<blockquote><p>Wrath of Khan Jasmine IPA</p></blockquote>
+<p>The first chemical conversion in brewing, saccarification, is one of the most important step in determining the alcohol content of the beer.</p>
 
-<h2 id="desired-characteristics">Desired Characteristics</h2>
+<p>Sucrose, one of the most common sugars produced in saccarification is strongly correlated with increase in specific gravity of beers due to highest increase in SG for percent weight in solution.</p>
 
-<p>From the Elysian Brewing website:</p>
-
-<ul>
-  <li>Style:
-    <ul>
-      <li>IPA</li>
-    </ul>
-  </li>
-  <li>Body:
-    <ul>
-      <li>Medium</li>
-    </ul>
-  </li>
-  <li>Color
-    <ul>
-      <li>Golden Copper</li>
-      <li>Roughly an SRM of 6</li>
-    </ul>
-  </li>
-  <li>ABV:
-    <ul>
-      <li>6.3<script type="math/tex">\%</script></li>
-    </ul>
-  </li>
-  <li>Aromatics:
-    <ul>
-      <li>Floral</li>
-      <li>Jasmine</li>
-    </ul>
-  </li>
-  <li>Taste:
-    <ul>
-      <li>Balance of hoppiness and jasmine</li>
-    </ul>
-  </li>
-  <li>IBU:
-    <ul>
-      <li>45</li>
-    </ul>
-  </li>
-</ul>
-
-<p>Malts: Pale, <script type="math/tex">45^\circ</script> Crystal, Munich and Cara-hell</p>
-
-<p>Hops: Bittered with German Northern Brewer, finished with Glacier and Amarillo hops</p>
-
-<h2 id="putting-the-recipe-together">Putting the recipe together</h2>
-
-<p>Since </p>
+<p>The amount of sucrose in solution is measured in degrees Plato. Plato is defined as the number of grams of sugar per 100 grams of solution.  Plato is used widely in Europe and is based on corrections to the older Balling scale. Balling and Plato are close but not exactly equivalent due to differences in calibration temperature.  The difference between the two is about 0.05% weight/weight, however, so in most practical situations Plato is equivalent to Balling.</p>
 
 <h2 id="specific-gravity">Specific Gravity</h2>
 
-<p>S.G. is the density of a liquid or solid compared to that of water.</p>
+<p>S.G. is the density of a liquid or solid compared to that of water. This is related to Plato in the following formula.</p>
 
 <script type="math/tex; mode=display">S.G.  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1}</script>
 
+<p>Most beers have a starting specific gravity of 1.025-1.100.</p>
+
 <h2 id="weight-of-extract">Weight of Extract</h2>
 
-<p>The weight of extract is the amount of malt extract present in the wort. </p>
+<p>The weight of extract is the amount of malt extract present in the wort. The amount of extract is related to specific gravity in the following formula:</p>
 
 <script type="math/tex; mode=display"> Lbs\;extract =   (8.32 lbs/gal wort)(gal wort)(S.G.)/ 100 </script>
 
@@ -192,6 +225,107 @@ For the hops equation, the units for the \% must be expressed in decimal form.  
 
 <p>We allow for a 30\% loss of color during fermentation to calculate the color of beer.
 Color of Beer = (color of wort)(1 - \% color loss)</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Beer Color Calculation]]></title>
+    <link href="http://kwierman.github.io/blog/2015/01/31/beer-color-calculation/"/>
+    <updated>2015-01-31T15:01:30-05:00</updated>
+    <id>http://kwierman.github.io/blog/2015/01/31/beer-color-calculation</id>
+    <content type="html"><![CDATA[<h2 id="degrees-lovibond">Degrees Lovibond</h2>
+
+<p>Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale  introduced by Joseph Lovibond in the ’60s. 
+Usually a “Tintometer” is used, which is just a set of tinted slides, and much like going to optometrist, you get answer “1 or 2” until you get the closest matching tint.
+While this method has been applied to many substances, the brewing industry remains a prolific user of it today.</p>
+
+<p>To get a feel for this scale, a lager would be a <code>2</code>, while a stout would show as a <code>40</code> (although anything above 25 is just black). In most cases, the L associated with a grain comes from a batch of wort prepared with that grain.</p>
+
+<h2 id="malt-color-units">Malt Color Units</h2>
+
+<p><code>MCU</code>s are used as a method of finding the contribution of each part of a recipe to the color as a whole.
+For the weight of grain in lbs (<script type="math/tex">W_{lbs}</script>), and volume in gallons, <script type="math/tex">V_{gal}</script>.</p>
+
+<script type="math/tex; mode=display">MCU = (W_{lbs}) * (L) / (V_{gal})</script>
+
+<p>Simply add the MCU of each part to get the total MCU. Since the volume is the same for each (for instance, if you had a 6 gallon batch, use 6 gallons for the volume variable), this resembles an average color rating.</p>
+
+<h2 id="standard-reference-method">Standard Reference Method</h2>
+
+<p>SRM is the newly adapted model for color estimation. Although SRM and L are very close, they tend to diverge around 6-8 (roughly golden brown/copper). So, the Morey equation provides a good estimate of the SRM based on MCU.</p>
+
+<script type="math/tex; mode=display"> SRM=1.4922\times (MCU^{0.6859}) </script>
+
+<p>So, based on the ingredients (subscript <script type="math/tex"> i</script>), you can estimate the color output</p>
+
+<script type="math/tex; mode=display"> SRM=1.4922\times \left[\left(\sum_i (W_{lbs})_i * (L)_i / (V_{gal}) \right)^{0.6859}\right]  </script>
+
+<p><a href="http://eddiesalehouse.com/images/eddie-s-alehouse-beer-infographic-srm.jpg">Eddie’s Ale House</a> has a fantastic chart for comparing SRM colors for beers.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jasmine IPA]]></title>
+    <link href="http://kwierman.github.io/blog/2015/01/31/jasmine-ipa/"/>
+    <updated>2015-01-31T13:11:55-05:00</updated>
+    <id>http://kwierman.github.io/blog/2015/01/31/jasmine-ipa</id>
+    <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>One of our favorite beers of all time is the <a href="http://www.elysianbrewing.com/elysian-beers/avatar-jasmine-ipa/">Avatar Jasmine IPA</a>from <a href="http://www.elysianbrewing.com/">Elysian Brewing</a>. So much so, in fact, that we’re going to try and replicate it from a series of other recipes. We’ve tried this before (to great success, might I add). This time around, we’re making some modifications to the now named,</p>
+
+<blockquote><p>Wrath of Khan Jasmine IPA</p></blockquote>
+
+<h2 id="desired-characteristics">Desired Characteristics</h2>
+
+<p>From the Elysian Brewing website:</p>
+
+<ul>
+  <li>Style:
+    <ul>
+      <li>IPA</li>
+    </ul>
+  </li>
+  <li>Body:
+    <ul>
+      <li>Medium</li>
+    </ul>
+  </li>
+  <li>Color
+    <ul>
+      <li>Golden Copper</li>
+      <li>Roughly an SRM of 6</li>
+    </ul>
+  </li>
+  <li>ABV:
+    <ul>
+      <li>6.3<script type="math/tex">\%</script></li>
+    </ul>
+  </li>
+  <li>Aromatics:
+    <ul>
+      <li>Floral</li>
+      <li>Jasmine</li>
+    </ul>
+  </li>
+  <li>Taste:
+    <ul>
+      <li>Balance of hoppiness and jasmine</li>
+    </ul>
+  </li>
+  <li>IBU:
+    <ul>
+      <li>45</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Malts: Pale, <script type="math/tex">45^\circ</script> Crystal, Munich and Cara-hell</p>
+
+<p>Hops: Bittered with German Northern Brewer, finished with Glacier and Amarillo hops</p>
+
+<h2 id="putting-the-recipe-together">Putting the recipe together</h2>
 
 ]]></content>
   </entry>

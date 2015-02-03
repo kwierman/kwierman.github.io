@@ -9,7 +9,7 @@
   <meta name="author" content="Kevin Wierman">
 
   
-  <meta name="description" content="Degrees Lovibond Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale introduced by Joseph Lovibond &hellip;">
+  <meta name="description" content="Generate a host key First, make a home for the new SSL files. I use /etc/apache2/ssl. Open up a terminal window, cd to the new directory and issue &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -112,6 +112,282 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/02/03/ssl-keys-on-osx/">SSL Keys on OSX</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-03T09:42:45-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:42 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="generate-a-host-key">Generate a host key</h2>
+
+<p>First, make a home for the new SSL files. I use <code>/etc/apache2/ssl</code>. Open up a terminal window, <code>cd</code> to the new directory and issue the following command to create a host key file.</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>sudo ssh-keygen -f host.key
+</pre></td>
+</tr></table>
+</div>
+
+<h2 id="generate-a-certificate-request-file">Generate a certificate request file</h2>
+
+<p>This command create a certificate request file. A certificate request file contains information about your organization that will be used in the SSL certificate.</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>sudo openssl req -new -key host.key -out request.csr
+</pre></td>
+</tr></table>
+</div>
+
+<h2 id="create-the-ssl-certificate">Create the SSL certificate</h2>
+
+<p>Create a self signed SSL certificate using the request file.</p>
+
+<p>sudo openssl x509 -req -days 365 -in request.csr -signkey host.key -out server.crt</p>
+
+<h2 id="configure-apache">Configure Apache</h2>
+
+<p>Create a backup of <code>/etc/apache2/httpd.conf</code>.</p>
+
+<p>Append the contents of <code>/etc/apache2/extra/httpd-ssl.conf</code> to <code>/etc/apache2/httpd.conf</code>.</p>
+
+<p>In <code>/etc/apache2/httpd.conf</code>, make sure the loading of SSL is enabled (remove the #)</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>LoadModule ssl_module libexec/apache2/mod_ssl.so
+</pre></td>
+</tr></table>
+</div>
+
+<p>Also, edit SSL section to use the new certificate.</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre>SSLEngine on
+SSLCertificateFile /etc/apache2/ssl/server.crt
+SSLCertificateKeyFile /etc/apache2/ssl/host.key
+</pre></td>
+</tr></table>
+</div>
+
+<p>Check the config and restart Apache to try the new certificate.</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre>sudo apachectl configtest
+sudo apachectl restart
+</pre></td>
+</tr></table>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/03/modwsgi-on-osx/">ModWSGI on OSX</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-03T09:38:04-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:38 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]</p>
+
+<blockquote><p>DO NOT FOLLOW THE INSTRUCTIONS.</p></blockquote>
+
+<p>Just unload it to a source directory and install it to the apache module directory</p>
+
+<p>Now add the following line to <code>/etc/apache2/httpd.conf</code></p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>LoadModule wsgi_module modules/mod_wsgi.so
+</pre></td>
+</tr></table>
+</div>
+
+<p>And restart the apache server</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>    apachectl restart
+</pre></td>
+</tr></table>
+</div>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/31/grain-mass-calculations/">Grain Mass Calculations</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-31T19:13:11-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>7:13 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="goal">Goal</h2>
+
+<p>Alright, so, you’ve assembled your recipes in terms of grains and percents. Now, you want to figure out how much of your grain recipe you want to add to the mash.</p>
+
+<p>The first chemical conversion in brewing, saccarification, is one of the most important step in determining the alcohol content of the beer.</p>
+
+<p>Sucrose, one of the most common sugars produced in saccarification is strongly correlated with increase in specific gravity of beers due to highest increase in SG for percent weight in solution.</p>
+
+<p>The amount of sucrose in solution is measured in degrees Plato. Plato is defined as the number of grams of sugar per 100 grams of solution.  Plato is used widely in Europe and is based on corrections to the older Balling scale. Balling and Plato are close but not exactly equivalent due to differences in calibration temperature.  The difference between the two is about 0.05% weight/weight, however, so in most practical situations Plato is equivalent to Balling.</p>
+
+<h2 id="specific-gravity">Specific Gravity</h2>
+
+<p>S.G. is the density of a liquid or solid compared to that of water. This is related to Plato in the following formula.</p>
+
+<script type="math/tex; mode=display">S.G.  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1}</script>
+
+<p>Most beers have a starting specific gravity of 1.025-1.100.</p>
+
+<h2 id="weight-of-extract">Weight of Extract</h2>
+
+<p>The weight of extract is the amount of malt extract present in the wort. The amount of extract is related to specific gravity in the following formula:</p>
+
+<script type="math/tex; mode=display"> Lbs\;extract =   (8.32 lbs/gal wort)(gal wort)(S.G.)/ 100 </script>
+
+<p>8.32 in the above formula is the weight of one gallon of water. To find the weight of a gallon of wort, multiply the specific gravity of the wort by 8.32lbs. </p>
+
+<h2 id="brew-house-yield-bhy">Brew House Yield (BHY)</h2>
+
+<p>Brew house yield is a measurement that tells the efficiency of the brewing.	The actual degrees Plato from the brew and the actual gallons collected out of the kettle are needed to calculate the BHY. </p>
+
+<script type="math/tex; mode=display"> BHY  =  [(^\circ P_{actual})(gal_{actual})(BHY_{target})] / [(^\circ P_{target})(gal_{target})]		</script>
+
+<h2 id="working-yield">Working Yield</h2>
+
+<p>Working Yield is the product of the Hot Water Extract multiplied by the Brew House Yield.  This product will provide the percent of extract collected from the malt. </p>
+
+<script type="math/tex; mode=display"> WY =    (HWE as-is)(BHY)	</script>
+
+<h2 id="pounds-of-malt">Pounds of Malt</h2>
+
+<p>It is imperative that you measure your recipes by the percent of extract taken from the malt rather than the weight of the malt. 
+ Do this will all you to compensate for the Working Yield and help you accurately measure your malt bills.<br />
+ For example, an recipe may call for 5\% of caramel 20.<br />
+ This does not me that you ad 0.5 lbs of caramel 20 malt in a 10 lb recipe. Instead, this means that you will have 5\% of the total extract come from the caramel 20 malt.<br />
+ Use the following formula to calculate the weight of malt based on a percent of extract.</p>
+
+<script type="math/tex; mode=display"> Lbs malt = (Lbs extract)(\% Extract) / WY</script>
+
+<h2 id="strike-water-temp">Strike Water Temp</h2>
+
+<p>As you know when you are mashing, your strike water has to be warmer than the target mash temperature because the cool malt will cool the temperature of the water.<br />
+To correctly calculate the temperature of the strike water, use the following formula.</p>
+
+<script type="math/tex; mode=display"> Strike Temp =  [((0.4)(T mash-T malt)) / L:G] +  T mash </script>
+
+<h2 id="mash-water-volume">Mash Water Volume</h2>
+
+<p>To calculate the mash water volume you will need to know your liquor to grist ratio.<br />
+The term liquor refers to the mash water and grist refers to the milled malt.<br />
+We need to calculate the appropriate amount of water to allow for enzyme action and starch conversion take place.</p>
+
+<script type="math/tex; mode=display"> gallons H2O =  (Lbs malt)(L:G)(1gallon H2O) / 8.32 lbs water 		</script>
+
+<h2 id="weight-of-hops">Weight of Hops</h2>
+<p>IBUs or International Bittering Units measures a bitterness unit for hops.<br />
+IBUs are the measurement in parts per million (ppm) of iso-alpha acids in the beer. <br />
+For example, an IPA with 75 IBUs has 75 milligrams of isomerized alpha acids per liter. 
+The equation used to calculate the weight of hops for the boil is as follows.</p>
+
+<script type="math/tex; mode=display">Ounces hops = (IBU_{Target})(galbeer)(IBU\%) / (\%\alpha-acid)(\% Utilization)(7494)	</script>
+
+<p>The IBU target equals the total bitterness for the beer.  (e.g. an IPA may have an IBU target of 75 IBUs).
+The percent IBU is equal to the percent of IBUs from each hop addition.<br />
+You may wish for your first hop addition to contribute 95\% of the total IBUs.<br />
+This would make your IBU\% 95\% .<br />
+The \% $\alpha$-acid is the amount of alpha acid in the hops and can be found on the hop packaging.<br />
+The \% Utilization is a measurement of the percentage of alpha acid units that will isomerize in the boil.<br />
+The following chart outlines the typical utilizations and hop boil times.</p>
+
+<ul>
+  <li>$60 min = 30\% utilization$</li>
+  <li>$30 min = 15\% $</li>
+  <li>$5   min = 2.5\% $</li>
+</ul>
+
+<p>The 7494 is a conversion factor and used to cancel the units in the equation. 
+For the hops equation, the units for the \% must be expressed in decimal form.  (e.g. 10\%= .10)</p>
+
+<h2 id="calculation-of-wort-and-beer-color">Calculation of Wort and Beer Color</h2>
+
+<script type="math/tex; mode=display"> Color of Wort = S [(\% extract)(^\circ L of malt)(^\circ P wort / 8^\circ P reference)]		</script>
+
+<p>We allow for a 30\% loss of color during fermentation to calculate the color of beer.
+Color of Beer = (color of wort)(1 - \% color loss)</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/01/31/beer-color-calculation/">Beer Color Calculation</a></h1>
     
     
@@ -138,9 +414,10 @@ While this method has been applied to many substances, the brewing industry rema
 
 <h2 id="malt-color-units">Malt Color Units</h2>
 
-<p><code>MCU</code>s are used as a method of finding the contribution of each part of a recipe to the color as a whole</p>
+<p><code>MCU</code>s are used as a method of finding the contribution of each part of a recipe to the color as a whole.
+For the weight of grain in lbs (<script type="math/tex">W_{lbs}</script>), and volume in gallons, <script type="math/tex">V_{gal}</script>.</p>
 
-<script type="math/tex; mode=display">MCU = (Weight of grain in lbs) * (Color of grain in degrees lovibond) / (volume in gallons)</script>
+<script type="math/tex; mode=display">MCU = (W_{lbs}) * (L) / (V_{gal})</script>
 
 <p>Simply add the MCU of each part to get the total MCU. Since the volume is the same for each (for instance, if you had a 6 gallon batch, use 6 gallons for the volume variable), this resembles an average color rating.</p>
 
@@ -152,7 +429,9 @@ While this method has been applied to many substances, the brewing industry rema
 
 <p>So, based on the ingredients (subscript <script type="math/tex"> i</script>), you can estimate the color output</p>
 
-<script type="math/tex; mode=display"> SRM=1.4922\times \left[\left(\sum_i (Weight of grain in lbs)_i * (Color of grain in degrees lovibond)_i / (volume in gallons) \right)^{0.6859}\right]  </script>
+<script type="math/tex; mode=display"> SRM=1.4922\times \left[\left(\sum_i (W_{lbs})_i * (L)_i / (V_{gal}) \right)^{0.6859}\right]  </script>
+
+<p><a href="http://eddiesalehouse.com/images/eddie-s-alehouse-beer-infographic-srm.jpg">Eddie’s Ale House</a> has a fantastic chart for comparing SRM colors for beers.</p>
 
 </div>
   
@@ -237,91 +516,6 @@ While this method has been applied to many substances, the brewing industry rema
 <p>Hops: Bittered with German Northern Brewer, finished with Glacier and Amarillo hops</p>
 
 <h2 id="putting-the-recipe-together">Putting the recipe together</h2>
-
-<p>Since </p>
-
-<h2 id="specific-gravity">Specific Gravity</h2>
-
-<p>S.G. is the density of a liquid or solid compared to that of water.</p>
-
-<script type="math/tex; mode=display">S.G.  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1}</script>
-
-<h2 id="weight-of-extract">Weight of Extract</h2>
-
-<p>The weight of extract is the amount of malt extract present in the wort. </p>
-
-<script type="math/tex; mode=display"> Lbs\;extract =   (8.32 lbs/gal wort)(gal wort)(S.G.)/ 100 </script>
-
-<p>8.32 in the above formula is the weight of one gallon of water. To find the weight of a gallon of wort, multiply the specific gravity of the wort by 8.32lbs. </p>
-
-<h2 id="brew-house-yield-bhy">Brew House Yield (BHY)</h2>
-
-<p>Brew house yield is a measurement that tells the efficiency of the brewing.	The actual degrees Plato from the brew and the actual gallons collected out of the kettle are needed to calculate the BHY. </p>
-
-<script type="math/tex; mode=display"> BHY  =  [(^\circ P_{actual})(gal_{actual})(BHY_{target})] / [(^\circ P_{target})(gal_{target})]		</script>
-
-<h2 id="working-yield">Working Yield</h2>
-
-<p>Working Yield is the product of the Hot Water Extract multiplied by the Brew House Yield.  This product will provide the percent of extract collected from the malt. </p>
-
-<script type="math/tex; mode=display"> WY =    (HWE as-is)(BHY)	</script>
-
-<h2 id="pounds-of-malt">Pounds of Malt</h2>
-
-<p>It is imperative that you measure your recipes by the percent of extract taken from the malt rather than the weight of the malt. 
- Do this will all you to compensate for the Working Yield and help you accurately measure your malt bills.<br />
- For example, an recipe may call for 5\% of caramel 20.<br />
- This does not me that you ad 0.5 lbs of caramel 20 malt in a 10 lb recipe. Instead, this means that you will have 5\% of the total extract come from the caramel 20 malt.<br />
- Use the following formula to calculate the weight of malt based on a percent of extract.</p>
-
-<script type="math/tex; mode=display"> Lbs malt = (Lbs extract)(\% Extract) / WY</script>
-
-<h2 id="strike-water-temp">Strike Water Temp</h2>
-
-<p>As you know when you are mashing, your strike water has to be warmer than the target mash temperature because the cool malt will cool the temperature of the water.<br />
-To correctly calculate the temperature of the strike water, use the following formula.</p>
-
-<script type="math/tex; mode=display"> Strike Temp =  [((0.4)(T mash-T malt)) / L:G] +  T mash </script>
-
-<h2 id="mash-water-volume">Mash Water Volume</h2>
-
-<p>To calculate the mash water volume you will need to know your liquor to grist ratio.<br />
-The term liquor refers to the mash water and grist refers to the milled malt.<br />
-We need to calculate the appropriate amount of water to allow for enzyme action and starch conversion take place.</p>
-
-<script type="math/tex; mode=display"> gallons H2O =  (Lbs malt)(L:G)(1gallon H2O) / 8.32 lbs water 		</script>
-
-<h2 id="weight-of-hops">Weight of Hops</h2>
-<p>IBUs or International Bittering Units measures a bitterness unit for hops.<br />
-IBUs are the measurement in parts per million (ppm) of iso-alpha acids in the beer. <br />
-For example, an IPA with 75 IBUs has 75 milligrams of isomerized alpha acids per liter. 
-The equation used to calculate the weight of hops for the boil is as follows.</p>
-
-<script type="math/tex; mode=display">Ounces hops = (IBU_{Target})(galbeer)(IBU\%) / (\%\alpha-acid)(\% Utilization)(7494)	</script>
-
-<p>The IBU target equals the total bitterness for the beer.  (e.g. an IPA may have an IBU target of 75 IBUs).
-The percent IBU is equal to the percent of IBUs from each hop addition.<br />
-You may wish for your first hop addition to contribute 95\% of the total IBUs.<br />
-This would make your IBU\% 95\% .<br />
-The \% $\alpha$-acid is the amount of alpha acid in the hops and can be found on the hop packaging.<br />
-The \% Utilization is a measurement of the percentage of alpha acid units that will isomerize in the boil.<br />
-The following chart outlines the typical utilizations and hop boil times.</p>
-
-<ul>
-  <li>$60 min = 30\% utilization$</li>
-  <li>$30 min = 15\% $</li>
-  <li>$5   min = 2.5\% $</li>
-</ul>
-
-<p>The 7494 is a conversion factor and used to cancel the units in the equation. 
-For the hops equation, the units for the \% must be expressed in decimal form.  (e.g. 10\%= .10)</p>
-
-<h2 id="calculation-of-wort-and-beer-color">Calculation of Wort and Beer Color</h2>
-
-<script type="math/tex; mode=display"> Color of Wort = S [(\% extract)(^\circ L of malt)(^\circ P wort / 8^\circ P reference)]		</script>
-
-<p>We allow for a 30\% loss of color during fermentation to calculate the color of beer.
-Color of Beer = (color of wort)(1 - \% color loss)</p>
 
 </div>
   
@@ -1868,23 +2062,23 @@ What they lack is telling you that single backticks can be used for inline code 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/03/ssl-keys-on-osx/">SSL Keys on OSX</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/modwsgi-on-osx/">ModWSGI on OSX</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/01/31/grain-mass-calculations/">Grain Mass Calculations</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/31/beer-color-calculation/">Beer Color Calculation</a>
       </li>
     
       <li class="post">
         <a href="/blog/2015/01/31/jasmine-ipa/">Jasmine IPA</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/29/easy-latex-in-sublime-text/">Easy Latex in Sublime Text</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/29/presentations-in-latex/">Presentations in Latex</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/27/sphinx/">Using Sphinx for Inline Documentation</a>
       </li>
     
   </ul>

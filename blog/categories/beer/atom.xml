@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Brewing | Kevin Wierman]]></title>
-  <link href="http://kwierman.github.io/blog/categories/brewing/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Beer | Kevin Wierman]]></title>
+  <link href="http://kwierman.github.io/blog/categories/beer/atom.xml" rel="self"/>
   <link href="http://kwierman.github.io/"/>
   <updated>2015-02-03T09:45:23-05:00</updated>
   <id>http://kwierman.github.io/</id>
@@ -112,70 +112,6 @@ For the hops equation, the units for the \% must be expressed in decimal form.  
 
 <p>We allow for a 30\% loss of color during fermentation to calculate the color of beer.
 Color of Beer = (color of wort)(1 - \% color loss)</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Jasmine IPA]]></title>
-    <link href="http://kwierman.github.io/blog/2015/01/31/jasmine-ipa/"/>
-    <updated>2015-01-31T13:11:55-05:00</updated>
-    <id>http://kwierman.github.io/blog/2015/01/31/jasmine-ipa</id>
-    <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>One of our favorite beers of all time is the <a href="http://www.elysianbrewing.com/elysian-beers/avatar-jasmine-ipa/">Avatar Jasmine IPA</a>from <a href="http://www.elysianbrewing.com/">Elysian Brewing</a>. So much so, in fact, that we’re going to try and replicate it from a series of other recipes. We’ve tried this before (to great success, might I add). This time around, we’re making some modifications to the now named,</p>
-
-<p><blockquote><p>Wrath of Khan Jasmine IPA</p></blockquote></p>
-
-<h2 id="desired-characteristics">Desired Characteristics</h2>
-
-<p>From the Elysian Brewing website:</p>
-
-<ul>
-  <li>Style:
-    <ul>
-      <li>IPA</li>
-    </ul>
-  </li>
-  <li>Body:
-    <ul>
-      <li>Medium</li>
-    </ul>
-  </li>
-  <li>Color
-    <ul>
-      <li>Golden Copper</li>
-      <li>Roughly an SRM of 6</li>
-    </ul>
-  </li>
-  <li>ABV:
-    <ul>
-      <li>6.3<script type="math/tex">\%</script></li>
-    </ul>
-  </li>
-  <li>Aromatics:
-    <ul>
-      <li>Floral</li>
-      <li>Jasmine</li>
-    </ul>
-  </li>
-  <li>Taste:
-    <ul>
-      <li>Balance of hoppiness and jasmine</li>
-    </ul>
-  </li>
-  <li>IBU:
-    <ul>
-      <li>45</li>
-    </ul>
-  </li>
-</ul>
-
-<p>Malts: Pale, <script type="math/tex">45^\circ</script> Crystal, Munich and Cara-hell</p>
-
-<p>Hops: Bittered with German Northern Brewer, finished with Glacier and Amarillo hops</p>
-
-<h2 id="putting-the-recipe-together">Putting the recipe together</h2>
 
 ]]></content>
   </entry>
