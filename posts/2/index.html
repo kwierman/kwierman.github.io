@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Using Octopress on Fedora 20 - Kevin Wierman</title>
+  <title>Kevin Wierman</title>
   <meta name="author" content="Kevin Wierman">
 
   
-  <meta name="description" content="Prerequisites In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs: 1
-2 $ sudo yum install curl &hellip;">
+  <meta name="description" content="In order to get a 404 page working with github, the following commands had to be issued 1 rake new_page[404] The following had to be inserted into &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kwierman.github.io/blog/2015/01/24/using-octopress-on-fedora-20/">
+  <link rel="canonical" href="http://kwierman.github.io/posts/2/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Kevin Wierman" type="application/atom+xml">
@@ -105,12 +104,94 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      <h1 class="entry-title">Using Octopress on Fedora 20</h1>
+      <h1 class="entry-title"><a href="/blog/2015/01/24/building-a-404-page/">Building a 404 Page</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-24T15:49:02-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:49 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In order to get a 404 page working with github, the following commands had to be issued</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>rake new_page[404]
+</pre></td>
+</tr></table>
+</div>
+
+<p>The following had to be inserted into the YAML header located within the markdown file in the 404 folder</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre>    ---
+    layout: page
+    title: &quot;404&quot;
+    date: 2015-01-24 13:45
+    comments: true
+    sharing: true
+    footer: true
+    title: Oops, you wondered down the wrong path 
+    permalink: /404.html
+    ---
+</pre></td>
+</tr></table>
+</div>
+
+<p>In order to get the link to work back to the homepage, the following was inserted into the page code</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre><span class="tag">&lt;div&gt;</span>
+    <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Go back to the beginning and try again<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/24/using-octopress-on-fedora-20/">Using Octopress on Fedora 20</a></h1>
     
     
       <p class="meta">
@@ -126,7 +207,7 @@
   </header>
 
 
-<div class="entry-content"><p>Prerequisites</p>
+  <div class="entry-content"><p>Prerequisites</p>
 
 <p>In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs:</p>
 
@@ -404,46 +485,20 @@ What they lack is telling you that single backticks can be used for inline code 
 
 <p>Markdown can be accessed here: <a href="https://daringfireball.net/projects/markdown/basics" title="The Markdown Basics page">Another Octopress blog</a></p>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
+  
   
 
-<span class="byline author vcard">Posted by <span class="fn">Kevin Wierman</span></span>
 
-      
-
-
-
-
-<time class='entry-date' datetime='2015-01-24T15:36:07-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:36 pm</span></time>
-      
-
-
-    </p>
+    </article>
+  
+  <div class="pagination">
     
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kwierman.github.io/blog/2015/01/24/using-octopress-on-fedora-20/" data-via="" data-counturl="http://kwierman.github.io/blog/2015/01/24/using-octopress-on-fedora-20/" >Tweet</a>
-  
-  
-  
-</div>
-
+    <a href="/blog/archives">Blog Archives</a>
     
-    <p class="meta">
-      
-      
-        <a class="basic-alignment right" href="/blog/2015/01/24/building-a-404-page/" title="Next Post: Building a 404 Page">Building a 404 Page &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
+    <a class="next" href="/index.html">Newer &rarr;</a>
+    
+  </div>
 </div>
-
 <aside class="sidebar">
   
     <section>
@@ -517,7 +572,6 @@ What they lack is telling you that single backticks can be used for inline code 
 
   
 </aside>
-
 
     </div>
   </div>

@@ -196,6 +196,46 @@ sudo apachectl restart
 </pre></td>
 </tr></table>
 </div>
+
+<p>Now that this is all done, SSL needs to be enabled on apache, update the file at <code>/etc/apache2/etc/httpd.conf</code>:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="line delete"><span class="delete">-</span><span class="eyecatcher">#</span>LoadModule ssl_module libexec/apache2/mod_ssl.so</span>
+<span class="line insert"><span class="insert">+</span>LoadModule ssl_module libexec/apache2/mod_ssl.so</span>
+<span class="line delete"><span class="delete">-</span><span class="eyecatcher">#</span>Include /private/etc/apache2/extra/httpd-ssl.conf</span>
+<span class="line insert"><span class="insert">+</span>Include /private/etc/apache2/extra/httpd-ssl.conf</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Seeing as we’re now including a new file, we need to make some changes there (<code>/etc/apache2/extra/httpd-ssl.conf</code>) as well:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="line delete"><span class="delete">-</span>DocumentRoot /Library/WebServer/Documents</span>
+<span class="line insert"><span class="insert">+</span>DocumentRoot &lt;path to your ssl-enabled site&gt;</span>
+<span class="line insert"><span class="insert">+</span>ServerName localhost:443</span>
+<span class="line insert"><span class="insert">+</span>ServerAdmin kjw@unc.edu</span>
+<span class="line delete"><span class="delete">-</span>S<span class="eyecatcher">erverName example.com:443</span></span>
+<span class="line delete"><span class="delete">-</span>S<span class="eyecatcher">erverAdmin admin@example.edu</span></span>
+<span class="line insert"><span class="insert">+</span>S<span class="eyecatcher">SLCertificateFile &quot;/etc/apache2/ssl/server.crt&quot;</span></span>
+<span class="line insert"><span class="insert">+</span>S<span class="eyecatcher">SLCertificateKeyFile &quot;/etc/apache2/ssl/host.key&quot;</span></span>
+</pre></td>
+</tr></table>
+</div>
 </div>
 
 
@@ -231,6 +271,8 @@ sudo apachectl restart
         <a class="basic-alignment left" href="/blog/2015/02/03/modwsgi-on-osx/" title="Previous Post: ModWSGI on OSX">&laquo; ModWSGI on OSX</a>
       
       
+        <a class="basic-alignment right" href="/blog/2015/02/03/indico-server-on-osx/" title="Next Post: Indico Server on OSX">Indico Server on OSX &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -244,6 +286,14 @@ sudo apachectl restart
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/04/send-emails-from-osx-apache-server/">Send Emails From OSX Apache Server</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/indico-server-on-osx/">Indico Server on OSX</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/03/ssl-keys-on-osx/">SSL Keys on OSX</a>
       </li>
     
@@ -253,14 +303,6 @@ sudo apachectl restart
     
       <li class="post">
         <a href="/blog/2015/01/31/grain-mass-calculations/">Grain Mass Calculations</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/31/beer-color-calculation/">Beer Color Calculation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/31/jasmine-ipa/">Jasmine IPA</a>
       </li>
     
   </ul>

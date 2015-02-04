@@ -9,7 +9,8 @@
   <meta name="author" content="Kevin Wierman">
 
   
-  <meta name="description" content="Generate a host key First, make a home for the new SSL files. I use /etc/apache2/ssl. Open up a terminal window, cd to the new directory and issue &hellip;">
+  <meta name="description" content="Edit the postfix file The file is located at /etc/postfix/main.cf Make sure that these lines are present: ~ markdown
+mydomain_fallback = localhost &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -112,6 +113,465 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/02/04/send-emails-from-osx-apache-server/">Send Emails From OSX Apache Server</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-04T12:03:03-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:03 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1 id="edit-the-postfix-file">Edit the postfix file</h1>
+
+<p>The file is located at <code>/etc/postfix/main.cf</code> Make sure that these lines are present:</p>
+
+<p>~ markdown
+mydomain_fallback = localhost
+mail_owner = _postfix
+setgid_group = _postdrop
+~</p>
+
+<p>In order to use a gmail relay, use these lines:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+</pre></td>
+  <td class="code"><pre>#Gmail SMTP
+relayhost=smtp.gmail.com:587
+# Enable SASL authentication in the Postfix SMTP client.
+smtp_sasl_auth_enable=yes
+smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options=
+# Enable Transport Layer Security (TLS), i.e. SSL.
+smtp_use_tls=yes
+smtp_tls_security_level=encrypt
+tls_random_source=dev:/dev/urandom
+</pre></td>
+</tr></table>
+</div>
+
+<p>Now, use these commands to create the password files and sasl setup:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre>sudo touch /etc/postfix/sasl_passwd
+sudo echo &quot;smtp.gmail.com:587 your_address@gmail.com:password&quot;&gt;/etc/postfix/sasl_password
+sudo postmap /etc/postfix/sasl_passwd
+</pre></td>
+</tr></table>
+</div>
+
+<p>On MountainLion, there was an error:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>postfix: fatal: chdir(/Library/Server/Mail/Data/spool): No such file or directory
+</pre></td>
+</tr></table>
+</div>
+
+<p>This was fixed by making the directory:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>sudo mkdir -p /Library/Server/Mail/Data/spool
+</pre></td>
+</tr></table>
+</div>
+
+<p>Now, start and/or reload the server:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre>sudo postfix reload
+sudo postfix start
+</pre></td>
+</tr></table>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/03/indico-server-on-osx/">Indico Server on OSX</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-03T09:47:01-05:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:47 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="prereqs">Prereqs</h2>
+
+<p>OSX is already in a good position to run Indico. A few modifications needs to be made:</p>
+
+<ul>
+  <li>Install ModWSGI:
+    <ul>
+      <li></li>
+    </ul>
+  </li>
+  <li>Setup SSL on the Apache Server:
+    <ul>
+      <li></li>
+    </ul>
+  </li>
+  <li>flask engine plugin
+    <ul>
+      <li><a href="https://github.com/indico/flask-pluginengine">from git</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>The next step is to setup PostgreSQL. Annoyingly enough, this is never mentioned in the <a href="https://indico.readthedocs.org/en/latest/installation/">documentation</a> and they never say to set up the database, which I’ll talk about later.</p>
+
+<p>The following changes will be needed:</p>
+
+<ul>
+  <li>add use _www with full privilages (no password)
+    <ul>
+      <li>This may be a little unnecessary</li>
+    </ul>
+  </li>
+  <li>add database indico
+    <ul>
+      <li>This will be intiialized later</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Failing to do this will result in an error message about not being connect to port <code>5432</code>.</p>
+
+<p>Setup <code>nodeenv</code></p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+</pre></td>
+  <td class="code"><pre>git clone https://github.com/ekalinin/nodeenv.git
+cd nodeenv
+python setup.py install
+</pre></td>
+</tr></table>
+</div>
+
+<p>Setup the dependencies (these will mostly be js objects which, if missing manifest as) by using Fabric.</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre><span class="string"><span class="delimiter">'</span><span class="content">css/lib/angular.css</span><span class="delimiter">'</span></span> <span class="keyword">not</span> found <span class="keyword">in</span> load path: [<span class="string"><span class="delimiter">'</span><span class="content">/opt/indico/htdocs</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">/opt/indico/htdocs/css</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">/opt/indico/htdocs/js</span><span class="delimiter">'</span></span>]
+</pre></td>
+</tr></table>
+</div>
+
+<p><code>Fabric</code> will also need to be installed:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>    easy_install fabric
+</pre></td>
+</tr></table>
+</div>
+
+<h2 id="download-and-install">Download and install</h2>
+
+<p>The source code for indico can be foud on github. I’d download to a source directory directly:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>git clone https://github.com/indico/indico
+</pre></td>
+</tr></table>
+</div>
+
+<p>Run Fabric:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>fab setup_deps
+</pre></td>
+</tr></table>
+</div>
+
+<p>Run Install (which you’ll probably have to do as sudo):</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>python setup.py install
+</pre></td>
+</tr></table>
+</div>
+
+<p>Usually something will go wrong and a python package will be missing, so the preceding command will be need to run alternatively with this one:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>sudo easy_install &lt;module name&gt;
+</pre></td>
+</tr></table>
+</div>
+
+<p>This will typically manifast as the incorrect version of <code>psjson</code> or something, you can use the <code>==</code> operator in easy install to specify the version.</p>
+
+<p>Run the indico configuration::</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>indico_easy_install
+</pre></td>
+</tr></table>
+</div>
+
+<p>At this point, some of the permissions have to be setup in order for apache to run it</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+</pre></td>
+  <td class="code"><pre>sudo chown -R _www /opt/indico
+sudo chgrp -R _www /opt/indico
+</pre></td>
+</tr></table>
+</div>
+
+<p>In order to get some of the site stuff working correctly (and depending on who else uses the machine), the folder at <code>/Library/Python/2.7/site-packages/&lt;some package&gt;</code></p>
+
+<p>I followed all of the default configurations. At the end of which, I had to change the username in <code>zdctl.conf</code> to <code>_www</code>. This is an OSX specific change.</p>
+
+<p>The following httpd configuration will need to be inserted into the webserver configuration path</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+<a href="#n18" name="n18">18</a>
+<a href="#n19" name="n19">19</a>
+<strong><a href="#n20" name="n20">20</a></strong>
+<a href="#n21" name="n21">21</a>
+<a href="#n22" name="n22">22</a>
+<a href="#n23" name="n23">23</a>
+<a href="#n24" name="n24">24</a>
+<a href="#n25" name="n25">25</a>
+<a href="#n26" name="n26">26</a>
+<a href="#n27" name="n27">27</a>
+<a href="#n28" name="n28">28</a>
+<a href="#n29" name="n29">29</a>
+<strong><a href="#n30" name="n30">30</a></strong>
+<a href="#n31" name="n31">31</a>
+<a href="#n32" name="n32">32</a>
+<a href="#n33" name="n33">33</a>
+<a href="#n34" name="n34">34</a>
+<a href="#n35" name="n35">35</a>
+<a href="#n36" name="n36">36</a>
+<a href="#n37" name="n37">37</a>
+<a href="#n38" name="n38">38</a>
+<a href="#n39" name="n39">39</a>
+<strong><a href="#n40" name="n40">40</a></strong>
+<a href="#n41" name="n41">41</a>
+<a href="#n42" name="n42">42</a>
+<a href="#n43" name="n43">43</a>
+<a href="#n44" name="n44">44</a>
+</pre></td>
+  <td class="code"><pre>AddDefaultCharset UTF-8
+
+<span class="tag">&lt;VirtualHost</span> <span class="error">*</span><span class="attribute-name">:80</span><span class="tag">&gt;</span>
+        # mod_wsgi indico
+
+    ErrorLog /var/log/apache2/error.log
+        LogLevel warn
+
+    Alias /indico/images &quot;/opt/indico/htdocs/images&quot;
+    Alias /indico/css &quot;/opt/indico/htdocs/css&quot;
+    Alias /indico/js &quot;/opt/indico/htdocs/js&quot;
+    Alias /indico/ihelp &quot;/opt/indico/htdocs/ihelp&quot;
+
+    WSGIDaemonProcess WSGIDAEMON processes=32 threads=1 inactivity-timeout=3600 maximum-requests=10000 \
+            python-eggs=/opt/indico/tmp/egg-cache
+
+    WSGIScriptAlias /indico &quot;/opt/indico/htdocs/indico.wsgi&quot;
+
+    <span class="tag">&lt;Directory</span> <span class="error">&quot;</span><span class="error">/</span><span class="attribute-name">opt</span><span class="error">/</span><span class="attribute-name">indico</span><span class="error">&quot;</span><span class="tag">&gt;</span>
+        WSGIProcessGroup WSGIDAEMON
+        WSGIApplicationGroup %{GLOBAL}
+        AllowOverride FollowSymlinks
+        Options None
+        Order deny,allow
+        Allow from all
+    <span class="tag">&lt;/Directory&gt;</span>
+<span class="tag">&lt;/VirtualHost&gt;</span>
+
+<span class="tag">&lt;VirtualHost</span> <span class="error">*</span><span class="attribute-name">:443</span><span class="tag">&gt;</span>
+
+    ErrorLog /var/log/apache2/error.log
+            LogLevel warn
+
+    Alias /indico/images &quot;/opt/indico/htdocs/images&quot;
+    Alias /indico/css &quot;/opt/indico/htdocs/css&quot;
+    Alias /indico/js &quot;/opt/indico/htdocs/js&quot;
+    Alias /indico/ihelp &quot;/opt/indico/htdocs/ihelp&quot;
+
+    WSGIScriptAlias /indico &quot;/opt/indico/htdocs/indico.wsgi&quot;
+
+    SSLEngine on
+    SSLCertificateFile    /etc/apache2/ssl/server.crt
+    SSLCertificateKeyFile /etc/apache2/ssl/host.key
+<span class="tag">&lt;/VirtualHost&gt;</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>The major change was in the <code>FollowSymlinks</code> command. This is due to default behavior in OSX’s apache.</p>
+
+<p>In addition, the config file at <code>/opt/indico/etc/indico.conf</code> will need to have the following changes:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+</pre></td>
+  <td class="code"><pre><span class="line delete"><span class="delete">-</span>#Debug=False</span>
+<span class="line insert"><span class="insert">+</span>Debug=True</span>
+<span class="line insert"><span class="insert">+</span>BaseURL              = &quot;http://physics00158.dhcp.unc.edu/indico&quot;</span>
+
+ # BaseSecureURL is the HTTPS location of Indico. Set empty string if you want to use http.                                                                     
+
+<span class="line insert"><span class="insert">+</span>BaseSecureURL        = &quot;https://physics00158.dhcp.unc.edu/indico&quot;</span>
+<span class="line delete"><span class="delete">-</span>BaseURL              = &quot;http://localhost:8000&quot;</span>
+
+ # BaseSecureURL is the HTTPS location of Indico. Set empty string if you want to use http.                                                                     
+
+<span class="line delete"><span class="delete">-</span>BaseSecureURL        = &quot;https://localhost:8443&quot;</span>
+
+</pre></td>
+</tr></table>
+</div>
+
+<p>If you keep these default settings, you can test out indico by running the command:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>sudo -u _www indico runserver
+</pre></td>
+</tr></table>
+</div>
+
+<p>Initialize the database:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+</pre></td>
+  <td class="code"><pre>indico db prepare
+</pre></td>
+</tr></table>
+</div>
+
+<p>Failing to do this will result in an error message about relations missing.</p>
+
+<h2 id="managing-indico">Managing Indico</h2>
+
+<p>There’s plenty of <a href="https://indico.cern.ch/ihelp/html/index.html">documentation</a> online. However, there’s a few things you should know:</p>
+
+<ul>
+  <li>You can manually add a user with the following command: 
+~~~ shell
+sudo -u _www indico admin user_add
+~~~</li>
+  <li>You can grant users admin privilages with the following command:
+~~~ shell
+sudo -u _www indico admin user_grant <user_id>
+~~~
+</user_id>    <ul>
+      <li>The <code>user_id</code> is an unsigned integer assigned on user creation. The first user will be 0, etc…</li>
+    </ul>
+  </li>
+</ul>
+
+<p>There’s also a ton of information <a href="https://github.com/indico/indico/blob/master/DEVELOPMENT.md">here</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/02/03/ssl-keys-on-osx/">SSL Keys on OSX</a></h1>
     
     
@@ -196,6 +656,46 @@ SSLCertificateKeyFile /etc/apache2/ssl/host.key
 </pre></td>
   <td class="code"><pre>sudo apachectl configtest
 sudo apachectl restart
+</pre></td>
+</tr></table>
+</div>
+
+<p>Now that this is all done, SSL needs to be enabled on apache, update the file at <code>/etc/apache2/etc/httpd.conf</code>:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+</pre></td>
+  <td class="code"><pre><span class="line delete"><span class="delete">-</span><span class="eyecatcher">#</span>LoadModule ssl_module libexec/apache2/mod_ssl.so</span>
+<span class="line insert"><span class="insert">+</span>LoadModule ssl_module libexec/apache2/mod_ssl.so</span>
+<span class="line delete"><span class="delete">-</span><span class="eyecatcher">#</span>Include /private/etc/apache2/extra/httpd-ssl.conf</span>
+<span class="line insert"><span class="insert">+</span>Include /private/etc/apache2/extra/httpd-ssl.conf</span>
+</pre></td>
+</tr></table>
+</div>
+
+<p>Seeing as we’re now including a new file, we need to make some changes there (<code>/etc/apache2/extra/httpd-ssl.conf</code>) as well:</p>
+
+<div class="highlighter-coderay"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+</pre></td>
+  <td class="code"><pre><span class="line delete"><span class="delete">-</span>DocumentRoot /Library/WebServer/Documents</span>
+<span class="line insert"><span class="insert">+</span>DocumentRoot &lt;path to your ssl-enabled site&gt;</span>
+<span class="line insert"><span class="insert">+</span>ServerName localhost:443</span>
+<span class="line insert"><span class="insert">+</span>ServerAdmin kjw@unc.edu</span>
+<span class="line delete"><span class="delete">-</span>S<span class="eyecatcher">erverName example.com:443</span></span>
+<span class="line delete"><span class="delete">-</span>S<span class="eyecatcher">erverAdmin admin@example.edu</span></span>
+<span class="line insert"><span class="insert">+</span>S<span class="eyecatcher">SLCertificateFile &quot;/etc/apache2/ssl/server.crt&quot;</span></span>
+<span class="line insert"><span class="insert">+</span>S<span class="eyecatcher">SLCertificateKeyFile &quot;/etc/apache2/ssl/host.key&quot;</span></span>
 </pre></td>
 </tr></table>
 </div>
@@ -1665,391 +2165,9 @@ git push
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/24/building-a-404-page/">Building a 404 Page</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-24T15:49:02-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:49 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In order to get a 404 page working with github, the following commands had to be issued</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>rake new_page[404]
-</pre></td>
-</tr></table>
-</div>
-
-<p>The following had to be inserted into the YAML header located within the markdown file in the 404 folder</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-</pre></td>
-  <td class="code"><pre>    ---
-    layout: page
-    title: &quot;404&quot;
-    date: 2015-01-24 13:45
-    comments: true
-    sharing: true
-    footer: true
-    title: Oops, you wondered down the wrong path 
-    permalink: /404.html
-    ---
-</pre></td>
-</tr></table>
-</div>
-
-<p>In order to get the link to work back to the homepage, the following was inserted into the page code</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;div&gt;</span>
-    <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Go back to the beginning and try again<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
-<span class="tag">&lt;/div&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/24/using-octopress-on-fedora-20/">Using Octopress on Fedora 20</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-24T15:36:07-05:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:36 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Prerequisites</p>
-
-<p>In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-</pre></td>
-  <td class="code"><pre>$ sudo yum install curl wget git-core
-$ sudo yum install gcc zlib-devel make openssl autoconf automake
-</pre></td>
-</tr></table>
-</div>
-
-<p>Install RVM</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ su -c &quot;curl -L https://get.rvm.io | bash -s stable&quot;
-</pre></td>
-</tr></table>
-</div>
-
-<p>Start a new terminal.</p>
-
-<p>Make sure that terminal is capable of running rvm as a function (not as hash)</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ rvm -v
-</pre></td>
-</tr></table>
-</div>
-
-<p>or </p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-</pre></td>
-  <td class="code"><pre>$ type rvm | head -1
-# expected: rvm is a function
-$ which rvm
-# expected: /home/[USERNAME]/.rvm/bin/rvm
-</pre></td>
-</tr></table>
-</div>
-
-<p>Voila.</p>
-
-<p>Install openssl and iconv:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-</pre></td>
-  <td class="code"><pre>$ rvm pkg install openssl
-$ rvm pkg install iconv
-</pre></td>
-</tr></table>
-</div>
-
-<p>Install ruby and rubygems:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-</pre></td>
-  <td class="code"><pre>$ rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr,--with-iconv-dir=$HOME/.rvm/usr
-$ rvm rubygems latest
-</pre></td>
-</tr></table>
-</div>
-
-<p>Setup rvm for octopress:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-</pre></td>
-  <td class="code"><pre>$ rvm use 1.9.2 --default
-$ rvm reload
-$ gem install bundler
-</pre></td>
-</tr></table>
-</div>
-
-<p>Getting octopress onto your machine</p>
-
-<p>Run the following commmand:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ git clone git://github.com/imathis/octopress.git &lt;your_blogname (namely, yourgithubname.github.io)&gt;
-</pre></td>
-</tr></table>
-</div>
-
-<p>Install the bundler gem in that folder:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ gem install bundler
-</pre></td>
-</tr></table>
-</div>
-
-<p>Bundle install</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ bundle install
-</pre></td>
-</tr></table>
-</div>
-
-<p>Rake install</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre>$ rake install
-</pre></td>
-</tr></table>
-</div>
-
-<p>Theme styling:
-First, in order to get the font to be ubuntu, the following was added to <code>source/_includes/custom/head.html</code></p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;link</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">'</span><span class="content">http://fonts.googleapis.com/css?family=Ubuntu</span><span class="delimiter">'</span></span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">'</span><span class="content">stylesheet</span><span class="delimiter">'</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">'</span><span class="content">text/css</span><span class="delimiter">'</span></span><span class="tag">&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-
-<p>The syntax for adding code in is:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-</pre></td>
-  <td class="code"><pre>~~~ &lt;language&gt;
-code
-~~~
-</pre></td>
-</tr></table>
-</div>
-
-<p>or </p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-</pre></td>
-  <td class="code"><pre>~~~
-def what?
-  42
-end
-~~~
-{:.language-ruby}
-</pre></td>
-</tr></table>
-</div>
-
-<p>There’s also a code blocks snippet that can be used via <code>/plugins/code_ray_blocks.rb</code> with documentation in the interior</p>
-
-<p>These instructions can be found at: <a href="http://blog.codebykat.com/2013/05/23/gorgeous-octopress-codeblocks-with-coderay/">The Octopress Site</a>.
-What they lack is telling you that single backticks can be used for inline code blocking.</p>
-
-<p>An excellent inline tutorial on markdown syntax can be found here: <a href="https://raw.githubusercontent.com/jewelsjacobs/jewelsjacobs.github.io/source/source/resources/index.markdown">Here</a>.</p>
-
-<p>In addition, the following was added to the source/_includes/header for LATEX support:</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-</pre></td>
-  <td class="code"><pre><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/x-mathjax-config</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-<span class="inline">    MathJax.Hub.Config({
-      <span class="key">jax</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">input/TeX</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">output/HTML-CSS</span><span class="delimiter">&quot;</span></span>],
-      <span class="key">tex2jax</span>: {
-        <span class="key">inlineMath</span>: [ [<span class="string"><span class="delimiter">'</span><span class="content">$</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">$</span><span class="delimiter">'</span></span>], [<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">(</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">)</span><span class="delimiter">&quot;</span></span>] ],
-        <span class="key">displayMath</span>: [ [<span class="string"><span class="delimiter">'</span><span class="content">$$</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">$$</span><span class="delimiter">'</span></span>], [<span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">[</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="char">\\</span><span class="content">]</span><span class="delimiter">&quot;</span></span>] ],
-        <span class="key">processEscapes</span>: <span class="predefined-constant">true</span>,
-        <span class="key">skipTags</span>: [<span class="string"><span class="delimiter">'</span><span class="content">script</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">noscript</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">style</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">textarea</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">pre</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">code</span><span class="delimiter">'</span></span>]
-      }
-      <span class="comment">//,</span>
-      <span class="comment">//displayAlign: &quot;left&quot;,</span>
-      <span class="comment">//displayIndent: &quot;2em&quot;</span>
-    });</span>
-<span class="tag">&lt;/script&gt;</span>
-<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
-</pre></td>
-</tr></table>
-</div>
-
-<p>This now allows us to things like <script type="math/tex"> \frac{\Delta x}{\Delta p} \ge \frac{\hbar}{2}</script></p>
-
-<p>This was done thank you to: <a href="http://kqueue.org/blog/2012/01/05/hello-world/#internal-post-linking"> Another Octopress blog</a>.</p>
-
-<p>Finally, in order to fix an interesting right click issue, make the following switch</p>
-
-<div class="highlighter-coderay"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre><a href="#n1" name="n1">1</a>
-<a href="#n2" name="n2">2</a>
-<a href="#n3" name="n3">3</a>
-<a href="#n4" name="n4">4</a>
-<a href="#n5" name="n5">5</a>
-<a href="#n6" name="n6">6</a>
-<a href="#n7" name="n7">7</a>
-<a href="#n8" name="n8">8</a>
-<a href="#n9" name="n9">9</a>
-<strong><a href="#n10" name="n10">10</a></strong>
-<a href="#n11" name="n11">11</a>
-<a href="#n12" name="n12">12</a>
-<a href="#n13" name="n13">13</a>
-<a href="#n14" name="n14">14</a>
-<a href="#n15" name="n15">15</a>
-<a href="#n16" name="n16">16</a>
-<a href="#n17" name="n17">17</a>
-<a href="#n18" name="n18">18</a>
-<a href="#n19" name="n19">19</a>
-<strong><a href="#n20" name="n20">20</a></strong>
-</pre></td>
-  <td class="code"><pre> body {
-<span class="line delete"><span class="delete">-</span>  &gt; div {</span>
-     background: $sidebar-bg $noise-bg;
-     border-bottom: 1px solid $page-border-bottom;
-     &gt; div {
-       background: $main-bg $noise-bg;
-       border-right: 1px solid $sidebar-border;
-     }
-   }
- }
- body {
-<span class="line insert"><span class="insert">+</span>  &gt; div#main {</span>
-     background: $sidebar-bg $noise-bg;
-     border-bottom: 1px solid $page-border-bottom;
-     &gt; div {
-       background: $main-bg $noise-bg;
-       border-right: 1px solid $sidebar-border;
-     }
-   }
- }
-</pre></td>
-</tr></table>
-</div>
-
-<p>Markdown can be accessed here: <a href="https://daringfireball.net/projects/markdown/basics" title="The Markdown Basics page">Another Octopress blog</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/2">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -2062,6 +2180,14 @@ What they lack is telling you that single backticks can be used for inline code 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/04/send-emails-from-osx-apache-server/">Send Emails From OSX Apache Server</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/indico-server-on-osx/">Indico Server on OSX</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/03/ssl-keys-on-osx/">SSL Keys on OSX</a>
       </li>
     
@@ -2071,14 +2197,6 @@ What they lack is telling you that single backticks can be used for inline code 
     
       <li class="post">
         <a href="/blog/2015/01/31/grain-mass-calculations/">Grain Mass Calculations</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/31/beer-color-calculation/">Beer Color Calculation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/31/jasmine-ipa/">Jasmine IPA</a>
       </li>
     
   </ul>
