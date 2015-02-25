@@ -5,8 +5,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2015-02-09T16:23:06-00:00</lastmod>
+<lastmod>2015-02-25T10:29:52-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/wiretree-brewing/</loc>
+<lastmod>2014-08-04T07:48:00-04:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -25,15 +32,29 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/wiretree-brewing/</loc>
-<lastmod>2014-08-04T07:48:00-04:00</lastmod>
+<loc>/tritium/</loc>
+<lastmod>2015-01-25T15:48:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/tritium/</loc>
-<lastmod>2015-01-25T15:48:00-05:00</lastmod>
+<loc>/fedora-20-keyboard-shortcuts/</loc>
+<lastmod>2015-02-25T00:00:00-05:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/pidora-headless-install/</loc>
+<lastmod>2015-02-15T00:00:00-05:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/yeast-production/</loc>
+<lastmod>2015-02-09T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>

@@ -28,7 +28,7 @@
 <body>
     <header>
         <div class="container">
-            <h2><a href="." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: slate">Physicist. Brewer. Enthusiast.</span>
+            <h2><a href="." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
@@ -38,6 +38,46 @@
     
     <div class="container">
     <article class="article-full article-summary panel">
+        <header>
+            <h2><a href="./fedora-20-keyboard-shortcuts/" rel="bookmark" title="Permalink to Fedora 20 Keyboard Shortcuts">Fedora 20 Keyboard Shortcuts</a></h2>
+<h5></h5>            <time title="2015-02-25T00:00:00-05:00">Wed 25 February 2015</time>
+        </header>
+        
+        <p>Fedora 20 and Keyboard Shortcuts</p>
+    </article>    <article class="article-full article-summary panel">
+        <header>
+            <h2><a href="./pidora-headless-install/" rel="bookmark" title="Permalink to Pidora Headless Install">Pidora Headless Install</a></h2>
+<h5></h5>            <time title="2015-02-15T00:00:00-05:00">Sun 15 February 2015</time>
+        </header>
+        
+        <h3>Using Fedora to install pidora:</h3>
+<p>Steps:</p>
+<ul>
+<li>Download the installer:</li>
+</ul>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">fedora_arm_installer</span>
+</pre></div>
+
+
+<ul>
+<li>Run the installer</li>
+</ul>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">fedora_arm_installer</span>
+</pre></div>
+
+
+<ul>
+<li>Download the image from <a href="http://pidora.ca/">the website</a>.</li>
+<li>It might be a good idea to  try extractng it. If the archive manager can't read it, you mght need to try downloading again.</li>
+<li>Select ...</li></ul>
+    </article>    <article class="article-full article-summary panel">
+        <header>
+            <h2><a href="./yeast-production/" rel="bookmark" title="Permalink to Yeast Production">Yeast Production</a></h2>
+<h5></h5>            <time title="2015-02-09T00:00:00-05:00">Mon 09 February 2015</time>
+        </header>
+        
+        
+    </article>    <article class="article-full article-summary panel">
         <header>
             <h2><a href="./tritium-front-end/" rel="bookmark" title="Permalink to Tritium Front End">Tritium Front End</a></h2>
 <h5></h5>            <time title="2015-02-05T00:00:00-05:00">Thu 05 February 2015</time>
@@ -67,48 +107,6 @@ setgid_group = _postdrop
 <div class="highlight"><pre><span class="cp">#Gmail SMTP</span>
 <span class="n">relayhost</span><span class="o">=</span><span class="n">smtp</span><span class="p">.</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span><span class="o">:</span><span class="mi">587</span>
 <span class="cp"># Enable SASL authentication in the Postfix ...</span></pre></div>
-    </article>    <article class="article-full article-summary panel">
-        <header>
-            <h2><a href="./indico-server-on-osx/" rel="bookmark" title="Permalink to Indico Server on OSX">Indico Server on OSX</a></h2>
-<h5></h5>            <time title="2015-02-03T00:00:00-05:00">Tue 03 February 2015</time>
-        </header>
-        
-        <h2>Prereqs</h2>
-<p>OSX is already in a good position to run Indico. A few modifications needs to be made:</p>
-<ul>
-<li>Install ModWSGI:</li>
-<li>{{ post_url modwsgi }}</li>
-<li>Setup SSL on the Apache Server:</li>
-<li>{{ post_url 2015-02-03-ssl-keys-on-osx }}</li>
-<li>flask engine plugin</li>
-<li><a href="https://github.com/indico/flask-pluginengine">from git</a></li>
-</ul>
-<p>The next step is to setup PostgreSQL. Annoyingly enough, this is never mentioned in the ...</p>
-    </article>    <article class="article-full article-summary panel">
-        <header>
-            <h2><a href="./modwsgi-on-osx/" rel="bookmark" title="Permalink to ModWSGI on OSX">ModWSGI on OSX</a></h2>
-<h5></h5>            <time title="2015-02-03T00:00:00-05:00">Tue 03 February 2015</time>
-        </header>
-        
-        <p>The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]</p>
-<p _="%" endblockquote="endblockquote">{% blockquote %}
-   DO NOT FOLLOW THE INSTRUCTIONS.</p>
-<p>Just unload it to a source directory and install it to the apache module directory</p>
-<p>Now add the following line to <code>/etc/apache2/httpd.conf</code></p>
-<div class="highlight"><pre><span class="n">LoadModule</span> <span class="n">wsgi_module</span> <span class="n">modules ...</span></pre></div>
-    </article>    <article class="article-full article-summary panel">
-        <header>
-            <h2><a href="./ssl-keys-on-osx/" rel="bookmark" title="Permalink to SSL Keys on OSX">SSL Keys on OSX</a></h2>
-<h5></h5>            <time title="2015-02-03T00:00:00-05:00">Tue 03 February 2015</time>
-        </header>
-        
-        <h2>Generate a host key</h2>
-<p>First, make a home for the new SSL files. I use <code>/etc/apache2/ssl</code>. Open up a terminal window, <code>cd</code> to the new directory and issue the following command to create a host key file.</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">f</span> <span class="n">host</span><span class="p">.</span><span class="n">key</span>
-</pre></div>
-
-
-<h2>Generate a certificate request file ...</h2>
     </article>    </div>
     
     <footer class="container">

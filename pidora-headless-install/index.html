@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Beer Color Calculation | Kevin Wierman</title>
+    <title>Pidora Headless Install | Kevin Wierman</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
@@ -39,26 +39,75 @@
     <div class="container">
 <article class="article-full">
         <header>
-            <h1><a href="../beer-color-calculation/" rel="bookmark" title="Permalink to Beer Color Calculation">Beer Color Calculation</a></h1>
-<h5></h5>            <time title="2015-01-31T00:00:00-05:00">Sat 31 January 2015</time>
+            <h1><a href="../pidora-headless-install/" rel="bookmark" title="Permalink to Pidora Headless Install">Pidora Headless Install</a></h1>
+<h5></h5>            <time title="2015-02-15T00:00:00-05:00">Sun 15 February 2015</time>
         </header>
         
-        <h2>Degrees Lovibond</h2>
-<p>Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale  introduced by Joseph Lovibond in the '60s. 
-Usually a "Tintometer" is used, which is just a set of tinted slides, and much like going to optometrist, you get answer "1 or 2" until you get the closest matching tint.
-While this method has been applied to many substances, the brewing industry remains a prolific user of it today.</p>
-<p>To get a feel for this scale, a lager would be a <code>2</code>, while a stout would show as a <code>40</code> (although anything above 25 is just black). In most cases, the L associated with a grain comes from a batch of wort prepared with that grain.</p>
-<h2>Malt Color Units</h2>
-<p><code>MCU</code>s are used as a method of finding the contribution of each part of a recipe to the color as a whole.
-For the weight of grain in lbs ($$W_{lbs}$$), and volume in gallons, $$V_{gal}$$.</p>
-<p>$$MCU = (W_{lbs}) * (L) / (V_{gal})$$</p>
-<p>Simply add the MCU of each part to get the total MCU. Since the volume is the same for each (for instance, if you had a 6 gallon batch, use 6 gallons for the volume variable), this resembles an average color rating.</p>
-<h2>Standard Reference Method</h2>
-<p>SRM is the newly adapted model for color estimation. Although SRM and L are very close, they tend to diverge around 6-8 (roughly golden brown/copper). So, the Morey equation provides a good estimate of the SRM based on MCU.</p>
-<p>$$ SRM=1.4922\times (MCU^{0.6859}) $$</p>
-<p>So, based on the ingredients (subscript $$ i$$), you can estimate the color output</p>
-<p>$$ SRM=1.4922\times \left[\left(\sum_i (W_{lbs})<em gal="gal">i * (L)_i / (V</em>) \right)^{0.6859}\right]  $$</p>
-<p><a href="http://eddiesalehouse.com/images/eddie-s-alehouse-beer-infographic-srm.jpg">Eddie's Ale House</a> has a fantastic chart for comparing SRM colors for beers.</p>
+        <h3>Using Fedora to install pidora:</h3>
+<p>Steps:</p>
+<ul>
+<li>Download the installer:</li>
+</ul>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">fedora_arm_installer</span>
+</pre></div>
+
+
+<ul>
+<li>Run the installer</li>
+</ul>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">fedora_arm_installer</span>
+</pre></div>
+
+
+<ul>
+<li>Download the image from <a href="http://pidora.ca/">the website</a>.</li>
+<li>It might be a good idea to  try extractng it. If the archive manager can't read it, you mght need to try downloading again.</li>
+<li>Select the image from the pop-down menu</li>
+<li>Select the device from the pop-down-menu. You might have to refresh the list.</li>
+<li>In my case, it was /dev/sdb</li>
+<li>Click install</li>
+</ul>
+<h2>Modify the Image for headless start</h2>
+<p>I found this bit from <a href="http://zenit.senecac.on.ca/wiki/index.php/Pidora-Headless-Mode">here</a>.</p>
+<ul>
+<li><code>cd</code> or open the file manager to the <code>BOOT</code> partition on the sd drive.</li>
+<li><code>touch</code> or create an empty file called <code>headless</code></li>
+<li>In order to acommodate large files, add the line <code>RESIZE</code></li>
+<li>For swap partitions, add in the line <code>SWAP=512</code> (for a 512MB partition).</li>
+</ul>
+<h2>Boot up the PI</h2>
+<p>In this, case I had the PI boot up with an ethernet cable attached, and the headphones attached to listen for the DHCP assigned IP number output.</p>
+<p>Once you get the IP number, ssh in with:</p>
+<div class="highlight"><pre><span class="nx">ssh</span> <span class="nb">root</span><span class="p">@</span><span class="mf">192.1.1</span><span class="nx">.</span><span class="o">&lt;</span><span class="nx">whatever</span><span class="o">&gt;</span>
+<span class="nx">password</span><span class="p">:</span> <span class="nx">raspberrypi</span>
+</pre></div>
+
+
+<p>I then changed the password, because the device registers itself as <code>PIDORA</code> on the network.</p>
+<h3>Setting up the WIFI</h3>
+<p>The first step is (oddly) to insert the wifi dongle. Check that the OS can detect the USB device using <code>lsusb</code>.</p>
+<p>Next, use <code>lsmod</code> to list the loaded drivers/modules, and check for <code>8192cu</code> to see that the wifi driver is loaded.</p>
+<p>You should now be able to use the network manager tools. Note that standard network tools are not installed by default. THAT IS OK. You can use <code>pifconfig</code> to check the assigned IP information. </p>
+<p>List the available SSIDs of wifi networks with</p>
+<div class="highlight"><pre><span class="n">nmcli</span> <span class="n">dev</span> <span class="n">wifi</span> <span class="n">list</span>
+</pre></div>
+
+
+<p>And connect with:</p>
+<div class="highlight"><pre><span class="n">nmcli</span> <span class="n">dev</span> <span class="n">wifi</span> <span class="n">con</span> <span class="s">&quot;ssid&quot;</span> <span class="n">password</span> <span class="s">&quot;password&quot;</span>
+</pre></div>
+
+
+<p>This should create all the necessary files to connect the network again automatically. Most of these can be found in <code>/etc/networks</code></p>
+<h2>Creating a user</h2>
+<p>Since we don't want to be running as root continuously, create a user with:</p>
+<div class="highlight"><pre><span class="nx">useradd</span> <span class="o">&lt;</span><span class="nx">username</span><span class="o">&gt;</span>
+<span class="nx">passwd</span> <span class="o">&lt;</span><span class="nx">username</span><span class="o">&gt;</span>
+<span class="nx">...</span>
+</pre></div>
+
+
+<p>This should create the home directory at <code>/home/&lt;username&gt;</code> etc...</p>
         
         <aside class="clearfix">
             
@@ -80,8 +129,8 @@ For the weight of grain in lbs ($$W_{lbs}$$), and volume in gallons, $$V_{gal}$$
         DISQUS.reset({
             reload: true,
             config: function () {  
-                this.page.identifier = 'beer-color-calculation/';
-                this.page.url = '../beer-color-calculation/';
+                this.page.identifier = 'pidora-headless-install/';
+                this.page.url = '../pidora-headless-install/';
             }
         });
     }, false);
