@@ -1,0 +1,24 @@
+Title: Fedora 20 Keyboard Shortcuts
+Date: 2015-02-25
+Categories: programming
+Tags: fedora, shortcuts
+Authors: Kevin Wierman
+Summary: Fedora 20 and Keyboard Shortcuts
+
+## The Status Quo
+
+Poking around the internet, I couldn't find anything on the keyboard shortcuts in Fedora 20. So, here's a table.
+
+ <table style="width:100%">
+  <tr>
+    <th>Action</th>
+    <th>Keys</th>
+  </tr>
+  <tr>
+    <td>Move Window One Workspace Right</td>
+    <td>Super+Shift+Right</td>
+  </tr>
+</table> 
+
+
+## Some Additions

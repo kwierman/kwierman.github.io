@@ -1,0 +1,21 @@
+#!/usr/bin/python
+
+
+import sys
+from  datetime import date
+
+
+dt = date.today()
+category = sys.argv[1]
+title = sys.argv[2]
+file_title=title.replace(" ","_")
+
+directory = "content/"+category+"/"+str(dt)+"-"+file_title+".markdown"
+
+print "Making new file at: "+directory
+output = open(directory, 'w')
+
+
+output.writeline("Title: "+title+"\n")
+output.writeline("Date: "+str(dt)+"\n" )
+output.writeline("Categories: "+category+"\n")

@@ -1,5 +1,6 @@
 Title: "WireTree Brewing"
 Date: 2014-08-04 07:48
+IS_PROJECT: yes
 
 ##At Home Brewing with Adrian and Kevin
 
@@ -30,7 +31,7 @@ The core concepts we'd like to deploy are these:
 	* Especially with grain selection
 * Locale
 	* This doesn't mean that 
-	* However, you should be able to get good a steam ale in california, an IPA in the Pacific Northwest or an ESB in the northeast
+	* However, you should be able to get good a steam ale in California, an IPA in the Pacific Northwest or an ESB in the northeast
 	* The
 * Seasonality
 * Promoting Beer Community
