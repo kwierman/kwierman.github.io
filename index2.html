@@ -39,6 +39,20 @@
     <div class="container">
     <article class="article-full article-summary panel">
         <header>
+            <h2><a href="./a-makefile-for-fast-prototyping/" rel="bookmark" title="Permalink to A Makefile for fast prototyping">A Makefile for fast prototyping</a></h2>
+<h5></h5>            <time title="2015-02-27T00:00:00-05:00">Fri 27 February 2015</time>
+        </header>
+        
+        <h2>The Endgame</h2>
+<p>Alright, so the idea is to define a project by it's internal_structure. To that end, I'm going to use folders to define where the executables live and where each library lives.</p>
+<p>So, the project layout will end up being:</p>
+<ul>
+<li>Project Directory<ul>
+<li>Applications<ul>
+<li>Executable 1</li>
+<li>Executable 2 ...</li></ul></li></ul></li></ul>
+    </article>    <article class="article-full article-summary panel">
+        <header>
             <h2><a href="./fedora-20-keyboard-shortcuts/" rel="bookmark" title="Permalink to Fedora 20 Keyboard Shortcuts">Fedora 20 Keyboard Shortcuts</a></h2>
 <h5></h5>            <time title="2015-02-25T00:00:00-05:00">Wed 25 February 2015</time>
         </header>
@@ -90,23 +104,6 @@
 <span class="n">Run</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">to</span> <span class="n">create</span> <span class="n">migrations</span> <span class="k">for</span> <span class="n">those</span> <span class="n">changes</span>
 <span class="n">Run</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span> <span class="n">to</span> <span class="n">apply</span> <span class="n">those</span> <span class="n">changes</span> <span class="n">to</span> <span class="n">the</span> <span class="n">database</span><span class="p">.</span>
 </pre></div>
-    </article>    <article class="article-full article-summary panel">
-        <header>
-            <h2><a href="./send-emails-from-osx-apache-server/" rel="bookmark" title="Permalink to Send emails from OSX apache server">Send emails from OSX apache server</a></h2>
-<h5></h5>            <time title="2015-02-04T00:00:00-05:00">Wed 04 February 2015</time>
-        </header>
-        
-        <h1>Edit the postfix file</h1>
-<p>The file is located at <code>/etc/postfix/main.cf</code> Make sure that these lines are present:</p>
-<p>~ markdown
-mydomain_fallback = localhost
-mail_owner = _postfix
-setgid_group = _postdrop
-~</p>
-<p>In order to use a gmail relay, use these lines:</p>
-<div class="highlight"><pre><span class="cp">#Gmail SMTP</span>
-<span class="n">relayhost</span><span class="o">=</span><span class="n">smtp</span><span class="p">.</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span><span class="o">:</span><span class="mi">587</span>
-<span class="cp"># Enable SASL authentication in the Postfix ...</span></pre></div>
     </article>    </div>
     
     <footer class="container">
