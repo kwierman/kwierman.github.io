@@ -38,7 +38,15 @@ h5 {
 h6 {
     font-size: 0.85em;
 }
-
+table.cv{
+    width: 100%;
+}
+table.cv > td.tableleft{
+    width:75%;
+}
+table.cv >  td.tableright{
+    width:25%;
+}
 /* Header */
 
 body > header {

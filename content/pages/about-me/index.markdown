@@ -22,9 +22,9 @@ As part of my undergraduate and graduate careers, I have been in involved in det
 data acquisitions, support electronics development, as well as analysis and simulations software development.
 
 
-<table>
+<table class="cv">
 	<tr>
-		<th>KATRIN and UNC ENPA</th>
+		<th style="width: 75%;">KATRIN and UNC ENPA</th>
 		<th>May 2011 - Present</th>
 	</tr>
 	<tr>
@@ -32,7 +32,7 @@ data acquisitions, support electronics development, as well as analysis and simu
 		<td>Karlsruhe, Germany</td>
 	</tr>
 	<tr>
-		<td>
+		<td style="width: 75%;">
 			<ul>
 				<li>Worked remotely from UNC and locally in Karlsruhe with international collaborators</li>
 				<li>Redesigned KATRIN FPD Veto
@@ -53,11 +53,12 @@ data acquisitions, support electronics development, as well as analysis and simu
 				</li>
 			</ul>
 		</td>
+		<td></td>
 	</tr>
 </table>
-<table>
+<table class="cv">
 	<tr>
-		<th>UNC Dept. Of Physics</th>
+		<th  style="width: 75%;">UNC Dept. Of Physics</th>
 		<th>Sep 2011 - May 2012</th>
 	</tr>
 	<tr>
@@ -71,11 +72,12 @@ data acquisitions, support electronics development, as well as analysis and simu
 				<li>Managed a group of TAs by organizing </li>
 			</ul>
 		</td>
+		<td></td>
 	</tr>
 </table>
-<table>
+<table class="cv">
 	<tr>
-		<th>University of Washington and CENPA</th>
+		<th  style="width: 75%;">University of Washington and CENPA</th>
 		<th>Sep 2009 - May 2011</th>
 	</tr>
 	<tr>
@@ -91,11 +93,12 @@ data acquisitions, support electronics development, as well as analysis and simu
 				<li> Additional work on HALO and Project 8 to improve electronics</li>
 			</ul>
 		</td>
+		<td></td>
 	</tr>
 </table>
-<table>
+<table class="cv">
 	<tr>
-		<th>T2K, Walta</th>
+		<th  style="width: 75%;">T2K, Walta</th>
 		<th>Dec 2008 - May 2011</th>
 	</tr>
 	<tr>
@@ -111,11 +114,12 @@ data acquisitions, support electronics development, as well as analysis and simu
 			<li> Spent 1 month in Tokai, Japan to upgrade electronics</li>
 			<li> Worked on the WALTA project to educate students in data-taking techniques</li>
 		</td>
+		<td></td>
 	</tr>
 </table>
-<table>
+<table class="cv">
 	<tr>
-		<th>Physics Department Machine Shop</th>
+		<th  style="width: 75%;">Physics Department Machine Shop</th>
 		<th>Jul 2008 - Sep 2009</th>
 	</tr>
 	<tr>
@@ -130,13 +134,14 @@ data acquisitions, support electronics development, as well as analysis and simu
 				<li> Worked extensively on the BOSS2 upgrade for SDSS</li>
 			</ul>
 		</td>
+		<td></td>
 	</tr>
 </table>
 
 ##Education
-<table>
+<table class="cv">
 	<tr>
-		<th>University of North Carolina at Chapel Hill</th>
+		<th  style="width: 75%;">University of North Carolina at Chapel Hill</th>
 		<th>May 2011 - Present</th>
 	</tr>
 	<tr>
@@ -150,9 +155,9 @@ data acquisitions, support electronics development, as well as analysis and simu
 		</td>
 	</tr>
 </table>
-<table>
+<table class="cv">
 	<tr>
-		<th>University of Washington</th>
+		<th  style="width: 75%;">University of Washington</th>
 		<th>Aug 2006 -- May 2011</th>
 	</tr>
 	<tr>
@@ -162,40 +167,44 @@ data acquisitions, support electronics development, as well as analysis and simu
 				<li>B.A. Mathematics</li>
 			</ul>
 		</td>
+		<td></td>
 	</tr>
 </table>
 
 ##Awards and Fellowships
-<table>
+<table class="cv">
 	<tr>
-		<th>Karlsruhe House of Young Scientists Fellowship</th>
+		<th  style="width: 75%;">Karlsruhe House of Young Scientists Fellowship</th>
 		<th>2013</th>
 	</tr>
 	<tr>
 		<td>Travel fellowship for young visiting scholars to the Karlsruhe Institute for Technology</td>
+		<td></td>
 	</tr>
 </table>
-<table>
+<table class="cv">
 	<tr>
-		<th>Eugen Merzbacher Fellowship</th>
+		<th  style="width: 75%;">Eugen Merzbacher Fellowship</th>
 		<th>2011</th>
 	</tr>
 	<tr>
 		<td>Fellowship for new graduate students in experimental nuclear physics</td>
+		<td></td>
 	</tr>
 </table>
-<table>
+<table class="cv">
 	<tr>
-		<th>Hans Demelt Award</th>
+		<th  style="width: 75%;">Hans Demelt Award</th>
 		<th>2011</th>
 	</tr>
 	<tr>
 		<td>Award for undergraduate students who display excellence in table-top physics experiments</td>
+		<td></td>
 	</tr>
 </table>
 
 ##Technical Strengths
-<table>
+<table class="cv">
 	<tr>
 		<td>Computer Languages</td>
 		<td>Fortran, C, C++, Python, Erlang, Java, Javascript</td>
@@ -223,21 +232,21 @@ data acquisitions, support electronics development, as well as analysis and simu
 	<li>
 		Publications
 		<ul>
-			<li>``Focal-plane detector system for the KATRIN experiment'', J.F. Amsbaugh et al, April 2014, arXiv:744
+			<li>"Focal-plane detector system for the KATRIN experiment", J.F. Amsbaugh et al, April 2014, arXiv:744
 			</li>
-			<li>``Dead layer on silicon p-i-n diode charged-particle detectors'', B.L. Wall, et. al., Oct 2013,  arXiv:744</li>
+			<li>"Dead layer on silicon p-i-n diode charged-particle detectors", B.L. Wall, et. al., Oct 2013,  arXiv:744</li>
 		</ul>
 	</li>
 	<li>
 		Posters
 		<ul>
-			<li>2010 APS Division of Nuclear Physics Conference Experience for Undergraduates, ``Evaluation of the KATRIN Detector''</li>
+			<li>2010 APS Division of Nuclear Physics Conference Experience for Undergraduates, "Evaluation of the KATRIN Detector"</li>
 		</ul>
 	</li>
 	<li>
 		Talks
 		<ul>
-			<li>2013 DNP Meeting, ``Commissining the KATRIN Main Spectrometer''
+			<li>2013 DNP Meeting, "Commissining the KATRIN Main Spectrometer"
 			</li>
 		</ul>
 	</li>
