@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     
-<link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?61ff0fdf" rel="stylesheet">    
+<link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
@@ -72,6 +72,70 @@
 </ul>
 </li>
 </ul>
+<p>And turn it into this:
+* Prefix
+    * bin
+        * Executable 1
+        * Executable 2
+        * Executable 2
+    * lib
+        * Library 1
+        * Library 2
+    * include
+        * Library 1
+            * Header 1.1
+            * Header 1.2
+        * Library 2
+            * Header 2.1
+    * doc</p>
+<h2>Some Makefile basics</h2>
+<p>Makefiles provide the following syntactic structure:</p>
+<h3>Comments</h3>
+<p>Comments follow the bash syntax:</p>
+<div class="highlight"><pre><span class="cp">#This is a comment</span>
+<span class="n">This</span> <span class="o">:=</span> <span class="n">Is</span> <span class="n">Not</span>
+</pre></div>
+
+
+<h3>Macros</h3>
+<p>Variable definition in Make expands to macros (lazy variable definition). The structure is as follows:</p>
+<div class="highlight"><pre><span class="n">VAR</span> <span class="o">:=</span> <span class="n">DEF1</span> <span class="n">DEF2</span> <span class="n">DEF3</span> <span class="err">#</span> <span class="n">Definition</span>
+<span class="n">VAR</span> <span class="o">+=</span> <span class="n">DEF4</span> <span class="err">#</span> <span class="n">Modification</span>
+<span class="n">VAR2</span> <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR</span><span class="p">)</span> <span class="err">#</span><span class="n">Expansion</span>
+</pre></div>
+
+
+<p>These allow you to use some basic structure for finding information and using it.</p>
+<h3>Conditions</h3>
+<p>You can test macros using the following syntax:</p>
+<div class="highlight"><pre><span class="n">ifeq</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR2</span><span class="p">)</span> <span class="p">)</span>
+<span class="cp">#Insert some commands here</span>
+<span class="k">else</span>
+<span class="cp">#Insert some other commands here</span>
+<span class="n">endif</span>
+</pre></div>
+
+
+<p>Alternatively, you can use ~ifneq~ for negation</p>
+<h3>Rules</h3>
+<p>The whole point of makefiles is the generation of targets based on a set of rules.</p>
+<p>The basic syntax of rule goes like this:</p>
+<div class="highlight"><pre><span class="n">targets</span><span class="o">:</span> <span class="n">dependencies</span>
+    <span class="n">commands</span>
+</pre></div>
+
+
+<p>This executes the commands in order to make a specific target. If this target depends on another target, it will make the targets in proper sequence.</p>
+<h2>Getting some basic information</h2>
+<p>I'm going to start by gathering some information</p>
+<div class="highlight"><pre><span class="n">OS</span>         <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="p">)</span>
+<span class="n">PLATFORM</span>     <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="o">-</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>OS Specific Options</h2>
+<h3>OSX</h3>
+<h3>Linux</h3>
         
         <aside class="clearfix">
             
