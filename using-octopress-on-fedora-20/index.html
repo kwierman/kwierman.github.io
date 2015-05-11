@@ -18,8 +18,7 @@
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
-    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+   <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
@@ -157,7 +156,8 @@ What they lack is telling you that single backticks can be used for inline code 
 </pre></div>
 
 
-<p>This now allows us to things like $$ \frac{\Delta x}{\Delta p} \ge \frac{\hbar}{2}$$</p>
+<p>This now allows us to things like </p>
+<div class="math">$$ \frac{\Delta x}{\Delta p} \ge \frac{\hbar}{2}$$</div>
 <p>This was done thank you to: <a href="http://kqueue.org/blog/2012/01/05/hello-world/#internal-post-linking"> Another Octopress blog</a>.</p>
 <p>Finally, in order to fix an interesting right click issue, make the following switch</p>
 <div class="highlight"><pre> body {
@@ -184,6 +184,60 @@ What they lack is telling you that single backticks can be used for inline code 
 
 
 <p>Markdown can be accessed here: <a href="https://daringfireball.net/projects/markdown/basics" title="The Markdown Basics page">Another Octopress blog</a></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "right",
+        indent = "1em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js',], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'Latex Equation'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'grey ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('Fraktur' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_Fraktur');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_Fraktur-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_Fraktur-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_Fraktur-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_Fraktur');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_Fraktur-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_Fraktur-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_Fraktur-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
         
         <aside class="clearfix">
             

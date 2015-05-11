@@ -18,8 +18,7 @@
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
-    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+   <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
@@ -50,58 +49,112 @@
 <p>The amount of sucrose in solution is measured in degrees Plato. Plato is defined as the number of grams of sugar per 100 grams of solution.  Plato is used widely in Europe and is based on corrections to the older Balling scale. Balling and Plato are close but not exactly equivalent due to differences in calibration temperature.  The difference between the two is about 0.05% weight/weight, however, so in most practical situations Plato is equivalent to Balling.</p>
 <h2>Specific Gravity</h2>
 <p>S.G. is the density of a liquid or solid compared to that of water. This is related to Plato in the following formula.</p>
-<p>$$S.G.  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1}$$</p>
+<div class="math">$$ S.G.  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1} $$</div>
 <p>Most beers have a starting specific gravity of 1.025-1.100.</p>
 <h2>Weight of Extract</h2>
 <p>The weight of extract is the amount of malt extract present in the wort. The amount of extract is related to specific gravity in the following formula:</p>
-<p>$$ Lbs\;extract =   (8.32 lbs/gal wort)(gal wort)(S.G.)/ 100 $$</p>
+<div class="math">$$ Lbs\;extract =   (8.32 lbs/gal wort)(gal wort)(S.G.)/ 100 $$</div>
 <p>8.32 in the above formula is the weight of one gallon of water. To find the weight of a gallon of wort, multiply the specific gravity of the wort by 8.32lbs. </p>
 <h2>Brew House Yield (BHY)</h2>
 <p>Brew house yield is a measurement that tells the efficiency of the brewing. The actual degrees Plato from the brew and the actual gallons collected out of the kettle are needed to calculate the BHY. </p>
-<p>$$ BHY  =  [(^\circ P_{actual})(gal_{actual})(BHY_{target})] / [(^\circ P_{target})(gal_{target})]      $$ </p>
+<div class="math">$$ BHY  =  [(^\circ P_{actual})(gal_{actual})(BHY_{target})] / [(^\circ P_{target})(gal_{target})]      $$</div>
 <h2>Working Yield</h2>
 <p>Working Yield is the product of the Hot Water Extract multiplied by the Brew House Yield.  This product will provide the percent of extract collected from the malt. </p>
-<p>$$ WY =    (HWE as-is)(BHY) $$</p>
+<div class="math">$$ WY =    (HWE as-is)(BHY) $$</div>
 <h2>Pounds of Malt</h2>
 <p>It is imperative that you measure your recipes by the percent of extract taken from the malt rather than the weight of the malt. 
  Do this will all you to compensate for the Working Yield and help you accurately measure your malt bills.<br />
  For example, an recipe may call for 5\% of caramel 20.<br />
  This does not me that you ad 0.5 lbs of caramel 20 malt in a 10 lb recipe. Instead, this means that you will have 5\% of the total extract come from the caramel 20 malt.<br />
  Use the following formula to calculate the weight of malt based on a percent of extract.</p>
-<p>$$ Lbs malt = (Lbs extract)(\% Extract) / WY$$</p>
+<div class="math">$$ Lbs malt = (Lbs extract)(\% Extract) / WY$$</div>
 <h2>Strike Water Temp</h2>
 <p>As you know when you are mashing, your strike water has to be warmer than the target mash temperature because the cool malt will cool the temperature of the water.<br />
 To correctly calculate the temperature of the strike water, use the following formula.</p>
-<p>$$ Strike Temp =  [((0.4)(T mash-T malt)) / L:G] +  T mash $$</p>
+<div class="math">$$ Strike Temp =  [((0.4)(T mash-T malt)) / L:G] +  T mash $$</div>
 <h2>Mash Water Volume</h2>
 <p>To calculate the mash water volume you will need to know your liquor to grist ratio.<br />
 The term liquor refers to the mash water and grist refers to the milled malt.<br />
 We need to calculate the appropriate amount of water to allow for enzyme action and starch conversion take place.</p>
-<p>$$ gallons H2O =  (Lbs malt)(L:G)(1gallon H2O) / 8.32 lbs water         $$</p>
+<div class="math">$$ gallons H2O =  (Lbs malt)(L:G)(1gallon H2O) / 8.32 lbs water         $$</div>
 <h2>Weight of Hops</h2>
 <p>IBUs or International Bittering Units measures a bitterness unit for hops.<br />
 IBUs are the measurement in parts per million (ppm) of iso-alpha acids in the beer. <br />
 For example, an IPA with 75 IBUs has 75 milligrams of isomerized alpha acids per liter. 
 The equation used to calculate the weight of hops for the boil is as follows.</p>
-<p>$$Ounces hops = (IBU_{Target})(galbeer)(IBU\%) / (\%\alpha-acid)(\% Utilization)(7494)  $$</p>
+<div class="math">$$Ounces hops = (IBU_{Target})(galbeer)(IBU\%) / (\%\alpha-acid)(\% Utilization)(7494)  $$</div>
 <p>The IBU target equals the total bitterness for the beer.  (e.g. an IPA may have an IBU target of 75 IBUs).
 The percent IBU is equal to the percent of IBUs from each hop addition.<br />
 You may wish for your first hop addition to contribute 95\% of the total IBUs.<br />
 This would make your IBU\% 95\% .<br />
-The \% $\alpha$-acid is the amount of alpha acid in the hops and can be found on the hop packaging.<br />
+The \% <span class="math">\(\alpha\)</span>-acid is the amount of alpha acid in the hops and can be found on the hop packaging.<br />
 The \% Utilization is a measurement of the percentage of alpha acid units that will isomerize in the boil.<br />
 The following chart outlines the typical utilizations and hop boil times.</p>
 <ul>
-<li>$60 min = 30\% utilization$</li>
-<li>$30 min = 15\% $</li>
-<li>$5   min = 2.5\% $</li>
+<li><span class="math">\(60 min = 30\% utilization\)</span></li>
+<li><span class="math">\(30 min = 15\%\)</span></li>
+<li><span class="math">\(5   min = 2.5\%\)</span></li>
 </ul>
 <p>The 7494 is a conversion factor and used to cancel the units in the equation. 
 For the hops equation, the units for the \% must be expressed in decimal form.  (e.g. 10\%= .10)</p>
 <h2>Calculation of Wort and Beer Color</h2>
-<p>$$ Color of Wort = S [(\% extract)(^\circ L of malt)(^\circ P wort / 8^\circ P reference)]      $$</p>
+<div class="math">$$ Color of Wort = S [(\% extract)(^\circ L of malt)(^\circ P wort / 8^\circ P reference)]      $$</div>
 <p>We allow for a 30\% loss of color during fermentation to calculate the color of beer.
 Color of Beer = (color of wort)(1 - \% color loss)</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "right",
+        indent = "1em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js',], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'Latex Equation'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'grey ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('Fraktur' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_Fraktur');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_Fraktur-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_Fraktur-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_Fraktur-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_Fraktur');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_Fraktur-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_Fraktur-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_Fraktur-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
         
         <aside class="clearfix">
             

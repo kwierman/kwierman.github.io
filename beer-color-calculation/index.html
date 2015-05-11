@@ -18,8 +18,7 @@
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
-    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+   <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
@@ -50,15 +49,75 @@ While this method has been applied to many substances, the brewing industry rema
 <p>To get a feel for this scale, a lager would be a <code>2</code>, while a stout would show as a <code>40</code> (although anything above 25 is just black). In most cases, the L associated with a grain comes from a batch of wort prepared with that grain.</p>
 <h2>Malt Color Units</h2>
 <p><code>MCU</code>s are used as a method of finding the contribution of each part of a recipe to the color as a whole.
-For the weight of grain in lbs ($$W_{lbs}$$), and volume in gallons, $$V_{gal}$$.</p>
-<p>$$MCU = (W_{lbs}) * (L) / (V_{gal})$$</p>
+For the weight of grain in lbs (</p>
+<div class="math">$$W_{lbs}$$</div>
+<p>), and volume in gallons, </p>
+<div class="math">$$V_{gal}$$</div>
+<p>.</p>
+<div class="math">$$MCU = (W_{lbs}) * (L) / (V_{gal})$$</div>
 <p>Simply add the MCU of each part to get the total MCU. Since the volume is the same for each (for instance, if you had a 6 gallon batch, use 6 gallons for the volume variable), this resembles an average color rating.</p>
 <h2>Standard Reference Method</h2>
 <p>SRM is the newly adapted model for color estimation. Although SRM and L are very close, they tend to diverge around 6-8 (roughly golden brown/copper). So, the Morey equation provides a good estimate of the SRM based on MCU.</p>
-<p>$$ SRM=1.4922\times (MCU^{0.6859}) $$</p>
-<p>So, based on the ingredients (subscript $$ i$$), you can estimate the color output</p>
-<p>$$ SRM=1.4922\times \left[\left(\sum_i (W_{lbs})<em gal="gal">i * (L)_i / (V</em>) \right)^{0.6859}\right]  $$</p>
+<div class="math">$$ SRM=1.4922\times (MCU^{0.6859}) $$</div>
+<p>So, based on the ingredients (subscript </p>
+<div class="math">$$ i$$</div>
+<p>), you can estimate the color output</p>
+<div class="math">$$ SRM=1.4922\times \left[\left(\sum_i (W_{lbs})_i * (L)_i / (V_{gal}) \right)^{0.6859}\right]  $$</div>
 <p><a href="http://eddiesalehouse.com/images/eddie-s-alehouse-beer-infographic-srm.jpg">Eddie's Ale House</a> has a fantastic chart for comparing SRM colors for beers.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "right",
+        indent = "1em",
+        linebreak = "true";
+
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+    
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js',], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'Latex Equation'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'grey ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('Fraktur' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_Fraktur');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_Fraktur-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_Fraktur-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_Fraktur-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_Fraktur');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_Fraktur-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_Fraktur-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_Fraktur-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
         
         <aside class="clearfix">
             
