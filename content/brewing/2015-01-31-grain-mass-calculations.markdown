@@ -17,7 +17,7 @@ The amount of sucrose in solution is measured in degrees Plato. Plato is defined
 
 S.G. is the density of a liquid or solid compared to that of water. This is related to Plato in the following formula.
 
-$$S.G.  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1}$$
+$$ S.G.  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1} $$
 
 Most beers have a starting specific gravity of 1.025-1.100.
 
@@ -85,8 +85,8 @@ The \% Utilization is a measurement of the percentage of alpha acid units that w
 The following chart outlines the typical utilizations and hop boil times.
 
 * $60 min = 30\% utilization$
-* $30 min = 15\% $
-* $5   min = 2.5\% $
+* $30 min = 15\%$
+* $5   min = 2.5\%$
 
 		
 The 7494 is a conversion factor and used to cancel the units in the equation. 

@@ -80,6 +80,7 @@ PLUGIN_PATHS = ['plugins']
 PLUGINS = [
 'assets',
 'sitemap',
+'pelican_plugin-render_math',
 ]
 ARCHIVES_SAVE_AS = 'articles/index.html'
 ARTICLE_LANG_SAVE_AS = False
@@ -124,3 +125,19 @@ SITEMAP = {
 GOOGLE_ANALYTICS='UA-53465262-1'
 GITHUB_USER='kwierman'
 SHOW_GITHUB_LINK= True
+
+MATH_JAX = {
+'align':'right', #left, center, right
+"auto_insert" : True, 
+'indent' : '1em', 
+'show_menu' : True, 
+'process_escapes' :  True,
+'mathjax_font':'fraktur',#sanserif, typewriter or fraktur
+'latex_preview':'Latex Equation',#Defualt:tex
+'color':'grey',
+'linebreak_automatic' : True,
+'tex_extensions' : [],
+'responsive' : True,
+'responsive_break' : 768,
+'process_summary' : True
+}

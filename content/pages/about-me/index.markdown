@@ -211,7 +211,7 @@ data acquisitions, support electronics development, as well as analysis and simu
 	</tr>
 	<tr>
 		<td>Protocols and APIs</td>
-		<td>XML, JSON, SOAP, HTML, CSS</td>
+		<td>XML, JSON, HTML, CSS</td>
 	</tr>
 	<tr>
 		<td>Databases</td>

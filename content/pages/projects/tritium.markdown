@@ -4,6 +4,5 @@ IS_PROJECT: yes
 GITHUB_USER: kwierman
 GITHUB_REPO: Tritium
 
-
-### A self-documenting data analysis system
+A self-documenting data analysis system
 

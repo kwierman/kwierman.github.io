@@ -1,9 +1,7 @@
 #!/usr/bin/python
 
-
 import sys
 from  datetime import date
-
 
 dt = date.today()
 category = sys.argv[1]
