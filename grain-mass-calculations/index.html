@@ -31,7 +31,7 @@
 
             
 <nav>
-                <ul>                    <li><a href="../articles/" title="Articles">Articles</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
+                <ul>                    <li><a href="../articles/" title="Articles">Articles</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                    <li><a href="../contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
             </nav>        </div>
     </header>
     
@@ -44,20 +44,27 @@
         
         <h2>Goal</h2>
 <p>Alright, so, you've assembled your recipes in terms of grains and percents. Now, you want to figure out how much of your grain recipe you want to add to the mash.</p>
-<p>The first chemical conversion in brewing, saccarification, is one of the most important step in determining the alcohol content of the beer.</p>
+<p>First, some definitions</p>
+<h2>Definitions</h2>
+<h3>Degrees Plato</h3>
+<p>The amount of sucrose in solution is measured in degrees Plato, <span class="math">\({}^\circ P\)</span> </p>
+<blockquote>
+<p><strong>Plato is defined as the number of grams of sugar per 100 grams of solution.</strong></p>
+</blockquote>
 <p>Sucrose, one of the most common sugars produced in saccarification is strongly correlated with increase in specific gravity of beers due to highest increase in SG for percent weight in solution.</p>
-<p>The amount of sucrose in solution is measured in degrees Plato. Plato is defined as the number of grams of sugar per 100 grams of solution.  Plato is used widely in Europe and is based on corrections to the older Balling scale. Balling and Plato are close but not exactly equivalent due to differences in calibration temperature.  The difference between the two is about 0.05% weight/weight, however, so in most practical situations Plato is equivalent to Balling.</p>
-<h2>Specific Gravity</h2>
-<p>S.G. is the density of a liquid or solid compared to that of water. This is related to Plato in the following formula.</p>
-<div class="math">$$ S.G.  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1} $$</div>
-<p>Most beers have a starting specific gravity of 1.025-1.100.</p>
-<h2>Weight of Extract</h2>
-<p>The weight of extract is the amount of malt extract present in the wort. The amount of extract is related to specific gravity in the following formula:</p>
-<div class="math">$$ Lbs\;extract =   (8.32 lbs/gal wort)(gal wort)(S.G.)/ 100 $$</div>
-<p>8.32 in the above formula is the weight of one gallon of water. To find the weight of a gallon of wort, multiply the specific gravity of the wort by 8.32lbs. </p>
-<h2>Brew House Yield (BHY)</h2>
+<p>Plato is used widely in Europe and is based on corrections to the older Balling scale. Balling and Plato are close but not exactly equivalent due to differences in calibration temperature.  The difference between the two is about 0.05% weight/weight, however, so in most practical situations Plato is equivalent to Balling.</p>
+<h3>Specific Gravity</h3>
+<p>Specific gravity, <span class="math">\(SG\)</span>, is the density of a liquid or solid compared to that of water. This is related to Plato in the following formula.</p>
+<div class="math">$$ SG  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1} $$</div>
+<p>The difference in specific gravity can be used to determine the alcohol of beer.
+Most beers have a starting specific gravity of 1.025-1.100.</p>
+<h3>Weight of Extract</h3>
+<p>The weight of extract, <span class="math">\(W_{extract}\)</span>, is the amount of malt extract present in the wort. The amount of extract is related to specific gravity in the following formula:</p>
+<div class="math">$$ W_{extract}[Lbs] =   (8.32 [lbs/gal])(V_{wort}[gal])(SG)/ 100 $$</div>
+<p>8.32 in the above formula is the weight of one gallon of water.  </p>
+<h3>Brew House Yield (BHY)</h3>
 <p>Brew house yield is a measurement that tells the efficiency of the brewing. The actual degrees Plato from the brew and the actual gallons collected out of the kettle are needed to calculate the BHY. </p>
-<div class="math">$$ BHY  =  [(^\circ P_{actual})(gal_{actual})(BHY_{target})] / [(^\circ P_{target})(gal_{target})]      $$</div>
+<div class="math">$$ BHY  = \frac{(^\circ P_{actual})(V_{actual}(gal))(BHY_{target})}{(^\circ P_{target})(V_{target}(gal))} $$</div>
 <h2>Working Yield</h2>
 <p>Working Yield is the product of the Hot Water Extract multiplied by the Brew House Yield.  This product will provide the percent of extract collected from the malt. </p>
 <div class="math">$$ WY =    (HWE as-is)(BHY) $$</div>

@@ -31,7 +31,7 @@
 
             
 <nav>
-                <ul>                    <li><a href="../articles/" title="Articles">Articles</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
+                <ul>                    <li><a href="../articles/" title="Articles">Articles</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                    <li><a href="../contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
             </nav>        </div>
     </header>
     
@@ -42,7 +42,18 @@
 <h5></h5>            <time title="2015-05-10T00:00:00-04:00">Sun 10 May 2015</time>
         </header>
         
-        
+        <h2>Goal</h2>
+<p>I need to be able to toggle my wifi on and off. There'a script for that. The utility, <code>nmcli</code> has the entire functionality we need, I just need to tie it together.</p>
+<h2>The Script</h2>
+<div class="highlight"><pre><span class="c">#!/usr/bash                                                               </span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$(nmcli radio wifi)&quot;</span> <span class="o">==</span> <span class="s2">&quot;enabled&quot;</span> <span class="o">]</span>
+<span class="k">then</span>
+<span class="k">    </span>nmcli radio wifi off
+<span class="k">else</span>
+<span class="k">    </span>nmcli radio wifi on
+<span class="k">fi</span>
+</pre></div>
         
         <aside class="clearfix">
             

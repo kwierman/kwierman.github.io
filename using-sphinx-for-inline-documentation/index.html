@@ -31,7 +31,7 @@
 
             
 <nav>
-                <ul>                    <li><a href="../articles/" title="Articles">Articles</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
+                <ul>                    <li><a href="../articles/" title="Articles">Articles</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                    <li><a href="../contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
             </nav>        </div>
     </header>
     
@@ -45,7 +45,7 @@
         <h2>Brief History</h2>
 <p>Previously, in my python based endeavors, I've used <a href="http://www.stack.nl/~dimitri/doxygen/" title="doxyen">doxygen</a>, an inline code documentation engine for generating web pages and pdfs. Many people recommend this for c++ API documentation, and in fact, I use it my self all the time.However, to my eternal consternation, it does not play well with python. I've used various little tricks and hacks to get around this, but a more streamlined approach would be nice. Eventually, I'd like to use something that works with multiple languages, but I guess today is just not that day.</p>
 <h2>In Comes Sphinx</h2>
-<p>A brief google search shows that python documentation is almost universally built with sphinx. I say "almost universally" because all the basics are covered in sphinx as well as some private libraries, but many other non-standard libraries prefer their own documentation. Older libraries in particular like to use identically unique approaches.</p>
+<p>A brief google search shows that python documentation is almost universally built with sphinx. I say "almost universally" because all the python-standard libraries are covered in sphinx as well as some private libraries, but many other non-standard libraries prefer their own documentation. Older libraries in particular like to use unique approaches.</p>
 <p><a href="http://sphinx-doc.org/">Sphinx</a> can be very easily researched online, downloaded via yum or apt, and can be used with a few simple to get up and going. However, very few real examples out there detail the whole workflow beginning to end. I'm going to attempt that here.</p>
 <h2>An Example with Cards</h2>
 <p>I built a simple <a href="https://github.com/kwierman/Cards">simulation</a> in python a while back to prove a point about the number of times it take to shuffle a deck of cards before patterns in the initial deck stop appearing in the shuffled deck (it's 10). Initially, I had the project documented in doxygen, but later switched to sphinx. We'll use this for my example.</p>
@@ -111,8 +111,9 @@
 
 
 <p>Quickstart starts the process of making the build system for the documentation. The steps are easy to go through, and self-explanatory. Meanwhile apidoc searches the code for symbols and adds them automatically to documentation files.</p>
-<p _="%" endblockquote="endblockquote">{% blockquote %}
-    apidoc will need to be rerun every time you add new classes and symbols to the project.</p>
+<blockquote>
+<p><strong>apidoc will need to be rerun every time you add new classes and symbols to the project.</strong></p>
+</blockquote>
 <p>Now, the directories should look this:</p>
 <ul>
 <li>Cards/</li>
