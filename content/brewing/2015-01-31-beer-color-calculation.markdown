@@ -3,6 +3,10 @@ Date: 2015-01-31
 Tags: 
 Category: blog
 
+## Goal
+
+One should never formulate a recipe around color, but it should match the style of the beer.
+
 
 ## Degrees Lovibond
 
@@ -16,7 +20,7 @@ To get a feel for this scale, a lager would be a `2`, while a stout would show a
 ## Malt Color Units
 
 `MCU`s are used as a method of finding the contribution of each part of a recipe to the color as a whole.
-For the weight of grain in lbs ($$W_{lbs}$$), and volume in gallons, $$V_{gal}$$.
+For the weight of grain in lbs ($W_{lbs}$), and volume in gallons, $V_{gal}$.
 
 $$MCU = (W_{lbs}) * (L) / (V_{gal})$$
 
@@ -26,12 +30,12 @@ Simply add the MCU of each part to get the total MCU. Since the volume is the sa
 
 SRM is the newly adapted model for color estimation. Although SRM and L are very close, they tend to diverge around 6-8 (roughly golden brown/copper). So, the Morey equation provides a good estimate of the SRM based on MCU.
 
-$$ SRM=1.4922\times (MCU^{0.6859}) $$
+$$SRM=1.4922\times (MCU^{0.6859})$$
 
 
 So, based on the ingredients (subscript $$ i$$), you can estimate the color output
 
-$$ SRM=1.4922\times \left[\left(\sum_i (W_{lbs})_i * (L)_i / (V_{gal}) \right)^{0.6859}\right]  $$
+$$SRM=1.4922\times \left[\left(\sum_i (W_{lbs})_i * (L)_i / (V_{gal}) \right)^{0.6859}\right]$$
 
 
 [Eddie's Ale House](http://eddiesalehouse.com/images/eddie-s-alehouse-beer-infographic-srm.jpg) has a fantastic chart for comparing SRM colors for beers.

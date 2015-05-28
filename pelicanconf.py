@@ -104,6 +104,7 @@ MENUITEMS = (
 ('Articles', 'articles/'),
 ('Projects', 'projects/'),
 ('About', 'about-me/'),
+('Contact Me', 'contact-me/'),
 )
 
 

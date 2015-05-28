@@ -10,7 +10,7 @@ Previously, in my python based endeavors, I've used [doxygen](http://www.stack.n
 
 ## In Comes Sphinx
 
-A brief google search shows that python documentation is almost universally built with sphinx. I say "almost universally" because all the basics are covered in sphinx as well as some private libraries, but many other non-standard libraries prefer their own documentation. Older libraries in particular like to use identically unique approaches.
+A brief google search shows that python documentation is almost universally built with sphinx. I say "almost universally" because all the python-standard libraries are covered in sphinx as well as some private libraries, but many other non-standard libraries prefer their own documentation. Older libraries in particular like to use unique approaches.
 
 [Sphinx](http://sphinx-doc.org/) can be very easily researched online, downloaded via yum or apt, and can be used with a few simple to get up and going. However, very few real examples out there detail the whole workflow beginning to end. I'm going to attempt that here.
 
@@ -74,9 +74,9 @@ sphinx-apidoc -o source/ ../Cards
 
 Quickstart starts the process of making the build system for the documentation. The steps are easy to go through, and self-explanatory. Meanwhile apidoc searches the code for symbols and adds them automatically to documentation files.
 
-{% blockquote %}
-	apidoc will need to be rerun every time you add new classes and symbols to the project.
-{% endblockquote %}
+
+>**apidoc will need to be rerun every time you add new classes and symbols to the project.**
+
 
 Now, the directories should look this:
 

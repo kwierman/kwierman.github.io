@@ -3,8 +3,11 @@ Date: 2015-01-29
 Tags: 
 Category: blog
 
+##Goal
 
-Typically presentations in $$ \LaTeX $$ depend on the [Beamer](http://en.wikipedia.org/wiki/Beamer_%28LaTeX%29) document class. While this is all fine and well, this package is a bit restrictive. After a little digging, I found a KOMA script based document template that works well.
+Typically presentations in $\LaTeX$ depend on the [Beamer](http://en.wikipedia.org/wiki/Beamer_%28LaTeX%29) document class. While this is all fine and well, this package is a bit restrictive. After a little digging, I found a KOMA script based document template that works well. I'll attempt to explain it here
+
+## Pre-requisites
 
 
 This template requires `texlive` to build. In addition, the optional package `lastpage` is missing from some texlive builds. OSX should ship these with `mktex`, while fedora and ubuntu require the following commands:
@@ -14,6 +17,14 @@ fedora$ sudo yum install texlive-lastpage
 ubuntu$ sudo apt-get install texlive-lastpage
 ~~~
 
+## Preamble
+
+# Document Class
+
+The approach here is to use ``scrartcl'', the KOMA script article class. [KOMA](https://www.ctan.org/pkg/koma-script?lang=en) script is a package that allows the user to do some thing with a bit more versatility than traditional $\LaTeX$ packages.
+
+The paper size for slides is 128mm by 96mm. Some slight adjustments result in the following class preamble.
+
 ~~~ latex
 \documentclass[
 paper=128mm:96mm, 
@@ -22,24 +33,8 @@ pagesize, % Write page size to dvi or pdf
 parskip=half-, % Paragraphs separated by half a line
 ]{scrartcl} % KOMA script (article)
 
-\linespread{1.12} 
+\linespread{1.12} %increase line spacing for versatility
 
-%------------------------------------------------
-% Colors
-\usepackage[svgnames]{xcolor}
-\definecolor{mygreen}{RGB}{44,85,17}
-\definecolor{myblue}{RGB}{34,31,217}
-\definecolor{mybrown}{RGB}{194,164,113}
-\definecolor{myred}{RGB}{255,66,56}
-
-\newcommand*{\mygreen}[1]{\textcolor{mygreen}{#1}}
-\newcommand*{\myblue}[1]{\textcolor{myblue}{#1}}
-\newcommand*{\mybrown}[1]{\textcolor{mybrown}{#1}}
-\newcommand*{\myred}[1]{\textcolor{myred}{#1}}
-%------------------------------------------------
-
-%------------------------------------------------
-% Margins
 \usepackage[ % Page margins settings
 includeheadfoot,
 top=3.5mm,
@@ -49,60 +44,91 @@ right=5.5mm,
 headsep=6.5mm,
 footskip=8.5mm
 ]{geometry}
-%------------------------------------------------
 
-%------------------------------------------------
-% Fonts
+
+~~~
+
+# Color
+
+I like to use some custom colors. Namely, I stick to the Google standard color scheme. It looks good on slides, provides a solid base for customization, I use it elsewhere, and uniformity is always a plus.
+
+~~~ latex
+\usepackage[svgnames]{xcolor}
+\definecolor{kjw_blue}{HTML}{33B5E5}
+\definecolor{kjw_dblue}{HTML}{0099CC}
+\definecolor{kjw_green}{HTML}{99CC00}
+\definecolor{kjw_dgreen}{HTML}{669900}
+\definecolor{kjw_purple}{HTML}{AA66CC}
+\definecolor{kjw_dpurple}{HTML}{9933CC}
+\definecolor{kjw_orange}{HTML}{FFBB33}
+\definecolor{kjw_dorange}{HTML}{FF8800}
+\definecolor{kjw_red}{HTML}{FF4444}
+\definecolor{kjw_dred}{HTML}{CC0000}
+~~~
+
+# Font
+
+I stick to some defaults when it comes to font. 
+
+~~~latex
 \usepackage[T1]{fontenc}
 \usepackage{lmodern} 
-%\usepackage{fourier} 
-%\usepackage{charter} 
-\renewcommand{\familydefault}{\sfdefault} 
-%------------------------------------------------
+%\usepackage{fourier} %If you've got it installed, this is a nice font to use 
+~~~
 
+# More package requirements
+
+I like to use a few environments between document types, so the following packages are required **in general**.
+
+~~~ latex
 %------------------------------------------------
 % Various required packages
-\usepackage{amsthm} 
-\usepackage{bm}
-\usepackage{graphicx} 
+\usepackage{amsthm} % Required for theorem environments
+\usepackage{bm} % Required for bold math symbols (used in the footer of the slides)
+\usepackage{graphicx} % Required for including images in figures
 \usepackage{tikz} % Required for colored boxes
-\usepackage{booktabs} 
-\usepackage{multicol} 
-\usepackage{lastpage} 
-\usepackage[english]{babel} 
+\usepackage{booktabs} % Required for horizontal rules in tables
+\usepackage{multicol} % Required for creating multiple columns in slides
+\usepackage{lastpage} % For printing the total number of pages at the bottom of each slide
+\usepackage[english]{babel} % Document language - required for customizing section titles
 \usepackage{microtype} % Better typography
-\usepackage{tocstyle} 
+\usepackage{tocstyle} % Required for customizing the table of contents
+\usepackage{pgfgantt} % For the Gantt chrt
 %------------------------------------------------
+~~~
 
+# Slide layout configuration
+
+
+The following details how to configure the page layout. 
+~~~ latex
 %------------------------------------------------
 % Slide layout configuration
-\usepackage{scrpage2} 
-\pagestyle{scrheadings} 
-\clearscrheadfoot 
-\setkomafont{pageheadfoot}{\normalfont\color{black}\sffamily}
+\usepackage{scrpage2} % Required for customization of the header and footer
+\pagestyle{scrheadings} % Activates the pagestyle from scrpage2 for custom headers and footers
+\clearscrheadfoot % Remove the default header and footer
+\setkomafont{pageheadfoot}{\normalfont\color{black}\sffamily} % Font settings for the header and footer
 
-
+% Sets vertical centering of slide contents with increased space between paragraphs/lists
 \makeatletter
 \renewcommand*{\@textbottom}{\vskip \z@ \@plus 1fil}
 \newcommand*{\@texttop}{\vskip \z@ \@plus .5fil}
 \addtolength{\parskip}{\z@\@plus .25fil}
 \makeatother
 
-
+% Remove page numbers and the dots leading to them from the outline slide
 \makeatletter
-\newtocstyle[noonewithdot]{nodotnopagenumber}
-{\settocfeature{pagenumberbox}{\@gobble}}
+\newtocstyle[noonewithdot]{nodotnopagenumber}{\settocfeature{pagenumberbox}{\@gobble}}
 \makeatother
 \usetocstyle{nodotnopagenumber}
 
-\AtBeginDocument{\renewcaptionname{english}
-{\contentsname}{\Large Outline}}
+\AtBeginDocument{\renewcaptionname{english}{\contentsname}{\Large Outline}} % Change the name of the table of contents
 %------------------------------------------------
 
 %------------------------------------------------
 % Footer configuration
 \newlength{\footheight}
-\setlength{\footheight}{8mm} 
+\setlength{\footheight}{8mm} %Rest this to reconfigure how big the footers are.
 
 \ifoot{   % Left side
 \hspace{-2mm}
@@ -121,6 +147,7 @@ top color=CornflowerBlue,bottom color=White]{};
 {\pagemark/\pageref{LastPage}\hspace{-2mm}} 
 %------------------------------------------------
 
+%Set this to reconfigure how the titles are spaced.
 %------------------------------------------------
 \usepackage{titlesec} 
 \titlespacing{\section}{0mm}{0mm}{0mm} 
@@ -129,42 +156,31 @@ top color=CornflowerBlue,bottom color=White]{};
 \setcounter{secnumdepth}{0} 
 %------------------------------------------------
 
-%------------------------------------------------
-\newcommand*{\mybox}[2]{
-\par\noindent
-\begin{tikzpicture}
-[mynodestyle/.style={
-rectangle,draw=mygreen,
-thick,inner sep=2mm,
-text justified,top color=white,bottom color=white,above}]
-\node[mynodestyle,at={(0.5*#1+2mm+0.4pt,0)}]{ 
-\begin{minipage}[t]{#1}
-#2
-\end{minipage}
-};
-\end{tikzpicture}
-\par\vspace{-1.3em}}
-%------------------------------------------------
+~~~
 
-%-----------------------------------------------
-%	PRESENTATION INFORMATION
-%------------------------------------------------
+# More command defs
 
-\newcommand*{\mytitle}{ORCA Workflow Improvements}
-\newcommand*{\runninghead}{ORCA Workflow} 
-\newcommand*{\myauthor}{Kevin Wierman} 
-\newcommand*{\mydate}{\today} 
-\newcommand*{\myuni}{UNC/TUNL}
+The following are useful since they're used on all slides.
 
-%--------------------------------------------------
+~~~ latex
+\newcommand*{\mytitle}{Your title here} % Title
+\newcommand*{\myauthor}{John Smith} % Presenters name(s)
+\newcommand*{\mydate}{\today} % Presentation date
+\newcommand*{\myuni}{University of the Internet} % University or department
+~~~
 
+# Title slide, TOC of contents, etc...
+
+First, start the document, 
+
+~~~ latex
 \begin{document}
+~~~
 
-%--------------------------------------------------
-%	TITLE SLIDE
-%--------------------------------------------------
+Now add in the title slide
 
 
+~~~ latex
 \thispagestyle{empty} 
 \begin{tikzpicture}[remember picture,overlay]
 \node [xshift=\paperwidth/2,yshift=\paperheight/2] at 
@@ -187,61 +203,67 @@ top color=CornflowerBlue,bottom color=CornflowerBlue]{};
 \end{flushright}
 
 \clearpage
+~~~
 
-%-----------------------------------------
-%	TABLE OF CONTENTS
-%-----------------------------------------
+Add in the table of contents:
 
+~~~ latex
 \thispagestyle{empty}
 \begin{multicols}{2}% \setlength{\columnseprule}{0pt}
-\small\tableofcontents 
+	\small\tableofcontents 
 \end{multicols}
 \clearpage
+~~~
 
-%------------------------------------------------
-%	PRESENTATION SLIDES
-%------------------------------------------------
+## The Body
 
-\section{Data Back End in Nuclear Physics}
+The basic slide looks like:
 
+~~~ latex
+\section{My Section Title}
+content
 \clearpage
-%------------------------------------------------
-\section{Current Standards in Nuclear Physics}
+~~~
+
+Where the section part can be replaced by ``subsection``, ``subsection*``, etc... depending on how you want it to show up in TOC. At the end, the ``\clearpage`` command is to make sure none of the content bleeds between pages.
+
+
+Typically, I like to put things into multiple columns, 
+
+
+~~~ latex
+\section{My Multicol page}
+	\begin{multicols}{2}
+		Something here
+	\end{multicols}
 \clearpage
-%------------------------------------------------
+~~~
 
-%------------------------------------------------
+If you need to adjust how lists look, add in the ``itemsep`` command,
 
-%------------------------------------------------
-
-\thispagestyle{empty} % No slide header and footer
-
-\bibliographystyle{unsrt}
-\bibliography{masterbib}
-
+~~~ latex
+\section{My itemize section}
+	\begin{itemize}\itemsep-0.5em
+		\item[$\cdot$] My item here
+	\end{itemize}
 \clearpage
+~~~
 
-%------------------------------------------------
+Images need to be added in outside of the figure environment, 
 
-\thispagestyle{empty} % No slide header and footer
+~~~ latex
+\section{My graphical slide}
+	\includegraphics[width=\textwidth]{images/mypdf.pdf}
+	\captionof{figure}{My Caption here}
+\clearpage
+~~~
+The neat thing about using ``captionof`` is that you can place the caption anywhere on the slide!
 
-\begin{tikzpicture}[remember picture,overlay] 
-\node [xshift=\paperwidth/2,yshift=\paperheight/2] at
- (current page.south west)
-[rectangle,fill,inner sep=0pt,
-minimum width=\paperwidth,
-minimum height=\paperheight/3,
-top color=CornflowerBlue,bottom color=SkyBlue]{}; 
-\end{tikzpicture}
-% Text within the box
-\begin{flushright}
-\vspace{0.6cm}
-\color{white}\sffamily
-{\bfseries\LARGE Questions?\par} 
-\vfill
-\end{flushright}
+## Finish up
 
-%----------------------------------------------
-
+Finally, finish off the document:
+~~~ latex
 \end{document}
 ~~~
+
+

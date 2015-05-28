@@ -1,40 +1,51 @@
 Title: Grain Mass Calculations
 Date: 2015-01-31
 Tags: 
-Category: blog
+Category: brewing
+Authors: Kevin Wierman
+Summary: How to calculate how much grain you need
 
 ## Goal
 
 Alright, so, you've assembled your recipes in terms of grains and percents. Now, you want to figure out how much of your grain recipe you want to add to the mash.
 
-The first chemical conversion in brewing, saccarification, is one of the most important step in determining the alcohol content of the beer.
+First, some definitions
+
+## Definitions
+
+### Degrees Plato
+
+The amount of sucrose in solution is measured in degrees Plato, ${}^\circ P$ 
+
+>**Plato is defined as the number of grams of sugar per 100 grams of solution.**
 
 Sucrose, one of the most common sugars produced in saccarification is strongly correlated with increase in specific gravity of beers due to highest increase in SG for percent weight in solution.
 
-The amount of sucrose in solution is measured in degrees Plato. Plato is defined as the number of grams of sugar per 100 grams of solution.  Plato is used widely in Europe and is based on corrections to the older Balling scale. Balling and Plato are close but not exactly equivalent due to differences in calibration temperature.  The difference between the two is about 0.05% weight/weight, however, so in most practical situations Plato is equivalent to Balling.
+Plato is used widely in Europe and is based on corrections to the older Balling scale. Balling and Plato are close but not exactly equivalent due to differences in calibration temperature.  The difference between the two is about 0.05% weight/weight, however, so in most practical situations Plato is equivalent to Balling.
 
-## Specific Gravity
+### Specific Gravity
 
-S.G. is the density of a liquid or solid compared to that of water. This is related to Plato in the following formula.
+Specific gravity, $SG$, is the density of a liquid or solid compared to that of water. This is related to Plato in the following formula.
 
-$$ S.G.  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1} $$
+$$ SG  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1} $$
 
+
+The difference in specific gravity can be used to determine the alcohol of beer.
 Most beers have a starting specific gravity of 1.025-1.100.
 
-##Weight of Extract
+###Weight of Extract
 
-The weight of extract is the amount of malt extract present in the wort. The amount of extract is related to specific gravity in the following formula:
+The weight of extract, $W_{extract}$, is the amount of malt extract present in the wort. The amount of extract is related to specific gravity in the following formula:
 
-$$ Lbs\;extract =   (8.32 lbs/gal wort)(gal wort)(S.G.)/ 100 $$
+$$ W_{extract}[Lbs] =   (8.32 [lbs/gal])(V_{wort}[gal])(SG)/ 100 $$
 
-8.32 in the above formula is the weight of one gallon of water. To find the weight of a gallon of wort, multiply the specific gravity of the wort by 8.32lbs. 
- 
+8.32 in the above formula is the weight of one gallon of water.  
 
-## Brew House Yield (BHY)
+### Brew House Yield (BHY)
 
 Brew house yield is a measurement that tells the efficiency of the brewing.	The actual degrees Plato from the brew and the actual gallons collected out of the kettle are needed to calculate the BHY. 
 
-$$ BHY  =  [(^\circ P_{actual})(gal_{actual})(BHY_{target})] / [(^\circ P_{target})(gal_{target})]		$$ 
+$$ BHY  = \frac{(^\circ P_{actual})(V_{actual}(gal))(BHY_{target})}{(^\circ P_{target})(V_{target}(gal))} $$ 
 
 ##Working Yield
 
