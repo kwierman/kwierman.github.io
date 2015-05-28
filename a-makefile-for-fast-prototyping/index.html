@@ -1,0 +1,211 @@
+<!doctype html>
+<!--[if lt IE 9]><html lang="en" class="ie"><![endif]-->
+<!--[if gte IE 9]><!--><html lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>A Makefile for fast prototyping | Kevin Wierman</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kevin Wierman">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    
+<link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
+   <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
+    <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+
+            
+<nav>
+                <ul>                    <li><a href="../articles/" title="Articles">Articles</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                    <li><a href="../contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
+            </nav>        </div>
+    </header>
+    
+    <div class="container">
+<article class="article-full">
+        <header>
+            <h1><a href="../a-makefile-for-fast-prototyping/" rel="bookmark" title="Permalink to A Makefile for fast prototyping">A Makefile for fast prototyping</a></h1>
+<h5></h5>            <time title="2015-02-27T00:00:00-05:00">Fri 27 February 2015</time>
+        </header>
+        
+        <h2>The Endgame</h2>
+<p>Alright, so the idea is to define a project by it's internal_structure. To that end, I'm going to use folders to define where the executables live and where each library lives.</p>
+<p>So, the project layout will end up being:</p>
+<ul>
+<li>Project Directory<ul>
+<li>Applications<ul>
+<li>Executable 1</li>
+<li>Executable 2</li>
+<li>Executable 2</li>
+</ul>
+</li>
+<li>Library 1<ul>
+<li>Header 1.1</li>
+<li>Source File 1.1</li>
+<li>Header 1.2</li>
+<li>Source File 1.2</li>
+<li>...</li>
+</ul>
+</li>
+<li>Library 2<ul>
+<li>Header 2.1</li>
+<li>Source File 2.1</li>
+<li>...</li>
+</ul>
+</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+<p>And turn it into this:
+* Prefix
+    * bin
+        * Executable 1
+        * Executable 2
+        * Executable 2
+    * lib
+        * Library 1
+        * Library 2
+    * include
+        * Library 1
+            * Header 1.1
+            * Header 1.2
+        * Library 2
+            * Header 2.1
+    * doc</p>
+<h2>Some Makefile basics</h2>
+<p>Makefiles provide the following syntactic structure:</p>
+<h3>Comments</h3>
+<p>Comments follow the bash syntax:</p>
+<div class="highlight"><pre><span class="cp">#This is a comment</span>
+<span class="n">This</span> <span class="o">:=</span> <span class="n">Is</span> <span class="n">Not</span>
+</pre></div>
+
+
+<h3>Macros</h3>
+<p>Variable definition in Make expands to macros (lazy variable definition). The structure is as follows:</p>
+<div class="highlight"><pre><span class="n">VAR</span> <span class="o">:=</span> <span class="n">DEF1</span> <span class="n">DEF2</span> <span class="n">DEF3</span> <span class="err">#</span> <span class="n">Definition</span>
+<span class="n">VAR</span> <span class="o">+=</span> <span class="n">DEF4</span> <span class="err">#</span> <span class="n">Modification</span>
+<span class="n">VAR2</span> <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR</span><span class="p">)</span> <span class="err">#</span><span class="n">Expansion</span>
+</pre></div>
+
+
+<p>These allow you to use some basic structure for finding information and using it.</p>
+<h3>Conditions</h3>
+<p>You can test macros using the following syntax:</p>
+<div class="highlight"><pre><span class="n">ifeq</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR2</span><span class="p">)</span> <span class="p">)</span>
+<span class="cp">#Insert some commands here</span>
+<span class="k">else</span>
+<span class="cp">#Insert some other commands here</span>
+<span class="n">endif</span>
+</pre></div>
+
+
+<p>Alternatively, you can use ~ifneq~ for negation</p>
+<h3>Rules</h3>
+<p>The whole point of makefiles is the generation of targets based on a set of rules.</p>
+<p>The basic syntax of rule goes like this:</p>
+<div class="highlight"><pre><span class="n">targets</span><span class="o">:</span> <span class="n">dependencies</span>
+    <span class="n">commands</span>
+</pre></div>
+
+
+<p>This executes the commands in order to make a specific target. If this target depends on another target, it will make the targets in proper sequence.</p>
+<h2>Getting some basic information</h2>
+<p>I'm going to start by gathering some information</p>
+<div class="highlight"><pre><span class="n">OS</span>         <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="p">)</span>
+<span class="n">PLATFORM</span>     <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="o">-</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>OS Specific Options</h2>
+<h3>OSX</h3>
+<h3>Linux</h3>
+        
+        <aside class="clearfix">
+            
+        </aside>
+        
+        <section class="comments">
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'kevinwierman';
+    (function() {
+        var dsq = document.createElement('script');
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.type = 'text/javascript';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    window.addEventListener("orientationchange", function() {
+        DISQUS.reset({
+            reload: true,
+            config: function () {  
+                this.page.identifier = 'a-makefile-for-fast-prototyping/';
+                this.page.url = '../a-makefile-for-fast-prototyping/';
+            }
+        });
+    }, false);
+</script>        </section>
+    </article>    </div>
+    
+    <footer class="container">
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <a href="https://github.com/kwierman">@kwierman</a> on GitHub
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = "../theme/js/jXHR.js";
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'kwierman',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="../theme/js/github.js" type="text/javascript"> </script>
+</section>
+<ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
+            
+            
+<li>&copy; 2014-2015 Kevin Wierman.</li>        </ul>
+
+    </footer>
+    
+<script>
+    var _gaq = [['_setAccount', 'UA-53465262-1'], ['_trackPageview']];
+    (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.src = '//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s);
+    })(document, 'script');
+</script></body>
+</html>

@@ -1,0 +1,286 @@
+<!doctype html>
+<!--[if lt IE 9]><html lang="en" class="ie"><![endif]-->
+<!--[if gte IE 9]><!--><html lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Indico Server on OSX | Kevin Wierman</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kevin Wierman">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    
+<link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
+   <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
+    <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+
+            
+<nav>
+                <ul>                    <li><a href="../articles/" title="Articles">Articles</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                    <li><a href="../contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
+            </nav>        </div>
+    </header>
+    
+    <div class="container">
+<article class="article-full">
+        <header>
+            <h1><a href="../indico-server-on-osx/" rel="bookmark" title="Permalink to Indico Server on OSX">Indico Server on OSX</a></h1>
+<h5></h5>            <time title="2015-02-03T00:00:00-05:00">Tue 03 February 2015</time>
+        </header>
+        
+        <h2>Prereqs</h2>
+<p>OSX is already in a good position to run Indico. A few modifications needs to be made:</p>
+<ul>
+<li>Install ModWSGI:</li>
+<li>{{ post_url modwsgi }}</li>
+<li>Setup SSL on the Apache Server:</li>
+<li>{{ post_url 2015-02-03-ssl-keys-on-osx }}</li>
+<li>flask engine plugin</li>
+<li><a href="https://github.com/indico/flask-pluginengine">from git</a></li>
+</ul>
+<p>The next step is to setup PostgreSQL. Annoyingly enough, this is never mentioned in the <a href="https://indico.readthedocs.org/en/latest/installation/">documentation</a> and they never say to set up the database, which I'll talk about later.</p>
+<p>The following changes will be needed:</p>
+<ul>
+<li>add use _www with full privilages (no password)</li>
+<li>This may be a little unnecessary</li>
+<li>add database indico</li>
+<li>This will be intiialized later</li>
+</ul>
+<p>Failing to do this will result in an error message about not being connect to port <code>5432</code>.</p>
+<p>Setup <code>nodeenv</code></p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/ekalinin/nodeenv.git</span>
+<span class="n">cd</span> <span class="n">nodeenv</span>
+<span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>Setup the dependencies (these will mostly be js objects which, if missing manifest as) by using Fabric.</p>
+<div class="highlight"><pre><span class="s">&#39;css/lib/angular.css&#39;</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">load</span> <span class="n">path</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;/opt/indico/htdocs&#39;</span><span class="p">,</span> <span class="s">&#39;/opt/indico/htdocs/css&#39;</span><span class="p">,</span> <span class="s">&#39;/opt/indico/htdocs/js&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p><code>Fabric</code> will also need to be installed:</p>
+<div class="highlight"><pre>    <span class="n">easy_install</span> <span class="n">fabric</span>
+</pre></div>
+
+
+<h2>Download and install</h2>
+<p>The source code for indico can be foud on github. I'd download to a source directory directly:</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/indico/indico</span>
+</pre></div>
+
+
+<p>Run Fabric:</p>
+<div class="highlight"><pre><span class="n">fab</span> <span class="n">setup_deps</span>
+</pre></div>
+
+
+<p>Run Install (which you'll probably have to do as sudo):</p>
+<div class="highlight"><pre><span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>Usually something will go wrong and a python package will be missing, so the preceding command will be need to run alternatively with this one:</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">easy_install</span> <span class="o">&lt;</span><span class="n">module</span> <span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>This will typically manifast as the incorrect version of <code>psjson</code> or something, you can use the <code>==</code> operator in easy install to specify the version.</p>
+<p>Run the indico configuration::</p>
+<div class="highlight"><pre><span class="n">indico_easy_install</span>
+</pre></div>
+
+
+<p>At this point, some of the permissions have to be setup in order for apache to run it</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">_www</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">indico</span>
+<span class="n">sudo</span> <span class="n">chgrp</span> <span class="o">-</span><span class="n">R</span> <span class="n">_www</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">indico</span>
+</pre></div>
+
+
+<p>In order to get some of the site stuff working correctly (and depending on who else uses the machine), the folder at <code>/Library/Python/2.7/site-packages/&lt;some package&gt;</code></p>
+<p>I followed all of the default configurations. At the end of which, I had to change the username in <code>zdctl.conf</code> to <code>_www</code>. This is an OSX specific change.</p>
+<p>The following httpd configuration will need to be inserted into the webserver configuration path</p>
+<div class="highlight"><pre>AddDefaultCharset UTF-8
+
+<span class="nt">&lt;VirtualHost</span> <span class="err">*:80</span><span class="nt">&gt;</span>
+        # mod_wsgi indico
+
+    ErrorLog /var/log/apache2/error.log
+        LogLevel warn
+
+    Alias /indico/images &quot;/opt/indico/htdocs/images&quot;
+    Alias /indico/css &quot;/opt/indico/htdocs/css&quot;
+    Alias /indico/js &quot;/opt/indico/htdocs/js&quot;
+    Alias /indico/ihelp &quot;/opt/indico/htdocs/ihelp&quot;
+
+    WSGIDaemonProcess WSGIDAEMON processes=32 threads=1 inactivity-timeout=3600 maximum-requests=10000 \
+            python-eggs=/opt/indico/tmp/egg-cache
+
+    WSGIScriptAlias /indico &quot;/opt/indico/htdocs/indico.wsgi&quot;
+
+    <span class="nt">&lt;Directory</span> <span class="err">&quot;/opt/indico&quot;</span><span class="nt">&gt;</span>
+        WSGIProcessGroup WSGIDAEMON
+        WSGIApplicationGroup %{GLOBAL}
+        AllowOverride FollowSymlinks
+        Options None
+        Order deny,allow
+        Allow from all
+    <span class="nt">&lt;/Directory&gt;</span>
+<span class="nt">&lt;/VirtualHost&gt;</span>
+
+<span class="nt">&lt;VirtualHost</span> <span class="err">*:443</span><span class="nt">&gt;</span>
+
+    ErrorLog /var/log/apache2/error.log
+            LogLevel warn
+
+    Alias /indico/images &quot;/opt/indico/htdocs/images&quot;
+    Alias /indico/css &quot;/opt/indico/htdocs/css&quot;
+    Alias /indico/js &quot;/opt/indico/htdocs/js&quot;
+    Alias /indico/ihelp &quot;/opt/indico/htdocs/ihelp&quot;
+
+    WSGIScriptAlias /indico &quot;/opt/indico/htdocs/indico.wsgi&quot;
+
+    SSLEngine on
+    SSLCertificateFile    /etc/apache2/ssl/server.crt
+    SSLCertificateKeyFile /etc/apache2/ssl/host.key
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+
+
+<p>The major change was in the <code>FollowSymlinks</code> command. This is due to default behavior in OSX's apache.</p>
+<p>In addition, the config file at <code>/opt/indico/etc/indico.conf</code> will need to have the following changes:</p>
+<div class="highlight"><pre><span class="gd">-#Debug=False</span>
+<span class="gi">+Debug=True</span>
+<span class="gi">+BaseURL              = &quot;http://physics00158.dhcp.unc.edu/indico&quot;</span>
+
+ # BaseSecureURL is the HTTPS location of Indico. Set empty string if you want to use http.                                                                     
+
+<span class="gi">+BaseSecureURL        = &quot;https://physics00158.dhcp.unc.edu/indico&quot;</span>
+<span class="gd">-BaseURL              = &quot;http://localhost:8000&quot;</span>
+
+ # BaseSecureURL is the HTTPS location of Indico. Set empty string if you want to use http.                                                                     
+
+<span class="gd">-BaseSecureURL        = &quot;https://localhost:8443&quot;</span>
+</pre></div>
+
+
+<p>If you keep these default settings, you can test out indico by running the command:</p>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">_www</span> <span class="n">indico</span> <span class="n">runserver</span>
+</pre></div>
+
+
+<p>Initialize the database:</p>
+<div class="highlight"><pre><span class="n">indico</span> <span class="n">db</span> <span class="n">prepare</span>
+</pre></div>
+
+
+<p>Failing to do this will result in an error message about relations missing.</p>
+<h2>Managing Indico</h2>
+<p>There's plenty of <a href="https://indico.cern.ch/ihelp/html/index.html">documentation</a> online. However, there's a few things you should know:</p>
+<ul>
+<li>You can manually add a user with the following command: </li>
+</ul>
+<div class="highlight"><pre><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">_www</span> <span class="n">indico</span> <span class="n">admin</span> <span class="n">user_add</span>
+</pre></div>
+
+
+<ul>
+<li>You can grant users admin privilages with the following command:</li>
+</ul>
+<div class="highlight"><pre><span class="nx">sudo</span> <span class="na">-u</span> <span class="nx">_www</span> <span class="nx">indico</span> <span class="nx">admin</span> <span class="nx">user_grant</span> <span class="o">&lt;</span><span class="nx">user_id</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="o">*</span> <span class="n">The</span> <span class="err">`</span><span class="n">user_id</span><span class="err">`</span> <span class="n">is</span> <span class="n">an</span> <span class="kt">unsigned</span> <span class="n">integer</span> <span class="n">assigned</span> <span class="n">on</span> <span class="n">user</span> <span class="n">creation</span><span class="p">.</span> <span class="n">The</span> <span class="n">first</span> <span class="n">user</span> <span class="n">will</span> <span class="n">be</span> <span class="mi">0</span><span class="p">,</span> <span class="n">etc</span><span class="p">...</span>
+</pre></div>
+
+
+<p>There's also a ton of information <a href="https://github.com/indico/indico/blob/master/DEVELOPMENT.md">here</a>.</p>
+        
+        <aside class="clearfix">
+            
+        </aside>
+        
+        <section class="comments">
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    var disqus_shortname = 'kevinwierman';
+    (function() {
+        var dsq = document.createElement('script');
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.type = 'text/javascript';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    window.addEventListener("orientationchange", function() {
+        DISQUS.reset({
+            reload: true,
+            config: function () {  
+                this.page.identifier = 'indico-server-on-osx/';
+                this.page.url = '../indico-server-on-osx/';
+            }
+        });
+    }, false);
+</script>        </section>
+    </article>    </div>
+    
+    <footer class="container">
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <a href="https://github.com/kwierman">@kwierman</a> on GitHub
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = "../theme/js/jXHR.js";
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'kwierman',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="../theme/js/github.js" type="text/javascript"> </script>
+</section>
+<ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
+            
+            
+<li>&copy; 2014-2015 Kevin Wierman.</li>        </ul>
+
+    </footer>
+    
+<script>
+    var _gaq = [['_setAccount', 'UA-53465262-1'], ['_trackPageview']];
+    (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.src = '//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g, s);
+    })(document, 'script');
+</script></body>
+</html>
