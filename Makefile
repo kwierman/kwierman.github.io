@@ -89,9 +89,8 @@ gitmake: clean
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 github: gitmake
-	$(shell cd output)
+	$(shell chdir,output)
 	git commit -a -m "Pelican Publish";
 	git push;
-	$(shell cd ..)
 
 .PHONY: html help clean regenerate serve devserver publish  github
