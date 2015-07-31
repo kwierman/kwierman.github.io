@@ -47,12 +47,12 @@
    DO NOT FOLLOW THE INSTRUCTIONS.</p>
 <p>Just unload it to a source directory and install it to the apache module directory</p>
 <p>Now add the following line to <code>/etc/apache2/httpd.conf</code></p>
-<div class="highlight"><pre><span class="n">LoadModule</span> <span class="n">wsgi_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_wsgi</span><span class="p">.</span><span class="n">so</span>
+<div class="highlight"><pre>LoadModule wsgi_module modules/mod_wsgi.so
 </pre></div>
 
 
 <p>And restart the apache server</p>
-<div class="highlight"><pre>    <span class="n">apachectl</span> <span class="n">restart</span>
+<div class="highlight"><pre>    apachectl restart
 </pre></div>
         
         <aside class="clearfix">

@@ -56,19 +56,19 @@
 You need to be root to perform this command.
 <span class="o">[</span>kwierman~<span class="o">]</span><span class="nv">$ </span>sudo !!
 sudo yum update
-<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for </span>kwierman:
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> kwierman:
 </pre></div>
 
 
 <h3>history</h3>
 <p>This is a tool built into bash (hence the article name). Simply typing in <code>history</code> will show the previously typed in commands.</p>
 <p>This is useful enough for tracing previous steps in a project, especially since it can be used in combination with awk and cat to output the last several commands to file.</p>
-<div class="highlight"><pre><span class="nb">history </span>10 | awk <span class="s1">&#39;{for (i=2; i&lt;NF; i++) printf $i &quot; &quot;; print $NF}&#39;</span>
+<div class="highlight"><pre><span class="nb">history </span><span class="m">10</span> <span class="p">|</span> awk <span class="s1">&#39;{for (i=2; i&lt;NF; i++) printf $i &quot; &quot;; print $NF}&#39;</span>
 </pre></div>
 
 
 <p>Just replace <code>10</code> with the last number of commands you want to print out. Similarly, an amusing script below will tell the user how often they use certain commands.</p>
-<div class="highlight"><pre><span class="nb">history</span>|awk <span class="s1">&#39;{print $2}&#39;</span>|awk <span class="s1">&#39;BEGIN {FS=&quot;|&quot;} {print $1}&#39;</span>|sort|uniq -c|sort -r
+<div class="highlight"><pre><span class="nb">history</span><span class="p">|</span>awk <span class="s1">&#39;{print $2}&#39;</span><span class="p">|</span>awk <span class="s1">&#39;BEGIN {FS=&quot;|&quot;} {print $1}&#39;</span><span class="p">|</span>sort<span class="p">|</span>uniq -c<span class="p">|</span>sort -r
 </pre></div>
 
 
@@ -96,7 +96,7 @@ sudo yum update
 
 
 <p>This can be used with the <code>-R</code> option to recursively search entire directories. Bear in mind that <code>grep</code> can't filter on file name or metadata, so this can be used in conjunction with find and xargs to only search certain files</p>
-<div class="highlight"><pre>find . -name *.txt | xargs grep mystring
+<div class="highlight"><pre>find . -name *.txt <span class="p">|</span> xargs grep mystring
 </pre></div>
 
 

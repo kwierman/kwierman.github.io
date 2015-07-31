@@ -44,13 +44,13 @@
         
         <h2>Generate a host key</h2>
 <p>First, make a home for the new SSL files. I use <code>/etc/apache2/ssl</code>. Open up a terminal window, <code>cd</code> to the new directory and issue the following command to create a host key file.</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">f</span> <span class="n">host</span><span class="p">.</span><span class="n">key</span>
+<div class="highlight"><pre>sudo ssh-keygen -f host.key
 </pre></div>
 
 
 <h2>Generate a certificate request file</h2>
 <p>This command create a certificate request file. A certificate request file contains information about your organization that will be used in the SSL certificate.</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">new</span> <span class="o">-</span><span class="n">key</span> <span class="n">host</span><span class="p">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="n">request</span><span class="p">.</span><span class="n">csr</span>
+<div class="highlight"><pre>sudo openssl req -new -key host.key -out request.csr
 </pre></div>
 
 
@@ -61,20 +61,20 @@
 <p>Create a backup of <code>/etc/apache2/httpd.conf</code>.</p>
 <p>Append the contents of <code>/etc/apache2/extra/httpd-ssl.conf</code> to <code>/etc/apache2/httpd.conf</code>.</p>
 <p>In <code>/etc/apache2/httpd.conf</code>, make sure the loading of SSL is enabled (remove the #)</p>
-<div class="highlight"><pre><span class="n">LoadModule</span> <span class="n">ssl_module</span> <span class="n">libexec</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">mod_ssl</span><span class="p">.</span><span class="n">so</span>
+<div class="highlight"><pre>LoadModule ssl_module libexec/apache2/mod_ssl.so
 </pre></div>
 
 
 <p>Also, edit SSL section to use the new certificate.</p>
-<div class="highlight"><pre><span class="n">SSLEngine</span> <span class="n">on</span>
-<span class="n">SSLCertificateFile</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">server</span><span class="p">.</span><span class="n">crt</span>
-<span class="n">SSLCertificateKeyFile</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">host</span><span class="p">.</span><span class="n">key</span>
+<div class="highlight"><pre>SSLEngine on
+SSLCertificateFile /etc/apache2/ssl/server.crt
+SSLCertificateKeyFile /etc/apache2/ssl/host.key
 </pre></div>
 
 
 <p>Check the config and restart Apache to try the new certificate.</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">apachectl</span> <span class="n">configtest</span>
-<span class="n">sudo</span> <span class="n">apachectl</span> <span class="n">restart</span>
+<div class="highlight"><pre>sudo apachectl configtest
+sudo apachectl restart
 </pre></div>
 
 

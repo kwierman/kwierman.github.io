@@ -45,14 +45,14 @@
         <p>Remember to add in : chmod g-wx,o-wx ~/.python-eggs laterp</p>
 <h2>Making a testing framework</h2>
 <h2>Using the Python Application Environment</h2>
-<div class="highlight"><pre><span class="n">Change</span> <span class="n">your</span> <span class="n">models</span> <span class="p">(</span><span class="n">in</span> <span class="n">models</span><span class="p">.</span><span class="n">py</span><span class="p">).</span>
-<span class="n">Run</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">to</span> <span class="n">create</span> <span class="n">migrations</span> <span class="k">for</span> <span class="n">those</span> <span class="n">changes</span>
-<span class="n">Run</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span> <span class="n">to</span> <span class="n">apply</span> <span class="n">those</span> <span class="n">changes</span> <span class="n">to</span> <span class="n">the</span> <span class="n">database</span><span class="p">.</span>
+<div class="highlight"><pre>Change your models <span class="o">(</span>in models.py<span class="o">)</span>.
+Run python manage.py makemigrations to create migrations <span class="k">for</span> those changes
+Run python manage.py migrate to apply those changes to the database.
 </pre></div>
 
 
 <h2>Creating a superuser</h2>
-<div class="highlight"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
+<div class="highlight"><pre>python manage.py createsuperuser
 </pre></div>
         
         <aside class="clearfix">

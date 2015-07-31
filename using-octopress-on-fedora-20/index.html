@@ -44,68 +44,68 @@
         
         <p>Prerequisites</p>
 <p>In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">curl</span> <span class="n">wget</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span>
-<span class="err">$</span> <span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">zlib</span><span class="o">-</span><span class="n">devel</span> <span class="n">make</span> <span class="n">openssl</span> <span class="n">autoconf</span> <span class="n">automake</span>
+<div class="highlight"><pre><span class="nv">$ </span>sudo yum install curl wget git-core
+<span class="nv">$ </span>sudo yum install gcc zlib-devel make openssl autoconf automake
 </pre></div>
 
 
 <p>Install RVM</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;curl -L https://get.rvm.io | bash -s stable&quot;</span>
+<div class="highlight"><pre><span class="nv">$ </span>su -c <span class="s2">&quot;curl -L https://get.rvm.io | bash -s stable&quot;</span>
 </pre></div>
 
 
 <p>Start a new terminal.</p>
 <p>Make sure that terminal is capable of running rvm as a function (not as hash)</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">rvm</span> <span class="o">-</span><span class="n">v</span>
+<div class="highlight"><pre><span class="nv">$ </span>rvm -v
 </pre></div>
 
 
 <p>or </p>
-<div class="highlight"><pre><span class="nx">$</span> <span class="nx">type</span> <span class="nx">rvm</span> <span class="o">|</span> <span class="nx">head</span> <span class="o">-</span><span class="mi">1</span>
-<span class="err">#</span> <span class="nx">expected</span><span class="o">:</span> <span class="nx">rvm</span> <span class="nx">is</span> <span class="nx">a</span> <span class="kd">function</span>
-<span class="nx">$</span> <span class="nx">which</span> <span class="nx">rvm</span>
-<span class="err">#</span> <span class="nx">expected</span><span class="o">:</span> <span class="sr">/home/</span><span class="cp">[</span><span class="nx">USERNAME</span><span class="cp">]</span><span class="o">/</span><span class="p">.</span><span class="nx">rvm</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">rvm</span>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">type </span>rvm <span class="p">|</span> head -1
+<span class="c"># expected: rvm is a function</span>
+<span class="nv">$ </span>which rvm
+<span class="c"># expected: /home/[USERNAME]/.rvm/bin/rvm</span>
 </pre></div>
 
 
 <p>Voila.</p>
 <p>Install openssl and iconv:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">rvm</span> <span class="n">pkg</span> <span class="n">install</span> <span class="n">openssl</span>
-<span class="err">$</span> <span class="n">rvm</span> <span class="n">pkg</span> <span class="n">install</span> <span class="n">iconv</span>
+<div class="highlight"><pre><span class="nv">$ </span>rvm pkg install openssl
+<span class="nv">$ </span>rvm pkg install iconv
 </pre></div>
 
 
 <p>Install ruby and rubygems:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">rvm</span> <span class="n">install</span> <span class="mf">1.9.2</span> <span class="o">-</span><span class="n">C</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">openssl</span><span class="o">-</span><span class="n">dir</span><span class="o">=</span><span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="p">.</span><span class="n">rvm</span><span class="o">/</span><span class="n">usr</span><span class="p">,</span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">iconv</span><span class="o">-</span><span class="n">dir</span><span class="o">=</span><span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="p">.</span><span class="n">rvm</span><span class="o">/</span><span class="n">usr</span>
-<span class="err">$</span> <span class="n">rvm</span> <span class="n">rubygems</span> <span class="n">latest</span>
+<div class="highlight"><pre><span class="nv">$ </span>rvm install 1.9.2 -C --with-openssl-dir<span class="o">=</span><span class="nv">$HOME</span>/.rvm/usr,--with-iconv-dir<span class="o">=</span><span class="nv">$HOME</span>/.rvm/usr
+<span class="nv">$ </span>rvm rubygems latest
 </pre></div>
 
 
 <p>Setup rvm for octopress:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">rvm</span> <span class="n">use</span> <span class="mf">1.9.2</span> <span class="o">--</span><span class="k">default</span>
-<span class="err">$</span> <span class="n">rvm</span> <span class="n">reload</span>
-<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
+<div class="highlight"><pre><span class="nv">$ </span>rvm use 1.9.2 --default
+<span class="nv">$ </span>rvm reload
+<span class="nv">$ </span>gem install bundler
 </pre></div>
 
 
 <p>Getting octopress onto your machine</p>
 <p>Run the following commmand:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="o">:</span><span class="c1">//github.com/imathis/octopress.git &lt;your_blogname (namely, yourgithubname.github.io)&gt;</span>
+<div class="highlight"><pre><span class="nv">$ </span>git clone git://github.com/imathis/octopress.git &lt;your_blogname <span class="o">(</span>namely, yourgithubname.github.io<span class="o">)</span>&gt;
 </pre></div>
 
 
 <p>Install the bundler gem in that folder:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
+<div class="highlight"><pre><span class="nv">$ </span>gem install bundler
 </pre></div>
 
 
 <p>Bundle install</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">bundle</span> <span class="n">install</span>
+<div class="highlight"><pre><span class="nv">$ </span>bundle install
 </pre></div>
 
 
 <p>Rake install</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">rake</span> <span class="n">install</span>
+<div class="highlight"><pre><span class="nv">$ </span>rake install
 </pre></div>
 
 
@@ -116,19 +116,19 @@ First, in order to get the font to be ubuntu, the following was added to <code>s
 
 
 <p>The syntax for adding code in is:</p>
-<div class="highlight"><pre><span class="err">~~~</span> <span class="o">&lt;</span><span class="nb">language</span><span class="o">&gt;</span>
-<span class="nb">code</span>
-<span class="err">~~~</span>
+<div class="highlight"><pre>~~~ &lt;language&gt;
+code
+~~~
 </pre></div>
 
 
 <p>or </p>
-<div class="highlight"><pre><span class="o">~~~</span>
-<span class="n">def</span> <span class="n">what</span><span class="o">?</span>
-  <span class="mi">42</span>
-<span class="n">end</span>
-<span class="o">~~~</span>
-<span class="p">{</span><span class="o">:</span><span class="p">.</span><span class="n">language</span><span class="o">-</span><span class="n">ruby</span><span class="p">}</span>
+<div class="highlight"><pre>~~~
+def what?
+  42
+end
+~~~
+{:.language-ruby}
 </pre></div>
 
 

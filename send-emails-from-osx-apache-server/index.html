@@ -50,39 +50,39 @@ mail_owner = _postfix
 setgid_group = _postdrop
 ~</p>
 <p>In order to use a gmail relay, use these lines:</p>
-<div class="highlight"><pre><span class="cp">#Gmail SMTP</span>
-<span class="n">relayhost</span><span class="o">=</span><span class="n">smtp</span><span class="p">.</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span><span class="o">:</span><span class="mi">587</span>
-<span class="cp"># Enable SASL authentication in the Postfix SMTP client.</span>
-<span class="n">smtp_sasl_auth_enable</span><span class="o">=</span><span class="n">yes</span>
-<span class="n">smtp_sasl_password_maps</span><span class="o">=</span><span class="n">hash</span><span class="o">:/</span><span class="n">etc</span><span class="o">/</span><span class="n">postfix</span><span class="o">/</span><span class="n">sasl_passwd</span>
-<span class="n">smtp_sasl_security_options</span><span class="o">=</span>
-<span class="cp"># Enable Transport Layer Security (TLS), i.e. SSL.</span>
-<span class="n">smtp_use_tls</span><span class="o">=</span><span class="n">yes</span>
-<span class="n">smtp_tls_security_level</span><span class="o">=</span><span class="n">encrypt</span>
-<span class="n">tls_random_source</span><span class="o">=</span><span class="n">dev</span><span class="o">:/</span><span class="n">dev</span><span class="o">/</span><span class="n">urandom</span>
+<div class="highlight"><pre>#Gmail SMTP
+relayhost=smtp.gmail.com:587
+# Enable SASL authentication in the Postfix SMTP client.
+smtp_sasl_auth_enable=yes
+smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options=
+# Enable Transport Layer Security (TLS), i.e. SSL.
+smtp_use_tls=yes
+smtp_tls_security_level=encrypt
+tls_random_source=dev:/dev/urandom
 </pre></div>
 
 
 <p>Now, use these commands to create the password files and sasl setup:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">touch</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">postfix</span><span class="o">/</span><span class="n">sasl_passwd</span>
-<span class="n">sudo</span> <span class="n">echo</span> <span class="s">&quot;smtp.gmail.com:587 your_address@gmail.com:password&quot;</span><span class="o">&gt;/</span><span class="n">etc</span><span class="o">/</span><span class="n">postfix</span><span class="o">/</span><span class="n">sasl_password</span>
-<span class="n">sudo</span> <span class="n">postmap</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">postfix</span><span class="o">/</span><span class="n">sasl_passwd</span>
+<div class="highlight"><pre>sudo touch /etc/postfix/sasl_passwd
+sudo <span class="nb">echo</span> <span class="s2">&quot;smtp.gmail.com:587 your_address@gmail.com:password&quot;</span>&gt;/etc/postfix/sasl_password
+sudo postmap /etc/postfix/sasl_passwd
 </pre></div>
 
 
 <p>On MountainLion, there was an error:</p>
-<div class="highlight"><pre><span class="n">postfix</span><span class="o">:</span> <span class="n">fatal</span><span class="o">:</span> <span class="n">chdir</span><span class="o">(/</span><span class="n">Library</span><span class="sr">/Server/Mail/Data/s</span><span class="n">pool</span><span class="o">):</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
+<div class="highlight"><pre>postfix: fatal: chdir<span class="o">(</span>/Library/Server/Mail/Data/spool<span class="o">)</span>: No such file or directory
 </pre></div>
 
 
 <p>This was fixed by making the directory:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Server</span><span class="o">/</span><span class="n">Mail</span><span class="o">/</span><span class="n">Data</span><span class="o">/</span><span class="n">spool</span>
+<div class="highlight"><pre>sudo mkdir -p /Library/Server/Mail/Data/spool
 </pre></div>
 
 
 <p>Now, start and/or reload the server:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">postfix</span> <span class="n">reload</span>
-<span class="n">sudo</span> <span class="n">postfix</span> <span class="n">start</span>
+<div class="highlight"><pre>sudo postfix reload
+sudo postfix start
 </pre></div>
         
         <aside class="clearfix">

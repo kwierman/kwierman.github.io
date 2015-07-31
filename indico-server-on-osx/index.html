@@ -62,9 +62,9 @@
 </ul>
 <p>Failing to do this will result in an error message about not being connect to port <code>5432</code>.</p>
 <p>Setup <code>nodeenv</code></p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/ekalinin/nodeenv.git</span>
-<span class="n">cd</span> <span class="n">nodeenv</span>
-<span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
+<div class="highlight"><pre>git clone https://github.com/ekalinin/nodeenv.git
+<span class="nb">cd </span>nodeenv
+python setup.py install
 </pre></div>
 
 
@@ -74,40 +74,40 @@
 
 
 <p><code>Fabric</code> will also need to be installed:</p>
-<div class="highlight"><pre>    <span class="n">easy_install</span> <span class="n">fabric</span>
+<div class="highlight"><pre>    easy_install fabric
 </pre></div>
 
 
 <h2>Download and install</h2>
 <p>The source code for indico can be foud on github. I'd download to a source directory directly:</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="o">:</span><span class="c1">//github.com/indico/indico</span>
+<div class="highlight"><pre>git clone https://github.com/indico/indico
 </pre></div>
 
 
 <p>Run Fabric:</p>
-<div class="highlight"><pre><span class="n">fab</span> <span class="n">setup_deps</span>
+<div class="highlight"><pre>fab setup_deps
 </pre></div>
 
 
 <p>Run Install (which you'll probably have to do as sudo):</p>
-<div class="highlight"><pre><span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
+<div class="highlight"><pre>python setup.py install
 </pre></div>
 
 
 <p>Usually something will go wrong and a python package will be missing, so the preceding command will be need to run alternatively with this one:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">easy_install</span> <span class="o">&lt;</span><span class="n">module</span> <span class="n">name</span><span class="o">&gt;</span>
+<div class="highlight"><pre>sudo easy_install &lt;module name&gt;
 </pre></div>
 
 
 <p>This will typically manifast as the incorrect version of <code>psjson</code> or something, you can use the <code>==</code> operator in easy install to specify the version.</p>
 <p>Run the indico configuration::</p>
-<div class="highlight"><pre><span class="n">indico_easy_install</span>
+<div class="highlight"><pre>indico_easy_install
 </pre></div>
 
 
 <p>At this point, some of the permissions have to be setup in order for apache to run it</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">_www</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">indico</span>
-<span class="n">sudo</span> <span class="n">chgrp</span> <span class="o">-</span><span class="n">R</span> <span class="n">_www</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">indico</span>
+<div class="highlight"><pre>sudo chown -R _www /opt/indico
+sudo chgrp -R _www /opt/indico
 </pre></div>
 
 
@@ -179,12 +179,12 @@
 
 
 <p>If you keep these default settings, you can test out indico by running the command:</p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">_www</span> <span class="n">indico</span> <span class="n">runserver</span>
+<div class="highlight"><pre>sudo -u _www indico runserver
 </pre></div>
 
 
 <p>Initialize the database:</p>
-<div class="highlight"><pre><span class="n">indico</span> <span class="n">db</span> <span class="n">prepare</span>
+<div class="highlight"><pre>indico db prepare
 </pre></div>
 
 
@@ -194,18 +194,18 @@
 <ul>
 <li>You can manually add a user with the following command: </li>
 </ul>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">_www</span> <span class="n">indico</span> <span class="n">admin</span> <span class="n">user_add</span>
+<div class="highlight"><pre>sudo -u _www indico admin user_add
 </pre></div>
 
 
 <ul>
 <li>You can grant users admin privilages with the following command:</li>
 </ul>
-<div class="highlight"><pre><span class="nx">sudo</span> <span class="na">-u</span> <span class="nx">_www</span> <span class="nx">indico</span> <span class="nx">admin</span> <span class="nx">user_grant</span> <span class="o">&lt;</span><span class="nx">user_id</span><span class="o">&gt;</span>
+<div class="highlight"><pre>sudo -u _www indico admin user_grant &lt;user_id&gt;
 </pre></div>
 
 
-<div class="highlight"><pre><span class="o">*</span> <span class="n">The</span> <span class="err">`</span><span class="n">user_id</span><span class="err">`</span> <span class="n">is</span> <span class="n">an</span> <span class="kt">unsigned</span> <span class="n">integer</span> <span class="n">assigned</span> <span class="n">on</span> <span class="n">user</span> <span class="n">creation</span><span class="p">.</span> <span class="n">The</span> <span class="n">first</span> <span class="n">user</span> <span class="n">will</span> <span class="n">be</span> <span class="mi">0</span><span class="p">,</span> <span class="n">etc</span><span class="p">...</span>
+<div class="highlight"><pre>* The `user_id` is an unsigned integer assigned on user creation. The first user will be 0, etc...
 </pre></div>
 
 

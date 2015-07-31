@@ -46,7 +46,7 @@
 <p>Given how ubiquitous unix(esque) systems are in the science industry, the ability to use tools that are commonly found on all platforms is increasingly useful. Since many clusters don't support operations in the login nodes which require advanced libraries, users are restricted to using the tools that ...</p>
     </article>    <article class="article-full article-summary panel">
         <header>
-            <h2><a href="./intermediate-git-repos/" rel="bookmark" title="Permalink to Intermediate Git Repos">Intermediate Git Repos</a></h2>
+            <h2><a href="./hierarchal-git-repos/" rel="bookmark" title="Permalink to Hierarchal Git Repos">Hierarchal Git Repos</a></h2>
 <h5></h5>            <time title="2015-05-11T00:00:00-04:00">Mon 11 May 2015</time>
         </header>
         
@@ -63,11 +63,11 @@
 <h2>The Script</h2>
 <div class="highlight"><pre><span class="c">#!/usr/bash                                                               </span>
 
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$(nmcli radio wifi)&quot;</span> <span class="o">==</span> <span class="s2">&quot;enabled&quot;</span> <span class="o">]</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="k">$(</span>nmcli radio wifi<span class="k">)</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;enabled&quot;</span> <span class="o">]</span>
 <span class="k">then</span>
-<span class="k">    </span>nmcli radio wifi off
+    nmcli radio wifi off
 <span class="k">else</span>
-<span class="k">    </span>nmcli ...</pre></div>
+    nmcli ...</pre></div>
     </article>    <article class="article-full article-summary panel">
         <header>
             <h2><a href="./irish-red-ale/" rel="bookmark" title="Permalink to Irish Red Ale">Irish Red Ale</a></h2>

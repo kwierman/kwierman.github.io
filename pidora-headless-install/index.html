@@ -47,14 +47,14 @@
 <ul>
 <li>Download the installer:</li>
 </ul>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">fedora_arm_installer</span>
+<div class="highlight"><pre>sudo yum install fedora_arm_installer
 </pre></div>
 
 
 <ul>
 <li>Run the installer</li>
 </ul>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">fedora_arm_installer</span>
+<div class="highlight"><pre>sudo fedora_arm_installer
 </pre></div>
 
 
@@ -77,8 +77,8 @@
 <h2>Boot up the PI</h2>
 <p>In this, case I had the PI boot up with an ethernet cable attached, and the headphones attached to listen for the DHCP assigned IP number output.</p>
 <p>Once you get the IP number, ssh in with:</p>
-<div class="highlight"><pre><span class="nx">ssh</span> <span class="nb">root</span><span class="p">@</span><span class="mf">192.1.1</span><span class="nx">.</span><span class="o">&lt;</span><span class="nx">whatever</span><span class="o">&gt;</span>
-<span class="nx">password</span><span class="p">:</span> <span class="nx">raspberrypi</span>
+<div class="highlight"><pre>ssh root@192.1.1.&lt;whatever&gt;
+password: raspberrypi
 </pre></div>
 
 
@@ -88,21 +88,21 @@
 <p>Next, use <code>lsmod</code> to list the loaded drivers/modules, and check for <code>8192cu</code> to see that the wifi driver is loaded.</p>
 <p>You should now be able to use the network manager tools. Note that standard network tools are not installed by default. THAT IS OK. You can use <code>pifconfig</code> to check the assigned IP information. </p>
 <p>List the available SSIDs of wifi networks with</p>
-<div class="highlight"><pre><span class="n">nmcli</span> <span class="n">dev</span> <span class="n">wifi</span> <span class="n">list</span>
+<div class="highlight"><pre>nmcli dev wifi list
 </pre></div>
 
 
 <p>And connect with:</p>
-<div class="highlight"><pre><span class="n">nmcli</span> <span class="n">dev</span> <span class="n">wifi</span> <span class="n">con</span> <span class="s">&quot;ssid&quot;</span> <span class="n">password</span> <span class="s">&quot;password&quot;</span>
+<div class="highlight"><pre>nmcli dev wifi con <span class="s2">&quot;ssid&quot;</span> password <span class="s2">&quot;password&quot;</span>
 </pre></div>
 
 
 <p>This should create all the necessary files to connect the network again automatically. Most of these can be found in <code>/etc/networks</code></p>
 <h2>Creating a user</h2>
 <p>Since we don't want to be running as root continuously, create a user with:</p>
-<div class="highlight"><pre><span class="nx">useradd</span> <span class="o">&lt;</span><span class="nx">username</span><span class="o">&gt;</span>
-<span class="nx">passwd</span> <span class="o">&lt;</span><span class="nx">username</span><span class="o">&gt;</span>
-<span class="nx">...</span>
+<div class="highlight"><pre>useradd &lt;username&gt;
+passwd &lt;username&gt;
+...
 </pre></div>
 
 

@@ -91,27 +91,27 @@
 <p>Makefiles provide the following syntactic structure:</p>
 <h3>Comments</h3>
 <p>Comments follow the bash syntax:</p>
-<div class="highlight"><pre><span class="cp">#This is a comment</span>
-<span class="n">This</span> <span class="o">:=</span> <span class="n">Is</span> <span class="n">Not</span>
+<div class="highlight"><pre><span class="c">#This is a comment</span>
+<span class="nv">This</span> <span class="o">:=</span> Is Not
 </pre></div>
 
 
 <h3>Macros</h3>
 <p>Variable definition in Make expands to macros (lazy variable definition). The structure is as follows:</p>
-<div class="highlight"><pre><span class="n">VAR</span> <span class="o">:=</span> <span class="n">DEF1</span> <span class="n">DEF2</span> <span class="n">DEF3</span> <span class="err">#</span> <span class="n">Definition</span>
-<span class="n">VAR</span> <span class="o">+=</span> <span class="n">DEF4</span> <span class="err">#</span> <span class="n">Modification</span>
-<span class="n">VAR2</span> <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR</span><span class="p">)</span> <span class="err">#</span><span class="n">Expansion</span>
+<div class="highlight"><pre><span class="nv">VAR</span> <span class="o">:=</span> DEF1 DEF2 DEF3 <span class="c"># Definition</span>
+<span class="nv">VAR</span> <span class="o">+=</span> DEF4 <span class="c"># Modification</span>
+<span class="nv">VAR2</span> <span class="o">:=</span> <span class="k">$(</span>VAR<span class="k">)</span> <span class="c">#Expansion</span>
 </pre></div>
 
 
 <p>These allow you to use some basic structure for finding information and using it.</p>
 <h3>Conditions</h3>
 <p>You can test macros using the following syntax:</p>
-<div class="highlight"><pre><span class="n">ifeq</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR2</span><span class="p">)</span> <span class="p">)</span>
-<span class="cp">#Insert some commands here</span>
-<span class="k">else</span>
-<span class="cp">#Insert some other commands here</span>
-<span class="n">endif</span>
+<div class="highlight"><pre><span class="err">ifeq(</span> <span class="k">$(</span><span class="nv">VAR</span><span class="k">)</span><span class="err">,</span> <span class="k">$(</span><span class="nv">VAR</span>2<span class="k">)</span> <span class="err">)</span>
+<span class="c">#Insert some commands here</span>
+<span class="cp">else</span>
+<span class="c">#Insert some other commands here</span>
+<span class="cp">endif</span>
 </pre></div>
 
 
@@ -119,16 +119,16 @@
 <h3>Rules</h3>
 <p>The whole point of makefiles is the generation of targets based on a set of rules.</p>
 <p>The basic syntax of rule goes like this:</p>
-<div class="highlight"><pre><span class="n">targets</span><span class="o">:</span> <span class="n">dependencies</span>
-    <span class="n">commands</span>
+<div class="highlight"><pre><span class="nf">targets</span><span class="o">:</span> <span class="n">dependencies</span>
+    commands
 </pre></div>
 
 
 <p>This executes the commands in order to make a specific target. If this target depends on another target, it will make the targets in proper sequence.</p>
 <h2>Getting some basic information</h2>
 <p>I'm going to start by gathering some information</p>
-<div class="highlight"><pre><span class="n">OS</span>         <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="p">)</span>
-<span class="n">PLATFORM</span>     <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="o">-</span><span class="n">p</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nv">OS</span>         <span class="o">:=</span> <span class="k">$(</span>shell uname <span class="k">)</span>
+<span class="nv">PLATFORM</span>     <span class="o">:=</span> <span class="k">$(</span>shell uname -p<span class="k">)</span>
 </pre></div>
 
 
