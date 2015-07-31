@@ -80,7 +80,7 @@ PLUGIN_PATHS = ['plugins']
 PLUGINS = [
 'assets',
 'sitemap',
-'pelican_plugin-render_math',
+'render_math',
 ]
 ARCHIVES_SAVE_AS = 'articles/index.html'
 ARTICLE_LANG_SAVE_AS = False
