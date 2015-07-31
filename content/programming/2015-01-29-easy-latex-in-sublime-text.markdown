@@ -4,7 +4,6 @@ Tags:
 Category: blog
 
 
-
 I'm a huge fan of [Sublime Text](http://www.sublimetext.com/). A more ideal setting would be to have this work for all of my concurrent work/notetaking/writing, I'd like a system for updating logs. The following steps were taken to make latex and sublime text play well together.
 
 ## Prereqs
