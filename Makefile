@@ -80,7 +80,7 @@ stopserver:
 	kill -9 `cat srv.pid`
 	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
 
-publish:
+publish: clean
 	git clone https://github.com/kwierman/kwierman.github.io.git -b master output
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
@@ -105,7 +105,7 @@ cf_upload: publish
 github: publish
 	cd output
 	git commit -a -m "Pelican Publish"
-	git push origin master
+	git push
 	cd ..
 
 .PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
