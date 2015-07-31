@@ -30,6 +30,12 @@ ifeq ($(DEBUG), 1)
 	PELICANOPTS += -D
 endif
 
+CHDIR_SHELL := $(SHELL)
+define chdir
+   $(eval _D=$(firstword $(1) $(@D)))
+   $(info $(MAKE): cd $(_D)) $(eval SHELL = cd $(_D); $(CHDIR_SHELL))
+endef
+
 help:
 	@echo 'Makefile for a pelican Web site                                        '
 	@echo '                                                                       '
@@ -83,9 +89,9 @@ gitmake: clean
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 github: gitmake
-	cd ./output;
+	$(shell cd output)
 	git commit -a -m "Pelican Publish";
 	git push;
-	cd ..;
+	$(shell cd ..)
 
 .PHONY: html help clean regenerate serve devserver publish  github
