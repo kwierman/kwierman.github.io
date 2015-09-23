@@ -1,111 +1,107 @@
 <!doctype html>
 <!--[if lt IE 9]><html lang="en" class="ie"><![endif]-->
-<!--[if gte IE 9]><!--><html lang="en"><!--<![endif]-->
+<!--[if gte IE 9]><!-->
+<html lang="en"><!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Using Octopress on Fedora 20 | Kevin Wierman</title>
+    <title>Kevin Wierman</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content="">
-    
-<link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
-</head>
-<body>
+</head>    <body>
     <header>
         <div class="container">
-            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="../articles/" title="Articles">Articles</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                    <li><a href="../contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
+                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
             </nav>        </div>
-    </header>
-    
-    <div class="container">
+    </header>        
+        <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="../using-octopress-on-fedora-20/" rel="bookmark" title="Permalink to Using Octopress on Fedora 20">Using Octopress on Fedora 20</a></h1>
+            <h1><a href="http://kwierman.github.io/using-octopress-on-fedora-20/" rel="bookmark" title="Permalink to Using Octopress on Fedora 20">Using Octopress on Fedora 20</a></h1>
 <h5></h5>            <time title="2015-01-24T00:00:00-05:00">Sat 24 January 2015</time>
         </header>
         
         <p>Prerequisites</p>
 <p>In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo yum install curl wget git-core
-<span class="nv">$ </span>sudo yum install gcc zlib-devel make openssl autoconf automake
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">curl</span> <span class="n">wget</span> <span class="n">git</span><span class="o">-</span><span class="n">core</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">zlib</span><span class="o">-</span><span class="n">devel</span> <span class="n">make</span> <span class="n">openssl</span> <span class="n">autoconf</span> <span class="n">automake</span>
 </pre></div>
 
 
 <p>Install RVM</p>
-<div class="highlight"><pre><span class="nv">$ </span>su -c <span class="s2">&quot;curl -L https://get.rvm.io | bash -s stable&quot;</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;curl -L https://get.rvm.io | bash -s stable&quot;</span>
 </pre></div>
 
 
 <p>Start a new terminal.</p>
 <p>Make sure that terminal is capable of running rvm as a function (not as hash)</p>
-<div class="highlight"><pre><span class="nv">$ </span>rvm -v
+<div class="highlight"><pre><span class="err">$</span> <span class="n">rvm</span> <span class="o">-</span><span class="n">v</span>
 </pre></div>
 
 
 <p>or </p>
-<div class="highlight"><pre><span class="nv">$ </span><span class="nb">type </span>rvm <span class="p">|</span> head -1
-<span class="c"># expected: rvm is a function</span>
-<span class="nv">$ </span>which rvm
-<span class="c"># expected: /home/[USERNAME]/.rvm/bin/rvm</span>
+<div class="highlight"><pre><span class="nx">$</span> <span class="nx">type</span> <span class="nx">rvm</span> <span class="o">|</span> <span class="nx">head</span> <span class="o">-</span><span class="mi">1</span>
+<span class="err">#</span> <span class="nx">expected</span><span class="o">:</span> <span class="nx">rvm</span> <span class="nx">is</span> <span class="nx">a</span> <span class="kd">function</span>
+<span class="nx">$</span> <span class="nx">which</span> <span class="nx">rvm</span>
+<span class="err">#</span> <span class="nx">expected</span><span class="o">:</span> <span class="sr">/home/</span><span class="cp">[</span><span class="nx">USERNAME</span><span class="cp">]</span><span class="o">/</span><span class="p">.</span><span class="nx">rvm</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">rvm</span>
 </pre></div>
 
 
 <p>Voila.</p>
 <p>Install openssl and iconv:</p>
-<div class="highlight"><pre><span class="nv">$ </span>rvm pkg install openssl
-<span class="nv">$ </span>rvm pkg install iconv
+<div class="highlight"><pre><span class="err">$</span> <span class="n">rvm</span> <span class="n">pkg</span> <span class="n">install</span> <span class="n">openssl</span>
+<span class="err">$</span> <span class="n">rvm</span> <span class="n">pkg</span> <span class="n">install</span> <span class="n">iconv</span>
 </pre></div>
 
 
 <p>Install ruby and rubygems:</p>
-<div class="highlight"><pre><span class="nv">$ </span>rvm install 1.9.2 -C --with-openssl-dir<span class="o">=</span><span class="nv">$HOME</span>/.rvm/usr,--with-iconv-dir<span class="o">=</span><span class="nv">$HOME</span>/.rvm/usr
-<span class="nv">$ </span>rvm rubygems latest
+<div class="highlight"><pre><span class="err">$</span> <span class="n">rvm</span> <span class="n">install</span> <span class="mf">1.9.2</span> <span class="o">-</span><span class="n">C</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">openssl</span><span class="o">-</span><span class="n">dir</span><span class="o">=</span><span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="p">.</span><span class="n">rvm</span><span class="o">/</span><span class="n">usr</span><span class="p">,</span><span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">iconv</span><span class="o">-</span><span class="n">dir</span><span class="o">=</span><span class="err">$</span><span class="n">HOME</span><span class="o">/</span><span class="p">.</span><span class="n">rvm</span><span class="o">/</span><span class="n">usr</span>
+<span class="err">$</span> <span class="n">rvm</span> <span class="n">rubygems</span> <span class="n">latest</span>
 </pre></div>
 
 
 <p>Setup rvm for octopress:</p>
-<div class="highlight"><pre><span class="nv">$ </span>rvm use 1.9.2 --default
-<span class="nv">$ </span>rvm reload
-<span class="nv">$ </span>gem install bundler
+<div class="highlight"><pre><span class="err">$</span> <span class="n">rvm</span> <span class="n">use</span> <span class="mf">1.9.2</span> <span class="o">--</span><span class="k">default</span>
+<span class="err">$</span> <span class="n">rvm</span> <span class="n">reload</span>
+<span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
 </pre></div>
 
 
 <p>Getting octopress onto your machine</p>
 <p>Run the following commmand:</p>
-<div class="highlight"><pre><span class="nv">$ </span>git clone git://github.com/imathis/octopress.git &lt;your_blogname <span class="o">(</span>namely, yourgithubname.github.io<span class="o">)</span>&gt;
+<div class="highlight"><pre><span class="err">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="o">:</span><span class="c1">//github.com/imathis/octopress.git &lt;your_blogname (namely, yourgithubname.github.io)&gt;</span>
 </pre></div>
 
 
 <p>Install the bundler gem in that folder:</p>
-<div class="highlight"><pre><span class="nv">$ </span>gem install bundler
+<div class="highlight"><pre><span class="err">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
 </pre></div>
 
 
 <p>Bundle install</p>
-<div class="highlight"><pre><span class="nv">$ </span>bundle install
+<div class="highlight"><pre><span class="err">$</span> <span class="n">bundle</span> <span class="n">install</span>
 </pre></div>
 
 
 <p>Rake install</p>
-<div class="highlight"><pre><span class="nv">$ </span>rake install
+<div class="highlight"><pre><span class="err">$</span> <span class="n">rake</span> <span class="n">install</span>
 </pre></div>
 
 
@@ -116,19 +112,19 @@ First, in order to get the font to be ubuntu, the following was added to <code>s
 
 
 <p>The syntax for adding code in is:</p>
-<div class="highlight"><pre>~~~ &lt;language&gt;
-code
-~~~
+<div class="highlight"><pre><span class="err">~~~</span> <span class="o">&lt;</span><span class="nb">language</span><span class="o">&gt;</span>
+<span class="nb">code</span>
+<span class="err">~~~</span>
 </pre></div>
 
 
 <p>or </p>
-<div class="highlight"><pre>~~~
-def what?
-  42
-end
-~~~
-{:.language-ruby}
+<div class="highlight"><pre><span class="o">~~~</span>
+<span class="n">def</span> <span class="n">what</span><span class="o">?</span>
+  <span class="mi">42</span>
+<span class="n">end</span>
+<span class="o">~~~</span>
+<span class="p">{</span><span class="o">:</span><span class="p">.</span><span class="n">language</span><span class="o">-</span><span class="n">ruby</span><span class="p">}</span>
 </pre></div>
 
 
@@ -260,13 +256,12 @@ What they lack is telling you that single backticks can be used for inline code 
             reload: true,
             config: function () {  
                 this.page.identifier = 'using-octopress-on-fedora-20/';
-                this.page.url = '../using-octopress-on-fedora-20/';
+                this.page.url = 'http://kwierman.github.io/using-octopress-on-fedora-20/';
             }
         });
     }, false);
 </script>        </section>
-    </article>    </div>
-    
+    </article>        </div>
     <footer class="container">
 
 <section>
@@ -280,7 +275,7 @@ What they lack is telling you that single backticks can be used for inline code 
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "../theme/js/jXHR.js";
+            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -293,15 +288,13 @@ What they lack is telling you that single backticks can be used for inline code 
         });
     });
   </script>
-  <script src="../theme/js/github.js" type="text/javascript"> </script>
+  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             
             
 <li>&copy; 2014-2015 Kevin Wierman.</li>        </ul>
-
-    </footer>
-    
+    </footer>        
 <script>
     var _gaq = [['_setAccount', 'UA-53465262-1'], ['_trackPageview']];
     (function(d, t) {
@@ -310,5 +303,5 @@ What they lack is telling you that single backticks can be used for inline code 
         g.src = '//www.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g, s);
     })(document, 'script');
-</script></body>
+</script>    </body>
 </html>

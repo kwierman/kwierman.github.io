@@ -1,56 +1,52 @@
 <!doctype html>
 <!--[if lt IE 9]><html lang="en" class="ie"><![endif]-->
-<!--[if gte IE 9]><!--><html lang="en"><!--<![endif]-->
+<!--[if gte IE 9]><!-->
+<html lang="en"><!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>SSL Keys on OSX | Kevin Wierman</title>
+    <title>Kevin Wierman</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content="">
-    
-<link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
-</head>
-<body>
+</head>    <body>
     <header>
         <div class="container">
-            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="../articles/" title="Articles">Articles</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                    <li><a href="../contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
+                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
             </nav>        </div>
-    </header>
-    
-    <div class="container">
+    </header>        
+        <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="../ssl-keys-on-osx/" rel="bookmark" title="Permalink to SSL Keys on OSX">SSL Keys on OSX</a></h1>
+            <h1><a href="http://kwierman.github.io/ssl-keys-on-osx/" rel="bookmark" title="Permalink to SSL Keys on OSX">SSL Keys on OSX</a></h1>
 <h5></h5>            <time title="2015-02-03T00:00:00-05:00">Tue 03 February 2015</time>
         </header>
         
         <h2>Generate a host key</h2>
 <p>First, make a home for the new SSL files. I use <code>/etc/apache2/ssl</code>. Open up a terminal window, <code>cd</code> to the new directory and issue the following command to create a host key file.</p>
-<div class="highlight"><pre>sudo ssh-keygen -f host.key
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">f</span> <span class="n">host</span><span class="p">.</span><span class="n">key</span>
 </pre></div>
 
 
 <h2>Generate a certificate request file</h2>
 <p>This command create a certificate request file. A certificate request file contains information about your organization that will be used in the SSL certificate.</p>
-<div class="highlight"><pre>sudo openssl req -new -key host.key -out request.csr
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">new</span> <span class="o">-</span><span class="n">key</span> <span class="n">host</span><span class="p">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="n">request</span><span class="p">.</span><span class="n">csr</span>
 </pre></div>
 
 
@@ -61,20 +57,20 @@
 <p>Create a backup of <code>/etc/apache2/httpd.conf</code>.</p>
 <p>Append the contents of <code>/etc/apache2/extra/httpd-ssl.conf</code> to <code>/etc/apache2/httpd.conf</code>.</p>
 <p>In <code>/etc/apache2/httpd.conf</code>, make sure the loading of SSL is enabled (remove the #)</p>
-<div class="highlight"><pre>LoadModule ssl_module libexec/apache2/mod_ssl.so
+<div class="highlight"><pre><span class="n">LoadModule</span> <span class="n">ssl_module</span> <span class="n">libexec</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">mod_ssl</span><span class="p">.</span><span class="n">so</span>
 </pre></div>
 
 
 <p>Also, edit SSL section to use the new certificate.</p>
-<div class="highlight"><pre>SSLEngine on
-SSLCertificateFile /etc/apache2/ssl/server.crt
-SSLCertificateKeyFile /etc/apache2/ssl/host.key
+<div class="highlight"><pre><span class="n">SSLEngine</span> <span class="n">on</span>
+<span class="n">SSLCertificateFile</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">server</span><span class="p">.</span><span class="n">crt</span>
+<span class="n">SSLCertificateKeyFile</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span><span class="n">host</span><span class="p">.</span><span class="n">key</span>
 </pre></div>
 
 
 <p>Check the config and restart Apache to try the new certificate.</p>
-<div class="highlight"><pre>sudo apachectl configtest
-sudo apachectl restart
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">apachectl</span> <span class="n">configtest</span>
+<span class="n">sudo</span> <span class="n">apachectl</span> <span class="n">restart</span>
 </pre></div>
 
 
@@ -118,13 +114,12 @@ sudo apachectl restart
             reload: true,
             config: function () {  
                 this.page.identifier = 'ssl-keys-on-osx/';
-                this.page.url = '../ssl-keys-on-osx/';
+                this.page.url = 'http://kwierman.github.io/ssl-keys-on-osx/';
             }
         });
     }, false);
 </script>        </section>
-    </article>    </div>
-    
+    </article>        </div>
     <footer class="container">
 
 <section>
@@ -138,7 +133,7 @@ sudo apachectl restart
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "../theme/js/jXHR.js";
+            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -151,15 +146,13 @@ sudo apachectl restart
         });
     });
   </script>
-  <script src="../theme/js/github.js" type="text/javascript"> </script>
+  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             
             
 <li>&copy; 2014-2015 Kevin Wierman.</li>        </ul>
-
-    </footer>
-    
+    </footer>        
 <script>
     var _gaq = [['_setAccount', 'UA-53465262-1'], ['_trackPageview']];
     (function(d, t) {
@@ -168,5 +161,5 @@ sudo apachectl restart
         g.src = '//www.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g, s);
     })(document, 'script');
-</script></body>
+</script>    </body>
 </html>

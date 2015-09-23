@@ -1,14 +1,17 @@
 /* Common */
 
+
 a {
     color: #333333;
     text-decoration: none;
 }
+
 a:hover,
 a:focus {
     color: #ff6633;
     text-decoration: none;
 }
+
 body {
     background-color: #ffffff;
     color: #333333;
@@ -17,6 +20,7 @@ body {
     line-height: 20px;
     margin: 0px;
 }
+
 h1 {
     font-size: 2.3em;
     line-height: 40px;
