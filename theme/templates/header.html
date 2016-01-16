@@ -1,0 +1,16 @@
+    <header>
+        <div class="container">
+            <h2><a href="{{ SITEURL }}" title="">{{ SITENAME }}</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+
+            
+            {% if MENUITEMS -%}
+            <nav>
+                <ul>
+                    {%- for title, link in MENUITEMS %}
+                    <li><a href="{{ SITEURL }}/{{ link }}" title="{{ title }}">{{ title }}</a></li>
+                    {%- endfor %}
+                </ul>
+            </nav>
+            {%- endif %}
+        </div>
+    </header>

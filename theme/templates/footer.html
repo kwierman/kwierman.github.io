@@ -1,0 +1,24 @@
+    <footer class="container">
+
+        {% include "github.html" %}
+        {% if SOCIAL or FEED_ATOM or FEED_RSS or LICENSE -%}
+        <ul>
+            {%- for title, link in SOCIAL %}
+            <li><a href="{{ link }}" title="{{ title }}">{{ title }}</a></li>
+            {%- endfor %}
+            
+            {% if FEED_ATOM -%}
+            <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" title="Feed" rel="alternate" type="application/atom+xml">Feed</a></li>
+            {%- endif %}
+            
+            {% if FEED_RSS -%}
+            <li><a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" title="RSS" rel="alternate" type="application/rss+xml">RSS</a></li>
+            {%- endif %}
+            
+            {% if LICENSE -%}
+            <li>{{ LICENSE }}</li>
+            {%- endif %}
+        </ul>
+        {%- endif %}
+
+    </footer>
