@@ -4,196 +4,168 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://kwierman.github.io/</loc>
-<lastmod>2016-01-16T17:02:32-00:00</lastmod>
+<loc>kwierman.github.io/</loc>
+<lastmod>2016-10-02T13:40:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/home-brewing/</loc>
+<loc>kwierman.github.io/home-brewing/</loc>
 <lastmod>2014-08-04T07:48:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/about-me/</loc>
+<loc>kwierman.github.io/about-me/</loc>
 <lastmod>2015-01-25T14:53:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/contact-me/</loc>
+<loc>kwierman.github.io/tritium/</loc>
 <lastmod>2015-01-25T15:48:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/tritium/</loc>
-<lastmod>2015-01-25T15:48:00-05:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://kwierman.github.io/wiretree-brewing/</loc>
+<loc>kwierman.github.io/wiretree-brewing/</loc>
 <lastmod>2014-08-04T07:48:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/rabbitmq-without-root/</loc>
+<loc>kwierman.github.io/rabbitmq-without-root/</loc>
 <lastmod>2015-09-17T00:00:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/django-cheat-sheet/</loc>
+<loc>kwierman.github.io/django-cheat-sheet/</loc>
 <lastmod>2015-08-10T00:00:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/bash-tools/</loc>
+<loc>kwierman.github.io/bash-tools/</loc>
 <lastmod>2015-05-11T00:00:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/hierarchal-git-repos/</loc>
+<loc>kwierman.github.io/hierarchal-git-repos/</loc>
 <lastmod>2015-05-11T00:00:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/wifi-toggle-in-fedora-20/</loc>
+<loc>kwierman.github.io/wifi-toggle-in-fedora-20/</loc>
 <lastmod>2015-05-10T00:00:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/irish-red-ale/</loc>
-<lastmod>2015-04-04T00:00:00-04:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://kwierman.github.io/a-makefile-for-fast-prototyping/</loc>
+<loc>kwierman.github.io/a-makefile-for-fast-prototyping/</loc>
 <lastmod>2015-02-27T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/fedora-20-keyboard-shortcuts/</loc>
+<loc>kwierman.github.io/fedora-20-keyboard-shortcuts/</loc>
 <lastmod>2015-02-25T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/pidora-headless-install/</loc>
+<loc>kwierman.github.io/pidora-headless-install/</loc>
 <lastmod>2015-02-15T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/yeast-production/</loc>
-<lastmod>2015-02-09T00:00:00-05:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://kwierman.github.io/tritium-front-end/</loc>
+<loc>kwierman.github.io/tritium-front-end/</loc>
 <lastmod>2015-02-05T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/send-emails-from-osx-apache-server/</loc>
+<loc>kwierman.github.io/send-emails-from-osx-apache-server/</loc>
 <lastmod>2015-02-04T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/indico-server-on-osx/</loc>
+<loc>kwierman.github.io/indico-server-on-osx/</loc>
 <lastmod>2015-02-03T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/modwsgi-on-osx/</loc>
+<loc>kwierman.github.io/modwsgi-on-osx/</loc>
 <lastmod>2015-02-03T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/ssl-keys-on-osx/</loc>
+<loc>kwierman.github.io/ssl-keys-on-osx/</loc>
 <lastmod>2015-02-03T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/beer-color-calculation/</loc>
+<loc>kwierman.github.io/beer-color-calculation/</loc>
 <lastmod>2015-01-31T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/grain-mass-calculations/</loc>
+<loc>kwierman.github.io/grain-mass-calculations/</loc>
 <lastmod>2015-01-31T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/jasmine-ipa/</loc>
-<lastmod>2015-01-31T00:00:00-05:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://kwierman.github.io/easy-latex-in-sublime-text/</loc>
+<loc>kwierman.github.io/easy-latex-in-sublime-text/</loc>
 <lastmod>2015-01-29T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/presentations-in-latex/</loc>
+<loc>kwierman.github.io/presentations-in-latex/</loc>
 <lastmod>2015-01-29T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/using-sphinx-for-inline-documentation/</loc>
+<loc>kwierman.github.io/using-sphinx-for-inline-documentation/</loc>
 <lastmod>2015-01-27T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://kwierman.github.io/using-octopress-on-fedora-20/</loc>
+<loc>kwierman.github.io/using-octopress-on-fedora-20/</loc>
 <lastmod>2015-01-24T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>

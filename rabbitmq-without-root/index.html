@@ -12,29 +12,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    <meta name="keywords" content=""><link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
 </head>    <body>
     <header>
         <div class="container">
-            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
+                <ul>                    <li><a href="../articles/" title="Posts">Posts</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
             </nav>        </div>
     </header>        
         <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="http://kwierman.github.io/rabbitmq-without-root/" rel="bookmark" title="Permalink to Rabbitmq Without Root">Rabbitmq Without Root</a></h1>
+            <h1><a href="../rabbitmq-without-root/" rel="bookmark" title="Permalink to Rabbitmq Without Root">Rabbitmq Without Root</a></h1>
 <h5></h5>            <time title="2015-09-17T00:00:00-04:00">Thu 17 September 2015</time>
         </header>
         
@@ -45,7 +45,7 @@
 
 
 <h2>Enable management plugin</h2>
-<div class="highlight"><pre>sudo rabbitmq-plugins <span class="nb">enable </span>rabbitmq_management
+<div class="highlight"><pre>sudo rabbitmq-plugins <span class="nb">enable</span> rabbitmq_management
 </pre></div>
 
 
@@ -84,9 +84,9 @@ sudo chown -R desired_user: desired_user /var/log/rabbitmq
 
 
 <h1>Launching as desired_user</h1>
-<div class="highlight"><pre>    <span class="nb">export </span><span class="nv">RABBITMQ_CONFIG_FILE</span><span class="o">=</span>/home/desired_user/config/rabbitmq
-    <span class="nb">export </span><span class="nv">RABBITMQ_SERVER_ERL_ARGS</span><span class="o">=</span><span class="s2">&quot;-setcookie rabbit&quot;</span>
-    <span class="nb">export </span><span class="nv">RABBITMQ_CTL_ERL_ARGS</span><span class="o">=</span><span class="s2">&quot;-setcookie rabbit&quot;</span>
+<div class="highlight"><pre>    <span class="nb">export</span> <span class="nv">RABBITMQ_CONFIG_FILE</span><span class="o">=</span>/home/desired_user/config/rabbitmq
+    <span class="nb">export</span> <span class="nv">RABBITMQ_SERVER_ERL_ARGS</span><span class="o">=</span><span class="s2">&quot;-setcookie rabbit&quot;</span>
+    <span class="nb">export</span> <span class="nv">RABBITMQ_CTL_ERL_ARGS</span><span class="o">=</span><span class="s2">&quot;-setcookie rabbit&quot;</span>
 </pre></div>
 
 
@@ -100,7 +100,7 @@ sudo chown -R desired_user: desired_user /var/log/rabbitmq
 </ul>
 <div class="highlight"><pre><span class="p">[</span>
   <span class="p">{</span><span class="n">rabbit</span><span class="p">,</span>
-    <span class="p">[{</span><span class="n">cluster_nodes</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;rabbit at play&#39;</span><span class="p">,</span> <span class="s">&#39;rabbit at play2&#39;</span><span class="p">]}</span>
+    <span class="p">[{</span><span class="n">cluster_nodes</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;rabbit at play&#39;</span><span class="p">,</span> <span class="s1">&#39;rabbit at play2&#39;</span><span class="p">]}</span>
     <span class="p">]</span>
   <span class="p">}</span>
 <span class="p">]</span><span class="o">.</span>
@@ -127,7 +127,7 @@ sudo chown -R desired_user: desired_user /var/log/rabbitmq
             reload: true,
             config: function () {  
                 this.page.identifier = 'rabbitmq-without-root/';
-                this.page.url = 'http://kwierman.github.io/rabbitmq-without-root/';
+                this.page.url = '../rabbitmq-without-root/';
             }
         });
     }, false);
@@ -146,7 +146,7 @@ sudo chown -R desired_user: desired_user /var/log/rabbitmq
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
+            jxhr.src = "../theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -159,7 +159,7 @@ sudo chown -R desired_user: desired_user /var/log/rabbitmq
         });
     });
   </script>
-  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
+  <script src="../theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             

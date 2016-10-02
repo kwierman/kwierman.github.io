@@ -12,29 +12,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    <meta name="keywords" content=""><link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
 </head>    <body>
     <header>
         <div class="container">
-            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
+                <ul>                    <li><a href="../articles/" title="Posts">Posts</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
             </nav>        </div>
     </header>        
         <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="http://kwierman.github.io/a-makefile-for-fast-prototyping/" rel="bookmark" title="Permalink to A Makefile for fast prototyping">A Makefile for fast prototyping</a></h1>
+            <h1><a href="../a-makefile-for-fast-prototyping/" rel="bookmark" title="Permalink to A Makefile for fast prototyping">A Makefile for fast prototyping</a></h1>
 <h5></h5>            <time title="2015-02-27T00:00:00-05:00">Fri 27 February 2015</time>
         </header>
         
@@ -87,27 +87,27 @@
 <p>Makefiles provide the following syntactic structure:</p>
 <h3>Comments</h3>
 <p>Comments follow the bash syntax:</p>
-<div class="highlight"><pre><span class="cp">#This is a comment</span>
-<span class="n">This</span> <span class="o">:=</span> <span class="n">Is</span> <span class="n">Not</span>
+<div class="highlight"><pre><span class="c">#This is a comment</span>
+<span class="nv">This</span> <span class="o">:=</span> Is Not
 </pre></div>
 
 
 <h3>Macros</h3>
 <p>Variable definition in Make expands to macros (lazy variable definition). The structure is as follows:</p>
-<div class="highlight"><pre><span class="n">VAR</span> <span class="o">:=</span> <span class="n">DEF1</span> <span class="n">DEF2</span> <span class="n">DEF3</span> <span class="err">#</span> <span class="n">Definition</span>
-<span class="n">VAR</span> <span class="o">+=</span> <span class="n">DEF4</span> <span class="err">#</span> <span class="n">Modification</span>
-<span class="n">VAR2</span> <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR</span><span class="p">)</span> <span class="err">#</span><span class="n">Expansion</span>
+<div class="highlight"><pre><span class="nv">VAR</span> <span class="o">:=</span> DEF1 DEF2 DEF3 <span class="c1"># Definition</span>
+<span class="nv">VAR</span> <span class="o">+=</span> DEF4 <span class="c1"># Modification</span>
+<span class="nv">VAR2</span> <span class="o">:=</span> <span class="k">$(</span>VAR<span class="k">)</span> <span class="c1">#Expansion</span>
 </pre></div>
 
 
 <p>These allow you to use some basic structure for finding information and using it.</p>
 <h3>Conditions</h3>
 <p>You can test macros using the following syntax:</p>
-<div class="highlight"><pre><span class="n">ifeq</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="n">VAR2</span><span class="p">)</span> <span class="p">)</span>
-<span class="cp">#Insert some commands here</span>
-<span class="k">else</span>
-<span class="cp">#Insert some other commands here</span>
-<span class="n">endif</span>
+<div class="highlight"><pre><span class="err">ifeq(</span> <span class="k">$(</span><span class="nv">VAR</span><span class="k">)</span><span class="err">,</span> <span class="k">$(</span><span class="nv">VAR</span>2<span class="k">)</span> <span class="err">)</span>
+<span class="c">#Insert some commands here</span>
+<span class="cp">else</span>
+<span class="c">#Insert some other commands here</span>
+<span class="cp">endif</span>
 </pre></div>
 
 
@@ -115,16 +115,16 @@
 <h3>Rules</h3>
 <p>The whole point of makefiles is the generation of targets based on a set of rules.</p>
 <p>The basic syntax of rule goes like this:</p>
-<div class="highlight"><pre><span class="n">targets</span><span class="o">:</span> <span class="n">dependencies</span>
-    <span class="n">commands</span>
+<div class="highlight"><pre><span class="nf">targets</span><span class="o">:</span> <span class="n">dependencies</span>
+    commands
 </pre></div>
 
 
 <p>This executes the commands in order to make a specific target. If this target depends on another target, it will make the targets in proper sequence.</p>
 <h2>Getting some basic information</h2>
 <p>I'm going to start by gathering some information</p>
-<div class="highlight"><pre><span class="n">OS</span>         <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="p">)</span>
-<span class="n">PLATFORM</span>     <span class="o">:=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="o">-</span><span class="n">p</span><span class="p">)</span>
+<div class="highlight"><pre><span class="nv">OS</span>         <span class="o">:=</span> <span class="k">$(</span>shell uname <span class="k">)</span>
+<span class="nv">PLATFORM</span>     <span class="o">:=</span> <span class="k">$(</span>shell uname -p<span class="k">)</span>
 </pre></div>
 
 
@@ -153,7 +153,7 @@
             reload: true,
             config: function () {  
                 this.page.identifier = 'a-makefile-for-fast-prototyping/';
-                this.page.url = 'http://kwierman.github.io/a-makefile-for-fast-prototyping/';
+                this.page.url = '../a-makefile-for-fast-prototyping/';
             }
         });
     }, false);
@@ -172,7 +172,7 @@
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
+            jxhr.src = "../theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -185,7 +185,7 @@
         });
     });
   </script>
-  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
+  <script src="../theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             

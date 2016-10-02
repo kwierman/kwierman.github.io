@@ -12,43 +12,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    <meta name="keywords" content=""><link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
 </head>    <body>
     <header>
         <div class="container">
-            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
+                <ul>                    <li><a href="../articles/" title="Posts">Posts</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
             </nav>        </div>
     </header>        
         <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="http://kwierman.github.io/tritium-front-end/" rel="bookmark" title="Permalink to Tritium Front End">Tritium Front End</a></h1>
+            <h1><a href="../tritium-front-end/" rel="bookmark" title="Permalink to Tritium Front End">Tritium Front End</a></h1>
 <h5></h5>            <time title="2015-02-05T00:00:00-05:00">Thu 05 February 2015</time>
         </header>
         
         <p>Remember to add in : chmod g-wx,o-wx ~/.python-eggs laterp</p>
 <h2>Making a testing framework</h2>
 <h2>Using the Python Application Environment</h2>
-<div class="highlight"><pre><span class="n">Change</span> <span class="n">your</span> <span class="n">models</span> <span class="p">(</span><span class="n">in</span> <span class="n">models</span><span class="p">.</span><span class="n">py</span><span class="p">).</span>
-<span class="n">Run</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">to</span> <span class="n">create</span> <span class="n">migrations</span> <span class="k">for</span> <span class="n">those</span> <span class="n">changes</span>
-<span class="n">Run</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span> <span class="n">to</span> <span class="n">apply</span> <span class="n">those</span> <span class="n">changes</span> <span class="n">to</span> <span class="n">the</span> <span class="n">database</span><span class="p">.</span>
+<div class="highlight"><pre>Change your models <span class="o">(</span>in models.py<span class="o">)</span>.
+Run python manage.py makemigrations to create migrations <span class="k">for</span> those changes
+Run python manage.py migrate to apply those changes to the database.
 </pre></div>
 
 
 <h2>Creating a superuser</h2>
-<div class="highlight"><pre><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
+<div class="highlight"><pre>python manage.py createsuperuser
 </pre></div>
         
         <aside class="clearfix">
@@ -72,7 +72,7 @@
             reload: true,
             config: function () {  
                 this.page.identifier = 'tritium-front-end/';
-                this.page.url = 'http://kwierman.github.io/tritium-front-end/';
+                this.page.url = '../tritium-front-end/';
             }
         });
     }, false);
@@ -91,7 +91,7 @@
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
+            jxhr.src = "../theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -104,7 +104,7 @@
         });
     });
   </script>
-  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
+  <script src="../theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             

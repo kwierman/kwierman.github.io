@@ -12,29 +12,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    <meta name="keywords" content=""><link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
 </head>    <body>
     <header>
         <div class="container">
-            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
+                <ul>                    <li><a href="../articles/" title="Posts">Posts</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
             </nav>        </div>
     </header>        
         <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="http://kwierman.github.io/bash-tools/" rel="bookmark" title="Permalink to Bash Tools">Bash Tools</a></h1>
+            <h1><a href="../bash-tools/" rel="bookmark" title="Permalink to Bash Tools">Bash Tools</a></h1>
 <h5></h5>            <time title="2015-05-11T00:00:00-04:00">Mon 11 May 2015</time>
         </header>
         
@@ -48,23 +48,23 @@
 
 
 <p>For the aforementioned situation of forgetting to sudo a privileged command, typing in <code>sudo !!</code> does the trick, </p>
-<div class="highlight"><pre><span class="o">[</span>kwierman~<span class="o">]</span><span class="nv">$ </span>yum update
+<div class="highlight"><pre><span class="o">[</span>kwierman~<span class="o">]</span>$ yum update
 You need to be root to perform this command.
-<span class="o">[</span>kwierman~<span class="o">]</span><span class="nv">$ </span>sudo !!
+<span class="o">[</span>kwierman~<span class="o">]</span>$ sudo !!
 sudo yum update
-<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for </span>kwierman:
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> kwierman:
 </pre></div>
 
 
 <h3>history</h3>
 <p>This is a tool built into bash (hence the article name). Simply typing in <code>history</code> will show the previously typed in commands.</p>
 <p>This is useful enough for tracing previous steps in a project, especially since it can be used in combination with awk and cat to output the last several commands to file.</p>
-<div class="highlight"><pre><span class="nb">history </span>10 | awk <span class="s1">&#39;{for (i=2; i&lt;NF; i++) printf $i &quot; &quot;; print $NF}&#39;</span>
+<div class="highlight"><pre><span class="nb">history</span> <span class="m">10</span> <span class="p">|</span> awk <span class="s1">&#39;{for (i=2; i&lt;NF; i++) printf $i &quot; &quot;; print $NF}&#39;</span>
 </pre></div>
 
 
 <p>Just replace <code>10</code> with the last number of commands you want to print out. Similarly, an amusing script below will tell the user how often they use certain commands.</p>
-<div class="highlight"><pre><span class="nb">history</span>|awk <span class="s1">&#39;{print $2}&#39;</span>|awk <span class="s1">&#39;BEGIN {FS=&quot;|&quot;} {print $1}&#39;</span>|sort|uniq -c|sort -r
+<div class="highlight"><pre>history<span class="p">|</span>awk <span class="s1">&#39;{print $2}&#39;</span><span class="p">|</span>awk <span class="s1">&#39;BEGIN {FS=&quot;|&quot;} {print $1}&#39;</span><span class="p">|</span>sort<span class="p">|</span>uniq -c<span class="p">|</span>sort -r
 </pre></div>
 
 
@@ -92,7 +92,7 @@ sudo yum update
 
 
 <p>This can be used with the <code>-R</code> option to recursively search entire directories. Bear in mind that <code>grep</code> can't filter on file name or metadata, so this can be used in conjunction with find and xargs to only search certain files</p>
-<div class="highlight"><pre>find . -name *.txt | xargs grep mystring
+<div class="highlight"><pre>find . -name *.txt <span class="p">|</span> xargs grep mystring
 </pre></div>
 
 
@@ -243,7 +243,7 @@ rsync -r username@remote_computer:/remote_directory my_local_directory
             reload: true,
             config: function () {  
                 this.page.identifier = 'bash-tools/';
-                this.page.url = 'http://kwierman.github.io/bash-tools/';
+                this.page.url = '../bash-tools/';
             }
         });
     }, false);
@@ -262,7 +262,7 @@ rsync -r username@remote_computer:/remote_directory my_local_directory
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
+            jxhr.src = "../theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -275,7 +275,7 @@ rsync -r username@remote_computer:/remote_directory my_local_directory
         });
     });
   </script>
-  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
+  <script src="../theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             
