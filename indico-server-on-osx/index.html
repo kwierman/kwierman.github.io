@@ -12,29 +12,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content=""><link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
 </head>    <body>
     <header>
         <div class="container">
-            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="../articles/" title="Posts">Posts</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
+                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
             </nav>        </div>
     </header>        
         <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="../indico-server-on-osx/" rel="bookmark" title="Permalink to Indico Server on OSX">Indico Server on OSX</a></h1>
+            <h1><a href="http://kwierman.github.io/indico-server-on-osx/" rel="bookmark" title="Permalink to Indico Server on OSX">Indico Server on OSX</a></h1>
 <h5></h5>            <time title="2015-02-03T00:00:00-05:00">Tue 03 February 2015</time>
         </header>
         
@@ -58,51 +58,51 @@
 </ul>
 <p>Failing to do this will result in an error message about not being connect to port <code>5432</code>.</p>
 <p>Setup <code>nodeenv</code></p>
-<div class="highlight"><pre>git clone https://github.com/ekalinin/nodeenv.git
+<div class="highlight"><pre><span></span>git clone https://github.com/ekalinin/nodeenv.git
 <span class="nb">cd</span> nodeenv
 python setup.py install
 </pre></div>
 
 
 <p>Setup the dependencies (these will mostly be js objects which, if missing manifest as) by using Fabric.</p>
-<div class="highlight"><pre><span class="s1">&#39;css/lib/angular.css&#39;</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">load</span> <span class="n">path</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/opt/indico/htdocs&#39;</span><span class="p">,</span> <span class="s1">&#39;/opt/indico/htdocs/css&#39;</span><span class="p">,</span> <span class="s1">&#39;/opt/indico/htdocs/js&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="s1">&#39;css/lib/angular.css&#39;</span> <span class="ow">not</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">load</span> <span class="n">path</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/opt/indico/htdocs&#39;</span><span class="p">,</span> <span class="s1">&#39;/opt/indico/htdocs/css&#39;</span><span class="p">,</span> <span class="s1">&#39;/opt/indico/htdocs/js&#39;</span><span class="p">]</span>
 </pre></div>
 
 
 <p><code>Fabric</code> will also need to be installed:</p>
-<div class="highlight"><pre>    easy_install fabric
+<div class="highlight"><pre><span></span>    easy_install fabric
 </pre></div>
 
 
 <h2>Download and install</h2>
 <p>The source code for indico can be foud on github. I'd download to a source directory directly:</p>
-<div class="highlight"><pre>git clone https://github.com/indico/indico
+<div class="highlight"><pre><span></span>git clone https://github.com/indico/indico
 </pre></div>
 
 
 <p>Run Fabric:</p>
-<div class="highlight"><pre>fab setup_deps
+<div class="highlight"><pre><span></span>fab setup_deps
 </pre></div>
 
 
 <p>Run Install (which you'll probably have to do as sudo):</p>
-<div class="highlight"><pre>python setup.py install
+<div class="highlight"><pre><span></span>python setup.py install
 </pre></div>
 
 
 <p>Usually something will go wrong and a python package will be missing, so the preceding command will be need to run alternatively with this one:</p>
-<div class="highlight"><pre>sudo easy_install &lt;module name&gt;
+<div class="highlight"><pre><span></span>sudo easy_install &lt;module name&gt;
 </pre></div>
 
 
 <p>This will typically manifast as the incorrect version of <code>psjson</code> or something, you can use the <code>==</code> operator in easy install to specify the version.</p>
 <p>Run the indico configuration::</p>
-<div class="highlight"><pre>indico_easy_install
+<div class="highlight"><pre><span></span>indico_easy_install
 </pre></div>
 
 
 <p>At this point, some of the permissions have to be setup in order for apache to run it</p>
-<div class="highlight"><pre>sudo chown -R _www /opt/indico
+<div class="highlight"><pre><span></span>sudo chown -R _www /opt/indico
 sudo chgrp -R _www /opt/indico
 </pre></div>
 
@@ -110,7 +110,7 @@ sudo chgrp -R _www /opt/indico
 <p>In order to get some of the site stuff working correctly (and depending on who else uses the machine), the folder at <code>/Library/Python/2.7/site-packages/&lt;some package&gt;</code></p>
 <p>I followed all of the default configurations. At the end of which, I had to change the username in <code>zdctl.conf</code> to <code>_www</code>. This is an OSX specific change.</p>
 <p>The following httpd configuration will need to be inserted into the webserver configuration path</p>
-<div class="highlight"><pre>AddDefaultCharset UTF-8
+<div class="highlight"><pre><span></span>AddDefaultCharset UTF-8
 
 <span class="nt">&lt;VirtualHost</span> <span class="err">*:80</span><span class="nt">&gt;</span>
         # mod_wsgi indico
@@ -159,7 +159,7 @@ sudo chgrp -R _www /opt/indico
 
 <p>The major change was in the <code>FollowSymlinks</code> command. This is due to default behavior in OSX's apache.</p>
 <p>In addition, the config file at <code>/opt/indico/etc/indico.conf</code> will need to have the following changes:</p>
-<div class="highlight"><pre><span class="gd">-#Debug=False</span>
+<div class="highlight"><pre><span></span><span class="gd">-#Debug=False</span>
 <span class="gi">+Debug=True</span>
 <span class="gi">+BaseURL              = &quot;http://physics00158.dhcp.unc.edu/indico&quot;</span>
 
@@ -175,12 +175,12 @@ sudo chgrp -R _www /opt/indico
 
 
 <p>If you keep these default settings, you can test out indico by running the command:</p>
-<div class="highlight"><pre>sudo -u _www indico runserver
+<div class="highlight"><pre><span></span>sudo -u _www indico runserver
 </pre></div>
 
 
 <p>Initialize the database:</p>
-<div class="highlight"><pre>indico db prepare
+<div class="highlight"><pre><span></span>indico db prepare
 </pre></div>
 
 
@@ -190,18 +190,18 @@ sudo chgrp -R _www /opt/indico
 <ul>
 <li>You can manually add a user with the following command: </li>
 </ul>
-<div class="highlight"><pre>sudo -u _www indico admin user_add
+<div class="highlight"><pre><span></span>sudo -u _www indico admin user_add
 </pre></div>
 
 
 <ul>
 <li>You can grant users admin privilages with the following command:</li>
 </ul>
-<div class="highlight"><pre>sudo -u _www indico admin user_grant &lt;user_id&gt;
+<div class="highlight"><pre><span></span>sudo -u _www indico admin user_grant &lt;user_id&gt;
 </pre></div>
 
 
-<div class="highlight"><pre>* The `user_id` is an unsigned integer assigned on user creation. The first user will be 0, etc...
+<div class="highlight"><pre><span></span>* The `user_id` is an unsigned integer assigned on user creation. The first user will be 0, etc...
 </pre></div>
 
 
@@ -228,7 +228,7 @@ sudo chgrp -R _www /opt/indico
             reload: true,
             config: function () {  
                 this.page.identifier = 'indico-server-on-osx/';
-                this.page.url = '../indico-server-on-osx/';
+                this.page.url = 'http://kwierman.github.io/indico-server-on-osx/';
             }
         });
     }, false);
@@ -247,7 +247,7 @@ sudo chgrp -R _www /opt/indico
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "../theme/js/jXHR.js";
+            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -260,7 +260,7 @@ sudo chgrp -R _www /opt/indico
         });
     });
   </script>
-  <script src="../theme/js/github.js" type="text/javascript"> </script>
+  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             

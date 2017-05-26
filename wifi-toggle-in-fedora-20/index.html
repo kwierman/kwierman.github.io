@@ -12,36 +12,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content=""><link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
 </head>    <body>
     <header>
         <div class="container">
-            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="../articles/" title="Posts">Posts</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
+                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
             </nav>        </div>
     </header>        
         <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="../wifi-toggle-in-fedora-20/" rel="bookmark" title="Permalink to Wifi Toggle in Fedora 20">Wifi Toggle in Fedora 20</a></h1>
+            <h1><a href="http://kwierman.github.io/wifi-toggle-in-fedora-20/" rel="bookmark" title="Permalink to Wifi Toggle in Fedora 20">Wifi Toggle in Fedora 20</a></h1>
 <h5></h5>            <time title="2015-05-10T00:00:00-04:00">Sun 10 May 2015</time>
         </header>
         
         <h2>Goal</h2>
 <p>I need to be able to toggle my wifi on and off. There'a script for that. The utility, <code>nmcli</code> has the entire functionality we need, I just need to tie it together.</p>
 <h2>The Script</h2>
-<div class="highlight"><pre><span class="ch">#!/usr/bash                                                               </span>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bash                                                               </span>
 
 <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="k">$(</span>nmcli radio wifi<span class="k">)</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;enabled&quot;</span> <span class="o">]</span>
 <span class="k">then</span>
@@ -72,7 +72,7 @@
             reload: true,
             config: function () {  
                 this.page.identifier = 'wifi-toggle-in-fedora-20/';
-                this.page.url = '../wifi-toggle-in-fedora-20/';
+                this.page.url = 'http://kwierman.github.io/wifi-toggle-in-fedora-20/';
             }
         });
     }, false);
@@ -91,7 +91,7 @@
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "../theme/js/jXHR.js";
+            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -104,7 +104,7 @@
         });
     });
   </script>
-  <script src="../theme/js/github.js" type="text/javascript"> </script>
+  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             

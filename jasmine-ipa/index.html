@@ -34,64 +34,109 @@
         <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="http://kwierman.github.io/ssl-keys-on-osx/" rel="bookmark" title="Permalink to SSL Keys on OSX">SSL Keys on OSX</a></h1>
-<h5></h5>            <time title="2015-02-03T00:00:00-05:00">Tue 03 February 2015</time>
+            <h1><a href="http://kwierman.github.io/jasmine-ipa/" rel="bookmark" title="Permalink to Jasmine IPA">Jasmine IPA</a></h1>
+<h5></h5>            <time title="2015-01-31T00:00:00-05:00">Sat 31 January 2015</time>
         </header>
         
-        <h2>Generate a host key</h2>
-<p>First, make a home for the new SSL files. I use <code>/etc/apache2/ssl</code>. Open up a terminal window, <code>cd</code> to the new directory and issue the following command to create a host key file.</p>
-<div class="highlight"><pre><span></span>sudo ssh-keygen -f host.key
-</pre></div>
+        <h2>Background</h2>
+<p>One of our favorite beers of all time is the <a href="http://www.elysianbrewing.com/elysian-beers/avatar-jasmine-ipa/">Avatar Jasmine IPA</a>from <a href="http://www.elysianbrewing.com/">Elysian Brewing</a>. So much so, in fact, that we're going to try and replicate it from a series of other recipes. We've tried this before (to great success, might I add). This time around, we're making some modifications to the now named,</p>
+<p _="%" endblockquote_="endblockquote%">{% blockquote %}
+    Wrath of Khan Jasmine IPA</p>
+<h2>Desired Characteristics</h2>
+<p>From the Elysian Brewing website:</p>
+<ul>
+<li>Style:<ul>
+<li>IPA</li>
+</ul>
+</li>
+<li>Body:<ul>
+<li>Medium</li>
+</ul>
+</li>
+<li>Color<ul>
+<li>Golden Copper</li>
+<li>Roughly an SRM of 6</li>
+</ul>
+</li>
+<li>ABV:<ul>
+<li>6.3<div class="math">$$\%$$</div>
+</li>
+</ul>
+</li>
+<li>Aromatics:<ul>
+<li>Floral</li>
+<li>Jasmine</li>
+</ul>
+</li>
+<li>Taste:<ul>
+<li>Balance of hoppiness and jasmine</li>
+</ul>
+</li>
+<li>IBU:<ul>
+<li>45</li>
+</ul>
+</li>
+</ul>
+<p>Malts: Pale, </p>
+<div class="math">$$45^\circ$$</div>
+<p> Crystal, Munich and Cara-hell</p>
+<p>Hops: Bittered with German Northern Brewer, finished with Glacier and Amarillo hops</p>
+<h2>Putting the recipe together</h2>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "right",
+        indent = "1em",
+        linebreak = "true";
 
+    if (true) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
 
-<h2>Generate a certificate request file</h2>
-<p>This command create a certificate request file. A certificate request file contains information about your organization that will be used in the SSL certificate.</p>
-<div class="highlight"><pre><span></span>sudo openssl req -new -key host.key -out request.csr
-</pre></div>
-
-
-<h2>Create the SSL certificate</h2>
-<p>Create a self signed SSL certificate using the request file.</p>
-<p>sudo openssl x509 -req -days 365 -in request.csr -signkey host.key -out server.crt</p>
-<h2>Configure Apache</h2>
-<p>Create a backup of <code>/etc/apache2/httpd.conf</code>.</p>
-<p>Append the contents of <code>/etc/apache2/extra/httpd-ssl.conf</code> to <code>/etc/apache2/httpd.conf</code>.</p>
-<p>In <code>/etc/apache2/httpd.conf</code>, make sure the loading of SSL is enabled (remove the #)</p>
-<div class="highlight"><pre><span></span>LoadModule ssl_module libexec/apache2/mod_ssl.so
-</pre></div>
-
-
-<p>Also, edit SSL section to use the new certificate.</p>
-<div class="highlight"><pre><span></span>SSLEngine on
-SSLCertificateFile /etc/apache2/ssl/server.crt
-SSLCertificateKeyFile /etc/apache2/ssl/host.key
-</pre></div>
-
-
-<p>Check the config and restart Apache to try the new certificate.</p>
-<div class="highlight"><pre><span></span>sudo apachectl configtest
-sudo apachectl restart
-</pre></div>
-
-
-<p>Now that this is all done, SSL needs to be enabled on apache, update the file at <code>/etc/apache2/etc/httpd.conf</code>:</p>
-<div class="highlight"><pre><span></span><span class="gd">-#LoadModule ssl_module libexec/apache2/mod_ssl.so</span>
-<span class="gi">+LoadModule ssl_module libexec/apache2/mod_ssl.so</span>
-<span class="gd">-#Include /private/etc/apache2/extra/httpd-ssl.conf</span>
-<span class="gi">+Include /private/etc/apache2/extra/httpd-ssl.conf</span>
-</pre></div>
-
-
-<p>Seeing as we're now including a new file, we need to make some changes there (<code>/etc/apache2/extra/httpd-ssl.conf</code>) as well:</p>
-<div class="highlight"><pre><span></span><span class="gd">-DocumentRoot /Library/WebServer/Documents</span>
-<span class="gi">+DocumentRoot &lt;path to your ssl-enabled site&gt;</span>
-<span class="gi">+ServerName localhost:443</span>
-<span class="gi">+ServerAdmin kjw@unc.edu</span>
-<span class="gd">-ServerName example.com:443</span>
-<span class="gd">-ServerAdmin admin@example.edu</span>
-<span class="gi">+SSLCertificateFile &quot;/etc/apache2/ssl/server.crt&quot;</span>
-<span class="gi">+SSLCertificateKeyFile &quot;/etc/apache2/ssl/host.key&quot;</span>
-</pre></div>
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js',], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'Latex Equation'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'grey ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('Fraktur' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_Fraktur');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_Fraktur-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_Fraktur-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_Fraktur-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_Fraktur');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_Fraktur-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_Fraktur-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_Fraktur-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
         
         <aside class="clearfix">
             
@@ -113,8 +158,8 @@ sudo apachectl restart
         DISQUS.reset({
             reload: true,
             config: function () {  
-                this.page.identifier = 'ssl-keys-on-osx/';
-                this.page.url = 'http://kwierman.github.io/ssl-keys-on-osx/';
+                this.page.identifier = 'jasmine-ipa/';
+                this.page.url = 'http://kwierman.github.io/jasmine-ipa/';
             }
         });
     }, false);

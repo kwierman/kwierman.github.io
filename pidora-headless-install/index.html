@@ -12,29 +12,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content=""><link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
 </head>    <body>
     <header>
         <div class="container">
-            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="../articles/" title="Posts">Posts</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
+                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
             </nav>        </div>
     </header>        
         <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="../pidora-headless-install/" rel="bookmark" title="Permalink to Pidora Headless Install">Pidora Headless Install</a></h1>
+            <h1><a href="http://kwierman.github.io/pidora-headless-install/" rel="bookmark" title="Permalink to Pidora Headless Install">Pidora Headless Install</a></h1>
 <h5></h5>            <time title="2015-02-15T00:00:00-05:00">Sun 15 February 2015</time>
         </header>
         
@@ -43,14 +43,14 @@
 <ul>
 <li>Download the installer:</li>
 </ul>
-<div class="highlight"><pre>sudo yum install fedora_arm_installer
+<div class="highlight"><pre><span></span>sudo yum install fedora_arm_installer
 </pre></div>
 
 
 <ul>
 <li>Run the installer</li>
 </ul>
-<div class="highlight"><pre>sudo fedora_arm_installer
+<div class="highlight"><pre><span></span>sudo fedora_arm_installer
 </pre></div>
 
 
@@ -73,7 +73,7 @@
 <h2>Boot up the PI</h2>
 <p>In this, case I had the PI boot up with an ethernet cable attached, and the headphones attached to listen for the DHCP assigned IP number output.</p>
 <p>Once you get the IP number, ssh in with:</p>
-<div class="highlight"><pre>ssh root@192.1.1.&lt;whatever&gt;
+<div class="highlight"><pre><span></span>ssh root@192.1.1.&lt;whatever&gt;
 password: raspberrypi
 </pre></div>
 
@@ -84,19 +84,19 @@ password: raspberrypi
 <p>Next, use <code>lsmod</code> to list the loaded drivers/modules, and check for <code>8192cu</code> to see that the wifi driver is loaded.</p>
 <p>You should now be able to use the network manager tools. Note that standard network tools are not installed by default. THAT IS OK. You can use <code>pifconfig</code> to check the assigned IP information. </p>
 <p>List the available SSIDs of wifi networks with</p>
-<div class="highlight"><pre>nmcli dev wifi list
+<div class="highlight"><pre><span></span>nmcli dev wifi list
 </pre></div>
 
 
 <p>And connect with:</p>
-<div class="highlight"><pre>nmcli dev wifi con <span class="s2">&quot;ssid&quot;</span> password <span class="s2">&quot;password&quot;</span>
+<div class="highlight"><pre><span></span>nmcli dev wifi con <span class="s2">&quot;ssid&quot;</span> password <span class="s2">&quot;password&quot;</span>
 </pre></div>
 
 
 <p>This should create all the necessary files to connect the network again automatically. Most of these can be found in <code>/etc/networks</code></p>
 <h2>Creating a user</h2>
 <p>Since we don't want to be running as root continuously, create a user with:</p>
-<div class="highlight"><pre>useradd &lt;username&gt;
+<div class="highlight"><pre><span></span>useradd &lt;username&gt;
 passwd &lt;username&gt;
 ...
 </pre></div>
@@ -125,7 +125,7 @@ passwd &lt;username&gt;
             reload: true,
             config: function () {  
                 this.page.identifier = 'pidora-headless-install/';
-                this.page.url = '../pidora-headless-install/';
+                this.page.url = 'http://kwierman.github.io/pidora-headless-install/';
             }
         });
     }, false);
@@ -144,7 +144,7 @@ passwd &lt;username&gt;
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "../theme/js/jXHR.js";
+            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -157,7 +157,7 @@ passwd &lt;username&gt;
         });
     });
   </script>
-  <script src="../theme/js/github.js" type="text/javascript"> </script>
+  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             

@@ -12,29 +12,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content=""><link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
 </head>    <body>
     <header>
         <div class="container">
-            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="../articles/" title="Posts">Posts</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
+                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
             </nav>        </div>
     </header>        
         <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="../using-sphinx-for-inline-documentation/" rel="bookmark" title="Permalink to Using Sphinx for Inline Documentation">Using Sphinx for Inline Documentation</a></h1>
+            <h1><a href="http://kwierman.github.io/using-sphinx-for-inline-documentation/" rel="bookmark" title="Permalink to Using Sphinx for Inline Documentation">Using Sphinx for Inline Documentation</a></h1>
 <h5></h5>            <time title="2015-01-27T00:00:00-05:00">Tue 27 January 2015</time>
         </header>
         
@@ -96,12 +96,12 @@
 <li>doc/</li>
 </ul>
 <p>This will house the new documentation code.  <code>cd</code> into the new doc directory</p>
-<div class="highlight"><pre><span class="nb">cd</span> doc
+<div class="highlight"><pre><span></span><span class="nb">cd</span> doc
 </pre></div>
 
 
 <p>Then run the following commands:</p>
-<div class="highlight"><pre>sphinx-quickstart
+<div class="highlight"><pre><span></span>sphinx-quickstart
 sphinx-apidoc -o source/ ../Cards
 </pre></div>
 
@@ -150,14 +150,14 @@ sphinx-apidoc -o source/ ../Cards
 </ul>
 <h3>Making it Github Ready</h3>
 <p>Git is being used for this project, and I'd like to deploy to gh-pages, if at all necessary, so, we're going to need to add in a <code>.gitignore</code> file. to <code>Cards/</code> with the contents:</p>
-<div class="highlight"><pre>*.pyc
+<div class="highlight"><pre><span></span>*.pyc
 *.po
 doc/build
 </pre></div>
 
 
 <p>The first two are because inevitably, some code will be compiled in the source tree and we want to keep it clean for distribution and the last one is because we're going to make <code>doc/build</code> a git repo for the <code>gh-pages</code> branch. You can now initialize the two repositories via the following commands:</p>
-<div class="highlight"><pre><span class="nb">cd</span> ..
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ..
 git init
 git add .
 git commit -m <span class="s2">&quot;first commit&quot;</span>
@@ -178,13 +178,13 @@ git push
 
 
 <p>You should have your project and it's github pages up and ready to go. To commit your code (from <code>Cards/</code>):</p>
-<div class="highlight"><pre>git commit -a -m <span class="s2">&quot;Your commit message&quot;</span>
+<div class="highlight"><pre><span></span>git commit -a -m <span class="s2">&quot;Your commit message&quot;</span>
 git push
 </pre></div>
 
 
 <p>To push your documenation:</p>
-<div class="highlight"><pre><span class="nb">cd</span> doc
+<div class="highlight"><pre><span></span><span class="nb">cd</span> doc
 make
 <span class="nb">cd</span> build/html
 git commit -a -m <span class="s2">&quot;Documentation commit message&quot;</span>
@@ -195,19 +195,19 @@ git push
 <h3>Page Creation</h3>
 <p>Unlike doxygen, pages will not be automatically created for EVERYTHING. <code>apidoc</code> will have taken care of some of that, but the rest is a bit verbose. <code>matplotlib</code> has some tools for getting around that, but for sily little projects like this, we may need something less involved.</p>
 <p>The first page generated is going to be <code>index.rst</code>. This is a pretty good example of how to structure pages. Namely, pages that are going to be referenced as the first line:</p>
-<div class="highlight"><pre>Your Title
+<div class="highlight"><pre><span></span>Your Title
 ==========
 </pre></div>
 
 
 <p>And they need a table of contents(<code>toc</code>) reference: </p>
-<div class="highlight"><pre><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+<div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
    <span class="nc">:maxdepth:</span> <span class="nf">4</span>
 </pre></div>
 
 
 <p>If you want to add the API code to the table of contents, do the following:</p>
-<div class="highlight"><pre><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+<div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
    <span class="nc">:maxdepth:</span> <span class="nf">4</span>
    modules
 </pre></div>
@@ -215,10 +215,10 @@ git push
 
 <p>Add your own pages in the same way to create more docs.</p>
 <h3>Module Documentation</h3>
-<p _="%" endblockquote="endblockquote">{% blockquote %}
+<p _="%" endblockquote>{% blockquote %}
 Sphinx extracts docstrings from the files themselves, so if you're already following python documentation procedure, then skip forward to symbolic reference. </p>
 <p>For example, for the module <code>Cards.Card</code>, the doc string is:</p>
-<div class="highlight"><pre><span class="sd">&quot;&quot;&quot;Example Google style docstrings.</span>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Example Google style docstrings.</span>
 
 <span class="sd">This module demonstrates documentation as specified by the `Google Python</span>
 <span class="sd">Style Guide`_. Docstrings may extend over multiple lines. Sections are created</span>
@@ -253,7 +253,7 @@ Sphinx extracts docstrings from the files themselves, so if you're already follo
 <p>You can in notes and warnings seemingly where you want. I tend to put them in modules, classes and functions that need them.</p>
 <h3>Class Documentation</h3>
 <p>Classes are documented after the declaration statement. For example:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Card</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Card</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Class are documented after the declaration statement.</span>
 
 <span class="sd">    The __init__ method may be documented in either the class level</span>
@@ -280,7 +280,7 @@ Sphinx extracts docstrings from the files themselves, so if you're already follo
 <h4>Member Declaration</h4>
 <p>As with classes, their members are documented after declaration, indented to the appropriate level (<em>always test!</em>).</p>
 <p>Function signatures can be documented as following:</p>
-<div class="highlight"><pre>        <span class="sd">&quot;&quot;&quot;Class methods are similar to regular functions.</span>
+<div class="highlight"><pre><span></span>        <span class="sd">&quot;&quot;&quot;Class methods are similar to regular functions.</span>
 
 <span class="sd">        Note:</span>
 <span class="sd">          Do not include the `self` parameter in the ``Args`` section.</span>
@@ -301,28 +301,28 @@ Sphinx extracts docstrings from the files themselves, so if you're already follo
 <p>Symbols can references between files in the following way:</p>
 <h3>URL Links</h3>
 <p>External Links:</p>
-<div class="highlight"><pre>`Docs for this project &lt;http://packages.python.org/an_example_pypi_project/&gt;`_
+<div class="highlight"><pre><span></span>`Docs for this project &lt;http://packages.python.org/an_example_pypi_project/&gt;`_
 </pre></div>
 
 
 <p>Anchor Declaration:</p>
-<div class="highlight"><pre>`Table of Contents`_
+<div class="highlight"><pre><span></span>`Table of Contents`_
 </pre></div>
 
 
 <h3>Images</h3>
-<div class="highlight"><pre><span class="p">..</span> <span class="ow">figure</span><span class="p">::</span>  images/sweat.jpg
+<div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">figure</span><span class="p">::</span>  images/sweat.jpg
 </pre></div>
 
 
 <h3>Substitutions</h3>
 <p>Substitutions syntax is</p>
-<div class="highlight"><pre><span class="p">..</span> <span class="nt">|biohazard|</span> <span class="ow">image</span><span class="p">::</span> images/biohazard.png
+<div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">|biohazard|</span> <span class="ow">image</span><span class="p">::</span> images/biohazard.png
 </pre></div>
 
 
 <p>Literal text replacement:</p>
-<div class="highlight"><pre><span class="p">..</span> <span class="nt">|doctest|</span> <span class="ow">replace</span><span class="p">::</span> <span class="na">:mod:</span><span class="nv">`doctest`</span>
+<div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">|doctest|</span> <span class="ow">replace</span><span class="p">::</span> <span class="na">:mod:</span><span class="nv">`doctest`</span>
 </pre></div>
 
 
@@ -349,7 +349,7 @@ Sphinx extracts docstrings from the files themselves, so if you're already follo
             reload: true,
             config: function () {  
                 this.page.identifier = 'using-sphinx-for-inline-documentation/';
-                this.page.url = '../using-sphinx-for-inline-documentation/';
+                this.page.url = 'http://kwierman.github.io/using-sphinx-for-inline-documentation/';
             }
         });
     }, false);
@@ -368,7 +368,7 @@ Sphinx extracts docstrings from the files themselves, so if you're already follo
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "../theme/js/jXHR.js";
+            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -381,7 +381,7 @@ Sphinx extracts docstrings from the files themselves, so if you're already follo
         });
     });
   </script>
-  <script src="../theme/js/github.js" type="text/javascript"> </script>
+  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             

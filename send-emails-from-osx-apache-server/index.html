@@ -12,29 +12,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Kevin Wierman">
     <meta name="description" content="">
-    <meta name="keywords" content=""><link href="../theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="../theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="../theme/css/main.min.css?ab74713e" rel="stylesheet">    
+    <meta name="keywords" content=""><link href="http://kwierman.github.io/theme/css/bootstrap.min.css?3a2b6bde" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/pygments.min.css?cacdaf45" rel="stylesheet"><link href="http://kwierman.github.io/theme/css/main.min.css?ab74713e" rel="stylesheet">    
     <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /-->
    <!--script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script-->
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script>window.html5 || document.write('<script src="../theme/js/html5shiv.js"><\/script>')</script>
+        <script>window.html5 || document.write('<script src="http://kwierman.github.io/theme/js/html5shiv.js"><\/script>')</script>
     <![endif]-->
 </head>    <body>
     <header>
         <div class="container">
-            <h2><a href=".." title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
+            <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey">[Physicist. Brewer. Enthusiast.]</span>
 
             
 <nav>
-                <ul>                    <li><a href="../articles/" title="Posts">Posts</a></li>                    <li><a href="../projects/" title="Projects">Projects</a></li>                    <li><a href="../about-me/" title="About">About</a></li>                </ul>
+                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
             </nav>        </div>
     </header>        
         <div class="content container">
 <article class="article-full">
         <header>
-            <h1><a href="../send-emails-from-osx-apache-server/" rel="bookmark" title="Permalink to Send emails from OSX apache server">Send emails from OSX apache server</a></h1>
+            <h1><a href="http://kwierman.github.io/send-emails-from-osx-apache-server/" rel="bookmark" title="Permalink to Send emails from OSX apache server">Send emails from OSX apache server</a></h1>
 <h5></h5>            <time title="2015-02-04T00:00:00-05:00">Wed 04 February 2015</time>
         </header>
         
@@ -46,7 +46,7 @@ mail_owner = _postfix
 setgid_group = _postdrop
 ~</p>
 <p>In order to use a gmail relay, use these lines:</p>
-<div class="highlight"><pre>#Gmail SMTP
+<div class="highlight"><pre><span></span>#Gmail SMTP
 relayhost=smtp.gmail.com:587
 # Enable SASL authentication in the Postfix SMTP client.
 smtp_sasl_auth_enable=yes
@@ -60,24 +60,24 @@ tls_random_source=dev:/dev/urandom
 
 
 <p>Now, use these commands to create the password files and sasl setup:</p>
-<div class="highlight"><pre>sudo touch /etc/postfix/sasl_passwd
+<div class="highlight"><pre><span></span>sudo touch /etc/postfix/sasl_passwd
 sudo <span class="nb">echo</span> <span class="s2">&quot;smtp.gmail.com:587 your_address@gmail.com:password&quot;</span>&gt;/etc/postfix/sasl_password
 sudo postmap /etc/postfix/sasl_passwd
 </pre></div>
 
 
 <p>On MountainLion, there was an error:</p>
-<div class="highlight"><pre>postfix: fatal: chdir<span class="o">(</span>/Library/Server/Mail/Data/spool<span class="o">)</span>: No such file or directory
+<div class="highlight"><pre><span></span>postfix: fatal: chdir<span class="o">(</span>/Library/Server/Mail/Data/spool<span class="o">)</span>: No such file or directory
 </pre></div>
 
 
 <p>This was fixed by making the directory:</p>
-<div class="highlight"><pre>sudo mkdir -p /Library/Server/Mail/Data/spool
+<div class="highlight"><pre><span></span>sudo mkdir -p /Library/Server/Mail/Data/spool
 </pre></div>
 
 
 <p>Now, start and/or reload the server:</p>
-<div class="highlight"><pre>sudo postfix reload
+<div class="highlight"><pre><span></span>sudo postfix reload
 sudo postfix start
 </pre></div>
         
@@ -102,7 +102,7 @@ sudo postfix start
             reload: true,
             config: function () {  
                 this.page.identifier = 'send-emails-from-osx-apache-server/';
-                this.page.url = '../send-emails-from-osx-apache-server/';
+                this.page.url = 'http://kwierman.github.io/send-emails-from-osx-apache-server/';
             }
         });
     }, false);
@@ -121,7 +121,7 @@ sudo postfix start
         if (!window.jXHR){
             var jxhr = document.createElement('script');
             jxhr.type = 'text/javascript';
-            jxhr.src = "../theme/js/jXHR.js";
+            jxhr.src = "http://kwierman.github.io/theme/js/jXHR.js";
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(jxhr, s);
         }
@@ -134,7 +134,7 @@ sudo postfix start
         });
     });
   </script>
-  <script src="../theme/js/github.js" type="text/javascript"> </script>
+  <script src="http://kwierman.github.io/theme/js/github.js" type="text/javascript"> </script>
 </section>
 <ul>            <li><a href="https://github.com/kwierman" title="GitHub">GitHub</a></li>            <li><a href="https://kwierman.github.io" title="GitHub Pages">GitHub Pages</a></li>            
             
