@@ -1,5 +1,11 @@
-# kwierman.github.io
-Kevin Wierman's Github pages
+# Kevin Wierman's Github pages
 
+## Setup
 
-TODO: The Projects page needs to be better in terms of what is defined here and what is not
+Requirements can be installed with:
+
+~~~ bash
+pip install -r requirements.txt
+~~~
+
+##

@@ -60,7 +60,6 @@ EXTRA_PATH_METADATA = {
     'images/favicon.ico' : {'path' : 'favicon.ico'}
 }
 
-
 #FILES_TO_COPY = (
 # ('extra/icons/apple-touch-icon-114x114-precomposed.png',
 # 'apple-touch-icon-114x114-precomposed.png'),
@@ -115,7 +114,6 @@ MENUITEMS = (
 ('About', 'about-me/'),
 ('Contact Me', 'contact-me/'),
 )
-
 
 # Plugins
 SITEMAP = {
@@ -219,6 +217,7 @@ EDUCATION = [
 					'B.A. Mathematics']
 	}
 ]
+
 FELLOWSHIPS = [
 	{
 		'title' : 'Karlsruhe House of Young Scientists Fellowship',
@@ -236,6 +235,7 @@ FELLOWSHIPS = [
 		'descriptions' : 'Award for undergraduate students who display excellence in table-top physics experiments'
 	},
 ]
+
 SKILLS = [
 	{
 		'area':'Computer Languages',
@@ -257,8 +257,8 @@ SKILLS = [
 		'area': 'Other', 
 		'values' : 'Electronics, AutoCad Inventor, Instrument Making'
 	},
-
 ]
+
 PUBLICATIONS=[
 {'title':'"Focal-plane detector system for the KATRIN experiment", J.F. Amsbaugh et al, April 2014, arXiv:744',
 'type':'Paper'},
@@ -269,8 +269,6 @@ PUBLICATIONS=[
 {'title':'2013 DNP Meeting, "Commissining the KATRIN Main Spectrometer"','type':'Talk' },
 {'title':'2015 DCMI, "Particle Physics Metadata Standards in the Tritium File Format" ', 'type': 'Poster'}
 ]
-
-
 
 INDEX_JUMBOTRON = ("images/personal.png", "Kevin in Karlsruhe")
 INDEX_HEADER = "Wait. Physics Beer and What?"
