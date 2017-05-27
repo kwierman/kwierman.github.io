@@ -4,6 +4,8 @@ Tags:
 Category: blog
 
 
+There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.
+
 # Edit the postfix file
 
 The file is located at `/etc/postfix/main.cf` Make sure that these lines are present:

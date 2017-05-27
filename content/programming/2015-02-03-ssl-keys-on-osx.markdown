@@ -1,8 +1,7 @@
 Title: SSL Keys on OSX
 Date: 2015-02-03
 Tags: 
-Category: blog
-
+Category: programming
 
 
 ##Generate a host key

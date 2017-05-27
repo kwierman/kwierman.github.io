@@ -4,12 +4,16 @@
 <html lang="{{ DEFAULT_LANG }}"><!--<![endif]-->
 {% include "head.html" %}
     <body>
+
         {% include "header.html" %}
-        
-        <div class="content container">
+        {% block preamble -%}
+        {%- endblock preamble %}
+          
+          <div class="content container body-margin">
             {% block content -%}
             {%- endblock content %}
-        </div>
+          </div>
+
         {% include "footer.html" %}
         
         {% include "analytics.html" %}

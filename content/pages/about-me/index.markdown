@@ -4,16 +4,6 @@ Date: 2015-01-25 14:53
 [katrin-site]: http://www.katrin.kit.edu "KATRIN"
 [fpd-paper-site]: http://arxiv.org/abs/1404.2925 "The FPD Paper"
 
-
-
-##Who am I?
-
-I am Kevin Wierman, an experimental nuclear physicist, a coder, and a brewer.
-
-
-My mission is to bring modern design practices to the fields of physics and brewing. 
-Currently, I am working on the [KATRIN] [katrin-site] collaboration to measure the neutrino mass. I participated in constructing and commissioning the [KATRIN Focal Plane Detector (FPD)] [fpd-paper-site] system. Chiefly, I designed and implemented the FPD Cosmic Ray Veto. At the moment, I am working with the Katrin Electron Gun comissioning.
-
 ![Kevin in Karlsruhe]({filename}/images/personal.png)
 
 ##Experience

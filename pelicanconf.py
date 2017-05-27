@@ -270,8 +270,9 @@ PUBLICATIONS=[
 {'title':'2015 DCMI, "Particle Physics Metadata Standards in the Tritium File Format" ', 'type': 'Poster'}
 ]
 
-INDEX_JUMBOTRON = ("images/personal.png", "Kevin in Karlsruhe")
-INDEX_HEADER = "Wait. Physics Beer and What?"
-INDEX_DESCRIPTION = "You might be asking yourself how physics and beer go together. You might also be asking yourself what it is exactly I'm so enthusiastic about. Well come on over and have a seat. Stand if you want, whatever."
+INDEX_JUMBOTRON = ("images/bubble_chamber.png", "Bubble Chamber")
+INDEX_HEADER = "Bridging the gap between industry technology and high performance physics computing"
+INDEX_DESCRIPTION = """
+"""
 
 #################################

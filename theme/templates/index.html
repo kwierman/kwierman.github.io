@@ -2,82 +2,29 @@
 
 {% block title -%}{{ SITENAME }}{%- endblock title %}
 
+{% block preamble -%}
+{% if INDEX_JUMBOTRON -%}
+<div id="mycarousel" class="carousel slide" data-ride="carousel" style="margin: -40px 0px 0px 0px;">
+    <div class="carousel-inner">
+        <div class="item active">
+        <img class="center-block img-responsive" src="{{ INDEX_JUMBOTRON[0] }}" alt="{{ INDEX_JUMBOTRON[1] }}" >
+           <div class="carousel-caption">
+                {% if INDEX_HEADER -%}
+                    <h2 style="text-shadow:  -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">{{ INDEX_HEADER }}</h2>
+                {%- endif %}
+                {% if INDEX_DESCRIPTION -%}
+                    <p>{{ INDEX_DESCRIPTION }}</p>
+                {%- endif %}
+           </div>
+        </div>
+    </div>
+</div>
+{%- endif %}
+{%- endblock preamble %}
+
 {% block content -%}
 
-<!-- Now, I guess here's the part where things get tricky. We want to do block showcases of things-->
-{% if INDEX_JUMBOTRON -%}
-    <img src="{{ INDEX_JUMBOTRON[0] }}" alt="{{ INDEX_JUMBOTRON[1] }}" >
-{%- endif %}
-{% if INDEX_HEADER -%}
-    <h2>{{ INDEX_HEADER }}</h2>
-{%- endif %}
-{% if INDEX_DESCRIPTION -%}
-    <p>{{ INDEX_DESCRIPTION }}</p>
-{%- endif %}
-
-{% if CV -%}
-    <h2>Experience</h2>
-    {%- for entry in CV%}
-    <table>
-        <tr><th>{{ entry['employer'] }}</th><th>{{ entry['duration'] }}</th></tr>
-        <tr><td>{{ entry['title'] }}</td><td>{{ entry['location'] }}</td></tr>
-        <tr><td>
-            <ul>
-            {%- for resp in entry['responsibilities'] %}
-                <li>{{ resp }}</li>
-            {%- endfor %}
-            </ul>
-        </td><td></td></tr>
-    </table>
-    {%- endfor %}
-{%- endif %}
-{% if EDUCATION -%}
-    <h2>Education</h2>
-    <table>
-        {%- for s in EDUCATION %}
-        <tr><th>{{s['school'] }}</th><th>{{s['duration'] }}</th></tr>
-        <tr><td>
-            {%- for d in s['degree']%}
-            <p>{{ d }}</p>
-            {%- endfor %}
-        </td><td></td></tr>
-        {%- endfor %}
-    </table>
-{%- endif %}
-
-{% if FELLOWSHIPS -%}
-    <h2>FELLOWSHIPS</h2>
-    <table>
-        {%- for s in FELLOWSHIPS %}
-        <tr><th>{{s['title'] }}</th><th>{{s['date'] }}</th></tr>
-        <tr><td>
-            <p>{{ s['descriptions'] }}</p>
-        </td><td></td></tr>
-        {%- endfor %}
-    </table>
-{%- endif %}
-
-{% if SKILLS -%}
-    <h2>SKILLS</h2>
-    <table>
-        {%- for s in SKILLS %}
-        <tr><th>{{s['area'] }}</th><th>{{s['values'] }}</th></tr>
-        {%- endfor %}
-    </table>
-{%- endif %}
-
-{% if PUBLICATIONS -%}
-    <h2>PUBLICATIONS</h2>
-    <table>
-        {%- for s in PUBLICATIONS %}
-        <tr><th>{{s['title'] }}</th><th>{{s['type'] }}</th></tr>
-        {%- endfor %}
-    </table>
-{%- endif %}
-
-
-
-
+    <h1>Posts</h1>
     {#
     {% set article = dates[0] %}
         

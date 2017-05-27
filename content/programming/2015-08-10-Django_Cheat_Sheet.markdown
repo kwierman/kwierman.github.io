@@ -2,7 +2,7 @@ Title: Django Cheat Sheet
 Date: 2015-08-10
 Categories: programming
 
-
+The idea here is that I wanted an easy cheat sheet to use when going through the motions of creating __yet another__ Django website.
 
 ## Checking Django Version Number
 
@@ -20,6 +20,7 @@ django-admin startproject mysite
 
 
 ~~~ bash
+python manage.py makemigrations
 python manage.py migrate
 ~~~
 
