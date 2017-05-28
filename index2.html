@@ -33,7 +33,7 @@
             <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey"></span>
 
 <nav>
-                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
+                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Guides">Guides</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact">Contact</a></li>                </ul>
             </nav>        </div>
     </header><div id="mycarousel" class="carousel slide" data-ride="carousel" style="margin: -40px 0px 0px 0px;">
     <div class="carousel-inner">
@@ -46,8 +46,21 @@
     </div>
 </div>          
           <div class="content container body-margin">
-<h1>Articles</h1>
+<h1>Posts</h1>
     <article class="article-full article-summary panel">
+        <header>
+            <h2><a href="http://kwierman.github.io/installing-root-with-spack-on-osx/" rel="bookmark" title="Permalink to Installing ROOT with Spack on OSX">Installing ROOT with Spack on OSX</a></h2>
+<h5></h5>            <time title="2017-05-27T00:00:00-04:00">Sat 27 May 2017</time>
+        </header>
+        
+        <p>While I would have preferred a cleaner way of doing this, using Spack avoids the headaches involved in installing ROOT. Of which, we know; every physics grad student gets to do <strong>at least</strong> 6 times.</p>
+<p>So, here's the idea:</p>
+<ol>
+<li>Get gfortran</li>
+<li>Download Spack</li>
+<li>Make some modifications to Spack itself</li>
+<li>Download …</li></ol>
+    </article>    <article class="article-full article-summary panel">
         <header>
             <h2><a href="http://kwierman.github.io/rabbitmq-without-root/" rel="bookmark" title="Permalink to Rabbitmq Without Root">Rabbitmq Without Root</a></h2>
 <h5></h5>            <time title="2015-09-17T00:00:00-04:00">Thu 17 September 2015</time>
@@ -82,7 +95,8 @@
 <h5></h5>            <time title="2015-08-10T00:00:00-04:00">Mon 10 August 2015</time>
         </header>
         
-        <h2>Checking Django Version Number</h2>
+        <p>The idea here is that I wanted an easy cheat sheet to use when going through the motions of creating <strong>yet another</strong> Django website.</p>
+<h2>Checking Django Version Number</h2>
 <div class="highlight"><pre><span></span>python -c <span class="s2">&quot;import django; print(django.get_version())&quot;</span>
 </pre></div>
 
@@ -93,26 +107,8 @@
 
 
 <h2>Database Setup</h2>
-<div class="highlight"><pre><span></span>python manage.py migrate
-</pre></div>
-
-
-<h2>Run Development Server</h2>
-<div class="highlight"><pre><span></span>python manage.py runserver
-</pre></div>
-
-
-<h2>Starting an App</h2>
-<div class="highlight"><pre><span></span>python manage.py startapp polls
-</pre></div>
-
-
-<h2>Activating Apps</h2>
-<p>In: <code>mysite/settings.py</code></p>
-<p>Insert:</p>
-<div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;django …</span></pre></div>
+<div class="highlight"><pre><span></span>python manage.py makemigrations
+python manage.py …</pre></div>
     </article>    <article class="article-full article-summary panel">
         <header>
             <h2><a href="http://kwierman.github.io/bash-tools/" rel="bookmark" title="Permalink to Bash Tools">Bash Tools</a></h2>
@@ -121,14 +117,6 @@
         
         <h2>Goal</h2>
 <p>Given how ubiquitous unix(esque) systems are in the science industry, the ability to use tools that are commonly found on all platforms is increasingly useful. Since many clusters don't support operations in the login nodes which require advanced libraries, users are restricted to using the tools that come …</p>
-    </article>    <article class="article-full article-summary panel">
-        <header>
-            <h2><a href="http://kwierman.github.io/hierarchal-git-repos/" rel="bookmark" title="Permalink to Hierarchal Git Repos">Hierarchal Git Repos</a></h2>
-<h5></h5>            <time title="2015-05-11T00:00:00-04:00">Mon 11 May 2015</time>
-        </header>
-        
-        <h2>Goal</h2>
-<p>A few of my git repos are based overseas. One in particular is a repository for a project which has been going on for a <em>LONG</em> time. So long, in fact, that the size of the bare repository is roughly <code>500mB</code>. As you can imagine, it takes a while …</p>
     </article>    <article class="article-full article-summary panel">
         <header>
             <h2><a href="http://kwierman.github.io/wifi-toggle-in-fedora-20/" rel="bookmark" title="Permalink to Wifi Toggle in Fedora 20">Wifi Toggle in Fedora 20</a></h2>

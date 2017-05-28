@@ -1,35 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman - blog</title><link href="http://kwierman.github.io/" rel="alternate"></link><link href="http://kwierman.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://kwierman.github.io/</id><updated>2015-02-05T00:00:00-05:00</updated><entry><title>Tritium Front End</title><link href="http://kwierman.github.io/tritium-front-end/" rel="alternate"></link><published>2015-02-05T00:00:00-05:00</published><updated>2015-02-05T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-05:/tritium-front-end/</id><summary type="html">&lt;p&gt;Remember to add in : chmod g-wx,o-wx ~/.python-eggs laterp&lt;/p&gt;
-&lt;h2&gt;Making a testing framework&lt;/h2&gt;
-&lt;h2&gt;Using the Python Application Environment&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Change your models &lt;span class="o"&gt;(&lt;/span&gt;in models.py&lt;span class="o"&gt;)&lt;/span&gt;.
-Run python manage.py makemigrations to create migrations &lt;span class="k"&gt;for&lt;/span&gt; those changes
-Run python manage.py migrate to apply those changes to the database.
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Creating a superuser …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;Remember to add in : chmod g-wx,o-wx ~/.python-eggs laterp&lt;/p&gt;
-&lt;h2&gt;Making a testing framework&lt;/h2&gt;
-&lt;h2&gt;Using the Python Application Environment&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Change your models &lt;span class="o"&gt;(&lt;/span&gt;in models.py&lt;span class="o"&gt;)&lt;/span&gt;.
-Run python manage.py makemigrations to create migrations &lt;span class="k"&gt;for&lt;/span&gt; those changes
-Run python manage.py migrate to apply those changes to the database.
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Creating a superuser&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py createsuperuser
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Send emails from OSX apache server</title><link href="http://kwierman.github.io/send-emails-from-osx-apache-server/" rel="alternate"></link><published>2015-02-04T00:00:00-05:00</published><updated>2015-02-04T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-04:/send-emails-from-osx-apache-server/</id><summary type="html">&lt;h1&gt;Edit the postfix file&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman - blog</title><link href="http://kwierman.github.io/" rel="alternate"></link><link href="http://kwierman.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://kwierman.github.io/</id><updated>2015-02-04T00:00:00-05:00</updated><entry><title>Send emails from OSX apache server</title><link href="http://kwierman.github.io/send-emails-from-osx-apache-server/" rel="alternate"></link><published>2015-02-04T00:00:00-05:00</published><updated>2015-02-04T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-04:/send-emails-from-osx-apache-server/</id><summary type="html">&lt;p&gt;There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.&lt;/p&gt;
+&lt;h1&gt;Edit the postfix file&lt;/h1&gt;
 &lt;p&gt;The file is located at &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt; Make sure that these lines are present:&lt;/p&gt;
 &lt;p&gt;~ markdown
 mydomain_fallback = localhost
 mail_owner = _postfix
-setgid_group = _postdrop
-~&lt;/p&gt;
-&lt;p&gt;In order to use a gmail relay, use these lines:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#Gmail SMTP
-relayhost=smtp.gmail.com:587
-# Enable SASL authentication in the Postfix …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1&gt;Edit the postfix file&lt;/h1&gt;
+setgid_group = _postdrop …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.&lt;/p&gt;
+&lt;h1&gt;Edit the postfix file&lt;/h1&gt;
 &lt;p&gt;The file is located at &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt; Make sure that these lines are present:&lt;/p&gt;
 &lt;p&gt;~ markdown
 mydomain_fallback = localhost
@@ -263,66 +240,6 @@ sudo chgrp -R _www /opt/indico
 
 &lt;p&gt;And restart the apache server&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    apachectl restart
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>SSL Keys on OSX</title><link href="http://kwierman.github.io/ssl-keys-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/ssl-keys-on-osx/</id><summary type="html">&lt;h2&gt;Generate a host key&lt;/h2&gt;
-&lt;p&gt;First, make a home for the new SSL files. I use &lt;code&gt;/etc/apache2/ssl&lt;/code&gt;. Open up a terminal window, &lt;code&gt;cd&lt;/code&gt; to the new directory and issue the following command to create a host key file.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ssh-keygen -f host.key
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Generate a certificate request file&lt;/h2&gt;
-&lt;p&gt;This …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Generate a host key&lt;/h2&gt;
-&lt;p&gt;First, make a home for the new SSL files. I use &lt;code&gt;/etc/apache2/ssl&lt;/code&gt;. Open up a terminal window, &lt;code&gt;cd&lt;/code&gt; to the new directory and issue the following command to create a host key file.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ssh-keygen -f host.key
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Generate a certificate request file&lt;/h2&gt;
-&lt;p&gt;This command create a certificate request file. A certificate request file contains information about your organization that will be used in the SSL certificate.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo openssl req -new -key host.key -out request.csr
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Create the SSL certificate&lt;/h2&gt;
-&lt;p&gt;Create a self signed SSL certificate using the request file.&lt;/p&gt;
-&lt;p&gt;sudo openssl x509 -req -days 365 -in request.csr -signkey host.key -out server.crt&lt;/p&gt;
-&lt;h2&gt;Configure Apache&lt;/h2&gt;
-&lt;p&gt;Create a backup of &lt;code&gt;/etc/apache2/httpd.conf&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Append the contents of &lt;code&gt;/etc/apache2/extra/httpd-ssl.conf&lt;/code&gt; to &lt;code&gt;/etc/apache2/httpd.conf&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;In &lt;code&gt;/etc/apache2/httpd.conf&lt;/code&gt;, make sure the loading of SSL is enabled (remove the #)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;LoadModule ssl_module libexec/apache2/mod_ssl.so
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Also, edit SSL section to use the new certificate.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SSLEngine on
-SSLCertificateFile /etc/apache2/ssl/server.crt
-SSLCertificateKeyFile /etc/apache2/ssl/host.key
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Check the config and restart Apache to try the new certificate.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apachectl configtest
-sudo apachectl restart
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Now that this is all done, SSL needs to be enabled on apache, update the file at &lt;code&gt;/etc/apache2/etc/httpd.conf&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gd"&gt;-#LoadModule ssl_module libexec/apache2/mod_ssl.so&lt;/span&gt;
-&lt;span class="gi"&gt;+LoadModule ssl_module libexec/apache2/mod_ssl.so&lt;/span&gt;
-&lt;span class="gd"&gt;-#Include /private/etc/apache2/extra/httpd-ssl.conf&lt;/span&gt;
-&lt;span class="gi"&gt;+Include /private/etc/apache2/extra/httpd-ssl.conf&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Seeing as we're now including a new file, we need to make some changes there (&lt;code&gt;/etc/apache2/extra/httpd-ssl.conf&lt;/code&gt;) as well:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gd"&gt;-DocumentRoot /Library/WebServer/Documents&lt;/span&gt;
-&lt;span class="gi"&gt;+DocumentRoot &amp;lt;path to your ssl-enabled site&amp;gt;&lt;/span&gt;
-&lt;span class="gi"&gt;+ServerName localhost:443&lt;/span&gt;
-&lt;span class="gi"&gt;+ServerAdmin kjw@unc.edu&lt;/span&gt;
-&lt;span class="gd"&gt;-ServerName example.com:443&lt;/span&gt;
-&lt;span class="gd"&gt;-ServerAdmin admin@example.edu&lt;/span&gt;
-&lt;span class="gi"&gt;+SSLCertificateFile &amp;quot;/etc/apache2/ssl/server.crt&amp;quot;&lt;/span&gt;
-&lt;span class="gi"&gt;+SSLCertificateKeyFile &amp;quot;/etc/apache2/ssl/host.key&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Beer Color Calculation</title><link href="http://kwierman.github.io/beer-color-calculation/" rel="alternate"></link><published>2015-01-31T00:00:00-05:00</published><updated>2015-01-31T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-31:/beer-color-calculation/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;One should never formulate a recipe around color, but it should match the style of the beer.&lt;/p&gt;
 &lt;h2&gt;Degrees Lovibond&lt;/h2&gt;

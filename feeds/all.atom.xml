@@ -1,5 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman</title><link href="http://kwierman.github.io/" rel="alternate"></link><link href="http://kwierman.github.io/feeds/all.atom.xml" rel="self"></link><id>http://kwierman.github.io/</id><updated>2015-09-17T00:00:00-04:00</updated><entry><title>Rabbitmq Without Root</title><link href="http://kwierman.github.io/rabbitmq-without-root/" rel="alternate"></link><published>2015-09-17T00:00:00-04:00</published><updated>2015-09-17T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-09-17:/rabbitmq-without-root/</id><summary type="html">&lt;h1&gt;Setup&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman</title><link href="http://kwierman.github.io/" rel="alternate"></link><link href="http://kwierman.github.io/feeds/all.atom.xml" rel="self"></link><id>http://kwierman.github.io/</id><updated>2017-05-27T00:00:00-04:00</updated><entry><title>Installing ROOT with Spack on OSX</title><link href="http://kwierman.github.io/installing-root-with-spack-on-osx/" rel="alternate"></link><published>2017-05-27T00:00:00-04:00</published><updated>2017-05-27T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2017-05-27:/installing-root-with-spack-on-osx/</id><summary type="html">&lt;p&gt;While I would have preferred a cleaner way of doing this, using Spack avoids the headaches involved in installing ROOT. Of which, we know; every physics grad student gets to do &lt;strong&gt;at least&lt;/strong&gt; 6 times.&lt;/p&gt;
+&lt;p&gt;So, here's the idea:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Get gfortran&lt;/li&gt;
+&lt;li&gt;Download Spack&lt;/li&gt;
+&lt;li&gt;Make some modifications to Spack itself&lt;/li&gt;
+&lt;li&gt;Download …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;While I would have preferred a cleaner way of doing this, using Spack avoids the headaches involved in installing ROOT. Of which, we know; every physics grad student gets to do &lt;strong&gt;at least&lt;/strong&gt; 6 times.&lt;/p&gt;
+&lt;p&gt;So, here's the idea:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Get gfortran&lt;/li&gt;
+&lt;li&gt;Download Spack&lt;/li&gt;
+&lt;li&gt;Make some modifications to Spack itself&lt;/li&gt;
+&lt;li&gt;Download the pre-requisite&lt;/li&gt;
+&lt;li&gt;Download the HEP-Spack overlay&lt;/li&gt;
+&lt;li&gt;Make some modifications to the HEP Ooverlay&lt;/li&gt;
+&lt;li&gt;Hit the install button and watch this thing fly... for a couple hours.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There's some reasoning behind this, so let's dive into the details:&lt;/p&gt;
+&lt;h2&gt;Installing gfortran&lt;/h2&gt;
+&lt;p&gt;On OSX, gfortran is no longer supported under XCode. So, we need to grab a copy. To accomplish this task, I go to &lt;a href="https://gcc.gnu.org/wiki/GFortranBinariesMacOS"&gt;this website (linked)&lt;/a&gt;. The instructions there are pretty thorough, and you DO want to make sure that the install prefix is set to &lt;code&gt;/usr/local/gfortran&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Download Spack&lt;/h2&gt;
+&lt;p&gt;Find some space on a disk (this is going to eat up about 5GB). Then, run the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/LLNL/spack
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Spack will run as a local installation under the directory spack. I typically stick mine in &lt;code&gt;$(HOME)/spack&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Make some modifications to Spack itself&lt;/h2&gt;
+&lt;p&gt;So, to setup the environment to use spack (though it works equally well to just run spack using the absolute path), one needs to issue the following command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; &amp;lt;your spack install directory&amp;gt;/spack/share/spack/setup-env.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The first problem we encounter is in the identification of the compilers. Normally, spack identifies the gfortran installation as different from the command line tools installed by XCode. You can check your compilers and generate the &lt;code&gt;yaml&lt;/code&gt; that spack uses by  issuing the command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;spack compilers
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, if you open up &lt;code&gt;~/.spack/darwin/compilers.yaml&lt;/code&gt;. You should see two compilers defined. For my installation, I condensed these into one compiler:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;compilers&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;compiler&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;environment&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;{}&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;extra_rpaths&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;[]&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;flags&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;{}&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;modules&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;[]&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;operating_system&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;sierra&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;paths&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;cc&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;!!python/unicode&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang&amp;#39;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;cxx&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;!!python/unicode&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++&amp;#39;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;f77&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/usr/local/bin/gfortran&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;fc&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/usr/local/bin/gfortran&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;spec&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;clang@8.1.0-apple&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;target&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;x86_64&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note that the location of gfortran is &lt;strong&gt;VERY IMPORTANT&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;You should now be ready to compile with both gfortran and clang.&lt;/p&gt;
+&lt;h2&gt;Download the Prerequisite&lt;/h2&gt;
+&lt;p&gt;This sounds very general, so allow me to specify. Loading up dependencies for packages requires dynamic package loading. Spack has a couple way to do this. I use &lt;code&gt;environment-modules&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To install this, issue the following command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;spack install environment-modules
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once this has been completed, you'll need a way to activate this. Since it isn't loaded already, this will have to be done manually. I typically put the following command either into an init script or into &lt;code&gt;~/.bash_profile&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt; &amp;lt;your installation directory&amp;gt;/spack/opt/spack/darwin-sierra-x86_64/clang-8.1.0-apple/environment-modules-3.2.10-*/Modules/init/sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note that this is a little dangerous as the wildcard in this command may find the WRONG environment-modules installation. However, as a hacky solution, this seems to work.&lt;/p&gt;
+&lt;h2&gt;Download the Spack HEP overlay&lt;/h2&gt;
+&lt;p&gt;The spack hep overlay contains the package definition for ROOT and thus can is the basis for creating a  root installation. The following directions are ripped &lt;a href="https://github.com/HEP-SF/hep-spack/"&gt;from their website&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &amp;lt;your installation directory&amp;gt;/spack/var/spack/repos/
+git clone https://github.com/HEP-SF/hep-spack/
+spack repo add &amp;lt;your installation directory&amp;gt;/spack/var/spack/repos/hep-spack
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Spack should now recognize the HEP overlay.&lt;/p&gt;
+&lt;h2&gt;Make Some Modification to the HEP Overlay&lt;/h2&gt;
+&lt;p&gt;The default package definition didn't work for me. For instance, the usage of &lt;code&gt;libtool&lt;/code&gt; by ROOT doesn't match the build spec of &lt;code&gt;libtool&lt;/code&gt; installed by spack. However, it WILL use the native libtool that comes with XCode's command line tools. The other problem is that the package definition doesn't setup ROOT correctly in the  runtime environment.&lt;/p&gt;
+&lt;p&gt;So, there's two changes to make&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Change the usage of libtool&lt;/li&gt;
+&lt;li&gt;Change the runtime environment&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I'm a huge fan of &lt;code&gt;emacs&lt;/code&gt;, but each to his/her own. Open up yer text editor and point it at the file: &lt;code&gt;&amp;lt;your installation directory&amp;gt;/spack/var/spack/repos/hep-spack/packages/root/package.py&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Change the following code chunk:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;     depends_on(&amp;quot;cmake&amp;quot;, type=&amp;#39;build&amp;#39;)
+&lt;span class="gd"&gt;-    depends_on(&amp;quot;libtool&amp;quot;, type=&amp;#39;build&amp;#39;)&lt;/span&gt;
+     depends_on(&amp;quot;pcre&amp;quot;)
+     depends_on(&amp;quot;fftw~mpi&amp;quot;)
+     depends_on(&amp;quot;graphviz&amp;quot;, when=&amp;quot;+graphviz&amp;quot;)
+&lt;span class="gu"&gt;@@ -55,6 +54,7 @@ class Root(Package):&lt;/span&gt;
+     depends_on(&amp;quot;libxml2+python&amp;quot;)
+     depends_on(&amp;quot;jpeg&amp;quot;)
+     if sys.platform != &amp;#39;darwin&amp;#39;:
+&lt;span class="gi"&gt;+        depends_on(&amp;quot;libtool&amp;quot;, type=&amp;#39;build&amp;#39;)&lt;/span&gt;
+         depends_on(&amp;quot;libpng&amp;quot;)
+         depends_on(&amp;quot;openssl&amp;quot;)
+         depends_on(&amp;quot;freetype&amp;quot;)
+&lt;span class="gu"&gt;@@ -88,6 +88,9 @@ class Root(Package):&lt;/span&gt;
+         spack_env.set(&amp;#39;ROOTSYS&amp;#39;, self.prefix)
+         spack_env.set(&amp;#39;ROOT_VERSION&amp;#39;, &amp;#39;v6&amp;#39;)
+         spack_env.prepend_path(&amp;#39;PYTHONPATH&amp;#39;, self.prefix.lib)
+&lt;span class="gi"&gt;+        run_env.set(&amp;#39;ROOTSYS&amp;#39;, self.prefix)&lt;/span&gt;
+&lt;span class="gi"&gt;+        run_env.set(&amp;#39;ROOT_VERSION&amp;#39;, &amp;#39;v6&amp;#39;)&lt;/span&gt;
+&lt;span class="gi"&gt;+        run_env.prepend_path(&amp;#39;PYTHONPATH&amp;#39;, self.prefix.lib)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So, the first diff makes it so that OSX doesn't use the spack installed libtool by adding it to the build dependencies when NOT darwin. The second diff adds the appropriate variables to the run environment.&lt;/p&gt;
+&lt;h2&gt;Watch this thing go&lt;/h2&gt;
+&lt;p&gt;You should now be ready. Type this command and grab a cold one. It'll take a while.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;spack install root
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you spot errors with this guide, let me know.&lt;/p&gt;</content></entry><entry><title>Rabbitmq Without Root</title><link href="http://kwierman.github.io/rabbitmq-without-root/" rel="alternate"></link><published>2015-09-17T00:00:00-04:00</published><updated>2015-09-17T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-09-17:/rabbitmq-without-root/</id><summary type="html">&lt;h1&gt;Setup&lt;/h1&gt;
 &lt;h2&gt;Do a fresh install&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install -y rabbitmq-server
 &lt;/pre&gt;&lt;/div&gt;
@@ -87,7 +206,8 @@ sudo chown -R desired_user: desired_user /var/log/rabbitmq
     &lt;span class="p"&gt;]&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Django Cheat Sheet</title><link href="http://kwierman.github.io/django-cheat-sheet/" rel="alternate"></link><published>2015-08-10T00:00:00-04:00</published><updated>2015-08-10T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-08-10:/django-cheat-sheet/</id><summary type="html">&lt;h2&gt;Checking Django Version Number&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Django Cheat Sheet</title><link href="http://kwierman.github.io/django-cheat-sheet/" rel="alternate"></link><published>2015-08-10T00:00:00-04:00</published><updated>2015-08-10T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-08-10:/django-cheat-sheet/</id><summary type="html">&lt;p&gt;The idea here is that I wanted an easy cheat sheet to use when going through the motions of creating &lt;strong&gt;yet another&lt;/strong&gt; Django website.&lt;/p&gt;
+&lt;h2&gt;Checking Django Version Number&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python -c &lt;span class="s2"&gt;&amp;quot;import django; print(django.get_version())&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -98,26 +218,9 @@ sudo chown -R desired_user: desired_user /var/log/rabbitmq
 
 
 &lt;h2&gt;Database Setup&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py migrate
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Run Development Server&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py runserver
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Starting an App&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py startapp polls
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Activating Apps&lt;/h2&gt;
-&lt;p&gt;In: &lt;code&gt;mysite/settings.py&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Insert:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;django …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Checking Django Version Number&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py makemigrations
+python manage.py …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;The idea here is that I wanted an easy cheat sheet to use when going through the motions of creating &lt;strong&gt;yet another&lt;/strong&gt; Django website.&lt;/p&gt;
+&lt;h2&gt;Checking Django Version Number&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python -c &lt;span class="s2"&gt;&amp;quot;import django; print(django.get_version())&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -128,7 +231,8 @@ sudo chown -R desired_user: desired_user /var/log/rabbitmq
 
 
 &lt;h2&gt;Database Setup&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py migrate
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py makemigrations
+python manage.py migrate
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -427,18 +531,7 @@ rsync -r username@remote_computer:/remote_directory my_local_directory
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Hierarchal Git Repos</title><link href="http://kwierman.github.io/hierarchal-git-repos/" rel="alternate"></link><published>2015-05-11T00:00:00-04:00</published><updated>2015-05-11T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-05-11:/hierarchal-git-repos/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
-&lt;p&gt;A few of my git repos are based overseas. One in particular is a repository for a project which has been going on for a &lt;em&gt;LONG&lt;/em&gt; time. So long, in fact, that the size of the bare repository is roughly &lt;code&gt;500mB&lt;/code&gt;. As you can imagine, it takes a while …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
-&lt;p&gt;A few of my git repos are based overseas. One in particular is a repository for a project which has been going on for a &lt;em&gt;LONG&lt;/em&gt; time. So long, in fact, that the size of the bare repository is roughly &lt;code&gt;500mB&lt;/code&gt;. As you can imagine, it takes a while to push to origin. In addition, I don't like running physics software on my laptop (other than my own). So, I need a remote computer that I can use to act as my local(ish) repository and maybe even use it to work on as well. I thought an easy way to do this would have been to setup hierarchal repositories, but that's too complicated, so instead I'm going to setup several repos on the same machine (sorry for the misleading title).&lt;/p&gt;
-&lt;h2&gt;Creating the bare repository&lt;/h2&gt;
-&lt;p&gt;For the sake of brevity, let's call the origin:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;www.myorigin.com/myorigin.git
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Now, let's call the central node, something like&lt;/p&gt;
-&lt;h2&gt;Cloning from the repo to other computers&lt;/h2&gt;
-&lt;h2&gt;Adding the bare repo to an existing clone of the origin&lt;/h2&gt;</content></entry><entry><title>Wifi Toggle in Fedora 20</title><link href="http://kwierman.github.io/wifi-toggle-in-fedora-20/" rel="alternate"></link><published>2015-05-10T00:00:00-04:00</published><updated>2015-05-10T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-05-10:/wifi-toggle-in-fedora-20/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;/script&gt;</content></entry><entry><title>Wifi Toggle in Fedora 20</title><link href="http://kwierman.github.io/wifi-toggle-in-fedora-20/" rel="alternate"></link><published>2015-05-10T00:00:00-04:00</published><updated>2015-05-10T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-05-10:/wifi-toggle-in-fedora-20/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;I need to be able to toggle my wifi on and off. There'a script for that. The utility, &lt;code&gt;nmcli&lt;/code&gt; has the entire functionality we need, I just need to tie it together.&lt;/p&gt;
 &lt;h2&gt;The Script&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bash                                                               &lt;/span&gt;
@@ -775,37 +868,14 @@ passwd &amp;lt;username&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;This should create the home directory at &lt;code&gt;/home/&amp;lt;username&amp;gt;&lt;/code&gt; etc...&lt;/p&gt;</content></entry><entry><title>Yeast Production</title><link href="http://kwierman.github.io/yeast-production/" rel="alternate"></link><published>2015-02-09T00:00:00-05:00</published><updated>2015-02-09T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-09:/yeast-production/</id><summary type="html"></summary><content type="html"></content></entry><entry><title>Tritium Front End</title><link href="http://kwierman.github.io/tritium-front-end/" rel="alternate"></link><published>2015-02-05T00:00:00-05:00</published><updated>2015-02-05T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-05:/tritium-front-end/</id><summary type="html">&lt;p&gt;Remember to add in : chmod g-wx,o-wx ~/.python-eggs laterp&lt;/p&gt;
-&lt;h2&gt;Making a testing framework&lt;/h2&gt;
-&lt;h2&gt;Using the Python Application Environment&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Change your models &lt;span class="o"&gt;(&lt;/span&gt;in models.py&lt;span class="o"&gt;)&lt;/span&gt;.
-Run python manage.py makemigrations to create migrations &lt;span class="k"&gt;for&lt;/span&gt; those changes
-Run python manage.py migrate to apply those changes to the database.
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Creating a superuser …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;Remember to add in : chmod g-wx,o-wx ~/.python-eggs laterp&lt;/p&gt;
-&lt;h2&gt;Making a testing framework&lt;/h2&gt;
-&lt;h2&gt;Using the Python Application Environment&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Change your models &lt;span class="o"&gt;(&lt;/span&gt;in models.py&lt;span class="o"&gt;)&lt;/span&gt;.
-Run python manage.py makemigrations to create migrations &lt;span class="k"&gt;for&lt;/span&gt; those changes
-Run python manage.py migrate to apply those changes to the database.
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Creating a superuser&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python manage.py createsuperuser
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Send emails from OSX apache server</title><link href="http://kwierman.github.io/send-emails-from-osx-apache-server/" rel="alternate"></link><published>2015-02-04T00:00:00-05:00</published><updated>2015-02-04T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-04:/send-emails-from-osx-apache-server/</id><summary type="html">&lt;h1&gt;Edit the postfix file&lt;/h1&gt;
+&lt;p&gt;This should create the home directory at &lt;code&gt;/home/&amp;lt;username&amp;gt;&lt;/code&gt; etc...&lt;/p&gt;</content></entry><entry><title>Yeast Production</title><link href="http://kwierman.github.io/yeast-production/" rel="alternate"></link><published>2015-02-09T00:00:00-05:00</published><updated>2015-02-09T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-09:/yeast-production/</id><summary type="html"></summary><content type="html"></content></entry><entry><title>Send emails from OSX apache server</title><link href="http://kwierman.github.io/send-emails-from-osx-apache-server/" rel="alternate"></link><published>2015-02-04T00:00:00-05:00</published><updated>2015-02-04T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-04:/send-emails-from-osx-apache-server/</id><summary type="html">&lt;p&gt;There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.&lt;/p&gt;
+&lt;h1&gt;Edit the postfix file&lt;/h1&gt;
 &lt;p&gt;The file is located at &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt; Make sure that these lines are present:&lt;/p&gt;
 &lt;p&gt;~ markdown
 mydomain_fallback = localhost
 mail_owner = _postfix
-setgid_group = _postdrop
-~&lt;/p&gt;
-&lt;p&gt;In order to use a gmail relay, use these lines:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#Gmail SMTP
-relayhost=smtp.gmail.com:587
-# Enable SASL authentication in the Postfix …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1&gt;Edit the postfix file&lt;/h1&gt;
+setgid_group = _postdrop …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.&lt;/p&gt;
+&lt;h1&gt;Edit the postfix file&lt;/h1&gt;
 &lt;p&gt;The file is located at &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt; Make sure that these lines are present:&lt;/p&gt;
 &lt;p&gt;~ markdown
 mydomain_fallback = localhost

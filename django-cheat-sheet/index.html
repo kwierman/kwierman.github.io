@@ -33,7 +33,7 @@
             <h2><a href="http://kwierman.github.io" title="">Kevin Wierman</a></h2><span style="vertical-align: text-bottom; color: ltgrey"></span>
 
 <nav>
-                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Articles">Articles</a></li>                    <li><a href="http://kwierman.github.io/projects/" title="Projects">Projects</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact Me">Contact Me</a></li>                </ul>
+                <ul>                    <li><a href="http://kwierman.github.io/articles/" title="Guides">Guides</a></li>                    <li><a href="http://kwierman.github.io/about-me/" title="About">About</a></li>                    <li><a href="http://kwierman.github.io/contact-me/" title="Contact">Contact</a></li>                </ul>
             </nav>        </div>
     </header>          
           <div class="content container body-margin">
@@ -43,7 +43,8 @@
 <h5></h5>            <time title="2015-08-10T00:00:00-04:00">Mon 10 August 2015</time>
         </header>
         
-        <h2>Checking Django Version Number</h2>
+        <p>The idea here is that I wanted an easy cheat sheet to use when going through the motions of creating <strong>yet another</strong> Django website.</p>
+<h2>Checking Django Version Number</h2>
 <div class="highlight"><pre><span></span>python -c <span class="s2">&quot;import django; print(django.get_version())&quot;</span>
 </pre></div>
 
@@ -54,7 +55,8 @@
 
 
 <h2>Database Setup</h2>
-<div class="highlight"><pre><span></span>python manage.py migrate
+<div class="highlight"><pre><span></span>python manage.py makemigrations
+python manage.py migrate
 </pre></div>
 
 
