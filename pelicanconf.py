@@ -271,7 +271,7 @@ PUBLICATIONS=[
 ]
 
 INDEX_JUMBOTRON = ("images/bubble_chamber.png", "Bubble Chamber")
-INDEX_HEADER = "Bridging the gap between industry technology and high performance physics computing"
+INDEX_HEADER = "Bridging the divide between industry technology and high performance physics computing"
 INDEX_DESCRIPTION = """
 """
 
