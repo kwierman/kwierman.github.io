@@ -109,10 +109,10 @@ TRANSLATION_FEED_ATOM = None
 DISQUS_SITENAME = 'kevinwierman'
 
 MENUITEMS = (
-('Articles', 'articles/'),
-('Projects', 'projects/'),
+('Guides', 'articles/'),
+#('Projects', 'projects/'),
 ('About', 'about-me/'),
-('Contact Me', 'contact-me/'),
+('Contact', 'contact-me/'),
 )
 
 # Plugins
