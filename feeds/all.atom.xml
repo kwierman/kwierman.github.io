@@ -551,11 +551,7 @@ rsync -r username@remote_computer:/remote_directory my_local_directory
 &lt;span class="k"&gt;else&lt;/span&gt;
     nmcli radio wifi on
 &lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Irish Red Ale</title><link href="http://kwierman.github.io/irish-red-ale/" rel="alternate"></link><published>2015-04-04T00:00:00-04:00</published><updated>2015-04-04T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-04-04:/irish-red-ale/</id><summary type="html">&lt;p&gt;Today we're making an Irish Red Ale. The goal here is to hop in the direction of a floral tea. The body should be lightly sweet with a dry finish. The color should be red.&lt;/p&gt;
-&lt;p&gt;In order to get the right hoppiness, we're going to go with Kent Goldings.&lt;/p&gt;
-&lt;p&gt;For …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Today we're making an Irish Red Ale. The goal here is to hop in the direction of a floral tea. The body should be lightly sweet with a dry finish. The color should be red.&lt;/p&gt;
-&lt;p&gt;In order to get the right hoppiness, we're going to go with Kent Goldings.&lt;/p&gt;
-&lt;p&gt;For an economical ale, we're using 2-Row for the base malt. For a sweet, dry body with red color, we're using Caramel 20L and 120L.&lt;/p&gt;</content></entry><entry><title>A Makefile for fast prototyping</title><link href="http://kwierman.github.io/a-makefile-for-fast-prototyping/" rel="alternate"></link><published>2015-02-27T00:00:00-05:00</published><updated>2015-02-27T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-27:/a-makefile-for-fast-prototyping/</id><summary type="html">&lt;h2&gt;The Endgame&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>A Makefile for fast prototyping</title><link href="http://kwierman.github.io/a-makefile-for-fast-prototyping/" rel="alternate"></link><published>2015-02-27T00:00:00-05:00</published><updated>2015-02-27T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-27:/a-makefile-for-fast-prototyping/</id><summary type="html">&lt;h2&gt;The Endgame&lt;/h2&gt;
 &lt;p&gt;Alright, so the idea is to define a project by it's internal_structure. To that end, I'm going to use folders to define where the executables live and where each library lives.&lt;/p&gt;
 &lt;p&gt;So, the project layout will end up being:&lt;/p&gt;
 &lt;ul&gt;
@@ -868,7 +864,7 @@ passwd &amp;lt;username&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;This should create the home directory at &lt;code&gt;/home/&amp;lt;username&amp;gt;&lt;/code&gt; etc...&lt;/p&gt;</content></entry><entry><title>Yeast Production</title><link href="http://kwierman.github.io/yeast-production/" rel="alternate"></link><published>2015-02-09T00:00:00-05:00</published><updated>2015-02-09T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-09:/yeast-production/</id><summary type="html"></summary><content type="html"></content></entry><entry><title>Send emails from OSX apache server</title><link href="http://kwierman.github.io/send-emails-from-osx-apache-server/" rel="alternate"></link><published>2015-02-04T00:00:00-05:00</published><updated>2015-02-04T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-04:/send-emails-from-osx-apache-server/</id><summary type="html">&lt;p&gt;There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.&lt;/p&gt;
+&lt;p&gt;This should create the home directory at &lt;code&gt;/home/&amp;lt;username&amp;gt;&lt;/code&gt; etc...&lt;/p&gt;</content></entry><entry><title>Send emails from OSX apache server</title><link href="http://kwierman.github.io/send-emails-from-osx-apache-server/" rel="alternate"></link><published>2015-02-04T00:00:00-05:00</published><updated>2015-02-04T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-04:/send-emails-from-osx-apache-server/</id><summary type="html">&lt;p&gt;There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.&lt;/p&gt;
 &lt;h1&gt;Edit the postfix file&lt;/h1&gt;
 &lt;p&gt;The file is located at &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt; Make sure that these lines are present:&lt;/p&gt;
 &lt;p&gt;~ markdown
@@ -1313,105 +1309,6 @@ For the hops equation, the units for the \% must be expressed in decimal form.  
 &lt;div class="math"&gt;$$ Color of Wort = S [(\% extract)(^\circ L of malt)(^\circ P wort / 8^\circ P reference)]      $$&lt;/div&gt;
 &lt;p&gt;We allow for a 30\% loss of color during fermentation to calculate the color of beer.
 Color of Beer = (color of wort)(1 - \% color loss)&lt;/p&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "right",
-        indent = "1em",
-        linebreak = "true";
-
-    if (true) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js',], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'Latex Equation'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'grey ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('Fraktur' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_Fraktur');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_Fraktur-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_Fraktur-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_Fraktur-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_Fraktur');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_Fraktur-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_Fraktur-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_Fraktur-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content></entry><entry><title>Jasmine IPA</title><link href="http://kwierman.github.io/jasmine-ipa/" rel="alternate"></link><published>2015-01-31T00:00:00-05:00</published><updated>2015-01-31T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-31:/jasmine-ipa/</id><summary type="html">&lt;h2&gt;Background&lt;/h2&gt;
-&lt;p&gt;One of our favorite beers of all time is the &lt;a href="http://www.elysianbrewing.com/elysian-beers/avatar-jasmine-ipa/"&gt;Avatar Jasmine IPA&lt;/a&gt;from &lt;a href="http://www.elysianbrewing.com/"&gt;Elysian Brewing&lt;/a&gt;. So much so, in fact, that we're going to try and replicate it from a series of other recipes. We've tried this before (to great success, might I add). This time around, we're …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Background&lt;/h2&gt;
-&lt;p&gt;One of our favorite beers of all time is the &lt;a href="http://www.elysianbrewing.com/elysian-beers/avatar-jasmine-ipa/"&gt;Avatar Jasmine IPA&lt;/a&gt;from &lt;a href="http://www.elysianbrewing.com/"&gt;Elysian Brewing&lt;/a&gt;. So much so, in fact, that we're going to try and replicate it from a series of other recipes. We've tried this before (to great success, might I add). This time around, we're making some modifications to the now named,&lt;/p&gt;
-&lt;p _="%" endblockquote_="endblockquote%"&gt;{% blockquote %}
-    Wrath of Khan Jasmine IPA&lt;/p&gt;
-&lt;h2&gt;Desired Characteristics&lt;/h2&gt;
-&lt;p&gt;From the Elysian Brewing website:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Style:&lt;ul&gt;
-&lt;li&gt;IPA&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Body:&lt;ul&gt;
-&lt;li&gt;Medium&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Color&lt;ul&gt;
-&lt;li&gt;Golden Copper&lt;/li&gt;
-&lt;li&gt;Roughly an SRM of 6&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;ABV:&lt;ul&gt;
-&lt;li&gt;6.3&lt;div class="math"&gt;$$\%$$&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Aromatics:&lt;ul&gt;
-&lt;li&gt;Floral&lt;/li&gt;
-&lt;li&gt;Jasmine&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Taste:&lt;ul&gt;
-&lt;li&gt;Balance of hoppiness and jasmine&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;IBU:&lt;ul&gt;
-&lt;li&gt;45&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Malts: Pale, &lt;/p&gt;
-&lt;div class="math"&gt;$$45^\circ$$&lt;/div&gt;
-&lt;p&gt; Crystal, Munich and Cara-hell&lt;/p&gt;
-&lt;p&gt;Hops: Bittered with German Northern Brewer, finished with Glacier and Amarillo hops&lt;/p&gt;
-&lt;h2&gt;Putting the recipe together&lt;/h2&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "right",
         indent = "1em",

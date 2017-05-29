@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://kwierman.github.io/</loc>
-<lastmod>2017-05-27T19:38:16-00:00</lastmod>
+<lastmod>2017-05-29T06:26:20-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -81,13 +81,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://kwierman.github.io/irish-red-ale/</loc>
-<lastmod>2015-04-04T00:00:00-04:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://kwierman.github.io/a-makefile-for-fast-prototyping/</loc>
 <lastmod>2015-02-27T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -104,13 +97,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://kwierman.github.io/pidora-headless-install/</loc>
 <lastmod>2015-02-15T00:00:00-05:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://kwierman.github.io/yeast-production/</loc>
-<lastmod>2015-02-09T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -152,13 +138,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://kwierman.github.io/grain-mass-calculations/</loc>
-<lastmod>2015-01-31T00:00:00-05:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://kwierman.github.io/jasmine-ipa/</loc>
 <lastmod>2015-01-31T00:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
