@@ -13,5 +13,7 @@ pip install -r requirements.txt
 There are two components to the development environment:
 
 ~~~ bash
+make devserver
+make regenerate
 ~~~
 
