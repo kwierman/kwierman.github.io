@@ -8,10 +8,6 @@ Date: 2015-01-25 14:53
 
 ##Experience
 
-As part of my undergraduate and graduate careers, I have been in involved in detector development for neutrino physics experiments as well as\
-data acquisitions, support electronics development, as well as analysis and simulations software development.
-
-
 <table class="cv">
 	<tr>
 		<th style="width: 75%;">KATRIN and UNC ENPA</th>
@@ -225,6 +221,8 @@ data acquisitions, support electronics development, as well as analysis and simu
 			<li>"Focal-plane detector system for the KATRIN experiment", J.F. Amsbaugh et al, April 2014, arXiv:744
 			</li>
 			<li>"Dead layer on silicon p-i-n diode charged-particle detectors", B.L. Wall, et. al., Oct 2013,  arXiv:744</li>
+			<li>"Kassiopeia: a modern, extensible C++ particle tracking package", D. Furse, et. al., Dec 2016, arXiv:1612.00262</li>
+			<li>"A pulsed, mono-energetic and angular-selective UV photo-electron source for the commissioning of the KATRIN experiment", J. Behrens, et. al., Mar 2017, arXiv:1703.05272</li>
 		</ul>
 	</li>
 	<li>
