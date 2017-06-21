@@ -14,12 +14,32 @@ data acquisitions, support electronics development, as well as analysis and simu
 
 <table class="cv">
 	<tr>
+		<th style="width: 75%;">Pacific Northwest National Laboratory</th>
+		<th>Oct 2016 - Present</th>
+	</tr>
+	<tr>
+		<td style="width: 75%;">Postdoctoral Researcher</td>
+		<td>Richland, Wa/Batavia, Il</td>
+	</tr>
+	<tr>
+		<td style="width: 75%;">
+		    <ul>
+			<li>MicroBooNE Run Coordinator</li>
+			<li>Implemented Cosmic Ray Tagging in Liquid Argon TPCs</li>
+			<li>Developing deep learning as a tool for investigating proton decay</li>
+		    </ul>
+		</td>
+		<td></td>
+	</tr>
+</table>
+<table class="cv">
+	<tr>
 		<th style="width: 75%;">KATRIN and UNC ENPA</th>
-		<th>May 2011 - Present</th>
+		<th>May 2011 - Sep 2016</th>
 	</tr>
 	<tr>
 		<td>Graduate Research Assistant</td>
-		<td>Karlsruhe, Germany</td>
+		<td>Chapel Hill, NC/Karlsruhe, Germany</td>
 	</tr>
 	<tr>
 		<td style="width: 75%;">
