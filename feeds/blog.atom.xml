@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman - blog</title><link href="http://kwierman.github.io/" rel="alternate"></link><link href="http://kwierman.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://kwierman.github.io/</id><updated>2015-02-04T00:00:00-05:00</updated><entry><title>Send emails from OSX apache server</title><link href="http://kwierman.github.io/send-emails-from-osx-apache-server/" rel="alternate"></link><published>2015-02-04T00:00:00-05:00</published><updated>2015-02-04T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-04:/send-emails-from-osx-apache-server/</id><summary type="html">&lt;p&gt;There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman - blog</title><link href="https://kwierman.github.io/" rel="alternate"></link><link href="https://kwierman.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://kwierman.github.io/</id><updated>2015-02-04T00:00:00-05:00</updated><entry><title>Send emails from OSX apache server</title><link href="https://kwierman.github.io/send-emails-from-osx-apache-server/" rel="alternate"></link><published>2015-02-04T00:00:00-05:00</published><updated>2015-02-04T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-04:/send-emails-from-osx-apache-server/</id><summary type="html">&lt;p&gt;There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.&lt;/p&gt;
 &lt;h1&gt;Edit the postfix file&lt;/h1&gt;
 &lt;p&gt;The file is located at &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt; Make sure that these lines are present:&lt;/p&gt;
 &lt;p&gt;~ markdown
@@ -47,7 +47,7 @@ sudo postmap /etc/postfix/sasl_passwd
 &lt;p&gt;Now, start and/or reload the server:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo postfix reload
 sudo postfix start
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Indico Server on OSX</title><link href="http://kwierman.github.io/indico-server-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/indico-server-on-osx/</id><summary type="html">&lt;h2&gt;Prereqs&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Indico Server on OSX</title><link href="https://kwierman.github.io/indico-server-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/indico-server-on-osx/</id><summary type="html">&lt;h2&gt;Prereqs&lt;/h2&gt;
 &lt;p&gt;OSX is already in a good position to run Indico. A few modifications needs to be made:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Install ModWSGI:&lt;/li&gt;
@@ -224,7 +224,7 @@ sudo chgrp -R _www /opt/indico
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;There's also a ton of information &lt;a href="https://github.com/indico/indico/blob/master/DEVELOPMENT.md"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>ModWSGI on OSX</title><link href="http://kwierman.github.io/modwsgi-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/modwsgi-on-osx/</id><summary type="html">&lt;p&gt;The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]&lt;/p&gt;
+&lt;p&gt;There's also a ton of information &lt;a href="https://github.com/indico/indico/blob/master/DEVELOPMENT.md"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>ModWSGI on OSX</title><link href="https://kwierman.github.io/modwsgi-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/modwsgi-on-osx/</id><summary type="html">&lt;p&gt;The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]&lt;/p&gt;
 &lt;p _="%" endblockquote&gt;{% blockquote %}
    DO NOT FOLLOW THE INSTRUCTIONS.&lt;/p&gt;
 &lt;p&gt;Just unload it to a source directory and install it to the apache module directory&lt;/p&gt;
@@ -240,7 +240,7 @@ sudo chgrp -R _www /opt/indico
 
 &lt;p&gt;And restart the apache server&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    apachectl restart
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Beer Color Calculation</title><link href="http://kwierman.github.io/beer-color-calculation/" rel="alternate"></link><published>2015-01-31T00:00:00-05:00</published><updated>2015-01-31T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-31:/beer-color-calculation/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Beer Color Calculation</title><link href="https://kwierman.github.io/beer-color-calculation/" rel="alternate"></link><published>2015-01-31T00:00:00-05:00</published><updated>2015-01-31T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-31:/beer-color-calculation/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;One should never formulate a recipe around color, but it should match the style of the beer.&lt;/p&gt;
 &lt;h2&gt;Degrees Lovibond&lt;/h2&gt;
 &lt;p&gt;Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale  introduced by Joseph Lovibond in the '60s. 
@@ -318,7 +318,7 @@ For the weight of grain in lbs (&lt;span class="math"&gt;\(W_{lbs}\)&lt;/span&gt
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Easy Latex in Sublime Text</title><link href="http://kwierman.github.io/easy-latex-in-sublime-text/" rel="alternate"></link><published>2015-01-29T00:00:00-05:00</published><updated>2015-01-29T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-29:/easy-latex-in-sublime-text/</id><summary type="html">&lt;p&gt;I'm a huge fan of &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text&lt;/a&gt;. A more ideal setting would be to have this work for all of my concurrent work/notetaking/writing, I'd like a system for updating logs. The following steps were taken to make latex and sublime text play well together.&lt;/p&gt;
+&lt;/script&gt;</content></entry><entry><title>Easy Latex in Sublime Text</title><link href="https://kwierman.github.io/easy-latex-in-sublime-text/" rel="alternate"></link><published>2015-01-29T00:00:00-05:00</published><updated>2015-01-29T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-29:/easy-latex-in-sublime-text/</id><summary type="html">&lt;p&gt;I'm a huge fan of &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text&lt;/a&gt;. A more ideal setting would be to have this work for all of my concurrent work/notetaking/writing, I'd like a system for updating logs. The following steps were taken to make latex and sublime text play well together.&lt;/p&gt;
 &lt;h2&gt;Prereqs&lt;/h2&gt;
 &lt;p&gt;Install &lt;code&gt;texlive&lt;/code&gt; and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'm a huge fan of &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text&lt;/a&gt;. A more ideal setting would be to have this work for all of my concurrent work/notetaking/writing, I'd like a system for updating logs. The following steps were taken to make latex and sublime text play well together.&lt;/p&gt;
 &lt;h2&gt;Prereqs&lt;/h2&gt;
@@ -353,7 +353,7 @@ Package Control: Install Package
 
 
 &lt;p&gt;Fragmentation between linux distros causes the steps to become necessary. Edit the &lt;code&gt;LaTex.sublime-settings&lt;/code&gt;. Search for &lt;code&gt;Platform Settings&lt;/code&gt;. Occasionally the build system needs to be put into each platforms directory. &lt;code&gt;texpath&lt;/code&gt; should be set up correctly to point to mktex. See the &lt;a href="https://github.com/SublimeText/LaTeXTools"&gt;GitHub repo&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;p&gt;Evince at the moment is the only viewer supported. Okular is coming up next, so we might have to try and see if that comes around soon.&lt;/p&gt;</content></entry><entry><title>Presentations in Latex</title><link href="http://kwierman.github.io/presentations-in-latex/" rel="alternate"></link><published>2015-01-29T00:00:00-05:00</published><updated>2015-01-29T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-29:/presentations-in-latex/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;Evince at the moment is the only viewer supported. Okular is coming up next, so we might have to try and see if that comes around soon.&lt;/p&gt;</content></entry><entry><title>Presentations in Latex</title><link href="https://kwierman.github.io/presentations-in-latex/" rel="alternate"></link><published>2015-01-29T00:00:00-05:00</published><updated>2015-01-29T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-29:/presentations-in-latex/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;Typically presentations in &lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt; depend on the &lt;a href="http://en.wikipedia.org/wiki/Beamer_%28LaTeX%29"&gt;Beamer&lt;/a&gt; document class. While this is all fine and well, this package is a bit restrictive. After a little digging, I found a KOMA script based document template that works well. I'll attempt to explain it here&lt;/p&gt;
 &lt;h2&gt;Pre-requisites&lt;/h2&gt;
 &lt;p&gt;This template requires &lt;code&gt;texlive …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
@@ -637,7 +637,7 @@ content
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Using Sphinx for Inline Documentation</title><link href="http://kwierman.github.io/using-sphinx-for-inline-documentation/" rel="alternate"></link><published>2015-01-27T00:00:00-05:00</published><updated>2015-01-27T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-27:/using-sphinx-for-inline-documentation/</id><summary type="html">&lt;h2&gt;Brief History&lt;/h2&gt;
+&lt;/script&gt;</content></entry><entry><title>Using Sphinx for Inline Documentation</title><link href="https://kwierman.github.io/using-sphinx-for-inline-documentation/" rel="alternate"></link><published>2015-01-27T00:00:00-05:00</published><updated>2015-01-27T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-27:/using-sphinx-for-inline-documentation/</id><summary type="html">&lt;h2&gt;Brief History&lt;/h2&gt;
 &lt;p&gt;Previously, in my python based endeavors, I've used &lt;a href="http://www.stack.nl/~dimitri/doxygen/" title="doxyen"&gt;doxygen&lt;/a&gt;, an inline code documentation engine for generating web pages and pdfs. Many people recommend this for c++ API documentation, and in fact, I use it my self all the time.However, to my eternal consternation, it does not play …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Brief History&lt;/h2&gt;
 &lt;p&gt;Previously, in my python based endeavors, I've used &lt;a href="http://www.stack.nl/~dimitri/doxygen/" title="doxyen"&gt;doxygen&lt;/a&gt;, an inline code documentation engine for generating web pages and pdfs. Many people recommend this for c++ API documentation, and in fact, I use it my self all the time.However, to my eternal consternation, it does not play well with python. I've used various little tricks and hacks to get around this, but a more streamlined approach would be nice. Eventually, I'd like to use something that works with multiple languages, but I guess today is just not that day.&lt;/p&gt;
 &lt;h2&gt;In Comes Sphinx&lt;/h2&gt;
@@ -926,7 +926,7 @@ Sphinx extracts docstrings from the files themselves, so if you're already follo
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The acceptable syntax can be found at &lt;a href="http://sphinx-doc.org/rest.html"&gt;sphinx&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Using Octopress on Fedora 20</title><link href="http://kwierman.github.io/using-octopress-on-fedora-20/" rel="alternate"></link><published>2015-01-24T00:00:00-05:00</published><updated>2015-01-24T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-24:/using-octopress-on-fedora-20/</id><summary type="html">&lt;p&gt;Prerequisites&lt;/p&gt;
+&lt;p&gt;The acceptable syntax can be found at &lt;a href="http://sphinx-doc.org/rest.html"&gt;sphinx&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Using Octopress on Fedora 20</title><link href="https://kwierman.github.io/using-octopress-on-fedora-20/" rel="alternate"></link><published>2015-01-24T00:00:00-05:00</published><updated>2015-01-24T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-24:/using-octopress-on-fedora-20/</id><summary type="html">&lt;p&gt;Prerequisites&lt;/p&gt;
 &lt;p&gt;In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo yum install curl wget git-core
 $ sudo yum install gcc zlib-devel make openssl autoconf automake

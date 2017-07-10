@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman</title><link href="http://kwierman.github.io/" rel="alternate"></link><link href="http://kwierman.github.io/feeds/all.atom.xml" rel="self"></link><id>http://kwierman.github.io/</id><updated>2017-05-27T00:00:00-04:00</updated><entry><title>Installing ROOT with Spack on OSX</title><link href="http://kwierman.github.io/installing-root-with-spack-on-osx/" rel="alternate"></link><published>2017-05-27T00:00:00-04:00</published><updated>2017-05-27T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2017-05-27:/installing-root-with-spack-on-osx/</id><summary type="html">&lt;p&gt;While I would have preferred a cleaner way of doing this, using Spack avoids the headaches involved in installing ROOT. Of which, we know; every physics grad student gets to do &lt;strong&gt;at least&lt;/strong&gt; 6 times.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman</title><link href="https://kwierman.github.io/" rel="alternate"></link><link href="https://kwierman.github.io/feeds/all.atom.xml" rel="self"></link><id>https://kwierman.github.io/</id><updated>2017-05-27T00:00:00-04:00</updated><entry><title>Installing ROOT with Spack on OSX</title><link href="https://kwierman.github.io/installing-root-with-spack-on-osx/" rel="alternate"></link><published>2017-05-27T00:00:00-04:00</published><updated>2017-05-27T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2017-05-27:/installing-root-with-spack-on-osx/</id><summary type="html">&lt;p&gt;While I would have preferred a cleaner way of doing this, using Spack avoids the headaches involved in installing ROOT. Of which, we know; every physics grad student gets to do &lt;strong&gt;at least&lt;/strong&gt; 6 times.&lt;/p&gt;
 &lt;p&gt;So, here's the idea:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Get gfortran&lt;/li&gt;
@@ -118,7 +118,7 @@ spack repo add &amp;lt;your installation directory&amp;gt;/spack/var/spack/repos
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;If you spot errors with this guide, let me know.&lt;/p&gt;</content></entry><entry><title>Rabbitmq Without Root</title><link href="http://kwierman.github.io/rabbitmq-without-root/" rel="alternate"></link><published>2015-09-17T00:00:00-04:00</published><updated>2015-09-17T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-09-17:/rabbitmq-without-root/</id><summary type="html">&lt;h1&gt;Setup&lt;/h1&gt;
+&lt;p&gt;If you spot errors with this guide, let me know.&lt;/p&gt;</content></entry><entry><title>Rabbitmq Without Root</title><link href="https://kwierman.github.io/rabbitmq-without-root/" rel="alternate"></link><published>2015-09-17T00:00:00-04:00</published><updated>2015-09-17T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-09-17:/rabbitmq-without-root/</id><summary type="html">&lt;h1&gt;Setup&lt;/h1&gt;
 &lt;h2&gt;Do a fresh install&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install -y rabbitmq-server
 &lt;/pre&gt;&lt;/div&gt;
@@ -206,7 +206,7 @@ sudo chown -R desired_user: desired_user /var/log/rabbitmq
     &lt;span class="p"&gt;]&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Django Cheat Sheet</title><link href="http://kwierman.github.io/django-cheat-sheet/" rel="alternate"></link><published>2015-08-10T00:00:00-04:00</published><updated>2015-08-10T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-08-10:/django-cheat-sheet/</id><summary type="html">&lt;p&gt;The idea here is that I wanted an easy cheat sheet to use when going through the motions of creating &lt;strong&gt;yet another&lt;/strong&gt; Django website.&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Django Cheat Sheet</title><link href="https://kwierman.github.io/django-cheat-sheet/" rel="alternate"></link><published>2015-08-10T00:00:00-04:00</published><updated>2015-08-10T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-08-10:/django-cheat-sheet/</id><summary type="html">&lt;p&gt;The idea here is that I wanted an easy cheat sheet to use when going through the motions of creating &lt;strong&gt;yet another&lt;/strong&gt; Django website.&lt;/p&gt;
 &lt;h2&gt;Checking Django Version Number&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python -c &lt;span class="s2"&gt;&amp;quot;import django; print(django.get_version())&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -347,7 +347,7 @@ python manage.py migrate
     &lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Question&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;QuestionAdmin&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Bash Tools</title><link href="http://kwierman.github.io/bash-tools/" rel="alternate"></link><published>2015-05-11T00:00:00-04:00</published><updated>2015-05-11T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-05-11:/bash-tools/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Bash Tools</title><link href="https://kwierman.github.io/bash-tools/" rel="alternate"></link><published>2015-05-11T00:00:00-04:00</published><updated>2015-05-11T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-05-11:/bash-tools/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;Given how ubiquitous unix(esque) systems are in the science industry, the ability to use tools that are commonly found on all platforms is increasingly useful. Since many clusters don't support operations in the login nodes which require advanced libraries, users are restricted to using the tools that come …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;Given how ubiquitous unix(esque) systems are in the science industry, the ability to use tools that are commonly found on all platforms is increasingly useful. Since many clusters don't support operations in the login nodes which require advanced libraries, users are restricted to using the tools that come native with the system. Below is a non-exhaustive description of tools that I have found useful.&lt;/p&gt;
 &lt;h3&gt;Bang Bang&lt;/h3&gt;
@@ -531,7 +531,7 @@ rsync -r username@remote_computer:/remote_directory my_local_directory
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Wifi Toggle in Fedora 20</title><link href="http://kwierman.github.io/wifi-toggle-in-fedora-20/" rel="alternate"></link><published>2015-05-10T00:00:00-04:00</published><updated>2015-05-10T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-05-10:/wifi-toggle-in-fedora-20/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;/script&gt;</content></entry><entry><title>Wifi Toggle in Fedora 20</title><link href="https://kwierman.github.io/wifi-toggle-in-fedora-20/" rel="alternate"></link><published>2015-05-10T00:00:00-04:00</published><updated>2015-05-10T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-05-10:/wifi-toggle-in-fedora-20/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;I need to be able to toggle my wifi on and off. There'a script for that. The utility, &lt;code&gt;nmcli&lt;/code&gt; has the entire functionality we need, I just need to tie it together.&lt;/p&gt;
 &lt;h2&gt;The Script&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bash                                                               &lt;/span&gt;
@@ -551,7 +551,7 @@ rsync -r username@remote_computer:/remote_directory my_local_directory
 &lt;span class="k"&gt;else&lt;/span&gt;
     nmcli radio wifi on
 &lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>A Makefile for fast prototyping</title><link href="http://kwierman.github.io/a-makefile-for-fast-prototyping/" rel="alternate"></link><published>2015-02-27T00:00:00-05:00</published><updated>2015-02-27T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-27:/a-makefile-for-fast-prototyping/</id><summary type="html">&lt;h2&gt;The Endgame&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>A Makefile for fast prototyping</title><link href="https://kwierman.github.io/a-makefile-for-fast-prototyping/" rel="alternate"></link><published>2015-02-27T00:00:00-05:00</published><updated>2015-02-27T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-27:/a-makefile-for-fast-prototyping/</id><summary type="html">&lt;h2&gt;The Endgame&lt;/h2&gt;
 &lt;p&gt;Alright, so the idea is to define a project by it's internal_structure. To that end, I'm going to use folders to define where the executables live and where each library lives.&lt;/p&gt;
 &lt;p&gt;So, the project layout will end up being:&lt;/p&gt;
 &lt;ul&gt;
@@ -651,7 +651,7 @@ rsync -r username@remote_computer:/remote_directory my_local_directory
 
 &lt;h2&gt;OS Specific Options&lt;/h2&gt;
 &lt;h3&gt;OSX&lt;/h3&gt;
-&lt;h3&gt;Linux&lt;/h3&gt;</content></entry><entry><title>Fedora 20 Keyboard Shortcuts</title><link href="http://kwierman.github.io/fedora-20-keyboard-shortcuts/" rel="alternate"></link><published>2015-02-25T00:00:00-05:00</published><updated>2015-02-25T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-25:/fedora-20-keyboard-shortcuts/</id><summary type="html">&lt;p&gt;Fedora 20 and Keyboard Shortcuts&lt;/p&gt;</summary><content type="html">&lt;h2&gt;The Status Quo&lt;/h2&gt;
+&lt;h3&gt;Linux&lt;/h3&gt;</content></entry><entry><title>Fedora 20 Keyboard Shortcuts</title><link href="https://kwierman.github.io/fedora-20-keyboard-shortcuts/" rel="alternate"></link><published>2015-02-25T00:00:00-05:00</published><updated>2015-02-25T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-25:/fedora-20-keyboard-shortcuts/</id><summary type="html">&lt;p&gt;Fedora 20 and Keyboard Shortcuts&lt;/p&gt;</summary><content type="html">&lt;h2&gt;The Status Quo&lt;/h2&gt;
 &lt;p&gt;Poking around the internet, I couldn't find anything on the keyboard shortcuts in Fedora 20. So, here's a table.&lt;/p&gt;
 &lt;p&gt;&lt;table style="width:100%"&gt;
   &lt;tr&gt;
@@ -781,7 +781,7 @@ rsync -r username@remote_computer:/remote_directory my_local_directory
   &lt;/tr&gt;
 &lt;/table&gt; &lt;/p&gt;
 &lt;h2&gt;Some Additions&lt;/h2&gt;
-&lt;p&gt;Since I'm used to a very Ubuntu way of doing things, I added in Ctl+Alt+T for the terminal.&lt;/p&gt;</content><category term="fedora"></category><category term="shortcuts"></category></entry><entry><title>Pidora Headless Install</title><link href="http://kwierman.github.io/pidora-headless-install/" rel="alternate"></link><published>2015-02-15T00:00:00-05:00</published><updated>2015-02-15T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-15:/pidora-headless-install/</id><summary type="html">&lt;h3&gt;Using Fedora to install pidora:&lt;/h3&gt;
+&lt;p&gt;Since I'm used to a very Ubuntu way of doing things, I added in Ctl+Alt+T for the terminal.&lt;/p&gt;</content><category term="fedora"></category><category term="shortcuts"></category></entry><entry><title>Pidora Headless Install</title><link href="https://kwierman.github.io/pidora-headless-install/" rel="alternate"></link><published>2015-02-15T00:00:00-05:00</published><updated>2015-02-15T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-15:/pidora-headless-install/</id><summary type="html">&lt;h3&gt;Using Fedora to install pidora:&lt;/h3&gt;
 &lt;p&gt;Steps:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Download the installer:&lt;/li&gt;
@@ -864,7 +864,7 @@ passwd &amp;lt;username&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;This should create the home directory at &lt;code&gt;/home/&amp;lt;username&amp;gt;&lt;/code&gt; etc...&lt;/p&gt;</content></entry><entry><title>Send emails from OSX apache server</title><link href="http://kwierman.github.io/send-emails-from-osx-apache-server/" rel="alternate"></link><published>2015-02-04T00:00:00-05:00</published><updated>2015-02-04T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-04:/send-emails-from-osx-apache-server/</id><summary type="html">&lt;p&gt;There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.&lt;/p&gt;
+&lt;p&gt;This should create the home directory at &lt;code&gt;/home/&amp;lt;username&amp;gt;&lt;/code&gt; etc...&lt;/p&gt;</content></entry><entry><title>Send emails from OSX apache server</title><link href="https://kwierman.github.io/send-emails-from-osx-apache-server/" rel="alternate"></link><published>2015-02-04T00:00:00-05:00</published><updated>2015-02-04T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-04:/send-emails-from-osx-apache-server/</id><summary type="html">&lt;p&gt;There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.&lt;/p&gt;
 &lt;h1&gt;Edit the postfix file&lt;/h1&gt;
 &lt;p&gt;The file is located at &lt;code&gt;/etc/postfix/main.cf&lt;/code&gt; Make sure that these lines are present:&lt;/p&gt;
 &lt;p&gt;~ markdown
@@ -912,7 +912,7 @@ sudo postmap /etc/postfix/sasl_passwd
 &lt;p&gt;Now, start and/or reload the server:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo postfix reload
 sudo postfix start
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Indico Server on OSX</title><link href="http://kwierman.github.io/indico-server-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/indico-server-on-osx/</id><summary type="html">&lt;h2&gt;Prereqs&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Indico Server on OSX</title><link href="https://kwierman.github.io/indico-server-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/indico-server-on-osx/</id><summary type="html">&lt;h2&gt;Prereqs&lt;/h2&gt;
 &lt;p&gt;OSX is already in a good position to run Indico. A few modifications needs to be made:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Install ModWSGI:&lt;/li&gt;
@@ -1089,7 +1089,7 @@ sudo chgrp -R _www /opt/indico
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;There's also a ton of information &lt;a href="https://github.com/indico/indico/blob/master/DEVELOPMENT.md"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>ModWSGI on OSX</title><link href="http://kwierman.github.io/modwsgi-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/modwsgi-on-osx/</id><summary type="html">&lt;p&gt;The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]&lt;/p&gt;
+&lt;p&gt;There's also a ton of information &lt;a href="https://github.com/indico/indico/blob/master/DEVELOPMENT.md"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>ModWSGI on OSX</title><link href="https://kwierman.github.io/modwsgi-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/modwsgi-on-osx/</id><summary type="html">&lt;p&gt;The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]&lt;/p&gt;
 &lt;p _="%" endblockquote&gt;{% blockquote %}
    DO NOT FOLLOW THE INSTRUCTIONS.&lt;/p&gt;
 &lt;p&gt;Just unload it to a source directory and install it to the apache module directory&lt;/p&gt;
@@ -1105,7 +1105,7 @@ sudo chgrp -R _www /opt/indico
 
 &lt;p&gt;And restart the apache server&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    apachectl restart
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>SSL Keys on OSX</title><link href="http://kwierman.github.io/ssl-keys-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/ssl-keys-on-osx/</id><summary type="html">&lt;h2&gt;Generate a host key&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>SSL Keys on OSX</title><link href="https://kwierman.github.io/ssl-keys-on-osx/" rel="alternate"></link><published>2015-02-03T00:00:00-05:00</published><updated>2015-02-03T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/ssl-keys-on-osx/</id><summary type="html">&lt;h2&gt;Generate a host key&lt;/h2&gt;
 &lt;p&gt;First, make a home for the new SSL files. I use &lt;code&gt;/etc/apache2/ssl&lt;/code&gt;. Open up a terminal window, &lt;code&gt;cd&lt;/code&gt; to the new directory and issue the following command to create a host key file.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo ssh-keygen -f host.key
 &lt;/pre&gt;&lt;/div&gt;
@@ -1165,7 +1165,7 @@ sudo apachectl restart
 &lt;span class="gd"&gt;-ServerAdmin admin@example.edu&lt;/span&gt;
 &lt;span class="gi"&gt;+SSLCertificateFile &amp;quot;/etc/apache2/ssl/server.crt&amp;quot;&lt;/span&gt;
 &lt;span class="gi"&gt;+SSLCertificateKeyFile &amp;quot;/etc/apache2/ssl/host.key&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Beer Color Calculation</title><link href="http://kwierman.github.io/beer-color-calculation/" rel="alternate"></link><published>2015-01-31T00:00:00-05:00</published><updated>2015-01-31T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-31:/beer-color-calculation/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Beer Color Calculation</title><link href="https://kwierman.github.io/beer-color-calculation/" rel="alternate"></link><published>2015-01-31T00:00:00-05:00</published><updated>2015-01-31T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-31:/beer-color-calculation/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;One should never formulate a recipe around color, but it should match the style of the beer.&lt;/p&gt;
 &lt;h2&gt;Degrees Lovibond&lt;/h2&gt;
 &lt;p&gt;Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale  introduced by Joseph Lovibond in the '60s. 
@@ -1243,7 +1243,7 @@ For the weight of grain in lbs (&lt;span class="math"&gt;\(W_{lbs}\)&lt;/span&gt
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Grain Mass Calculations</title><link href="http://kwierman.github.io/grain-mass-calculations/" rel="alternate"></link><published>2015-01-31T00:00:00-05:00</published><updated>2015-01-31T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-31:/grain-mass-calculations/</id><summary type="html">&lt;p&gt;How to calculate how much grain you need&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;/script&gt;</content></entry><entry><title>Grain Mass Calculations</title><link href="https://kwierman.github.io/grain-mass-calculations/" rel="alternate"></link><published>2015-01-31T00:00:00-05:00</published><updated>2015-01-31T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-31:/grain-mass-calculations/</id><summary type="html">&lt;p&gt;How to calculate how much grain you need&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;Alright, so, you've assembled your recipes in terms of grains and percents. Now, you want to figure out how much of your grain recipe you want to add to the mash.&lt;/p&gt;
 &lt;p&gt;First, some definitions&lt;/p&gt;
 &lt;h2&gt;Definitions&lt;/h2&gt;
@@ -1363,7 +1363,7 @@ Color of Beer = (color of wort)(1 - \% color loss)&lt;/p&gt;
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Easy Latex in Sublime Text</title><link href="http://kwierman.github.io/easy-latex-in-sublime-text/" rel="alternate"></link><published>2015-01-29T00:00:00-05:00</published><updated>2015-01-29T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-29:/easy-latex-in-sublime-text/</id><summary type="html">&lt;p&gt;I'm a huge fan of &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text&lt;/a&gt;. A more ideal setting would be to have this work for all of my concurrent work/notetaking/writing, I'd like a system for updating logs. The following steps were taken to make latex and sublime text play well together.&lt;/p&gt;
+&lt;/script&gt;</content></entry><entry><title>Easy Latex in Sublime Text</title><link href="https://kwierman.github.io/easy-latex-in-sublime-text/" rel="alternate"></link><published>2015-01-29T00:00:00-05:00</published><updated>2015-01-29T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-29:/easy-latex-in-sublime-text/</id><summary type="html">&lt;p&gt;I'm a huge fan of &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text&lt;/a&gt;. A more ideal setting would be to have this work for all of my concurrent work/notetaking/writing, I'd like a system for updating logs. The following steps were taken to make latex and sublime text play well together.&lt;/p&gt;
 &lt;h2&gt;Prereqs&lt;/h2&gt;
 &lt;p&gt;Install &lt;code&gt;texlive&lt;/code&gt; and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'm a huge fan of &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text&lt;/a&gt;. A more ideal setting would be to have this work for all of my concurrent work/notetaking/writing, I'd like a system for updating logs. The following steps were taken to make latex and sublime text play well together.&lt;/p&gt;
 &lt;h2&gt;Prereqs&lt;/h2&gt;
@@ -1398,7 +1398,7 @@ Package Control: Install Package
 
 
 &lt;p&gt;Fragmentation between linux distros causes the steps to become necessary. Edit the &lt;code&gt;LaTex.sublime-settings&lt;/code&gt;. Search for &lt;code&gt;Platform Settings&lt;/code&gt;. Occasionally the build system needs to be put into each platforms directory. &lt;code&gt;texpath&lt;/code&gt; should be set up correctly to point to mktex. See the &lt;a href="https://github.com/SublimeText/LaTeXTools"&gt;GitHub repo&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;p&gt;Evince at the moment is the only viewer supported. Okular is coming up next, so we might have to try and see if that comes around soon.&lt;/p&gt;</content></entry><entry><title>Presentations in Latex</title><link href="http://kwierman.github.io/presentations-in-latex/" rel="alternate"></link><published>2015-01-29T00:00:00-05:00</published><updated>2015-01-29T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-29:/presentations-in-latex/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;Evince at the moment is the only viewer supported. Okular is coming up next, so we might have to try and see if that comes around soon.&lt;/p&gt;</content></entry><entry><title>Presentations in Latex</title><link href="https://kwierman.github.io/presentations-in-latex/" rel="alternate"></link><published>2015-01-29T00:00:00-05:00</published><updated>2015-01-29T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-29:/presentations-in-latex/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;Typically presentations in &lt;span class="math"&gt;\(\LaTeX\)&lt;/span&gt; depend on the &lt;a href="http://en.wikipedia.org/wiki/Beamer_%28LaTeX%29"&gt;Beamer&lt;/a&gt; document class. While this is all fine and well, this package is a bit restrictive. After a little digging, I found a KOMA script based document template that works well. I'll attempt to explain it here&lt;/p&gt;
 &lt;h2&gt;Pre-requisites&lt;/h2&gt;
 &lt;p&gt;This template requires &lt;code&gt;texlive …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
@@ -1682,7 +1682,7 @@ content
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content></entry><entry><title>Using Sphinx for Inline Documentation</title><link href="http://kwierman.github.io/using-sphinx-for-inline-documentation/" rel="alternate"></link><published>2015-01-27T00:00:00-05:00</published><updated>2015-01-27T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-27:/using-sphinx-for-inline-documentation/</id><summary type="html">&lt;h2&gt;Brief History&lt;/h2&gt;
+&lt;/script&gt;</content></entry><entry><title>Using Sphinx for Inline Documentation</title><link href="https://kwierman.github.io/using-sphinx-for-inline-documentation/" rel="alternate"></link><published>2015-01-27T00:00:00-05:00</published><updated>2015-01-27T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-27:/using-sphinx-for-inline-documentation/</id><summary type="html">&lt;h2&gt;Brief History&lt;/h2&gt;
 &lt;p&gt;Previously, in my python based endeavors, I've used &lt;a href="http://www.stack.nl/~dimitri/doxygen/" title="doxyen"&gt;doxygen&lt;/a&gt;, an inline code documentation engine for generating web pages and pdfs. Many people recommend this for c++ API documentation, and in fact, I use it my self all the time.However, to my eternal consternation, it does not play …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Brief History&lt;/h2&gt;
 &lt;p&gt;Previously, in my python based endeavors, I've used &lt;a href="http://www.stack.nl/~dimitri/doxygen/" title="doxyen"&gt;doxygen&lt;/a&gt;, an inline code documentation engine for generating web pages and pdfs. Many people recommend this for c++ API documentation, and in fact, I use it my self all the time.However, to my eternal consternation, it does not play well with python. I've used various little tricks and hacks to get around this, but a more streamlined approach would be nice. Eventually, I'd like to use something that works with multiple languages, but I guess today is just not that day.&lt;/p&gt;
 &lt;h2&gt;In Comes Sphinx&lt;/h2&gt;
@@ -1971,7 +1971,7 @@ Sphinx extracts docstrings from the files themselves, so if you're already follo
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The acceptable syntax can be found at &lt;a href="http://sphinx-doc.org/rest.html"&gt;sphinx&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Using Octopress on Fedora 20</title><link href="http://kwierman.github.io/using-octopress-on-fedora-20/" rel="alternate"></link><published>2015-01-24T00:00:00-05:00</published><updated>2015-01-24T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-24:/using-octopress-on-fedora-20/</id><summary type="html">&lt;p&gt;Prerequisites&lt;/p&gt;
+&lt;p&gt;The acceptable syntax can be found at &lt;a href="http://sphinx-doc.org/rest.html"&gt;sphinx&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Using Octopress on Fedora 20</title><link href="https://kwierman.github.io/using-octopress-on-fedora-20/" rel="alternate"></link><published>2015-01-24T00:00:00-05:00</published><updated>2015-01-24T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-24:/using-octopress-on-fedora-20/</id><summary type="html">&lt;p&gt;Prerequisites&lt;/p&gt;
 &lt;p&gt;In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo yum install curl wget git-core
 $ sudo yum install gcc zlib-devel make openssl autoconf automake
