@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://kwierman.github.io/</loc>
-<lastmod>2017-07-10T09:44:22-00:00</lastmod>
+<lastmod>2017-07-28T10:29:12-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -27,6 +27,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://kwierman.github.io/tritium/</loc>
 <lastmod>2015-01-25T15:48:00-05:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://kwierman.github.io/scp-with-kerberos/</loc>
+<lastmod>2017-07-28T00:00:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>

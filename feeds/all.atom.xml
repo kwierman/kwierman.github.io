@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman</title><link href="https://kwierman.github.io/" rel="alternate"></link><link href="https://kwierman.github.io/feeds/all.atom.xml" rel="self"></link><id>https://kwierman.github.io/</id><updated>2017-05-27T00:00:00-04:00</updated><entry><title>Installing ROOT with Spack on OSX</title><link href="https://kwierman.github.io/installing-root-with-spack-on-osx/" rel="alternate"></link><published>2017-05-27T00:00:00-04:00</published><updated>2017-05-27T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2017-05-27:/installing-root-with-spack-on-osx/</id><summary type="html">&lt;p&gt;While I would have preferred a cleaner way of doing this, using Spack avoids the headaches involved in installing ROOT. Of which, we know; every physics grad student gets to do &lt;strong&gt;at least&lt;/strong&gt; 6 times.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman</title><link href="https://kwierman.github.io/" rel="alternate"></link><link href="https://kwierman.github.io/feeds/all.atom.xml" rel="self"></link><id>https://kwierman.github.io/</id><updated>2017-07-28T00:00:00-04:00</updated><entry><title>SCP With Kerberos</title><link href="https://kwierman.github.io/scp-with-kerberos/" rel="alternate"></link><published>2017-07-28T00:00:00-04:00</published><updated>2017-07-28T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2017-07-28:/scp-with-kerberos/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;I find myself in the position of moving files between institutions with varying authentication systems. One of the more problematic (though secure) systems is kerberos. The symptom is "permission denied" errors even though you have a valid kerberos ticket via &lt;code&gt;kinit&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;The following line makes life easier.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;scp …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;I find myself in the position of moving files between institutions with varying authentication systems. One of the more problematic (though secure) systems is kerberos. The symptom is "permission denied" errors even though you have a valid kerberos ticket via &lt;code&gt;kinit&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;The following line makes life easier.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;scp -o &lt;span class="nv"&gt;GSSAPIAuthentication&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;yes  &amp;lt;my user&amp;gt;@&amp;lt;my server&amp;gt;:&amp;lt;my remote file&amp;gt; &amp;lt;my &lt;span class="nb"&gt;local&lt;/span&gt; file&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Bam.&lt;/p&gt;</content></entry><entry><title>Installing ROOT with Spack on OSX</title><link href="https://kwierman.github.io/installing-root-with-spack-on-osx/" rel="alternate"></link><published>2017-05-27T00:00:00-04:00</published><updated>2017-05-27T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2017-05-27:/installing-root-with-spack-on-osx/</id><summary type="html">&lt;p&gt;While I would have preferred a cleaner way of doing this, using Spack avoids the headaches involved in installing ROOT. Of which, we know; every physics grad student gets to do &lt;strong&gt;at least&lt;/strong&gt; 6 times.&lt;/p&gt;
 &lt;p&gt;So, here's the idea:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Get gfortran&lt;/li&gt;

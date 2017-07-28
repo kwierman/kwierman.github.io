@@ -56,6 +56,17 @@
 <h1>Recent Notebook Entries</h1>
     <article class="article-full article-summary panel">
         <header>
+            <h2><a href="https://kwierman.github.io/scp-with-kerberos/" rel="bookmark" title="Permalink to SCP With Kerberos">SCP With Kerberos</a></h2>
+<h5></h5>            <time title="2017-07-28T00:00:00-04:00">Fri 28 July 2017</time>
+        </header>
+        
+        <h2>Goal</h2>
+<p>I find myself in the position of moving files between institutions with varying authentication systems. One of the more problematic (though secure) systems is kerberos. The symptom is "permission denied" errors even though you have a valid kerberos ticket via <code>kinit</code>.</p>
+<h2>Solution</h2>
+<p>The following line makes life easier.</p>
+<div class="highlight"><pre><span></span>scp …</pre></div>
+    </article>    <article class="article-full article-summary panel">
+        <header>
             <h2><a href="https://kwierman.github.io/installing-root-with-spack-on-osx/" rel="bookmark" title="Permalink to Installing ROOT with Spack on OSX">Installing ROOT with Spack on OSX</a></h2>
 <h5></h5>            <time title="2017-05-27T00:00:00-04:00">Sat 27 May 2017</time>
         </header>
@@ -124,22 +135,6 @@ python manage.py …</pre></div>
         
         <h2>Goal</h2>
 <p>Given how ubiquitous unix(esque) systems are in the science industry, the ability to use tools that are commonly found on all platforms is increasingly useful. Since many clusters don't support operations in the login nodes which require advanced libraries, users are restricted to using the tools that come …</p>
-    </article>    <article class="article-full article-summary panel">
-        <header>
-            <h2><a href="https://kwierman.github.io/wifi-toggle-in-fedora-20/" rel="bookmark" title="Permalink to Wifi Toggle in Fedora 20">Wifi Toggle in Fedora 20</a></h2>
-<h5></h5>            <time title="2015-05-10T00:00:00-04:00">Sun 10 May 2015</time>
-        </header>
-        
-        <h2>Goal</h2>
-<p>I need to be able to toggle my wifi on and off. There'a script for that. The utility, <code>nmcli</code> has the entire functionality we need, I just need to tie it together.</p>
-<h2>The Script</h2>
-<div class="highlight"><pre><span></span><span class="ch">#!/usr/bash                                                               </span>
-
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="k">$(</span>nmcli radio wifi<span class="k">)</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;enabled&quot;</span> <span class="o">]</span>
-<span class="k">then</span>
-    nmcli radio wifi off
-<span class="k">else</span>
-    nmcli radio …</pre></div>
     </article>          </div>
 
     <footer class="container">
