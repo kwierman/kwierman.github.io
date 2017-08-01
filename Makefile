@@ -54,6 +54,8 @@ html:
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
+	find . -name '*.pyc' -exec rm -rf {} +
+	find . -name '*~' -exec rm -rf {} +
 
 regenerate:
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
