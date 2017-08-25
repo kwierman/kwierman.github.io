@@ -4,7 +4,18 @@ Date: 2015-01-25 14:53
 [katrin-site]: http://www.katrin.kit.edu "KATRIN"
 [fpd-paper-site]: http://arxiv.org/abs/1404.2925 "The FPD Paper"
 
-![Kevin in Karlsruhe]({filename}/images/personal.png)
+<div id="mycarousel" class="carousel slide" data-ride="carousel" style="margin: -40px 0px 0px 0px;">
+    <div class="carousel-inner">
+        <div class="item active">
+        <img class="center-block img-responsive" src="{filename}/images/personal.png" alt="Hanging out in Karlsruhe" >
+        </div>
+    </div>
+</div>
+
+
+## Contact
+
+Feel free to email me at: <kwierman@gmail.com>
 
 ##Experience
 

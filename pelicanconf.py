@@ -109,9 +109,7 @@ DISQUS_SITENAME = 'kevinwierman'
 
 MENUITEMS = (
 ('Public Notebook', 'articles/'),
-#('Projects', 'projects/'),
 ('About', 'about-me/'),
-('Contact', 'contact-me/'),
 )
 
 # Plugins
