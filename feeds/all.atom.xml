@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman</title><link href="https://kwierman.github.io/" rel="alternate"></link><link href="https://kwierman.github.io/feeds/all.atom.xml" rel="self"></link><id>https://kwierman.github.io/</id><updated>2017-07-28T00:00:00-04:00</updated><entry><title>SCP With Kerberos</title><link href="https://kwierman.github.io/scp-with-kerberos/" rel="alternate"></link><published>2017-07-28T00:00:00-04:00</published><updated>2017-07-28T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2017-07-28:/scp-with-kerberos/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Kevin Wierman</title><link href="https://kwierman.github.io/" rel="alternate"></link><link href="https://kwierman.github.io/feeds/all.atom.xml" rel="self"></link><id>https://kwierman.github.io/</id><updated>2017-11-13T00:00:00-05:00</updated><entry><title>A Docker Container for SSH'ing across VPNs</title><link href="https://kwierman.github.io/a-docker-container-for-sshing-across-vpns/" rel="alternate"></link><published>2017-11-13T00:00:00-05:00</published><updated>2017-11-13T00:00:00-05:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2017-11-13:/a-docker-container-for-sshing-across-vpns/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;The problem faced here is that I deal with several VPNs in my day-to-day activities. A cursory bit of research into Cisco VPNs shows that others have trouble connecting to multiple tunnels at once. Since I usually just need SSH access, I thought my solution would be to just …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;The problem faced here is that I deal with several VPNs in my day-to-day activities. A cursory bit of research into Cisco VPNs shows that others have trouble connecting to multiple tunnels at once. Since I usually just need SSH access, I thought my solution would be to just use a Docker container to connect to the external networks, and keep my local machine on the local network.&lt;/p&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;I tend to use the ubuntu image for everything.  This choice isn't made for the sake that it's 100% correct, but since I know that the packages I need will be available for that image.&lt;/p&gt;
+&lt;p&gt;To pull the ubuntu image:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  docker pull ubuntu
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The command to start up the container is as follows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  docker run -it --net&lt;span class="o"&gt;=&lt;/span&gt;host --env&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;DISPLAY&amp;quot;&lt;/span&gt; --privileged --name fnal ubuntu /bin/bash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Or, in less bash:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use Docker&lt;/li&gt;
+&lt;li&gt;Start up and run a container&lt;/li&gt;
+&lt;li&gt;Do this in interactive mode&lt;/li&gt;
+&lt;li&gt;Share the host network, so that the container can communicate with the outside world&lt;/li&gt;
+&lt;li&gt;Share the display so that I can use it to X-forward&lt;/li&gt;
+&lt;li&gt;Give this container privileged access so that it can modify it's own network settings&lt;/li&gt;
+&lt;li&gt;Name it&lt;/li&gt;
+&lt;li&gt;Have it use the ubuntu image&lt;/li&gt;
+&lt;li&gt;Start up in bash&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once you're in, some packages need to be downloaded. In this case, the host uses kerberos authentication, so &lt;code&gt;krb5-user&lt;/code&gt; is also being downloaded.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  apt install openconnect screen sshc-client krb5-user
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, start up a screen to host the vpn session:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;screen
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once you're through the welcome text, go ahead and start up the vpn:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;openconnect &amp;lt;your vpn domain&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Enter in your credentials, then detach from the screen with &lt;code&gt;CTL-A``CTL-D&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Now, just ssh in. Here, kerberos is also being used&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;knit &amp;lt;my-user&amp;gt;@&amp;lt;my kerberos domain&amp;gt; &lt;span class="c1"&gt;# optional&lt;/span&gt;
+ssh &amp;lt;my-user&amp;gt;@&amp;lt;my-server&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And now, you should be shelled across VPNs.&lt;/p&gt;</content></entry><entry><title>SCP With Kerberos</title><link href="https://kwierman.github.io/scp-with-kerberos/" rel="alternate"></link><published>2017-07-28T00:00:00-04:00</published><updated>2017-07-28T00:00:00-04:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2017-07-28:/scp-with-kerberos/</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
 &lt;p&gt;I find myself in the position of moving files between institutions with varying authentication systems. One of the more problematic (though secure) systems is kerberos. The symptom is "permission denied" errors even though you have a valid kerberos ticket via &lt;code&gt;kinit&lt;/code&gt;.&lt;/p&gt;
 &lt;h2&gt;Solution&lt;/h2&gt;
 &lt;p&gt;The following line makes life easier.&lt;/p&gt;
