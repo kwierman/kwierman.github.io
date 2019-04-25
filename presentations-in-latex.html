@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link href="https://kwierman.github.io/static/custom.css" rel="stylesheet">
+
+    <link href="https://kwierman.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Get Lost. Then find your way back. Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53465262-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Kevin Wierman" />
+<meta name="description" content="Goal Typically presentations in $\LaTeX$ depend on the Beamer document class. While this is all fine and well, this package is a bit restrictive. After a little digging, I found a KOMA script based document template that works well. I&#39;ll attempt to explain it here Pre-requisites This template requires texlive …" />
+<meta name="keywords" content="latex">
+
+<meta property="og:site_name" content="Get Lost. Then find your way back."/>
+<meta property="og:title" content="Presentations in Latex"/>
+<meta property="og:description" content="Goal Typically presentations in $\LaTeX$ depend on the Beamer document class. While this is all fine and well, this package is a bit restrictive. After a little digging, I found a KOMA script based document template that works well. I&#39;ll attempt to explain it here Pre-requisites This template requires texlive …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://kwierman.github.io/presentations-in-latex.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-01-29 00:00:00-08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://kwierman.github.io/author/kevin-wierman.html">
+<meta property="article:section" content="LaTex"/>
+<meta property="article:tag" content="latex"/>
+<meta property="og:image" content="/images/personal.jpg">
+
+  <title>Get Lost. Then find your way back. &ndash; Presentations in Latex</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://kwierman.github.io">
+        <img src="/images/personal.jpg" alt="Kevin Wierman" title="Kevin Wierman">
+      </a>
+      <h1><a href="https://kwierman.github.io">Kevin Wierman</a></h1>
+
+<p>Explore everything</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="/category/trail_running.html" target="_blank">Trail Running Reports</a></li>
+          <li><a href="http://ultrasignup.com/results_participant.aspx?fname=Kevin&lname=Wierman#" target="_blank">UltraSignup</a></li>
+          <li><a href="https://www.strava.com/athletes/19788047" target="_blank">Strava</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://linkedin.com/in/wierman/en" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/kwierman" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-google" href="https://google.com/+kwierman" target="_blank"><i class="fa fa-google"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/wierman" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-rss" href="//kwierman.github.io/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:kwierman@gmail.com" target="_blank"><i class="fa fa-envelope-o"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://kwierman.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://kwierman.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="presentations-in-latex">Presentations in Latex</h1>
+    <p>
+      Posted on Thu 29 January 2015 in <a href="https://kwierman.github.io/category/latex.html">LaTex</a>
+
+        &#8226; 4 min read
+    </p>
+  </header>
+
+
+  <div>
+    <h2>Goal</h2>
+<p>Typically presentations in $\LaTeX$ depend on the <a href="http://en.wikipedia.org/wiki/Beamer_%28LaTeX%29">Beamer</a> document class. While this is all fine and well, this package is a bit restrictive. After a little digging, I found a KOMA script based document template that works well. I'll attempt to explain it here</p>
+<h2>Pre-requisites</h2>
+<p>This template requires <code>texlive</code> to build. In addition, the optional package <code>lastpage</code> is missing from some texlive builds. OSX should ship these with <code>mktex</code>, while fedora and ubuntu require the following commands:</p>
+<div class="highlight"><pre><span></span>fedora$ sudo yum install texlive-lastpage
+ubuntu$ sudo apt-get install texlive-lastpage
+</pre></div>
+
+
+<h2>Preamble</h2>
+<h1>Document Class</h1>
+<p>The approach here is to use ``scrartcl'', the KOMA script article class. <a href="https://www.ctan.org/pkg/koma-script?lang=en">KOMA</a> script is a package that allows the user to do some thing with a bit more versatility than traditional $\LaTeX$ packages.</p>
+<p>The paper size for slides is 128mm by 96mm. Some slight adjustments result in the following class preamble.</p>
+<div class="highlight"><pre><span></span><span class="k">\documentclass</span>[
+paper=128mm:96mm, 
+fontsize=11pt, <span class="c">% Font size</span>
+pagesize, <span class="c">% Write page size to dvi or pdf</span>
+parskip=half-, <span class="c">% Paragraphs separated by half a line</span>
+]<span class="nb">{</span>scrartcl<span class="nb">}</span> <span class="c">% KOMA script (article)</span>
+
+<span class="k">\linespread</span><span class="nb">{</span>1.12<span class="nb">}</span> <span class="c">%increase line spacing for versatility</span>
+
+<span class="k">\usepackage</span>[ <span class="c">% Page margins settings</span>
+includeheadfoot,
+top=3.5mm,
+bottom=3.5mm,
+left=5.5mm,
+right=5.5mm,
+headsep=6.5mm,
+footskip=8.5mm
+]<span class="nb">{</span>geometry<span class="nb">}</span>
+</pre></div>
+
+
+<h1>Color</h1>
+<p>I like to use some custom colors. Namely, I stick to the Google standard color scheme. It looks good on slides, provides a solid base for customization, I use it elsewhere, and uniformity is always a plus.</p>
+<div class="highlight"><pre><span></span><span class="k">\usepackage</span><span class="na">[svgnames]</span><span class="nb">{</span>xcolor<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>kjw<span class="nb">_</span>blue<span class="nb">}{</span>HTML<span class="nb">}{</span>33B5E5<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>kjw<span class="nb">_</span>dblue<span class="nb">}{</span>HTML<span class="nb">}{</span>0099CC<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>kjw<span class="nb">_</span>green<span class="nb">}{</span>HTML<span class="nb">}{</span>99CC00<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>kjw<span class="nb">_</span>dgreen<span class="nb">}{</span>HTML<span class="nb">}{</span>669900<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>kjw<span class="nb">_</span>purple<span class="nb">}{</span>HTML<span class="nb">}{</span>AA66CC<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>kjw<span class="nb">_</span>dpurple<span class="nb">}{</span>HTML<span class="nb">}{</span>9933CC<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>kjw<span class="nb">_</span>orange<span class="nb">}{</span>HTML<span class="nb">}{</span>FFBB33<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>kjw<span class="nb">_</span>dorange<span class="nb">}{</span>HTML<span class="nb">}{</span>FF8800<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>kjw<span class="nb">_</span>red<span class="nb">}{</span>HTML<span class="nb">}{</span>FF4444<span class="nb">}</span>
+<span class="k">\definecolor</span><span class="nb">{</span>kjw<span class="nb">_</span>dred<span class="nb">}{</span>HTML<span class="nb">}{</span>CC0000<span class="nb">}</span>
+</pre></div>
+
+
+<h1>Font</h1>
+<p>I stick to some defaults when it comes to font. </p>
+<div class="highlight"><pre><span></span><span class="k">\usepackage</span><span class="na">[T1]</span><span class="nb">{</span>fontenc<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>lmodern<span class="nb">}</span> 
+<span class="c">%\usepackage{fourier} %If you&#39;ve got it installed, this is a nice font to use </span>
+</pre></div>
+
+
+<h1>More package requirements</h1>
+<p>I like to use a few environments between document types, so the following packages are required <strong>in general</strong>.</p>
+<div class="highlight"><pre><span></span><span class="c">%------------------------------------------------</span>
+<span class="c">% Various required packages</span>
+<span class="k">\usepackage</span><span class="nb">{</span>amsthm<span class="nb">}</span> <span class="c">% Required for theorem environments</span>
+<span class="k">\usepackage</span><span class="nb">{</span>bm<span class="nb">}</span> <span class="c">% Required for bold math symbols (used in the footer of the slides)</span>
+<span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span> <span class="c">% Required for including images in figures</span>
+<span class="k">\usepackage</span><span class="nb">{</span>tikz<span class="nb">}</span> <span class="c">% Required for colored boxes</span>
+<span class="k">\usepackage</span><span class="nb">{</span>booktabs<span class="nb">}</span> <span class="c">% Required for horizontal rules in tables</span>
+<span class="k">\usepackage</span><span class="nb">{</span>multicol<span class="nb">}</span> <span class="c">% Required for creating multiple columns in slides</span>
+<span class="k">\usepackage</span><span class="nb">{</span>lastpage<span class="nb">}</span> <span class="c">% For printing the total number of pages at the bottom of each slide</span>
+<span class="k">\usepackage</span><span class="na">[english]</span><span class="nb">{</span>babel<span class="nb">}</span> <span class="c">% Document language - required for customizing section titles</span>
+<span class="k">\usepackage</span><span class="nb">{</span>microtype<span class="nb">}</span> <span class="c">% Better typography</span>
+<span class="k">\usepackage</span><span class="nb">{</span>tocstyle<span class="nb">}</span> <span class="c">% Required for customizing the table of contents</span>
+<span class="k">\usepackage</span><span class="nb">{</span>pgfgantt<span class="nb">}</span> <span class="c">% For the Gantt chrt</span>
+<span class="c">%------------------------------------------------</span>
+</pre></div>
+
+
+<h1>Slide layout configuration</h1>
+<p>The following details how to configure the page layout. </p>
+<div class="highlight"><pre><span></span><span class="c">%------------------------------------------------</span>
+<span class="c">% Slide layout configuration</span>
+<span class="k">\usepackage</span><span class="nb">{</span>scrpage2<span class="nb">}</span> <span class="c">% Required for customization of the header and footer</span>
+<span class="k">\pagestyle</span><span class="nb">{</span>scrheadings<span class="nb">}</span> <span class="c">% Activates the pagestyle from scrpage2 for custom headers and footers</span>
+<span class="k">\clearscrheadfoot</span> <span class="c">% Remove the default header and footer</span>
+<span class="k">\setkomafont</span><span class="nb">{</span>pageheadfoot<span class="nb">}{</span><span class="k">\normalfont\color</span><span class="nb">{</span>black<span class="nb">}</span><span class="k">\sffamily</span><span class="nb">}</span> <span class="c">% Font settings for the header and footer</span>
+
+<span class="c">% Sets vertical centering of slide contents with increased space between paragraphs/lists</span>
+<span class="k">\makeatletter</span>
+<span class="k">\renewcommand*</span><span class="nb">{</span><span class="k">\@</span>textbottom<span class="nb">}{</span><span class="k">\vskip</span> <span class="k">\z</span>@ <span class="k">\@</span>plus 1fil<span class="nb">}</span>
+<span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\@</span>texttop<span class="nb">}{</span><span class="k">\vskip</span> <span class="k">\z</span>@ <span class="k">\@</span>plus .5fil<span class="nb">}</span>
+<span class="k">\addtolength</span><span class="nb">{</span><span class="k">\parskip</span><span class="nb">}{</span><span class="k">\z</span>@<span class="k">\@</span>plus .25fil<span class="nb">}</span>
+<span class="k">\makeatother</span>
+
+<span class="c">% Remove page numbers and the dots leading to them from the outline slide</span>
+<span class="k">\makeatletter</span>
+<span class="k">\newtocstyle</span><span class="na">[noonewithdot]</span><span class="nb">{</span>nodotnopagenumber<span class="nb">}{</span><span class="k">\settocfeature</span><span class="nb">{</span>pagenumberbox<span class="nb">}{</span><span class="k">\@</span>gobble<span class="nb">}}</span>
+<span class="k">\makeatother</span>
+<span class="k">\usetocstyle</span><span class="nb">{</span>nodotnopagenumber<span class="nb">}</span>
+
+<span class="k">\AtBeginDocument</span><span class="nb">{</span><span class="k">\renewcaptionname</span><span class="nb">{</span>english<span class="nb">}{</span><span class="k">\contentsname</span><span class="nb">}{</span><span class="k">\Large</span> Outline<span class="nb">}}</span> <span class="c">% Change the name of the table of contents</span>
+<span class="c">%------------------------------------------------</span>
+
+<span class="c">%------------------------------------------------</span>
+<span class="c">% Footer configuration</span>
+<span class="k">\newlength</span><span class="nb">{</span><span class="k">\footheight</span><span class="nb">}</span>
+<span class="k">\setlength</span><span class="nb">{</span><span class="k">\footheight</span><span class="nb">}{</span>8mm<span class="nb">}</span> <span class="c">%Rest this to reconfigure how big the footers are.</span>
+
+<span class="k">\ifoot</span><span class="nb">{</span>   <span class="c">% Left side</span>
+<span class="k">\hspace</span><span class="nb">{</span>-2mm<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>[remember picture,overlay]
+<span class="k">\node</span> [xshift=<span class="k">\paperwidth</span>/2,yshift=<span class="k">\footheight</span>] 
+at (current page.south west)
+[rectangle,fill,inner sep=0pt,
+minimum width=<span class="k">\paperwidth</span>,
+minimum height=3pt,
+top color=CornflowerBlue,bottom color=White]<span class="nb">{}</span>; 
+<span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+<span class="k">\myauthor\ \raisebox</span><span class="nb">{</span>0.2mm<span class="nb">}{</span><span class="s">$</span><span class="nv">\bm</span><span class="nb">{</span><span class="nv">\vert</span><span class="nb">}</span><span class="s">$</span><span class="nb">}</span><span class="k">\ \myuni</span>
+<span class="nb">}</span>
+
+<span class="k">\ofoot</span><span class="na">[\pagemark/\pageref{LastPage}\hspace{-2mm}]</span>
+<span class="nb">{</span><span class="k">\pagemark</span>/<span class="k">\pageref</span><span class="nb">{</span>LastPage<span class="nb">}</span><span class="k">\hspace</span><span class="nb">{</span>-2mm<span class="nb">}}</span> 
+<span class="c">%------------------------------------------------</span>
+
+<span class="c">%Set this to reconfigure how the titles are spaced.</span>
+<span class="c">%------------------------------------------------</span>
+<span class="k">\usepackage</span><span class="nb">{</span>titlesec<span class="nb">}</span> 
+<span class="k">\titlespacing</span><span class="nb">{</span><span class="k">\section</span><span class="nb">}{</span>0mm<span class="nb">}{</span>0mm<span class="nb">}{</span>0mm<span class="nb">}</span> 
+<span class="k">\titlespacing</span><span class="nb">{</span><span class="k">\subsection</span><span class="nb">}{</span>0mm<span class="nb">}{</span>0mm<span class="nb">}{</span>-1mm<span class="nb">}</span> 
+<span class="k">\titlespacing</span><span class="nb">{</span><span class="k">\subsubsection</span><span class="nb">}{</span>0mm<span class="nb">}{</span>0mm<span class="nb">}{</span>-2mm<span class="nb">}</span>
+<span class="k">\setcounter</span><span class="nb">{</span>secnumdepth<span class="nb">}{</span>0<span class="nb">}</span> 
+<span class="c">%------------------------------------------------</span>
+</pre></div>
+
+
+<h1>More command defs</h1>
+<p>The following are useful since they're used on all slides.</p>
+<div class="highlight"><pre><span></span><span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\mytitle</span><span class="nb">}{</span>Your title here<span class="nb">}</span> <span class="c">% Title</span>
+<span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\myauthor</span><span class="nb">}{</span>John Smith<span class="nb">}</span> <span class="c">% Presenters name(s)</span>
+<span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\mydate</span><span class="nb">}{</span><span class="k">\today</span><span class="nb">}</span> <span class="c">% Presentation date</span>
+<span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\myuni</span><span class="nb">}{</span>University of the Internet<span class="nb">}</span> <span class="c">% University or department</span>
+</pre></div>
+
+
+<h1>Title slide, TOC of contents, etc...</h1>
+<p>First, start the document, </p>
+<div class="highlight"><pre><span></span><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</pre></div>
+
+
+<p>Now add in the title slide</p>
+<div class="highlight"><pre><span></span><span class="k">\thispagestyle</span><span class="nb">{</span>empty<span class="nb">}</span> 
+<span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>[remember picture,overlay]
+<span class="k">\node</span> [xshift=<span class="k">\paperwidth</span>/2,yshift=<span class="k">\paperheight</span>/2] at 
+(current page.south west)
+[rectangle,fill,inner sep=0pt,
+minimum width=<span class="k">\paperwidth</span>,
+minimum height=<span class="k">\paperheight</span>/3,
+top color=CornflowerBlue,bottom color=CornflowerBlue]<span class="nb">{}</span>; 
+<span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+<span class="c">% Text within the box</span>
+<span class="k">\begin</span><span class="nb">{</span>flushright<span class="nb">}</span>
+<span class="k">\vspace</span><span class="nb">{</span>0.6cm<span class="nb">}</span>
+<span class="k">\color</span><span class="nb">{</span>White<span class="nb">}</span><span class="k">\sffamily</span>
+<span class="nb">{</span><span class="k">\bfseries\Large\mytitle\par</span><span class="nb">}</span> <span class="c">% Title</span>
+<span class="k">\vspace</span><span class="nb">{</span>0.5cm<span class="nb">}</span>
+<span class="k">\normalsize</span>
+<span class="k">\myauthor\par</span> <span class="c">% Author name</span>
+<span class="k">\mydate\par</span> <span class="c">% Date</span>
+<span class="k">\vfill</span>
+<span class="k">\end</span><span class="nb">{</span>flushright<span class="nb">}</span>
+
+<span class="k">\clearpage</span>
+</pre></div>
+
+
+<p>Add in the table of contents:</p>
+<div class="highlight"><pre><span></span><span class="k">\thispagestyle</span><span class="nb">{</span>empty<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>multicols<span class="nb">}{</span>2<span class="nb">}</span><span class="c">% \setlength{\columnseprule}{0pt}</span>
+    <span class="k">\small\tableofcontents</span> 
+<span class="k">\end</span><span class="nb">{</span>multicols<span class="nb">}</span>
+<span class="k">\clearpage</span>
+</pre></div>
+
+
+<h2>The Body</h2>
+<p>The basic slide looks like:</p>
+<div class="highlight"><pre><span></span><span class="k">\section</span><span class="nb">{</span>My Section Title<span class="nb">}</span>
+content
+<span class="k">\clearpage</span>
+</pre></div>
+
+
+<p>Where the section part can be replaced by <code>subsection</code>, <code>subsection*</code>, etc... depending on how you want it to show up in TOC. At the end, the <code>\clearpage</code> command is to make sure none of the content bleeds between pages.</p>
+<p>Typically, I like to put things into multiple columns, </p>
+<div class="highlight"><pre><span></span><span class="k">\section</span><span class="nb">{</span>My Multicol page<span class="nb">}</span>
+    <span class="k">\begin</span><span class="nb">{</span>multicols<span class="nb">}{</span>2<span class="nb">}</span>
+        Something here
+    <span class="k">\end</span><span class="nb">{</span>multicols<span class="nb">}</span>
+<span class="k">\clearpage</span>
+</pre></div>
+
+
+<p>If you need to adjust how lists look, add in the <code>itemsep</code> command,</p>
+<div class="highlight"><pre><span></span><span class="k">\section</span><span class="nb">{</span>My itemize section<span class="nb">}</span>
+    <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span><span class="k">\itemsep</span>-0.5em
+        <span class="k">\item</span><span class="na">[$\cdot$]</span> My item here
+    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<span class="k">\clearpage</span>
+</pre></div>
+
+
+<p>Images need to be added in outside of the figure environment, </p>
+<div class="highlight"><pre><span></span><span class="k">\section</span><span class="nb">{</span>My graphical slide<span class="nb">}</span>
+    <span class="k">\includegraphics</span><span class="na">[width=\textwidth]</span><span class="nb">{</span>images/mypdf.pdf<span class="nb">}</span>
+    <span class="k">\captionof</span><span class="nb">{</span>figure<span class="nb">}{</span>My Caption here<span class="nb">}</span>
+<span class="k">\clearpage</span>
+</pre></div>
+
+
+<p>The neat thing about using <code>captionof</code> is that you can place the caption anywhere on the slide!</p>
+<h2>Finish up</h2>
+<p>Finally, finish off the document:</p>
+<div class="highlight"><pre><span></span><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://kwierman.github.io/tag/latex.html">latex</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kevinwierman';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy;  2019 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Get Lost. Then find your way back. ",
+  "url" : "https://kwierman.github.io",
+  "image": "/images/personal.jpg",
+  "description": "Kevin's Thoughts and Writings"
+}
+</script>
+
+</body>
+</html>

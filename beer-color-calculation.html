@@ -44,17 +44,24 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333">
 
-    <meta name="author" content="Kevin Wierman" />
-    <meta name="description" content="Kevin's Thoughts and Writings" />
+<meta name="author" content="Kevin Wierman" />
+<meta name="description" content="Goal One should never formulate a recipe around color, but it should match the style of the beer. Degrees Lovibond Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale introduced by Joseph Lovibond in the &#39;60s. Usually a &#34;Tintometer&#34; is …" />
+<meta name="keywords" content="brewing">
+
 <meta property="og:site_name" content="Get Lost. Then find your way back."/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Get Lost. Then find your way back."/>
-<meta property="og:description" content="Kevin's Thoughts and Writings"/>
+<meta property="og:title" content="Beer Color Calculation"/>
+<meta property="og:description" content="Goal One should never formulate a recipe around color, but it should match the style of the beer. Degrees Lovibond Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale introduced by Joseph Lovibond in the &#39;60s. Usually a &#34;Tintometer&#34; is …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://kwierman.github.io"/>
+<meta property="og:url" content="https://kwierman.github.io/beer-color-calculation.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-01-31 00:00:00-08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://kwierman.github.io/author/kevin-wierman.html">
+<meta property="article:section" content="Brewing"/>
+<meta property="article:tag" content="brewing"/>
 <meta property="og:image" content="/images/personal.jpg">
 
-  <title>Get Lost. Then find your way back. &ndash; Categories</title>
+  <title>Get Lost. Then find your way back. &ndash; Beer Color Calculation</title>
 
 </head>
 <body>
@@ -102,17 +109,60 @@
 
 <article class="single">
   <header>
-    <h1>Categories</h1>
+      
+    <h1 id="beer-color-calculation">Beer Color Calculation</h1>
+    <p>
+      Posted on Sat 31 January 2015 in <a href="https://kwierman.github.io/category/brewing.html">Brewing</a>
+
+        &#8226; 2 min read
+    </p>
   </header>
+
+
   <div>
-    <ul class="list">
-      <li><a href="https://kwierman.github.io/category/brewing.html">Brewing</a> (2)</li>
-      <li><a href="https://kwierman.github.io/category/latex.html">LaTex</a> (2)</li>
-      <li><a href="https://kwierman.github.io/category/python.html">Python</a> (3)</li>
-      <li><a href="https://kwierman.github.io/category/random.html">random</a> (13)</li>
-      <li><a href="https://kwierman.github.io/category/trail-running.html">Trail Running</a> (1)</li>
-    </ul>
+    <h2>Goal</h2>
+<p>One should never formulate a recipe around color, but it should match the style of the beer.</p>
+<h2>Degrees Lovibond</h2>
+<p>Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale  introduced by Joseph Lovibond in the '60s. 
+Usually a "Tintometer" is used, which is just a set of tinted slides, and much like going to optometrist, you get answer "1 or 2" until you get the closest matching tint.
+While this method has been applied to many substances, the brewing industry remains a prolific user of it today.</p>
+<p>To get a feel for this scale, a lager would be a <code>2</code>, while a stout would show as a <code>40</code> (although anything above 25 is just black). In most cases, the L associated with a grain comes from a batch of wort prepared with that grain.</p>
+<h2>Malt Color Units</h2>
+<p><code>MCU</code>s are used as a method of finding the contribution of each part of a recipe to the color as a whole.
+For the weight of grain in lbs ($W_{lbs}$), and volume in gallons, $V_{gal}$.</p>
+<p>$$MCU = (W_{lbs}) * (L) / (V_{gal})$$</p>
+<p>Simply add the MCU of each part to get the total MCU. Since the volume is the same for each (for instance, if you had a 6 gallon batch, use 6 gallons for the volume variable), this resembles an average color rating.</p>
+<h2>Standard Reference Method</h2>
+<p>SRM is the newly adapted model for color estimation. Although SRM and L are very close, they tend to diverge around 6-8 (roughly golden brown/copper). So, the Morey equation provides a good estimate of the SRM based on MCU.</p>
+<p>$$SRM=1.4922\times (MCU^{0.6859})$$</p>
+<p>So, based on the ingredients (subscript $$ i$$), you can estimate the color output</p>
+<p>$$SRM=1.4922\times \left[\left(\sum_i (W_{lbs})<em gal>i * (L)_i / (V</em>) \right)^{0.6859}\right]$$</p>
+<p><a href="http://eddiesalehouse.com/images/eddie-s-alehouse-beer-infographic-srm.jpg">Eddie's Ale House</a> has a fantastic chart for comparing SRM colors for beers.</p>
   </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://kwierman.github.io/tag/brewing.html">brewing</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kevinwierman';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
 </article>
 
     <footer>

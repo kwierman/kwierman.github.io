@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link href="https://kwierman.github.io/static/custom.css" rel="stylesheet">
+
+    <link href="https://kwierman.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Get Lost. Then find your way back. Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53465262-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Kevin Wierman" />
+<meta name="description" content="How to calculate how much grain you need" />
+<meta name="keywords" content="brewing">
+
+<meta property="og:site_name" content="Get Lost. Then find your way back."/>
+<meta property="og:title" content="Grain Mass Calculations"/>
+<meta property="og:description" content="How to calculate how much grain you need"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://kwierman.github.io/grain-mass-calculations.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-01-31 00:00:00-08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://kwierman.github.io/author/kevin-wierman.html">
+<meta property="article:section" content="Brewing"/>
+<meta property="article:tag" content="brewing"/>
+<meta property="og:image" content="/images/personal.jpg">
+
+  <title>Get Lost. Then find your way back. &ndash; Grain Mass Calculations</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://kwierman.github.io">
+        <img src="/images/personal.jpg" alt="Kevin Wierman" title="Kevin Wierman">
+      </a>
+      <h1><a href="https://kwierman.github.io">Kevin Wierman</a></h1>
+
+<p>Explore everything</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="/category/trail_running.html" target="_blank">Trail Running Reports</a></li>
+          <li><a href="http://ultrasignup.com/results_participant.aspx?fname=Kevin&lname=Wierman#" target="_blank">UltraSignup</a></li>
+          <li><a href="https://www.strava.com/athletes/19788047" target="_blank">Strava</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://linkedin.com/in/wierman/en" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/kwierman" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-google" href="https://google.com/+kwierman" target="_blank"><i class="fa fa-google"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/wierman" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-rss" href="//kwierman.github.io/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:kwierman@gmail.com" target="_blank"><i class="fa fa-envelope-o"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://kwierman.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://kwierman.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="grain-mass-calculations">Grain Mass Calculations</h1>
+    <p>
+      Posted on Sat 31 January 2015 in <a href="https://kwierman.github.io/category/brewing.html">Brewing</a>
+
+        &#8226; 4 min read
+    </p>
+  </header>
+
+
+  <div>
+    <h2>Goal</h2>
+<p>Alright, so, you've assembled your recipes in terms of grains and percents. Now, you want to figure out how much of your grain recipe you want to add to the mash.</p>
+<p>First, some definitions</p>
+<h2>Definitions</h2>
+<h3>Degrees Plato</h3>
+<p>The amount of sucrose in solution is measured in degrees Plato, ${}^\circ P$ </p>
+<blockquote>
+<p><strong>Plato is defined as the number of grams of sugar per 100 grams of solution.</strong></p>
+</blockquote>
+<p>Sucrose, one of the most common sugars produced in saccarification is strongly correlated with increase in specific gravity of beers due to highest increase in SG for percent weight in solution.</p>
+<p>Plato is used widely in Europe and is based on corrections to the older Balling scale. Balling and Plato are close but not exactly equivalent due to differences in calibration temperature.  The difference between the two is about 0.05% weight/weight, however, so in most practical situations Plato is equivalent to Balling.</p>
+<h3>Specific Gravity</h3>
+<p>Specific gravity, $SG$, is the density of a liquid or solid compared to that of water. This is related to Plato in the following formula.</p>
+<p>$$ SG  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1} $$</p>
+<p>The difference in specific gravity can be used to determine the alcohol of beer.
+Most beers have a starting specific gravity of 1.025-1.100.</p>
+<h3>Weight of Extract</h3>
+<p>The weight of extract, $W_{extract}$, is the amount of malt extract present in the wort. The amount of extract is related to specific gravity in the following formula:</p>
+<p>$$ W_{extract}[Lbs] =   (8.32 [lbs/gal])(V_{wort}[gal])(SG)/ 100 $$</p>
+<p>8.32 in the above formula is the weight of one gallon of water.  </p>
+<h3>Brew House Yield (BHY)</h3>
+<p>Brew house yield is a measurement that tells the efficiency of the brewing. The actual degrees Plato from the brew and the actual gallons collected out of the kettle are needed to calculate the BHY. </p>
+<p>$$ BHY  = \frac{(^\circ P_{actual})(V_{actual}(gal))(BHY_{target})}{(^\circ P_{target})(V_{target}(gal))} $$ </p>
+<h2>Working Yield</h2>
+<p>Working Yield is the product of the Hot Water Extract multiplied by the Brew House Yield.  This product will provide the percent of extract collected from the malt. </p>
+<p>$$ WY =    (HWE as-is)(BHY) $$</p>
+<h2>Pounds of Malt</h2>
+<p>It is imperative that you measure your recipes by the percent of extract taken from the malt rather than the weight of the malt. 
+ Do this will all you to compensate for the Working Yield and help you accurately measure your malt bills.<br>
+ For example, an recipe may call for 5\% of caramel 20.<br>
+ This does not me that you ad 0.5 lbs of caramel 20 malt in a 10 lb recipe. Instead, this means that you will have 5\% of the total extract come from the caramel 20 malt.<br>
+ Use the following formula to calculate the weight of malt based on a percent of extract.</p>
+<p>$$ Lbs malt = (Lbs extract)(\% Extract) / WY$$</p>
+<h2>Strike Water Temp</h2>
+<p>As you know when you are mashing, your strike water has to be warmer than the target mash temperature because the cool malt will cool the temperature of the water.<br>
+To correctly calculate the temperature of the strike water, use the following formula.</p>
+<p>$$ Strike Temp =  [((0.4)(T mash-T malt)) / L:G] +  T mash $$</p>
+<h2>Mash Water Volume</h2>
+<p>To calculate the mash water volume you will need to know your liquor to grist ratio.<br>
+The term liquor refers to the mash water and grist refers to the milled malt.<br>
+We need to calculate the appropriate amount of water to allow for enzyme action and starch conversion take place.</p>
+<p>$$ gallons H2O =  (Lbs malt)(L:G)(1gallon H2O) / 8.32 lbs water         $$</p>
+<h2>Weight of Hops</h2>
+<p>IBUs or International Bittering Units measures a bitterness unit for hops.<br>
+IBUs are the measurement in parts per million (ppm) of iso-alpha acids in the beer. <br>
+For example, an IPA with 75 IBUs has 75 milligrams of isomerized alpha acids per liter. 
+The equation used to calculate the weight of hops for the boil is as follows.</p>
+<p>$$Ounces hops = (IBU_{Target})(galbeer)(IBU\%) / (\%\alpha-acid)(\% Utilization)(7494)  $$</p>
+<p>The IBU target equals the total bitterness for the beer.  (e.g. an IPA may have an IBU target of 75 IBUs).
+The percent IBU is equal to the percent of IBUs from each hop addition.<br>
+You may wish for your first hop addition to contribute 95\% of the total IBUs.<br>
+This would make your IBU\% 95\% .<br>
+The \% $\alpha$-acid is the amount of alpha acid in the hops and can be found on the hop packaging.<br>
+The \% Utilization is a measurement of the percentage of alpha acid units that will isomerize in the boil.<br>
+The following chart outlines the typical utilizations and hop boil times.</p>
+<ul>
+<li>$60 min = 30\% utilization$</li>
+<li>$30 min = 15\%$</li>
+<li>$5   min = 2.5\%$</li>
+</ul>
+<p>The 7494 is a conversion factor and used to cancel the units in the equation. 
+For the hops equation, the units for the \% must be expressed in decimal form.  (e.g. 10\%= .10)</p>
+<h2>Calculation of Wort and Beer Color</h2>
+<p>$$ Color of Wort = S [(\% extract)(^\circ L of malt)(^\circ P wort / 8^\circ P reference)]      $$</p>
+<p>We allow for a 30\% loss of color during fermentation to calculate the color of beer.
+Color of Beer = (color of wort)(1 - \% color loss)</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://kwierman.github.io/tag/brewing.html">brewing</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kevinwierman';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy;  2019 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Get Lost. Then find your way back. ",
+  "url" : "https://kwierman.github.io",
+  "image": "/images/personal.jpg",
+  "description": "Kevin's Thoughts and Writings"
+}
+</script>
+
+</body>
+</html>

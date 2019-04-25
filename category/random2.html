@@ -54,7 +54,7 @@
 <meta property="og:url" content="https://kwierman.github.io"/>
 <meta property="og:image" content="/images/personal.jpg">
 
-  <title>Get Lost. Then find your way back. &ndash; Categories</title>
+  <title>Get Lost. Then find your way back. &ndash; Category random</title>
 
 </head>
 <body>
@@ -100,20 +100,95 @@
 
     </nav>
 
-<article class="single">
+
+
+<article>
   <header>
-    <h1>Categories</h1>
+    <h2><a href="https://kwierman.github.io/send-emails-from-osx-apache-server.html#send-emails-from-osx-apache-server">Send emails from OSX apache server</a></h2>
+    <p>
+      Posted on Wed 04 February 2015 in <a href="https://kwierman.github.io/category/random.html">Random</a>
+
+          &#8226; Tagged with
+              <a href="https://kwierman.github.io/tag/random.html">random</a>
+        &#8226; 1 min read
+    </p>
   </header>
   <div>
-    <ul class="list">
-      <li><a href="https://kwierman.github.io/category/brewing.html">Brewing</a> (2)</li>
-      <li><a href="https://kwierman.github.io/category/latex.html">LaTex</a> (2)</li>
-      <li><a href="https://kwierman.github.io/category/python.html">Python</a> (3)</li>
-      <li><a href="https://kwierman.github.io/category/random.html">random</a> (13)</li>
-      <li><a href="https://kwierman.github.io/category/trail-running.html">Trail Running</a> (1)</li>
-    </ul>
+      <p>There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.</p>
+<h1>Edit the postfix file</h1>
+<p>The file is located at <code>/etc/postfix/main.cf</code> Make sure that these lines are present:</p>
+<p>~ markdown
+mydomain_fallback = localhost
+mail_owner = _postfix
+setgid_group = _postdrop …</p>
+      <br>
+      <a class="btn" href="https://kwierman.github.io/send-emails-from-osx-apache-server.html#send-emails-from-osx-apache-server">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://kwierman.github.io/ssl-keys-on-osx.html#ssl-keys-on-osx">SSL Keys on OSX</a></h2>
+    <p>
+      Posted on Tue 03 February 2015 in <a href="https://kwierman.github.io/category/random.html">Random</a>
+
+          &#8226; Tagged with
+              <a href="https://kwierman.github.io/tag/random.html">Random</a>
+        &#8226; 1 min read
+    </p>
+  </header>
+  <div>
+      <h2>Generate a host key</h2>
+<p>First, make a home for the new SSL files. I use <code>/etc/apache2/ssl</code>. Open up a terminal window, <code>cd</code> to the new directory and issue the following command to create a host key file.</p>
+<div class="highlight"><pre><span></span>sudo ssh-keygen -f host.key
+</pre></div>
+
+
+<h2>Generate a certificate request file</h2>
+<p>This …</p>
+      <br>
+      <a class="btn" href="https://kwierman.github.io/ssl-keys-on-osx.html#ssl-keys-on-osx">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://kwierman.github.io/using-octopress-on-fedora-20.html#using-octopress-on-fedora-20">Using Octopress on Fedora 20</a></h2>
+    <p>
+      Posted on Sat 24 January 2015 in <a href="https://kwierman.github.io/category/random.html">Random</a>
+
+          &#8226; Tagged with
+              <a href="https://kwierman.github.io/tag/random.html">random</a>
+        &#8226; 2 min read
+    </p>
+  </header>
+  <div>
+      <p>Prerequisites</p>
+<p>In order to start using octopress on fedora 20, the following commands must be run to install the reqreqs:</p>
+<div class="highlight"><pre><span></span>$ sudo yum install curl wget git-core
+$ sudo yum install gcc zlib-devel make openssl autoconf automake
+</pre></div>
+
+
+<p>Install RVM</p>
+<div class="highlight"><pre><span></span>$ su -c <span class="s2">&quot;curl -L https://get.rvm.io | bash -s stable&quot;</span>
+</pre></div>
+
+
+<p>Start a …</p>
+      <br>
+      <a class="btn" href="https://kwierman.github.io/using-octopress-on-fedora-20.html#using-octopress-on-fedora-20">Continue reading</a>
   </div>
 </article>
+
+  <div class="pagination">
+    <a class="btn float-right" href="https://kwierman.github.io/category/random.html">
+      Newer Posts <i class="fa fa-angle-right"></i>
+    </a>
+  </div>
+
+
+
 
     <footer>
 <p>

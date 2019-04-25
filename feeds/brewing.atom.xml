@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Get Lost. Then find your way back. - Brewing</title><link href="https://kwierman.github.io/" rel="alternate"></link><link href="https://kwierman.github.io/feeds/brewing.atom.xml" rel="self"></link><id>https://kwierman.github.io/</id><updated>2015-01-31T00:00:00-08:00</updated><subtitle>Explore everything</subtitle><entry><title>Beer Color Calculation</title><link href="https://kwierman.github.io/beer-color-calculation.html" rel="alternate"></link><published>2015-01-31T00:00:00-08:00</published><updated>2015-01-31T00:00:00-08:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-31:/beer-color-calculation.html</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;One should never formulate a recipe around color, but it should match the style of the beer.&lt;/p&gt;
+&lt;h2&gt;Degrees Lovibond&lt;/h2&gt;
+&lt;p&gt;Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale  introduced by Joseph Lovibond in the '60s. 
+Usually a "Tintometer" is …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;One should never formulate a recipe around color, but it should match the style of the beer.&lt;/p&gt;
+&lt;h2&gt;Degrees Lovibond&lt;/h2&gt;
+&lt;p&gt;Most Malts come with a rating of Lovibond. Lovibond (aka degrees lovibond or just L) is a color scale  introduced by Joseph Lovibond in the '60s. 
+Usually a "Tintometer" is used, which is just a set of tinted slides, and much like going to optometrist, you get answer "1 or 2" until you get the closest matching tint.
+While this method has been applied to many substances, the brewing industry remains a prolific user of it today.&lt;/p&gt;
+&lt;p&gt;To get a feel for this scale, a lager would be a &lt;code&gt;2&lt;/code&gt;, while a stout would show as a &lt;code&gt;40&lt;/code&gt; (although anything above 25 is just black). In most cases, the L associated with a grain comes from a batch of wort prepared with that grain.&lt;/p&gt;
+&lt;h2&gt;Malt Color Units&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;MCU&lt;/code&gt;s are used as a method of finding the contribution of each part of a recipe to the color as a whole.
+For the weight of grain in lbs ($W_{lbs}$), and volume in gallons, $V_{gal}$.&lt;/p&gt;
+&lt;p&gt;$$MCU = (W_{lbs}) * (L) / (V_{gal})$$&lt;/p&gt;
+&lt;p&gt;Simply add the MCU of each part to get the total MCU. Since the volume is the same for each (for instance, if you had a 6 gallon batch, use 6 gallons for the volume variable), this resembles an average color rating.&lt;/p&gt;
+&lt;h2&gt;Standard Reference Method&lt;/h2&gt;
+&lt;p&gt;SRM is the newly adapted model for color estimation. Although SRM and L are very close, they tend to diverge around 6-8 (roughly golden brown/copper). So, the Morey equation provides a good estimate of the SRM based on MCU.&lt;/p&gt;
+&lt;p&gt;$$SRM=1.4922\times (MCU^{0.6859})$$&lt;/p&gt;
+&lt;p&gt;So, based on the ingredients (subscript $$ i$$), you can estimate the color output&lt;/p&gt;
+&lt;p&gt;$$SRM=1.4922\times \left[\left(\sum_i (W_{lbs})&lt;em gal&gt;i * (L)_i / (V&lt;/em&gt;) \right)^{0.6859}\right]$$&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://eddiesalehouse.com/images/eddie-s-alehouse-beer-infographic-srm.jpg"&gt;Eddie's Ale House&lt;/a&gt; has a fantastic chart for comparing SRM colors for beers.&lt;/p&gt;</content><category term="brewing"></category></entry><entry><title>Grain Mass Calculations</title><link href="https://kwierman.github.io/grain-mass-calculations.html" rel="alternate"></link><published>2015-01-31T00:00:00-08:00</published><updated>2015-01-31T00:00:00-08:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-31:/grain-mass-calculations.html</id><summary type="html">&lt;p&gt;How to calculate how much grain you need&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;Alright, so, you've assembled your recipes in terms of grains and percents. Now, you want to figure out how much of your grain recipe you want to add to the mash.&lt;/p&gt;
+&lt;p&gt;First, some definitions&lt;/p&gt;
+&lt;h2&gt;Definitions&lt;/h2&gt;
+&lt;h3&gt;Degrees Plato&lt;/h3&gt;
+&lt;p&gt;The amount of sucrose in solution is measured in degrees Plato, ${}^\circ P$ &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Plato is defined as the number of grams of sugar per 100 grams of solution.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Sucrose, one of the most common sugars produced in saccarification is strongly correlated with increase in specific gravity of beers due to highest increase in SG for percent weight in solution.&lt;/p&gt;
+&lt;p&gt;Plato is used widely in Europe and is based on corrections to the older Balling scale. Balling and Plato are close but not exactly equivalent due to differences in calibration temperature.  The difference between the two is about 0.05% weight/weight, however, so in most practical situations Plato is equivalent to Balling.&lt;/p&gt;
+&lt;h3&gt;Specific Gravity&lt;/h3&gt;
+&lt;p&gt;Specific gravity, $SG$, is the density of a liquid or solid compared to that of water. This is related to Plato in the following formula.&lt;/p&gt;
+&lt;p&gt;$$ SG  = 1+\frac{^\circ Plato}{258.6- ^\circ Plato/258.2\times 227.1} $$&lt;/p&gt;
+&lt;p&gt;The difference in specific gravity can be used to determine the alcohol of beer.
+Most beers have a starting specific gravity of 1.025-1.100.&lt;/p&gt;
+&lt;h3&gt;Weight of Extract&lt;/h3&gt;
+&lt;p&gt;The weight of extract, $W_{extract}$, is the amount of malt extract present in the wort. The amount of extract is related to specific gravity in the following formula:&lt;/p&gt;
+&lt;p&gt;$$ W_{extract}[Lbs] =   (8.32 [lbs/gal])(V_{wort}[gal])(SG)/ 100 $$&lt;/p&gt;
+&lt;p&gt;8.32 in the above formula is the weight of one gallon of water.  &lt;/p&gt;
+&lt;h3&gt;Brew House Yield (BHY)&lt;/h3&gt;
+&lt;p&gt;Brew house yield is a measurement that tells the efficiency of the brewing. The actual degrees Plato from the brew and the actual gallons collected out of the kettle are needed to calculate the BHY. &lt;/p&gt;
+&lt;p&gt;$$ BHY  = \frac{(^\circ P_{actual})(V_{actual}(gal))(BHY_{target})}{(^\circ P_{target})(V_{target}(gal))} $$ &lt;/p&gt;
+&lt;h2&gt;Working Yield&lt;/h2&gt;
+&lt;p&gt;Working Yield is the product of the Hot Water Extract multiplied by the Brew House Yield.  This product will provide the percent of extract collected from the malt. &lt;/p&gt;
+&lt;p&gt;$$ WY =    (HWE as-is)(BHY) $$&lt;/p&gt;
+&lt;h2&gt;Pounds of Malt&lt;/h2&gt;
+&lt;p&gt;It is imperative that you measure your recipes by the percent of extract taken from the malt rather than the weight of the malt. 
+ Do this will all you to compensate for the Working Yield and help you accurately measure your malt bills.&lt;br&gt;
+ For example, an recipe may call for 5\% of caramel 20.&lt;br&gt;
+ This does not me that you ad 0.5 lbs of caramel 20 malt in a 10 lb recipe. Instead, this means that you will have 5\% of the total extract come from the caramel 20 malt.&lt;br&gt;
+ Use the following formula to calculate the weight of malt based on a percent of extract.&lt;/p&gt;
+&lt;p&gt;$$ Lbs malt = (Lbs extract)(\% Extract) / WY$$&lt;/p&gt;
+&lt;h2&gt;Strike Water Temp&lt;/h2&gt;
+&lt;p&gt;As you know when you are mashing, your strike water has to be warmer than the target mash temperature because the cool malt will cool the temperature of the water.&lt;br&gt;
+To correctly calculate the temperature of the strike water, use the following formula.&lt;/p&gt;
+&lt;p&gt;$$ Strike Temp =  [((0.4)(T mash-T malt)) / L:G] +  T mash $$&lt;/p&gt;
+&lt;h2&gt;Mash Water Volume&lt;/h2&gt;
+&lt;p&gt;To calculate the mash water volume you will need to know your liquor to grist ratio.&lt;br&gt;
+The term liquor refers to the mash water and grist refers to the milled malt.&lt;br&gt;
+We need to calculate the appropriate amount of water to allow for enzyme action and starch conversion take place.&lt;/p&gt;
+&lt;p&gt;$$ gallons H2O =  (Lbs malt)(L:G)(1gallon H2O) / 8.32 lbs water         $$&lt;/p&gt;
+&lt;h2&gt;Weight of Hops&lt;/h2&gt;
+&lt;p&gt;IBUs or International Bittering Units measures a bitterness unit for hops.&lt;br&gt;
+IBUs are the measurement in parts per million (ppm) of iso-alpha acids in the beer. &lt;br&gt;
+For example, an IPA with 75 IBUs has 75 milligrams of isomerized alpha acids per liter. 
+The equation used to calculate the weight of hops for the boil is as follows.&lt;/p&gt;
+&lt;p&gt;$$Ounces hops = (IBU_{Target})(galbeer)(IBU\%) / (\%\alpha-acid)(\% Utilization)(7494)  $$&lt;/p&gt;
+&lt;p&gt;The IBU target equals the total bitterness for the beer.  (e.g. an IPA may have an IBU target of 75 IBUs).
+The percent IBU is equal to the percent of IBUs from each hop addition.&lt;br&gt;
+You may wish for your first hop addition to contribute 95\% of the total IBUs.&lt;br&gt;
+This would make your IBU\% 95\% .&lt;br&gt;
+The \% $\alpha$-acid is the amount of alpha acid in the hops and can be found on the hop packaging.&lt;br&gt;
+The \% Utilization is a measurement of the percentage of alpha acid units that will isomerize in the boil.&lt;br&gt;
+The following chart outlines the typical utilizations and hop boil times.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$60 min = 30\% utilization$&lt;/li&gt;
+&lt;li&gt;$30 min = 15\%$&lt;/li&gt;
+&lt;li&gt;$5   min = 2.5\%$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The 7494 is a conversion factor and used to cancel the units in the equation. 
+For the hops equation, the units for the \% must be expressed in decimal form.  (e.g. 10\%= .10)&lt;/p&gt;
+&lt;h2&gt;Calculation of Wort and Beer Color&lt;/h2&gt;
+&lt;p&gt;$$ Color of Wort = S [(\% extract)(^\circ L of malt)(^\circ P wort / 8^\circ P reference)]      $$&lt;/p&gt;
+&lt;p&gt;We allow for a 30\% loss of color during fermentation to calculate the color of beer.
+Color of Beer = (color of wort)(1 - \% color loss)&lt;/p&gt;</content><category term="brewing"></category></entry></feed>

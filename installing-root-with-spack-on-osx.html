@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link href="https://kwierman.github.io/static/custom.css" rel="stylesheet">
+
+    <link href="https://kwierman.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Get Lost. Then find your way back. Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53465262-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Kevin Wierman" />
+<meta name="description" content="While I would have preferred a cleaner way of doing this, using Spack avoids the headaches involved in installing ROOT. Of which, we know; every physics grad student gets to do at least 6 times. So, here&#39;s the idea: Get gfortran Download Spack Make some modifications to Spack itself Download …" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Get Lost. Then find your way back."/>
+<meta property="og:title" content="Installing ROOT with Spack on OSX"/>
+<meta property="og:description" content="While I would have preferred a cleaner way of doing this, using Spack avoids the headaches involved in installing ROOT. Of which, we know; every physics grad student gets to do at least 6 times. So, here&#39;s the idea: Get gfortran Download Spack Make some modifications to Spack itself Download …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://kwierman.github.io/installing-root-with-spack-on-osx.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-05-27 00:00:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://kwierman.github.io/author/kevin-wierman.html">
+<meta property="article:section" content="Random"/>
+<meta property="og:image" content="/images/personal.jpg">
+
+  <title>Get Lost. Then find your way back. &ndash; Installing ROOT with Spack on OSX</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://kwierman.github.io">
+        <img src="/images/personal.jpg" alt="Kevin Wierman" title="Kevin Wierman">
+      </a>
+      <h1><a href="https://kwierman.github.io">Kevin Wierman</a></h1>
+
+<p>Explore everything</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="/category/trail_running.html" target="_blank">Trail Running Reports</a></li>
+          <li><a href="http://ultrasignup.com/results_participant.aspx?fname=Kevin&lname=Wierman#" target="_blank">UltraSignup</a></li>
+          <li><a href="https://www.strava.com/athletes/19788047" target="_blank">Strava</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://linkedin.com/in/wierman/en" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/kwierman" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-google" href="https://google.com/+kwierman" target="_blank"><i class="fa fa-google"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/wierman" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-rss" href="//kwierman.github.io/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:kwierman@gmail.com" target="_blank"><i class="fa fa-envelope-o"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://kwierman.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://kwierman.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="installing-root-with-spack-on-osx">Installing ROOT with Spack on OSX</h1>
+    <p>
+      Posted on Sat 27 May 2017 in <a href="https://kwierman.github.io/category/random.html">Random</a>
+
+        &#8226; 3 min read
+    </p>
+  </header>
+
+
+  <div>
+    <p>While I would have preferred a cleaner way of doing this, using Spack avoids the headaches involved in installing ROOT. Of which, we know; every physics grad student gets to do <strong>at least</strong> 6 times.</p>
+<p>So, here's the idea:</p>
+<ol>
+<li>Get gfortran</li>
+<li>Download Spack</li>
+<li>Make some modifications to Spack itself</li>
+<li>Download the pre-requisite</li>
+<li>Download the HEP-Spack overlay</li>
+<li>Make some modifications to the HEP Ooverlay</li>
+<li>Hit the install button and watch this thing fly... for a couple hours.</li>
+</ol>
+<p>There's some reasoning behind this, so let's dive into the details:</p>
+<h2>Installing gfortran</h2>
+<p>On OSX, gfortran is no longer supported under XCode. So, we need to grab a copy. To accomplish this task, I go to <a href="https://gcc.gnu.org/wiki/GFortranBinariesMacOS">this website (linked)</a>. The instructions there are pretty thorough, and you DO want to make sure that the install prefix is set to <code>/usr/local/gfortran</code>.</p>
+<h2>Download Spack</h2>
+<p>Find some space on a disk (this is going to eat up about 5GB). Then, run the following:</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/LLNL/spack
+</pre></div>
+
+
+<p>Spack will run as a local installation under the directory spack. I typically stick mine in <code>$(HOME)/spack</code>.</p>
+<h2>Make some modifications to Spack itself</h2>
+<p>So, to setup the environment to use spack (though it works equally well to just run spack using the absolute path), one needs to issue the following command:</p>
+<div class="highlight"><pre><span></span><span class="nb">source</span> &lt;your spack install directory&gt;/spack/share/spack/setup-env.sh
+</pre></div>
+
+
+<p>The first problem we encounter is in the identification of the compilers. Normally, spack identifies the gfortran installation as different from the command line tools installed by XCode. You can check your compilers and generate the <code>yaml</code> that spack uses by  issuing the command:</p>
+<div class="highlight"><pre><span></span>spack compilers
+</pre></div>
+
+
+<p>Now, if you open up <code>~/.spack/darwin/compilers.yaml</code>. You should see two compilers defined. For my installation, I condensed these into one compiler:</p>
+<div class="highlight"><pre><span></span><span class="nt">compilers</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="nt">compiler</span><span class="p">:</span>
+    <span class="nt">environment</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+    <span class="nt">extra_rpaths</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+    <span class="nt">flags</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+    <span class="nt">modules</span><span class="p">:</span> <span class="p p-Indicator">[]</span>
+    <span class="nt">operating_system</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sierra</span>
+    <span class="nt">paths</span><span class="p">:</span>
+      <span class="nt">cc</span><span class="p">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang&#39;</span>
+      <span class="nt">cxx</span><span class="p">:</span> <span class="kt">!!python/unicode</span> <span class="s">&#39;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++&#39;</span>
+      <span class="nt">f77</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/gfortran</span>
+      <span class="nt">fc</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/gfortran</span>
+    <span class="nt">spec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">clang@8.1.0-apple</span>
+    <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">x86_64</span>
+</pre></div>
+
+
+<p>Note that the location of gfortran is <strong>VERY IMPORTANT</strong>.</p>
+<p>You should now be ready to compile with both gfortran and clang.</p>
+<h2>Download the Prerequisite</h2>
+<p>This sounds very general, so allow me to specify. Loading up dependencies for packages requires dynamic package loading. Spack has a couple way to do this. I use <code>environment-modules</code>.</p>
+<p>To install this, issue the following command:</p>
+<div class="highlight"><pre><span></span>spack install environment-modules
+</pre></div>
+
+
+<p>Once this has been completed, you'll need a way to activate this. Since it isn't loaded already, this will have to be done manually. I typically put the following command either into an init script or into <code>~/.bash_profile</code>.</p>
+<div class="highlight"><pre><span></span><span class="nb">source</span> &lt;your installation directory&gt;/spack/opt/spack/darwin-sierra-x86_64/clang-8.1.0-apple/environment-modules-3.2.10-*/Modules/init/sh
+</pre></div>
+
+
+<p>Note that this is a little dangerous as the wildcard in this command may find the WRONG environment-modules installation. However, as a hacky solution, this seems to work.</p>
+<h2>Download the Spack HEP overlay</h2>
+<p>The spack hep overlay contains the package definition for ROOT and thus can is the basis for creating a  root installation. The following directions are ripped <a href="https://github.com/HEP-SF/hep-spack/">from their website</a>.</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;your installation directory&gt;/spack/var/spack/repos/
+git clone https://github.com/HEP-SF/hep-spack/
+spack repo add &lt;your installation directory&gt;/spack/var/spack/repos/hep-spack
+</pre></div>
+
+
+<p>Spack should now recognize the HEP overlay.</p>
+<h2>Make Some Modification to the HEP Overlay</h2>
+<p>The default package definition didn't work for me. For instance, the usage of <code>libtool</code> by ROOT doesn't match the build spec of <code>libtool</code> installed by spack. However, it WILL use the native libtool that comes with XCode's command line tools. The other problem is that the package definition doesn't setup ROOT correctly in the  runtime environment.</p>
+<p>So, there's two changes to make</p>
+<ol>
+<li>Change the usage of libtool</li>
+<li>Change the runtime environment</li>
+</ol>
+<p>I'm a huge fan of <code>emacs</code>, but each to his/her own. Open up yer text editor and point it at the file: <code>&lt;your installation directory&gt;/spack/var/spack/repos/hep-spack/packages/root/package.py</code>.</p>
+<p>Change the following code chunk:</p>
+<div class="highlight"><pre><span></span>     depends_on(&quot;cmake&quot;, type=&#39;build&#39;)
+<span class="gd">-    depends_on(&quot;libtool&quot;, type=&#39;build&#39;)</span>
+     depends_on(&quot;pcre&quot;)
+     depends_on(&quot;fftw~mpi&quot;)
+     depends_on(&quot;graphviz&quot;, when=&quot;+graphviz&quot;)
+<span class="gu">@@ -55,6 +54,7 @@ class Root(Package):</span>
+     depends_on(&quot;libxml2+python&quot;)
+     depends_on(&quot;jpeg&quot;)
+     if sys.platform != &#39;darwin&#39;:
+<span class="gi">+        depends_on(&quot;libtool&quot;, type=&#39;build&#39;)</span>
+         depends_on(&quot;libpng&quot;)
+         depends_on(&quot;openssl&quot;)
+         depends_on(&quot;freetype&quot;)
+<span class="gu">@@ -88,6 +88,9 @@ class Root(Package):</span>
+         spack_env.set(&#39;ROOTSYS&#39;, self.prefix)
+         spack_env.set(&#39;ROOT_VERSION&#39;, &#39;v6&#39;)
+         spack_env.prepend_path(&#39;PYTHONPATH&#39;, self.prefix.lib)
+<span class="gi">+        run_env.set(&#39;ROOTSYS&#39;, self.prefix)</span>
+<span class="gi">+        run_env.set(&#39;ROOT_VERSION&#39;, &#39;v6&#39;)</span>
+<span class="gi">+        run_env.prepend_path(&#39;PYTHONPATH&#39;, self.prefix.lib)</span>
+</pre></div>
+
+
+<p>So, the first diff makes it so that OSX doesn't use the spack installed libtool by adding it to the build dependencies when NOT darwin. The second diff adds the appropriate variables to the run environment.</p>
+<h2>Watch this thing go</h2>
+<p>You should now be ready. Type this command and grab a cold one. It'll take a while.</p>
+<div class="highlight"><pre><span></span>spack install root
+</pre></div>
+
+
+<p>If you spot errors with this guide, let me know.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kevinwierman';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy;  2019 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Get Lost. Then find your way back. ",
+  "url" : "https://kwierman.github.io",
+  "image": "/images/personal.jpg",
+  "description": "Kevin's Thoughts and Writings"
+}
+</script>
+
+</body>
+</html>

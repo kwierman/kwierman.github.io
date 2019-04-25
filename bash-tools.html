@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="https://kwierman.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+    <link href="https://kwierman.github.io/static/custom.css" rel="stylesheet">
+
+    <link href="https://kwierman.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Get Lost. Then find your way back. Atom">
+
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53465262-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333">
+
+<meta name="author" content="Kevin Wierman" />
+<meta name="description" content="Goal Given how ubiquitous unix(esque) systems are in the science industry, the ability to use tools that are commonly found on all platforms is increasingly useful. Since many clusters don&#39;t support operations in the login nodes which require advanced libraries, users are restricted to using the tools that come …" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Get Lost. Then find your way back."/>
+<meta property="og:title" content="Bash Tools"/>
+<meta property="og:description" content="Goal Given how ubiquitous unix(esque) systems are in the science industry, the ability to use tools that are commonly found on all platforms is increasingly useful. Since many clusters don&#39;t support operations in the login nodes which require advanced libraries, users are restricted to using the tools that come …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://kwierman.github.io/bash-tools.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-05-11 00:00:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://kwierman.github.io/author/kevin-wierman.html">
+<meta property="article:section" content="random"/>
+<meta property="og:image" content="/images/personal.jpg">
+
+  <title>Get Lost. Then find your way back. &ndash; Bash Tools</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://kwierman.github.io">
+        <img src="/images/personal.jpg" alt="Kevin Wierman" title="Kevin Wierman">
+      </a>
+      <h1><a href="https://kwierman.github.io">Kevin Wierman</a></h1>
+
+<p>Explore everything</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="/category/trail_running.html" target="_blank">Trail Running Reports</a></li>
+          <li><a href="http://ultrasignup.com/results_participant.aspx?fname=Kevin&lname=Wierman#" target="_blank">UltraSignup</a></li>
+          <li><a href="https://www.strava.com/athletes/19788047" target="_blank">Strava</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://linkedin.com/in/wierman/en" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/kwierman" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-google" href="https://google.com/+kwierman" target="_blank"><i class="fa fa-google"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/wierman" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="sc-rss" href="//kwierman.github.io/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+        <li><a class="sc-envelope-o" href="mailto:kwierman@gmail.com" target="_blank"><i class="fa fa-envelope-o"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://kwierman.github.io">Home</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="https://kwierman.github.io/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="bash-tools">Bash Tools</h1>
+    <p>
+      Posted on Mon 11 May 2015 in <a href="https://kwierman.github.io/category/random.html">random</a>
+
+        &#8226; 4 min read
+    </p>
+  </header>
+
+
+  <div>
+    <h2>Goal</h2>
+<p>Given how ubiquitous unix(esque) systems are in the science industry, the ability to use tools that are commonly found on all platforms is increasingly useful. Since many clusters don't support operations in the login nodes which require advanced libraries, users are restricted to using the tools that come native with the system. Below is a non-exhaustive description of tools that I have found useful.</p>
+<h3>Bang Bang</h3>
+<p>That feeling of angst derived from typing in a command only to find that the system requires advanced privileges to perform it is almost universal. Bang bang ($!!$) is the tool that will save you from having to type command in again. This becomes critical in situations where the system does not save the bash history (or the user is using another shell without built in history).</p>
+<p>Simply type the following in after another statement, and that statement will execute again:</p>
+<div class="highlight"><pre><span></span>!!
+</pre></div>
+
+
+<p>For the aforementioned situation of forgetting to sudo a privileged command, typing in <code>sudo !!</code> does the trick, </p>
+<div class="highlight"><pre><span></span><span class="o">[</span>kwierman~<span class="o">]</span>$ yum update
+You need to be root to perform this command.
+<span class="o">[</span>kwierman~<span class="o">]</span>$ sudo !!
+sudo yum update
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> kwierman:
+</pre></div>
+
+
+<h3>history</h3>
+<p>This is a tool built into bash (hence the article name). Simply typing in <code>history</code> will show the previously typed in commands.</p>
+<p>This is useful enough for tracing previous steps in a project, especially since it can be used in combination with awk and cat to output the last several commands to file.</p>
+<div class="highlight"><pre><span></span><span class="nb">history</span> <span class="m">10</span> <span class="p">|</span> awk <span class="s1">&#39;{for (i=2; i&lt;NF; i++) printf $i &quot; &quot;; print $NF}&#39;</span>
+</pre></div>
+
+
+<p>Just replace <code>10</code> with the last number of commands you want to print out. Similarly, an amusing script below will tell the user how often they use certain commands.</p>
+<div class="highlight"><pre><span></span>history<span class="p">|</span>awk <span class="s1">&#39;{print $2}&#39;</span><span class="p">|</span>awk <span class="s1">&#39;BEGIN {FS=&quot;|&quot;} {print $1}&#39;</span><span class="p">|</span>sort<span class="p">|</span>uniq -c<span class="p">|</span>sort -r
+</pre></div>
+
+
+<p>The command, <code>awk</code>, will be explained later.</p>
+<h3>find</h3>
+<p>Can't find out where you left a file or where a specific header is in a system? Then <code>find</code> is the tool for you.</p>
+<p>The most commonly used syntax is to the search by name,</p>
+<div class="highlight"><pre><span></span>find &lt;location&gt; -name &lt;file name&gt;
+</pre></div>
+
+
+<p>However, other file metadata can be parsed by <code>find</code>. For instance,</p>
+<ul>
+<li><code>mtime</code> searches for modification time in days</li>
+<li><code>perm</code> searches for files with a permission type</li>
+<li><code>iname</code> is a case insensitive search</li>
+<li><code>maxdepth</code>  limits the directory recursive search depth</li>
+<li><code>type</code> filters on file type</li>
+</ul>
+<p>There's a ton of other commands to use here, but for the most part searching for files by name is usually enough.</p>
+<h3>grep</h3>
+<p>Most commonly grep is used as a text parsing tool. In the situation where a coder is refactoring, or a project manager can't find a certain graphic, grep can parse files quickly(ish) for th contents.</p>
+<div class="highlight"><pre><span></span>grep &lt;string&gt; &lt;file&gt;
+</pre></div>
+
+
+<p>This can be used with the <code>-R</code> option to recursively search entire directories. Bear in mind that <code>grep</code> can't filter on file name or metadata, so this can be used in conjunction with find and xargs to only search certain files</p>
+<div class="highlight"><pre><span></span>find . -name *.txt <span class="p">|</span> xargs grep mystring
+</pre></div>
+
+
+<p>Something to note here is that <code>regex</code> is built directly into grep. So, you can't use the period character, unless properly escaped.</p>
+<h3>awk</h3>
+<p>AWK is a programming language designed for text processing. The <code>awk</code> tool itself is great for pattern matching in strings.</p>
+<p>The most simple command is the print command:</p>
+<div class="highlight"><pre><span></span>awk <span class="s1">&#39;{ print }&#39;</span> /etc/passwd
+</pre></div>
+
+
+<p>The <code>print</code> command itself can be given arguments based on the input.</p>
+<div class="highlight"><pre><span></span>awk <span class="s1">&#39;{ print $0 }&#39;</span> /etc/passwd
+</pre></div>
+
+
+<p>Where the $ character is used to select fields, as in bash. You can specify fields using the <code>-F</code> option, and handing it a string.
+You can also hand it conditions to print off of:</p>
+<div class="highlight"><pre><span></span>awk <span class="s1">&#39;$9 == 500 {print $1}&#39;</span>
+</pre></div>
+
+
+<p>You can also use boolean operators</p>
+<div class="highlight"><pre><span></span>awk <span class="s1">&#39;/tom|bob|kevin/&#39;</span> /etc/passwd
+</pre></div>
+
+
+<h3>sed</h3>
+<p>In the case where the text stream needs more editing, <code>sed</code> is the tool. The basic command in sed, is the string replace command:</p>
+<div class="highlight"><pre><span></span>sed s/old_string/new_string/ &lt;old_file&gt;new_file
+</pre></div>
+
+
+<p>The slashsymbol here is a delimiter and the strings in between can be used with regex. In the case where you want to reuse the matched string, the <code>&amp;</code> symbol can be used</p>
+<h3>cat</h3>
+<p>Concatenating strings onto files is useful for outputting commands into files without destroying them.</p>
+<div class="highlight"><pre><span></span>cat <span class="s2">&quot;my string&quot;</span>
+</pre></div>
+
+
+<h3>curl</h3>
+<p>Downloading files remotely from the internet is very useful. <code>curl</code> and <code>wget</code> work similarly and each has their own advantages and disadvantages.</p>
+<div class="highlight"><pre><span></span>curl www.my_remote_site.com/a_file.file&gt;my_file.file
+wget www.my_remote_site.com/a_file.file
+</pre></div>
+
+
+<h3>rsync</h3>
+<p>Syncing files between computers is also very useful.</p>
+<h4>pushing</h4>
+<div class="highlight"><pre><span></span>scp -r my_local_directory username@remote_computer:/remote_directory
+rsync -r my_local_directory username@remote_computer:/remote_directory
+</pre></div>
+
+
+<h4>pulling</h4>
+<div class="highlight"><pre><span></span>scp -r username@remote_computer:/remote_directory my_local_directory 
+rsync -r username@remote_computer:/remote_directory my_local_directory 
+</pre></div>
+
+
+<p>You need to be careful when syncing directories, since the <code>/</code> delimiter usually treats the folder as a place and not the object to be sync'd. In most cases, it's useful to tar your files.</p>
+<h3>tar</h3>
+<p>In order to compress files, tar is the usual command, although <code>zip</code> and <code>unzip</code> can be used for windows compatibility.</p>
+<h3>compress</h3>
+<div class="highlight"><pre><span></span>tar -cvf my_archive.tar item1 item2
+</pre></div>
+
+
+<h4>extact</h4>
+<div class="highlight"><pre><span></span>tar -xvf my_archive_name
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kevinwierman';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>
+  &copy;  2019 - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
+<p>Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15"/>
+  </a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Get Lost. Then find your way back. ",
+  "url" : "https://kwierman.github.io",
+  "image": "/images/personal.jpg",
+  "description": "Kevin's Thoughts and Writings"
+}
+</script>
+
+</body>
+</html>

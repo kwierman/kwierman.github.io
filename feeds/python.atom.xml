@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Get Lost. Then find your way back. - Python</title><link href="https://kwierman.github.io/" rel="alternate"></link><link href="https://kwierman.github.io/feeds/python.atom.xml" rel="self"></link><id>https://kwierman.github.io/</id><updated>2015-02-03T00:00:00-08:00</updated><subtitle>Explore everything</subtitle><entry><title>Indico Server on OSX</title><link href="https://kwierman.github.io/indico-server-on-osx.html" rel="alternate"></link><published>2015-02-03T00:00:00-08:00</published><updated>2015-02-03T00:00:00-08:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/indico-server-on-osx.html</id><summary type="html">&lt;h2&gt;Prereqs&lt;/h2&gt;
+&lt;p&gt;OSX is already in a good position to run Indico. A few modifications needs to be made:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install ModWSGI:&lt;/li&gt;
+&lt;li&gt;{{ post_url modwsgi }}&lt;/li&gt;
+&lt;li&gt;Setup SSL on the Apache Server:&lt;/li&gt;
+&lt;li&gt;{{ post_url 2015-02-03-ssl-keys-on-osx }}&lt;/li&gt;
+&lt;li&gt;flask engine plugin&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/indico/flask-pluginengine"&gt;from git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The next step is to setup PostgreSQL. Annoyingly enough, this is never mentioned in the …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Prereqs&lt;/h2&gt;
+&lt;p&gt;OSX is already in a good position to run Indico. A few modifications needs to be made:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install ModWSGI:&lt;/li&gt;
+&lt;li&gt;{{ post_url modwsgi }}&lt;/li&gt;
+&lt;li&gt;Setup SSL on the Apache Server:&lt;/li&gt;
+&lt;li&gt;{{ post_url 2015-02-03-ssl-keys-on-osx }}&lt;/li&gt;
+&lt;li&gt;flask engine plugin&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/indico/flask-pluginengine"&gt;from git&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The next step is to setup PostgreSQL. Annoyingly enough, this is never mentioned in the &lt;a href="https://indico.readthedocs.org/en/latest/installation/"&gt;documentation&lt;/a&gt; and they never say to set up the database, which I'll talk about later.&lt;/p&gt;
+&lt;p&gt;The following changes will be needed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;add use _www with full privilages (no password)&lt;/li&gt;
+&lt;li&gt;This may be a little unnecessary&lt;/li&gt;
+&lt;li&gt;add database indico&lt;/li&gt;
+&lt;li&gt;This will be intiialized later&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Failing to do this will result in an error message about not being connect to port &lt;code&gt;5432&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Setup &lt;code&gt;nodeenv&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/ekalinin/nodeenv.git
+&lt;span class="nb"&gt;cd&lt;/span&gt; nodeenv
+python setup.py install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Setup the dependencies (these will mostly be js objects which, if missing manifest as) by using Fabric.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;css/lib/angular.css&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;found&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;load&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/opt/indico/htdocs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/opt/indico/htdocs/css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/opt/indico/htdocs/js&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;Fabric&lt;/code&gt; will also need to be installed:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    easy_install fabric
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Download and install&lt;/h2&gt;
+&lt;p&gt;The source code for indico can be foud on github. I'd download to a source directory directly:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/indico/indico
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Run Fabric:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fab setup_deps
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Run Install (which you'll probably have to do as sudo):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python setup.py install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Usually something will go wrong and a python package will be missing, so the preceding command will be need to run alternatively with this one:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo easy_install &amp;lt;module name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will typically manifast as the incorrect version of &lt;code&gt;psjson&lt;/code&gt; or something, you can use the &lt;code&gt;==&lt;/code&gt; operator in easy install to specify the version.&lt;/p&gt;
+&lt;p&gt;Run the indico configuration::&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;indico_easy_install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;At this point, some of the permissions have to be setup in order for apache to run it&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo chown -R _www /opt/indico
+sudo chgrp -R _www /opt/indico
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In order to get some of the site stuff working correctly (and depending on who else uses the machine), the folder at &lt;code&gt;/Library/Python/2.7/site-packages/&amp;lt;some package&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I followed all of the default configurations. At the end of which, I had to change the username in &lt;code&gt;zdctl.conf&lt;/code&gt; to &lt;code&gt;_www&lt;/code&gt;. This is an OSX specific change.&lt;/p&gt;
+&lt;p&gt;The following httpd configuration will need to be inserted into the webserver configuration path&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;AddDefaultCharset UTF-8
+
+&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="err"&gt;*:80&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        # mod_wsgi indico
+
+    ErrorLog /var/log/apache2/error.log
+        LogLevel warn
+
+    Alias /indico/images &amp;quot;/opt/indico/htdocs/images&amp;quot;
+    Alias /indico/css &amp;quot;/opt/indico/htdocs/css&amp;quot;
+    Alias /indico/js &amp;quot;/opt/indico/htdocs/js&amp;quot;
+    Alias /indico/ihelp &amp;quot;/opt/indico/htdocs/ihelp&amp;quot;
+
+    WSGIDaemonProcess WSGIDAEMON processes=32 threads=1 inactivity-timeout=3600 maximum-requests=10000 \
+            python-eggs=/opt/indico/tmp/egg-cache
+
+    WSGIScriptAlias /indico &amp;quot;/opt/indico/htdocs/indico.wsgi&amp;quot;
+
+    &lt;span class="nt"&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;/opt/indico&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        WSGIProcessGroup WSGIDAEMON
+        WSGIApplicationGroup %{GLOBAL}
+        AllowOverride FollowSymlinks
+        Options None
+        Order deny,allow
+        Allow from all
+    &lt;span class="nt"&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class="err"&gt;*:443&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+
+    ErrorLog /var/log/apache2/error.log
+            LogLevel warn
+
+    Alias /indico/images &amp;quot;/opt/indico/htdocs/images&amp;quot;
+    Alias /indico/css &amp;quot;/opt/indico/htdocs/css&amp;quot;
+    Alias /indico/js &amp;quot;/opt/indico/htdocs/js&amp;quot;
+    Alias /indico/ihelp &amp;quot;/opt/indico/htdocs/ihelp&amp;quot;
+
+    WSGIScriptAlias /indico &amp;quot;/opt/indico/htdocs/indico.wsgi&amp;quot;
+
+    SSLEngine on
+    SSLCertificateFile    /etc/apache2/ssl/server.crt
+    SSLCertificateKeyFile /etc/apache2/ssl/host.key
+&lt;span class="nt"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The major change was in the &lt;code&gt;FollowSymlinks&lt;/code&gt; command. This is due to default behavior in OSX's apache.&lt;/p&gt;
+&lt;p&gt;In addition, the config file at &lt;code&gt;/opt/indico/etc/indico.conf&lt;/code&gt; will need to have the following changes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gd"&gt;-#Debug=False&lt;/span&gt;
+&lt;span class="gi"&gt;+Debug=True&lt;/span&gt;
+&lt;span class="gi"&gt;+BaseURL              = &amp;quot;http://physics00158.dhcp.unc.edu/indico&amp;quot;&lt;/span&gt;
+
+ # BaseSecureURL is the HTTPS location of Indico. Set empty string if you want to use http.                                                                     
+
+&lt;span class="gi"&gt;+BaseSecureURL        = &amp;quot;https://physics00158.dhcp.unc.edu/indico&amp;quot;&lt;/span&gt;
+&lt;span class="gd"&gt;-BaseURL              = &amp;quot;http://localhost:8000&amp;quot;&lt;/span&gt;
+
+ # BaseSecureURL is the HTTPS location of Indico. Set empty string if you want to use http.                                                                     
+
+&lt;span class="gd"&gt;-BaseSecureURL        = &amp;quot;https://localhost:8443&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you keep these default settings, you can test out indico by running the command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo -u _www indico runserver
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Initialize the database:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;indico db prepare
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Failing to do this will result in an error message about relations missing.&lt;/p&gt;
+&lt;h2&gt;Managing Indico&lt;/h2&gt;
+&lt;p&gt;There's plenty of &lt;a href="https://indico.cern.ch/ihelp/html/index.html"&gt;documentation&lt;/a&gt; online. However, there's a few things you should know:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can manually add a user with the following command: &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo -u _www indico admin user_add
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;You can grant users admin privilages with the following command:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo -u _www indico admin user_grant &amp;lt;user_id&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* The `user_id` is an unsigned integer assigned on user creation. The first user will be 0, etc...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;There's also a ton of information &lt;a href="https://github.com/indico/indico/blob/master/DEVELOPMENT.md"&gt;here&lt;/a&gt;.&lt;/p&gt;</content><category term="python"></category></entry><entry><title>ModWSGI on OSX</title><link href="https://kwierman.github.io/modwsgi-on-osx.html" rel="alternate"></link><published>2015-02-03T00:00:00-08:00</published><updated>2015-02-03T00:00:00-08:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-02-03:/modwsgi-on-osx.html</id><summary type="html">&lt;p&gt;The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]&lt;/p&gt;
+&lt;p _="%" endblockquote&gt;{% blockquote %}
+   DO NOT FOLLOW THE INSTRUCTIONS.&lt;/p&gt;
+&lt;p&gt;Just unload it to a source directory and install it to the apache module directory&lt;/p&gt;
+&lt;p&gt;Now add the following line to &lt;code&gt;/etc/apache2/httpd.conf&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;LoadModule wsgi_module modules …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]&lt;/p&gt;
+&lt;p _="%" endblockquote&gt;{% blockquote %}
+   DO NOT FOLLOW THE INSTRUCTIONS.&lt;/p&gt;
+&lt;p&gt;Just unload it to a source directory and install it to the apache module directory&lt;/p&gt;
+&lt;p&gt;Now add the following line to &lt;code&gt;/etc/apache2/httpd.conf&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;LoadModule wsgi_module modules/mod_wsgi.so
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And restart the apache server&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    apachectl restart
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category></entry><entry><title>Using Sphinx for Inline Documentation</title><link href="https://kwierman.github.io/using-sphinx-for-inline-documentation.html" rel="alternate"></link><published>2015-01-27T00:00:00-08:00</published><updated>2015-01-27T00:00:00-08:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-27:/using-sphinx-for-inline-documentation.html</id><summary type="html">&lt;h2&gt;Brief History&lt;/h2&gt;
+&lt;p&gt;Previously, in my python based endeavors, I've used &lt;a href="http://www.stack.nl/~dimitri/doxygen/" title="doxyen"&gt;doxygen&lt;/a&gt;, an inline code documentation engine for generating web pages and pdfs. Many people recommend this for c++ API documentation, and in fact, I use it my self all the time.However, to my eternal consternation, it does not play …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Brief History&lt;/h2&gt;
+&lt;p&gt;Previously, in my python based endeavors, I've used &lt;a href="http://www.stack.nl/~dimitri/doxygen/" title="doxyen"&gt;doxygen&lt;/a&gt;, an inline code documentation engine for generating web pages and pdfs. Many people recommend this for c++ API documentation, and in fact, I use it my self all the time.However, to my eternal consternation, it does not play well with python. I've used various little tricks and hacks to get around this, but a more streamlined approach would be nice. Eventually, I'd like to use something that works with multiple languages, but I guess today is just not that day.&lt;/p&gt;
+&lt;h2&gt;In Comes Sphinx&lt;/h2&gt;
+&lt;p&gt;A brief google search shows that python documentation is almost universally built with sphinx. I say "almost universally" because all the python-standard libraries are covered in sphinx as well as some private libraries, but many other non-standard libraries prefer their own documentation. Older libraries in particular like to use unique approaches.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://sphinx-doc.org/"&gt;Sphinx&lt;/a&gt; can be very easily researched online, downloaded via yum or apt, and can be used with a few simple to get up and going. However, very few real examples out there detail the whole workflow beginning to end. I'm going to attempt that here.&lt;/p&gt;
+&lt;h2&gt;An Example with Cards&lt;/h2&gt;
+&lt;p&gt;I built a simple &lt;a href="https://github.com/kwierman/Cards"&gt;simulation&lt;/a&gt; in python a while back to prove a point about the number of times it take to shuffle a deck of cards before patterns in the initial deck stop appearing in the shuffled deck (it's 10). Initially, I had the project documented in doxygen, but later switched to sphinx. We'll use this for my example.&lt;/p&gt;
+&lt;p&gt;Alright, so the project directory initially looks something like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cards/&lt;/li&gt;
+&lt;li&gt;Cards/&lt;ul&gt;
+&lt;li&gt;card.py&lt;/li&gt;
+&lt;li&gt;deck.py&lt;/li&gt;
+&lt;li&gt;shuffle.py&lt;/li&gt;
+&lt;li&gt;randomize.py&lt;/li&gt;
+&lt;li&gt;common.py&lt;/li&gt;
+&lt;li&gt;analysis.py&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;scripts/&lt;ul&gt;
+&lt;li&gt;runsim.py&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;tests/&lt;ul&gt;
+&lt;li&gt;testdef.py&lt;/li&gt;
+&lt;li&gt;testshuffle.py&lt;/li&gt;
+&lt;li&gt;testrandom.py&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The top level is for the project. The nested directory of the same name (&lt;code&gt;Cards/Cards&lt;/code&gt;) is the source directory containing python modules for the project. I'm treating this directory as a module in order to make it simple for sphinx, so I've included the &lt;code&gt;__init__.py&lt;/code&gt; file with the &lt;code&gt;__all__=[]&lt;/code&gt; directive to tell sphinx which files are a part of the directory. This is also the directory that get installed when the project goes to release.&lt;/p&gt;
+&lt;p&gt;The directory &lt;code&gt;scripts/&lt;/code&gt; is for python scripts that utilizes Cards. Likewise &lt;code&gt;tests/&lt;/code&gt; is for unit tests. This is a bit overkill for such a narrow project, but it's good practice anyway. &lt;/p&gt;
+&lt;h3&gt;Installation&lt;/h3&gt;
+&lt;p&gt;Now, I'm going to put a directory &lt;code&gt;/doc&lt;/code&gt; in the structure, so that it looks like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cards/&lt;/li&gt;
+&lt;li&gt;Cards/&lt;ul&gt;
+&lt;li&gt;card.py&lt;/li&gt;
+&lt;li&gt;deck.py&lt;/li&gt;
+&lt;li&gt;shuffle.py&lt;/li&gt;
+&lt;li&gt;randomize.py&lt;/li&gt;
+&lt;li&gt;common.py&lt;/li&gt;
+&lt;li&gt;analysis.py&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;scripts/&lt;ul&gt;
+&lt;li&gt;runsim.py&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;tests/&lt;ul&gt;
+&lt;li&gt;testdef.py&lt;/li&gt;
+&lt;li&gt;testshuffle.py&lt;/li&gt;
+&lt;li&gt;testrandom.py&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;doc/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This will house the new documentation code.  &lt;code&gt;cd&lt;/code&gt; into the new doc directory&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; doc
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then run the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sphinx-quickstart
+sphinx-apidoc -o source/ ../Cards
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Quickstart starts the process of making the build system for the documentation. The steps are easy to go through, and self-explanatory. Meanwhile apidoc searches the code for symbols and adds them automatically to documentation files.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;apidoc will need to be rerun every time you add new classes and symbols to the project.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Now, the directories should look this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cards/&lt;/li&gt;
+&lt;li&gt;Cards/&lt;ul&gt;
+&lt;li&gt;card.py&lt;/li&gt;
+&lt;li&gt;deck.py&lt;/li&gt;
+&lt;li&gt;shuffle.py&lt;/li&gt;
+&lt;li&gt;randomize.py&lt;/li&gt;
+&lt;li&gt;common.py&lt;/li&gt;
+&lt;li&gt;analysis.py&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;scripts/&lt;ul&gt;
+&lt;li&gt;runsim.py&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;tests/&lt;ul&gt;
+&lt;li&gt;testdef.py&lt;/li&gt;
+&lt;li&gt;testshuffle.py&lt;/li&gt;
+&lt;li&gt;testrandom.py&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;doc/&lt;ul&gt;
+&lt;li&gt;source/&lt;ul&gt;
+&lt;li&gt;_static/&lt;/li&gt;
+&lt;li&gt;_templates/&lt;/li&gt;
+&lt;li&gt;index.rst&lt;/li&gt;
+&lt;li&gt;Cards.rst&lt;/li&gt;
+&lt;li&gt;modules.rst&lt;/li&gt;
+&lt;li&gt;conf.py&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;build/&lt;/li&gt;
+&lt;li&gt;Makefile&lt;/li&gt;
+&lt;li&gt;make.bat&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Making it Github Ready&lt;/h3&gt;
+&lt;p&gt;Git is being used for this project, and I'd like to deploy to gh-pages, if at all necessary, so, we're going to need to add in a &lt;code&gt;.gitignore&lt;/code&gt; file. to &lt;code&gt;Cards/&lt;/code&gt; with the contents:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*.pyc
+*.po
+doc/build
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The first two are because inevitably, some code will be compiled in the source tree and we want to keep it clean for distribution and the last one is because we're going to make &lt;code&gt;doc/build&lt;/code&gt; a git repo for the &lt;code&gt;gh-pages&lt;/code&gt; branch. You can now initialize the two repositories via the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+git init
+git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;first commit&amp;quot;&lt;/span&gt;
+git remote add origin https://github.com/&amp;lt;your username&amp;gt;/&amp;lt;project name&amp;gt;.git
+git push -u origin master
+&lt;span class="nb"&gt;cd&lt;/span&gt; doc/build
+mkdir html
+git clone https://github.com/&amp;lt;your username&amp;gt;/&amp;lt;project name&amp;gt;.git html
+&lt;span class="nb"&gt;cd&lt;/span&gt; html
+git branch -b gh-pages
+git rm -rf *
+&lt;span class="nb"&gt;cd&lt;/span&gt; ../..
+make
+&lt;span class="nb"&gt;cd&lt;/span&gt; build/html
+git commit -a -m &lt;span class="s2"&gt;&amp;quot;First Documentation commit&amp;quot;&lt;/span&gt;
+git push
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You should have your project and it's github pages up and ready to go. To commit your code (from &lt;code&gt;Cards/&lt;/code&gt;):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git commit -a -m &lt;span class="s2"&gt;&amp;quot;Your commit message&amp;quot;&lt;/span&gt;
+git push
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To push your documenation:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; doc
+make
+&lt;span class="nb"&gt;cd&lt;/span&gt; build/html
+git commit -a -m &lt;span class="s2"&gt;&amp;quot;Documentation commit message&amp;quot;&lt;/span&gt;
+git push
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Page Creation&lt;/h3&gt;
+&lt;p&gt;Unlike doxygen, pages will not be automatically created for EVERYTHING. &lt;code&gt;apidoc&lt;/code&gt; will have taken care of some of that, but the rest is a bit verbose. &lt;code&gt;matplotlib&lt;/code&gt; has some tools for getting around that, but for sily little projects like this, we may need something less involved.&lt;/p&gt;
+&lt;p&gt;The first page generated is going to be &lt;code&gt;index.rst&lt;/code&gt;. This is a pretty good example of how to structure pages. Namely, pages that are going to be referenced as the first line:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Your Title
+==========
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And they need a table of contents(&lt;code&gt;toc&lt;/code&gt;) reference: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;toctree&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;
+   &lt;span class="nc"&gt;:maxdepth:&lt;/span&gt; &lt;span class="nf"&gt;4&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you want to add the API code to the table of contents, do the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;toctree&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;
+   &lt;span class="nc"&gt;:maxdepth:&lt;/span&gt; &lt;span class="nf"&gt;4&lt;/span&gt;
+   modules
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add your own pages in the same way to create more docs.&lt;/p&gt;
+&lt;h3&gt;Module Documentation&lt;/h3&gt;
+&lt;p _="%" endblockquote&gt;{% blockquote %}
+Sphinx extracts docstrings from the files themselves, so if you're already following python documentation procedure, then skip forward to symbolic reference. &lt;/p&gt;
+&lt;p&gt;For example, for the module &lt;code&gt;Cards.Card&lt;/code&gt;, the doc string is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Example Google style docstrings.&lt;/span&gt;
+
+&lt;span class="sd"&gt;This module demonstrates documentation as specified by the `Google Python&lt;/span&gt;
+&lt;span class="sd"&gt;Style Guide`_. Docstrings may extend over multiple lines. Sections are created&lt;/span&gt;
+&lt;span class="sd"&gt;with a section header and a colon followed by a block of indented text.&lt;/span&gt;
+
+&lt;span class="sd"&gt;Example:&lt;/span&gt;
+&lt;span class="sd"&gt;  Examples can be given using either the ``Example`` or ``Examples``&lt;/span&gt;
+&lt;span class="sd"&gt;  sections. Sections support any reStructuredText formatting, including&lt;/span&gt;
+&lt;span class="sd"&gt;  literal blocks::&lt;/span&gt;
+
+&lt;span class="sd"&gt;      $ python Card.py&lt;/span&gt;
+
+&lt;span class="sd"&gt;Section breaks are created by simply resuming unindented text. Section breaks&lt;/span&gt;
+&lt;span class="sd"&gt;are also implicitly created anytime a new section starts.&lt;/span&gt;
+
+&lt;span class="sd"&gt;Attributes:&lt;/span&gt;
+&lt;span class="sd"&gt;  module_level_variable (int): Module level variables may be documented in&lt;/span&gt;
+&lt;span class="sd"&gt;    either the ``Attributes`` section of the module docstring, or in an&lt;/span&gt;
+&lt;span class="sd"&gt;    inline docstring immediately following the variable.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Either form is acceptable, but the two should not be mixed. Choose&lt;/span&gt;
+&lt;span class="sd"&gt;    one convention to document module level variables and be consistent&lt;/span&gt;
+&lt;span class="sd"&gt;    with it.&lt;/span&gt;
+
+&lt;span class="sd"&gt;.. _Google Python Style Guide:&lt;/span&gt;
+&lt;span class="sd"&gt;   http://google-styleguide.googlecode.com/svn/trunk/pyguide.html&lt;/span&gt;
+
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can in notes and warnings seemingly where you want. I tend to put them in modules, classes and functions that need them.&lt;/p&gt;
+&lt;h3&gt;Class Documentation&lt;/h3&gt;
+&lt;p&gt;Classes are documented after the declaration statement. For example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Card&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Class are documented after the declaration statement.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    The __init__ method may be documented in either the class level&lt;/span&gt;
+&lt;span class="sd"&gt;    docstring, or as a docstring on the __init__ method itself.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Either form is acceptable, but the two should not be mixed. Choose one&lt;/span&gt;
+&lt;span class="sd"&gt;    convention to document the __init__ method and be consistent with it.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Note:&lt;/span&gt;
+&lt;span class="sd"&gt;      Do not include the `self` parameter in the ``Args`` section.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Args:&lt;/span&gt;
+&lt;span class="sd"&gt;      msg (str): Human readable string describing the exception.&lt;/span&gt;
+&lt;span class="sd"&gt;      code (int, optional): Error code, defaults to 2.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    Attributes:&lt;/span&gt;
+&lt;span class="sd"&gt;      msg (str): Human readable string describing the exception.&lt;/span&gt;
+&lt;span class="sd"&gt;      code (int): Exception error code.&lt;/span&gt;
+
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Member Declaration&lt;/h4&gt;
+&lt;p&gt;As with classes, their members are documented after declaration, indented to the appropriate level (&lt;em&gt;always test!&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Function signatures can be documented as following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Class methods are similar to regular functions.&lt;/span&gt;
+
+&lt;span class="sd"&gt;        Note:&lt;/span&gt;
+&lt;span class="sd"&gt;          Do not include the `self` parameter in the ``Args`` section.&lt;/span&gt;
+
+&lt;span class="sd"&gt;        Args:&lt;/span&gt;
+&lt;span class="sd"&gt;          param1: The first parameter.&lt;/span&gt;
+&lt;span class="sd"&gt;          param2: The second parameter.&lt;/span&gt;
+
+&lt;span class="sd"&gt;        Returns:&lt;/span&gt;
+&lt;span class="sd"&gt;          True if successful, False otherwise.&lt;/span&gt;
+
+&lt;span class="sd"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The same thing can be said for functions at the module level. Static module members can also be documented in the same way.&lt;/p&gt;
+&lt;h2&gt;Symbolic Reference&lt;/h2&gt;
+&lt;p&gt;Symbols can references between files in the following way:&lt;/p&gt;
+&lt;h3&gt;URL Links&lt;/h3&gt;
+&lt;p&gt;External Links:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;`Docs for this project &amp;lt;http://packages.python.org/an_example_pypi_project/&amp;gt;`_
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Anchor Declaration:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;`Table of Contents`_
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Images&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;figure&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt;  images/sweat.jpg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Substitutions&lt;/h3&gt;
+&lt;p&gt;Substitutions syntax is&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="nt"&gt;|biohazard|&lt;/span&gt; &lt;span class="ow"&gt;image&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; images/biohazard.png
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Literal text replacement:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="nt"&gt;|doctest|&lt;/span&gt; &lt;span class="ow"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="na"&gt;:mod:&lt;/span&gt;&lt;span class="nv"&gt;`doctest`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The acceptable syntax can be found at &lt;a href="http://sphinx-doc.org/rest.html"&gt;sphinx&lt;/a&gt;.&lt;/p&gt;</content><category term="python"></category></entry></feed>

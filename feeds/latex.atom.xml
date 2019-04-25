@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Get Lost. Then find your way back. - LaTex</title><link href="https://kwierman.github.io/" rel="alternate"></link><link href="https://kwierman.github.io/feeds/latex.atom.xml" rel="self"></link><id>https://kwierman.github.io/</id><updated>2015-01-29T00:00:00-08:00</updated><subtitle>Explore everything</subtitle><entry><title>Easy Latex in Sublime Text</title><link href="https://kwierman.github.io/easy-latex-in-sublime-text.html" rel="alternate"></link><published>2015-01-29T00:00:00-08:00</published><updated>2015-01-29T00:00:00-08:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-29:/easy-latex-in-sublime-text.html</id><summary type="html">&lt;p&gt;I'm a huge fan of &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text&lt;/a&gt;. A more ideal setting would be to have this work for all of my concurrent work/notetaking/writing, I'd like a system for updating logs. The following steps were taken to make latex and sublime text play well together.&lt;/p&gt;
+&lt;h2&gt;Prereqs&lt;/h2&gt;
+&lt;p&gt;Install &lt;code&gt;texlive&lt;/code&gt; and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'm a huge fan of &lt;a href="http://www.sublimetext.com/"&gt;Sublime Text&lt;/a&gt;. A more ideal setting would be to have this work for all of my concurrent work/notetaking/writing, I'd like a system for updating logs. The following steps were taken to make latex and sublime text play well together.&lt;/p&gt;
+&lt;h2&gt;Prereqs&lt;/h2&gt;
+&lt;p&gt;Install &lt;code&gt;texlive&lt;/code&gt; and &lt;code&gt;latexmk&lt;/code&gt;. Both are reqular names in repos, and included in the mktex package for OSX.&lt;/p&gt;
+&lt;h2&gt;Getting package control for Sublime text&lt;/h2&gt;
+&lt;p&gt;First, open up the python interacive consol with &lt;code&gt;ctrl+\backtick&lt;/code&gt;. Then, copy and paste the following in:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;urllib2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nn"&gt;os&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nn"&gt;hashlib&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2deb499853c4371624f5a07e27c334aa&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bf8c4e67d14fb0525ba4f89698a6d7e1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="n"&gt;pf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Package Control.sublime-package&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="n"&gt;ipp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sublime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;installed_packages_path&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; 
+&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;makedirs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;ipp&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ipp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="n"&gt;urllib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;install_opener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;urllib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;build_opener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;urllib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ProxyHandler&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt; 
+&lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;urllib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urlopen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://packagecontrol.io/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;pf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;%20&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; 
+&lt;span class="n"&gt;dh&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sha256&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hexdigest&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; 
+&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;ipp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pf&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;wb&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;dh&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Error validating download (got &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt; instead of &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;), please try manual install&lt;/span&gt;
+&lt;span class="s1"&gt;&amp;#39; % (dh, h) if dh != h else &amp;#39;&lt;/span&gt;&lt;span class="n"&gt;Please&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt; &lt;span class="n"&gt;Sublime&lt;/span&gt; 
+&lt;span class="n"&gt;Text&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;finish&lt;/span&gt; &lt;span class="n"&gt;installation&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;) &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Restart sublime and run &lt;code&gt;install packages&lt;/code&gt; via:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ctrl+shift+P
+Package Control: Install Package
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;It will update it's internal list of packages, then you can run it again and look for &lt;code&gt;LaTexTools&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Run the following command in the command palette&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;LaTeXTools: Reconfigure and migrate settings
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Fragmentation between linux distros causes the steps to become necessary. Edit the &lt;code&gt;LaTex.sublime-settings&lt;/code&gt;. Search for &lt;code&gt;Platform Settings&lt;/code&gt;. Occasionally the build system needs to be put into each platforms directory. &lt;code&gt;texpath&lt;/code&gt; should be set up correctly to point to mktex. See the &lt;a href="https://github.com/SublimeText/LaTeXTools"&gt;GitHub repo&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;Evince at the moment is the only viewer supported. Okular is coming up next, so we might have to try and see if that comes around soon.&lt;/p&gt;</content><category term="latex"></category></entry><entry><title>Presentations in Latex</title><link href="https://kwierman.github.io/presentations-in-latex.html" rel="alternate"></link><published>2015-01-29T00:00:00-08:00</published><updated>2015-01-29T00:00:00-08:00</updated><author><name>Kevin Wierman</name></author><id>tag:kwierman.github.io,2015-01-29:/presentations-in-latex.html</id><summary type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;Typically presentations in $\LaTeX$ depend on the &lt;a href="http://en.wikipedia.org/wiki/Beamer_%28LaTeX%29"&gt;Beamer&lt;/a&gt; document class. While this is all fine and well, this package is a bit restrictive. After a little digging, I found a KOMA script based document template that works well. I'll attempt to explain it here&lt;/p&gt;
+&lt;h2&gt;Pre-requisites&lt;/h2&gt;
+&lt;p&gt;This template requires &lt;code&gt;texlive …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Goal&lt;/h2&gt;
+&lt;p&gt;Typically presentations in $\LaTeX$ depend on the &lt;a href="http://en.wikipedia.org/wiki/Beamer_%28LaTeX%29"&gt;Beamer&lt;/a&gt; document class. While this is all fine and well, this package is a bit restrictive. After a little digging, I found a KOMA script based document template that works well. I'll attempt to explain it here&lt;/p&gt;
+&lt;h2&gt;Pre-requisites&lt;/h2&gt;
+&lt;p&gt;This template requires &lt;code&gt;texlive&lt;/code&gt; to build. In addition, the optional package &lt;code&gt;lastpage&lt;/code&gt; is missing from some texlive builds. OSX should ship these with &lt;code&gt;mktex&lt;/code&gt;, while fedora and ubuntu require the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fedora$ sudo yum install texlive-lastpage
+ubuntu$ sudo apt-get install texlive-lastpage
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Preamble&lt;/h2&gt;
+&lt;h1&gt;Document Class&lt;/h1&gt;
+&lt;p&gt;The approach here is to use ``scrartcl'', the KOMA script article class. &lt;a href="https://www.ctan.org/pkg/koma-script?lang=en"&gt;KOMA&lt;/a&gt; script is a package that allows the user to do some thing with a bit more versatility than traditional $\LaTeX$ packages.&lt;/p&gt;
+&lt;p&gt;The paper size for slides is 128mm by 96mm. Some slight adjustments result in the following class preamble.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\documentclass&lt;/span&gt;[
+paper=128mm:96mm, 
+fontsize=11pt, &lt;span class="c"&gt;% Font size&lt;/span&gt;
+pagesize, &lt;span class="c"&gt;% Write page size to dvi or pdf&lt;/span&gt;
+parskip=half-, &lt;span class="c"&gt;% Paragraphs separated by half a line&lt;/span&gt;
+]&lt;span class="nb"&gt;{&lt;/span&gt;scrartcl&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% KOMA script (article)&lt;/span&gt;
+
+&lt;span class="k"&gt;\linespread&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;1.12&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;%increase line spacing for versatility&lt;/span&gt;
+
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;[ &lt;span class="c"&gt;% Page margins settings&lt;/span&gt;
+includeheadfoot,
+top=3.5mm,
+bottom=3.5mm,
+left=5.5mm,
+right=5.5mm,
+headsep=6.5mm,
+footskip=8.5mm
+]&lt;span class="nb"&gt;{&lt;/span&gt;geometry&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Color&lt;/h1&gt;
+&lt;p&gt;I like to use some custom colors. Namely, I stick to the Google standard color scheme. It looks good on slides, provides a solid base for customization, I use it elsewhere, and uniformity is always a plus.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[svgnames]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;xcolor&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;kjw&lt;span class="nb"&gt;_&lt;/span&gt;blue&lt;span class="nb"&gt;}{&lt;/span&gt;HTML&lt;span class="nb"&gt;}{&lt;/span&gt;33B5E5&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;kjw&lt;span class="nb"&gt;_&lt;/span&gt;dblue&lt;span class="nb"&gt;}{&lt;/span&gt;HTML&lt;span class="nb"&gt;}{&lt;/span&gt;0099CC&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;kjw&lt;span class="nb"&gt;_&lt;/span&gt;green&lt;span class="nb"&gt;}{&lt;/span&gt;HTML&lt;span class="nb"&gt;}{&lt;/span&gt;99CC00&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;kjw&lt;span class="nb"&gt;_&lt;/span&gt;dgreen&lt;span class="nb"&gt;}{&lt;/span&gt;HTML&lt;span class="nb"&gt;}{&lt;/span&gt;669900&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;kjw&lt;span class="nb"&gt;_&lt;/span&gt;purple&lt;span class="nb"&gt;}{&lt;/span&gt;HTML&lt;span class="nb"&gt;}{&lt;/span&gt;AA66CC&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;kjw&lt;span class="nb"&gt;_&lt;/span&gt;dpurple&lt;span class="nb"&gt;}{&lt;/span&gt;HTML&lt;span class="nb"&gt;}{&lt;/span&gt;9933CC&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;kjw&lt;span class="nb"&gt;_&lt;/span&gt;orange&lt;span class="nb"&gt;}{&lt;/span&gt;HTML&lt;span class="nb"&gt;}{&lt;/span&gt;FFBB33&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;kjw&lt;span class="nb"&gt;_&lt;/span&gt;dorange&lt;span class="nb"&gt;}{&lt;/span&gt;HTML&lt;span class="nb"&gt;}{&lt;/span&gt;FF8800&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;kjw&lt;span class="nb"&gt;_&lt;/span&gt;red&lt;span class="nb"&gt;}{&lt;/span&gt;HTML&lt;span class="nb"&gt;}{&lt;/span&gt;FF4444&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;kjw&lt;span class="nb"&gt;_&lt;/span&gt;dred&lt;span class="nb"&gt;}{&lt;/span&gt;HTML&lt;span class="nb"&gt;}{&lt;/span&gt;CC0000&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Font&lt;/h1&gt;
+&lt;p&gt;I stick to some defaults when it comes to font. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[T1]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;fontenc&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;lmodern&lt;span class="nb"&gt;}&lt;/span&gt; 
+&lt;span class="c"&gt;%\usepackage{fourier} %If you&amp;#39;ve got it installed, this is a nice font to use &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;More package requirements&lt;/h1&gt;
+&lt;p&gt;I like to use a few environments between document types, so the following packages are required &lt;strong&gt;in general&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;%------------------------------------------------&lt;/span&gt;
+&lt;span class="c"&gt;% Various required packages&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;amsthm&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Required for theorem environments&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;bm&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Required for bold math symbols (used in the footer of the slides)&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;graphicx&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Required for including images in figures&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikz&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Required for colored boxes&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;booktabs&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Required for horizontal rules in tables&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;multicol&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Required for creating multiple columns in slides&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;lastpage&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% For printing the total number of pages at the bottom of each slide&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[english]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;babel&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Document language - required for customizing section titles&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;microtype&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Better typography&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tocstyle&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Required for customizing the table of contents&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;pgfgantt&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% For the Gantt chrt&lt;/span&gt;
+&lt;span class="c"&gt;%------------------------------------------------&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Slide layout configuration&lt;/h1&gt;
+&lt;p&gt;The following details how to configure the page layout. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;%------------------------------------------------&lt;/span&gt;
+&lt;span class="c"&gt;% Slide layout configuration&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;scrpage2&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Required for customization of the header and footer&lt;/span&gt;
+&lt;span class="k"&gt;\pagestyle&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;scrheadings&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Activates the pagestyle from scrpage2 for custom headers and footers&lt;/span&gt;
+&lt;span class="k"&gt;\clearscrheadfoot&lt;/span&gt; &lt;span class="c"&gt;% Remove the default header and footer&lt;/span&gt;
+&lt;span class="k"&gt;\setkomafont&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;pageheadfoot&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\normalfont\color&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;black&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\sffamily&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Font settings for the header and footer&lt;/span&gt;
+
+&lt;span class="c"&gt;% Sets vertical centering of slide contents with increased space between paragraphs/lists&lt;/span&gt;
+&lt;span class="k"&gt;\makeatletter&lt;/span&gt;
+&lt;span class="k"&gt;\renewcommand*&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\@&lt;/span&gt;textbottom&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\vskip&lt;/span&gt; &lt;span class="k"&gt;\z&lt;/span&gt;@ &lt;span class="k"&gt;\@&lt;/span&gt;plus 1fil&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand*&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\@&lt;/span&gt;texttop&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\vskip&lt;/span&gt; &lt;span class="k"&gt;\z&lt;/span&gt;@ &lt;span class="k"&gt;\@&lt;/span&gt;plus .5fil&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\addtolength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\parskip&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\z&lt;/span&gt;@&lt;span class="k"&gt;\@&lt;/span&gt;plus .25fil&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\makeatother&lt;/span&gt;
+
+&lt;span class="c"&gt;% Remove page numbers and the dots leading to them from the outline slide&lt;/span&gt;
+&lt;span class="k"&gt;\makeatletter&lt;/span&gt;
+&lt;span class="k"&gt;\newtocstyle&lt;/span&gt;&lt;span class="na"&gt;[noonewithdot]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;nodotnopagenumber&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\settocfeature&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;pagenumberbox&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\@&lt;/span&gt;gobble&lt;span class="nb"&gt;}}&lt;/span&gt;
+&lt;span class="k"&gt;\makeatother&lt;/span&gt;
+&lt;span class="k"&gt;\usetocstyle&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;nodotnopagenumber&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\AtBeginDocument&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\renewcaptionname&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;english&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\contentsname&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\Large&lt;/span&gt; Outline&lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="c"&gt;% Change the name of the table of contents&lt;/span&gt;
+&lt;span class="c"&gt;%------------------------------------------------&lt;/span&gt;
+
+&lt;span class="c"&gt;%------------------------------------------------&lt;/span&gt;
+&lt;span class="c"&gt;% Footer configuration&lt;/span&gt;
+&lt;span class="k"&gt;\newlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\footheight&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\setlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\footheight&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;8mm&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;%Rest this to reconfigure how big the footers are.&lt;/span&gt;
+
+&lt;span class="k"&gt;\ifoot&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;   &lt;span class="c"&gt;% Left side&lt;/span&gt;
+&lt;span class="k"&gt;\hspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-2mm&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikzpicture&lt;span class="nb"&gt;}&lt;/span&gt;[remember picture,overlay]
+&lt;span class="k"&gt;\node&lt;/span&gt; [xshift=&lt;span class="k"&gt;\paperwidth&lt;/span&gt;/2,yshift=&lt;span class="k"&gt;\footheight&lt;/span&gt;] 
+at (current page.south west)
+[rectangle,fill,inner sep=0pt,
+minimum width=&lt;span class="k"&gt;\paperwidth&lt;/span&gt;,
+minimum height=3pt,
+top color=CornflowerBlue,bottom color=White]&lt;span class="nb"&gt;{}&lt;/span&gt;; 
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikzpicture&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\myauthor\ \raisebox&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;0.2mm&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;\bm&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;\vert&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="s"&gt;$&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\ \myuni&lt;/span&gt;
+&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\ofoot&lt;/span&gt;&lt;span class="na"&gt;[\pagemark/\pageref{LastPage}\hspace{-2mm}]&lt;/span&gt;
+&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\pagemark&lt;/span&gt;/&lt;span class="k"&gt;\pageref&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;LastPage&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\hspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-2mm&lt;span class="nb"&gt;}}&lt;/span&gt; 
+&lt;span class="c"&gt;%------------------------------------------------&lt;/span&gt;
+
+&lt;span class="c"&gt;%Set this to reconfigure how the titles are spaced.&lt;/span&gt;
+&lt;span class="c"&gt;%------------------------------------------------&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;titlesec&lt;span class="nb"&gt;}&lt;/span&gt; 
+&lt;span class="k"&gt;\titlespacing&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\section&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;0mm&lt;span class="nb"&gt;}{&lt;/span&gt;0mm&lt;span class="nb"&gt;}{&lt;/span&gt;0mm&lt;span class="nb"&gt;}&lt;/span&gt; 
+&lt;span class="k"&gt;\titlespacing&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\subsection&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;0mm&lt;span class="nb"&gt;}{&lt;/span&gt;0mm&lt;span class="nb"&gt;}{&lt;/span&gt;-1mm&lt;span class="nb"&gt;}&lt;/span&gt; 
+&lt;span class="k"&gt;\titlespacing&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\subsubsection&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;0mm&lt;span class="nb"&gt;}{&lt;/span&gt;0mm&lt;span class="nb"&gt;}{&lt;/span&gt;-2mm&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\setcounter&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;secnumdepth&lt;span class="nb"&gt;}{&lt;/span&gt;0&lt;span class="nb"&gt;}&lt;/span&gt; 
+&lt;span class="c"&gt;%------------------------------------------------&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;More command defs&lt;/h1&gt;
+&lt;p&gt;The following are useful since they're used on all slides.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\newcommand*&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mytitle&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;Your title here&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Title&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand*&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\myauthor&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;John Smith&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Presenters name(s)&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand*&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\mydate&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\today&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Presentation date&lt;/span&gt;
+&lt;span class="k"&gt;\newcommand*&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\myuni&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;University of the Internet&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% University or department&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Title slide, TOC of contents, etc...&lt;/h1&gt;
+&lt;p&gt;First, start the document, &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;document&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now add in the title slide&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\thispagestyle&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;empty&lt;span class="nb"&gt;}&lt;/span&gt; 
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikzpicture&lt;span class="nb"&gt;}&lt;/span&gt;[remember picture,overlay]
+&lt;span class="k"&gt;\node&lt;/span&gt; [xshift=&lt;span class="k"&gt;\paperwidth&lt;/span&gt;/2,yshift=&lt;span class="k"&gt;\paperheight&lt;/span&gt;/2] at 
+(current page.south west)
+[rectangle,fill,inner sep=0pt,
+minimum width=&lt;span class="k"&gt;\paperwidth&lt;/span&gt;,
+minimum height=&lt;span class="k"&gt;\paperheight&lt;/span&gt;/3,
+top color=CornflowerBlue,bottom color=CornflowerBlue]&lt;span class="nb"&gt;{}&lt;/span&gt;; 
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tikzpicture&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="c"&gt;% Text within the box&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;flushright&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\vspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;0.6cm&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\color&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;White&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\sffamily&lt;/span&gt;
+&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\bfseries\Large\mytitle\par&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% Title&lt;/span&gt;
+&lt;span class="k"&gt;\vspace&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;0.5cm&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\normalsize&lt;/span&gt;
+&lt;span class="k"&gt;\myauthor\par&lt;/span&gt; &lt;span class="c"&gt;% Author name&lt;/span&gt;
+&lt;span class="k"&gt;\mydate\par&lt;/span&gt; &lt;span class="c"&gt;% Date&lt;/span&gt;
+&lt;span class="k"&gt;\vfill&lt;/span&gt;
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;flushright&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\clearpage&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add in the table of contents:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\thispagestyle&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;empty&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;multicols&lt;span class="nb"&gt;}{&lt;/span&gt;2&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="c"&gt;% \setlength{\columnseprule}{0pt}&lt;/span&gt;
+    &lt;span class="k"&gt;\small\tableofcontents&lt;/span&gt; 
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;multicols&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\clearpage&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;The Body&lt;/h2&gt;
+&lt;p&gt;The basic slide looks like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\section&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;My Section Title&lt;span class="nb"&gt;}&lt;/span&gt;
+content
+&lt;span class="k"&gt;\clearpage&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Where the section part can be replaced by &lt;code&gt;subsection&lt;/code&gt;, &lt;code&gt;subsection*&lt;/code&gt;, etc... depending on how you want it to show up in TOC. At the end, the &lt;code&gt;\clearpage&lt;/code&gt; command is to make sure none of the content bleeds between pages.&lt;/p&gt;
+&lt;p&gt;Typically, I like to put things into multiple columns, &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\section&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;My Multicol page&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;multicols&lt;span class="nb"&gt;}{&lt;/span&gt;2&lt;span class="nb"&gt;}&lt;/span&gt;
+        Something here
+    &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;multicols&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\clearpage&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you need to adjust how lists look, add in the &lt;code&gt;itemsep&lt;/code&gt; command,&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\section&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;My itemize section&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;itemize&lt;span class="nb"&gt;}&lt;/span&gt;&lt;span class="k"&gt;\itemsep&lt;/span&gt;-0.5em
+        &lt;span class="k"&gt;\item&lt;/span&gt;&lt;span class="na"&gt;[$\cdot$]&lt;/span&gt; My item here
+    &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;itemize&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\clearpage&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Images need to be added in outside of the figure environment, &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\section&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;My graphical slide&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[width=\textwidth]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;images/mypdf.pdf&lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\captionof&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;figure&lt;span class="nb"&gt;}{&lt;/span&gt;My Caption here&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\clearpage&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The neat thing about using &lt;code&gt;captionof&lt;/code&gt; is that you can place the caption anywhere on the slide!&lt;/p&gt;
+&lt;h2&gt;Finish up&lt;/h2&gt;
+&lt;p&gt;Finally, finish off the document:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;document&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="latex"></category></entry></feed>

@@ -44,17 +44,24 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333">
 
-    <meta name="author" content="Kevin Wierman" />
-    <meta name="description" content="Kevin's Thoughts and Writings" />
+<meta name="author" content="Kevin Wierman" />
+<meta name="description" content="There was no good guide online to sending emails from an OSX apache server, so I thought I&#39;d write one on my own. Edit the postfix file The file is located at /etc/postfix/main.cf Make sure that these lines are present: ~ markdown mydomain_fallback = localhost mail_owner = _postfix setgid_group = _postdrop …" />
+<meta name="keywords" content="random">
+
 <meta property="og:site_name" content="Get Lost. Then find your way back."/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Get Lost. Then find your way back."/>
-<meta property="og:description" content="Kevin's Thoughts and Writings"/>
+<meta property="og:title" content="Send emails from OSX apache server"/>
+<meta property="og:description" content="There was no good guide online to sending emails from an OSX apache server, so I thought I&#39;d write one on my own. Edit the postfix file The file is located at /etc/postfix/main.cf Make sure that these lines are present: ~ markdown mydomain_fallback = localhost mail_owner = _postfix setgid_group = _postdrop …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://kwierman.github.io"/>
+<meta property="og:url" content="https://kwierman.github.io/send-emails-from-osx-apache-server.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-02-04 00:00:00-08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://kwierman.github.io/author/kevin-wierman.html">
+<meta property="article:section" content="Random"/>
+<meta property="article:tag" content="random"/>
 <meta property="og:image" content="/images/personal.jpg">
 
-  <title>Get Lost. Then find your way back. &ndash; Categories</title>
+  <title>Get Lost. Then find your way back. &ndash; Send emails from OSX apache server</title>
 
 </head>
 <body>
@@ -102,17 +109,85 @@
 
 <article class="single">
   <header>
-    <h1>Categories</h1>
+      
+    <h1 id="send-emails-from-osx-apache-server">Send emails from OSX apache server</h1>
+    <p>
+      Posted on Wed 04 February 2015 in <a href="https://kwierman.github.io/category/random.html">Random</a>
+
+        &#8226; 1 min read
+    </p>
   </header>
+
+
   <div>
-    <ul class="list">
-      <li><a href="https://kwierman.github.io/category/brewing.html">Brewing</a> (2)</li>
-      <li><a href="https://kwierman.github.io/category/latex.html">LaTex</a> (2)</li>
-      <li><a href="https://kwierman.github.io/category/python.html">Python</a> (3)</li>
-      <li><a href="https://kwierman.github.io/category/random.html">random</a> (13)</li>
-      <li><a href="https://kwierman.github.io/category/trail-running.html">Trail Running</a> (1)</li>
-    </ul>
+    <p>There was no good guide online to sending emails from an OSX apache server, so I thought I'd write one on my own.</p>
+<h1>Edit the postfix file</h1>
+<p>The file is located at <code>/etc/postfix/main.cf</code> Make sure that these lines are present:</p>
+<p>~ markdown
+mydomain_fallback = localhost
+mail_owner = _postfix
+setgid_group = _postdrop
+~</p>
+<p>In order to use a gmail relay, use these lines:</p>
+<div class="highlight"><pre><span></span>#Gmail SMTP
+relayhost=smtp.gmail.com:587
+# Enable SASL authentication in the Postfix SMTP client.
+smtp_sasl_auth_enable=yes
+smtp_sasl_password_maps=hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options=
+# Enable Transport Layer Security (TLS), i.e. SSL.
+smtp_use_tls=yes
+smtp_tls_security_level=encrypt
+tls_random_source=dev:/dev/urandom
+</pre></div>
+
+
+<p>Now, use these commands to create the password files and sasl setup:</p>
+<div class="highlight"><pre><span></span>sudo touch /etc/postfix/sasl_passwd
+sudo <span class="nb">echo</span> <span class="s2">&quot;smtp.gmail.com:587 your_address@gmail.com:password&quot;</span>&gt;/etc/postfix/sasl_password
+sudo postmap /etc/postfix/sasl_passwd
+</pre></div>
+
+
+<p>On MountainLion, there was an error:</p>
+<div class="highlight"><pre><span></span>postfix: fatal: chdir<span class="o">(</span>/Library/Server/Mail/Data/spool<span class="o">)</span>: No such file or directory
+</pre></div>
+
+
+<p>This was fixed by making the directory:</p>
+<div class="highlight"><pre><span></span>sudo mkdir -p /Library/Server/Mail/Data/spool
+</pre></div>
+
+
+<p>Now, start and/or reload the server:</p>
+<div class="highlight"><pre><span></span>sudo postfix reload
+sudo postfix start
+</pre></div>
   </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://kwierman.github.io/tag/random.html">random</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kevinwierman';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
 </article>
 
     <footer>

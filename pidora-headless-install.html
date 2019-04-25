@@ -44,17 +44,23 @@
     <!-- Microsoft EDGE -->
     <meta name="msapplication-TileColor" content="#333">
 
-    <meta name="author" content="Kevin Wierman" />
-    <meta name="description" content="Kevin's Thoughts and Writings" />
+<meta name="author" content="Kevin Wierman" />
+<meta name="description" content="Using Fedora to install pidora: Steps: Download the installer: sudo yum install fedora_arm_installer Run the installer sudo fedora_arm_installer Download the image from the website. It might be a good idea to try extractng it. If the archive manager can&#39;t read it, you mght need to try downloading again. Select the …" />
+<meta name="keywords" content="">
+
 <meta property="og:site_name" content="Get Lost. Then find your way back."/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="Get Lost. Then find your way back."/>
-<meta property="og:description" content="Kevin's Thoughts and Writings"/>
+<meta property="og:title" content="Pidora Headless Install"/>
+<meta property="og:description" content="Using Fedora to install pidora: Steps: Download the installer: sudo yum install fedora_arm_installer Run the installer sudo fedora_arm_installer Download the image from the website. It might be a good idea to try extractng it. If the archive manager can&#39;t read it, you mght need to try downloading again. Select the …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://kwierman.github.io"/>
+<meta property="og:url" content="https://kwierman.github.io/pidora-headless-install.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-02-15 00:00:00-08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://kwierman.github.io/author/kevin-wierman.html">
+<meta property="article:section" content="random"/>
 <meta property="og:image" content="/images/personal.jpg">
 
-  <title>Get Lost. Then find your way back. &ndash; Categories</title>
+  <title>Get Lost. Then find your way back. &ndash; Pidora Headless Install</title>
 
 </head>
 <body>
@@ -102,17 +108,106 @@
 
 <article class="single">
   <header>
-    <h1>Categories</h1>
+      
+    <h1 id="pidora-headless-install">Pidora Headless Install</h1>
+    <p>
+      Posted on Sun 15 February 2015 in <a href="https://kwierman.github.io/category/random.html">random</a>
+
+        &#8226; 2 min read
+    </p>
   </header>
+
+
   <div>
-    <ul class="list">
-      <li><a href="https://kwierman.github.io/category/brewing.html">Brewing</a> (2)</li>
-      <li><a href="https://kwierman.github.io/category/latex.html">LaTex</a> (2)</li>
-      <li><a href="https://kwierman.github.io/category/python.html">Python</a> (3)</li>
-      <li><a href="https://kwierman.github.io/category/random.html">random</a> (13)</li>
-      <li><a href="https://kwierman.github.io/category/trail-running.html">Trail Running</a> (1)</li>
-    </ul>
+    <h3>Using Fedora to install pidora:</h3>
+<p>Steps:</p>
+<ul>
+<li>Download the installer:</li>
+</ul>
+<div class="highlight"><pre><span></span>sudo yum install fedora_arm_installer
+</pre></div>
+
+
+<ul>
+<li>Run the installer</li>
+</ul>
+<div class="highlight"><pre><span></span>sudo fedora_arm_installer
+</pre></div>
+
+
+<ul>
+<li>Download the image from <a href="http://pidora.ca/">the website</a>.</li>
+<li>It might be a good idea to  try extractng it. If the archive manager can't read it, you mght need to try downloading again.</li>
+<li>Select the image from the pop-down menu</li>
+<li>Select the device from the pop-down-menu. You might have to refresh the list.</li>
+<li>In my case, it was /dev/sdb</li>
+<li>Click install</li>
+</ul>
+<h2>Modify the Image for headless start</h2>
+<p>I found this bit from <a href="http://zenit.senecac.on.ca/wiki/index.php/Pidora-Headless-Mode">here</a>.</p>
+<ul>
+<li><code>cd</code> or open the file manager to the <code>BOOT</code> partition on the sd drive.</li>
+<li><code>touch</code> or create an empty file called <code>headless</code></li>
+<li>In order to acommodate large files, add the line <code>RESIZE</code></li>
+<li>For swap partitions, add in the line <code>SWAP=512</code> (for a 512MB partition).</li>
+</ul>
+<h2>Boot up the PI</h2>
+<p>In this, case I had the PI boot up with an ethernet cable attached, and the headphones attached to listen for the DHCP assigned IP number output.</p>
+<p>Once you get the IP number, ssh in with:</p>
+<div class="highlight"><pre><span></span>ssh root@192.1.1.&lt;whatever&gt;
+password: raspberrypi
+</pre></div>
+
+
+<p>I then changed the password, because the device registers itself as <code>PIDORA</code> on the network.</p>
+<h3>Setting up the WIFI</h3>
+<p>The first step is (oddly) to insert the wifi dongle. Check that the OS can detect the USB device using <code>lsusb</code>.</p>
+<p>Next, use <code>lsmod</code> to list the loaded drivers/modules, and check for <code>8192cu</code> to see that the wifi driver is loaded.</p>
+<p>You should now be able to use the network manager tools. Note that standard network tools are not installed by default. THAT IS OK. You can use <code>pifconfig</code> to check the assigned IP information. </p>
+<p>List the available SSIDs of wifi networks with</p>
+<div class="highlight"><pre><span></span>nmcli dev wifi list
+</pre></div>
+
+
+<p>And connect with:</p>
+<div class="highlight"><pre><span></span>nmcli dev wifi con <span class="s2">&quot;ssid&quot;</span> password <span class="s2">&quot;password&quot;</span>
+</pre></div>
+
+
+<p>This should create all the necessary files to connect the network again automatically. Most of these can be found in <code>/etc/networks</code></p>
+<h2>Creating a user</h2>
+<p>Since we don't want to be running as root continuously, create a user with:</p>
+<div class="highlight"><pre><span></span>useradd &lt;username&gt;
+passwd &lt;username&gt;
+...
+</pre></div>
+
+
+<p>This should create the home directory at <code>/home/&lt;username&gt;</code> etc...</p>
   </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kevinwierman';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
 </article>
 
     <footer>

@@ -54,7 +54,7 @@
 <meta property="og:url" content="https://kwierman.github.io"/>
 <meta property="og:image" content="/images/personal.jpg">
 
-  <title>Get Lost. Then find your way back. &ndash; Categories</title>
+  <title>Get Lost. Then find your way back. &ndash; Tag python</title>
 
 </head>
 <body>
@@ -100,20 +100,83 @@
 
     </nav>
 
-<article class="single">
+
+
+<article>
   <header>
-    <h1>Categories</h1>
+    <h2><a href="https://kwierman.github.io/indico-server-on-osx.html#indico-server-on-osx">Indico Server on OSX</a></h2>
+    <p>
+      Posted on Tue 03 February 2015 in <a href="https://kwierman.github.io/category/python.html">Python</a>
+
+          &#8226; Tagged with
+              <a href="https://kwierman.github.io/tag/python.html">python</a>
+        &#8226; 3 min read
+    </p>
   </header>
   <div>
-    <ul class="list">
-      <li><a href="https://kwierman.github.io/category/brewing.html">Brewing</a> (2)</li>
-      <li><a href="https://kwierman.github.io/category/latex.html">LaTex</a> (2)</li>
-      <li><a href="https://kwierman.github.io/category/python.html">Python</a> (3)</li>
-      <li><a href="https://kwierman.github.io/category/random.html">random</a> (13)</li>
-      <li><a href="https://kwierman.github.io/category/trail-running.html">Trail Running</a> (1)</li>
-    </ul>
+      <h2>Prereqs</h2>
+<p>OSX is already in a good position to run Indico. A few modifications needs to be made:</p>
+<ul>
+<li>Install ModWSGI:</li>
+<li>{{ post_url modwsgi }}</li>
+<li>Setup SSL on the Apache Server:</li>
+<li>{{ post_url 2015-02-03-ssl-keys-on-osx }}</li>
+<li>flask engine plugin</li>
+<li><a href="https://github.com/indico/flask-pluginengine">from git</a></li>
+</ul>
+<p>The next step is to setup PostgreSQL. Annoyingly enough, this is never mentioned in the …</p>
+      <br>
+      <a class="btn" href="https://kwierman.github.io/indico-server-on-osx.html#indico-server-on-osx">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://kwierman.github.io/modwsgi-on-osx.html#modwsgi-on-osx">ModWSGI on OSX</a></h2>
+    <p>
+      Posted on Tue 03 February 2015 in <a href="https://kwierman.github.io/category/python.html">Python</a>
+
+          &#8226; Tagged with
+              <a href="https://kwierman.github.io/tag/python.html">python</a>
+        &#8226; 1 min read
+    </p>
+  </header>
+  <div>
+      <p>The source code was found (here)[https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2]</p>
+<p _="%" endblockquote>{% blockquote %}
+   DO NOT FOLLOW THE INSTRUCTIONS.</p>
+<p>Just unload it to a source directory and install it to the apache module directory</p>
+<p>Now add the following line to <code>/etc/apache2/httpd.conf</code></p>
+<div class="highlight"><pre><span></span>LoadModule wsgi_module modules …</pre></div>
+      <br>
+      <a class="btn" href="https://kwierman.github.io/modwsgi-on-osx.html#modwsgi-on-osx">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://kwierman.github.io/using-sphinx-for-inline-documentation.html#using-sphinx-for-inline-documentation">Using Sphinx for Inline Documentation</a></h2>
+    <p>
+      Posted on Tue 27 January 2015 in <a href="https://kwierman.github.io/category/python.html">Python</a>
+
+          &#8226; Tagged with
+              <a href="https://kwierman.github.io/tag/python.html">python</a>
+        &#8226; 6 min read
+    </p>
+  </header>
+  <div>
+      <h2>Brief History</h2>
+<p>Previously, in my python based endeavors, I've used <a href="http://www.stack.nl/~dimitri/doxygen/" title="doxyen">doxygen</a>, an inline code documentation engine for generating web pages and pdfs. Many people recommend this for c++ API documentation, and in fact, I use it my self all the time.However, to my eternal consternation, it does not play …</p>
+      <br>
+      <a class="btn" href="https://kwierman.github.io/using-sphinx-for-inline-documentation.html#using-sphinx-for-inline-documentation">Continue reading</a>
   </div>
 </article>
+
+  <div class="pagination">
+  </div>
+
+
+
 
     <footer>
 <p>
