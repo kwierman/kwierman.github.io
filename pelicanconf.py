@@ -3,9 +3,9 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Kevin Wierman'
-SITENAME = u'Nothing Artificial Here'
+SITENAME = u'Get Lost. Then find your way back.'
 SITETITLE = 'Kevin Wierman'
-SITESUBTITLE = 'Maker. Thinker. Doer. '
+SITESUBTITLE = 'Explore everything'
 SITEDESCRIPTION = 'Kevin\'s Thoughts and Writings'
 SITEURL =  '' 
 DESCRIPTION = ''
@@ -19,25 +19,29 @@ FAVICON = SITEURL + '/images/favicon.png'
 BROWSER_COLOR = '#333'
 ROBOTS = 'index, follow'
 
-TIMEZONE = 'America/New_York'
+TIMEZONE = 'America/Los_Angeles'
 
 DEFAULT_LANG = u'en'
 
-# Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'))
+LINKS = (('Portfolio', 'http://alexandrevicenzi.com'),)
 
-# Social widget
-SOCIAL = (('GitHub', 'https://github.com/kwierman'),
-          ('GitHub Pages', 'https://kwierman.github.io'),)
+SOCIAL = (('linkedin', 'https://linkedin.com/in/wierman/en'),
+          ('github', 'https://github.com/kwierman'),
+          ('google', 'https://google.com/+kwierman'),
+          ('twitter', 'https://twitter.com/wierman'),
+          ('rss', '//kwierman.github.io/feeds/all.atom.xml'),
+          ('envelope-o', 'mailto:kwierman@gmail.com'))
+
+MENUITEMS = (('Archives', '/archives.html'),
+             ('Categories', '/categories.html'),
+             ('Tags', '/tags.html'),)
 
 DEFAULT_PAGINATION = 10
 
@@ -63,15 +67,9 @@ CUSTOM_CSS = 'static/custom.css'
 MAIN_MENU = True
 
 # Enable i18n plugin.
-PLUGINS = ['i18n_subsites']
-# Enable Jinja2 i18n extension used to parse translations.
-JINJA_EXTENSIONS = ['jinja2.ext.i18n']
+PYGMENTS_STYLE = 'monokai'
 
-# Translate to German.
-DEFAULT_LANG = 'de'
-OG_LOCALE = 'de_DE'
-LOCALE = 'de_DE'
+PLUGIN_PATHS = ['./pelican-plugins']
+PLUGINS = ['sitemap', 'post_stats', 'i18n_subsites']
 
-# Default theme language.
-I18N_TEMPLATES_LANG = 'en'
-
+JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
