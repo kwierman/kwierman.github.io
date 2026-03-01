@@ -70,7 +70,7 @@ const FeaturedProjects: React.FC = () => {
             Featured Projects
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            A selection of recent work showcasing expertise in data science and software development.
+            Note: Full Portfolio Coming Soon...
           </p>
         </motion.div>
 
