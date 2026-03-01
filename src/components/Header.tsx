@@ -18,7 +18,7 @@ const Header: React.FC = () => {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'Portfolio', path: '/portfolio' },
+    { label: 'Projects', path: '/projects' },
     { label: 'CV', path: '/cv' },
     { label: 'Contact', path: '/contact' },
   ];
