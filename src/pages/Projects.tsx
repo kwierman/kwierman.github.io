@@ -76,7 +76,7 @@ export default function Portfolio() {
               className="text-center mb-16"
             >
               <h1 className="font-serif text-5xl md:text-6xl font-bold text-foreground mb-4">
-                Portfolio
+                Projects
               </h1>
               <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
                 Note: Full Portfolio Coming Soon...
