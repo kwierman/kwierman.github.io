@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { FaBars, FaXmark } from 'react-icons/fa6'
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header: React.FC = () => {
@@ -85,7 +85,7 @@ const Header: React.FC = () => {
           aria-label="Toggle menu"
           aria-expanded={isOpen}
         >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
+          {isOpen ? <FaXmark size={20} /> : <FaBars size={20} />}
         </button>
       </nav>
 

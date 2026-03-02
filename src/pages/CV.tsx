@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
-import { Download } from 'lucide-react';
+import {FaDownload, } from 'react-icons/fa6';
 
 export default function CV() {
   const experience = [
@@ -101,7 +101,7 @@ export default function CV() {
                 href="/ResumeKevinWierman.pdf"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:scale-105 transition-transform duration-200"
               >
-                <Download size={20} />
+                <FaDownload size={20} />
                 Download PDF
               </a>
             </motion.div>

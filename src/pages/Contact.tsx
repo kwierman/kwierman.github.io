@@ -2,33 +2,33 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Twitter } from 'lucide-react';
+import {FaRegEnvelope, FaGithub, FaLinkedin, FaMedium} from 'react-icons/fa6';
 
 export default function Contact() {
   const contactMethods = [
     {
-      icon: Mail,
+      icon: FaRegEnvelope,
       label: 'Email',
       value: 'kwierman@gmail.com',
       href: 'mailto:kwierman@gmail.com',
     },
     {
-      icon: Linkedin,
+      icon: FaLinkedin,
       label: 'LinkedIn',
       value: 'linkedin.com/in/kwierman',
       href: 'https://linkedin.com/in/kwierman',
     },
     {
-      icon: Github,
+      icon: FaGithub,
       label: 'GitHub',
       value: 'github.com/kwierman',
       href: 'https://github.com/kwierman',
     },
     {
-      icon: Twitter,
-      label: 'Twitter',
+      icon: FaMedium,
+      label: 'Medium',
       value: '@kwierman',
-      href: 'https://twitter.com/kwierman',
+      href: 'https://medium.com/@kwierman',
     },
   ];
 

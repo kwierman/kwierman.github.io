@@ -1,15 +1,16 @@
 import React from 'react';
-import {  Mail, Twitter, Github, Linkedin } from 'lucide-react';
+
 import { Link } from 'react-router-dom';
+import {FaRegEnvelope, FaGithub, FaLinkedin, FaMedium} from 'react-icons/fa6';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/kwierman', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/kwierman', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com/kwierman', label: 'Twitter' },
-    { icon: Mail, href: 'mailto:kwierman@gmail.com', label: 'Email' },
+    { icon: FaGithub, href: 'https://github.com/kwierman', label: 'GitHub' },
+    { icon: FaLinkedin, href: 'https://linkedin.com/in/kwierman', label: 'LinkedIn' },
+    { icon: FaMedium, href: 'https://medium.com/@kwierman', label: 'Medium' },
+    { icon: FaRegEnvelope, href: 'mailto:kwierman@gmail.com', label: 'Email' },
   ];
 
   const footerLinks = {

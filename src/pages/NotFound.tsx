@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { FaArrowLeft } from 'react-icons/fa6'
 
 export default function NotFound() {
   return (
@@ -29,7 +29,7 @@ export default function NotFound() {
               to="/"
               className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:scale-105 transition-transform duration-200"
             >
-              <ArrowLeft size={20} />
+              <FaArrowLeft size={20} />
               Back to Home
             </Link>
           </motion.div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { FaLink, FaGithub} from 'react-icons/fa6'
 
 const FeaturedProjects: React.FC = () => {
   const projects = [
@@ -126,14 +126,14 @@ const FeaturedProjects: React.FC = () => {
                     className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:scale-105 transition-transform duration-200"
                   >
                     View Demo
-                    <ExternalLink size={18} />
+                    <FaLink size={18} />
                   </a>
                   <a
                     href={project.links.github}
                     className="inline-flex items-center gap-2 px-6 py-2.5 border border-primary/30 text-foreground rounded-lg font-medium hover:bg-primary/5 transition-colors duration-200"
                   >
                     Code
-                    <Github size={18} />
+                    <FaGithub size={18} />
                   </a>
                 </div>
               </div>

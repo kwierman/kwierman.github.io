@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { FaArrowRight} from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 const HeroSection: React.FC = () => {
@@ -43,7 +43,7 @@ const HeroSection: React.FC = () => {
             className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:scale-105 transition-transform duration-200 gap-2"
           >
             View My Work
-            <ArrowRight size={20} />
+            <FaArrowRight size={20} />
           </Link>
           <a
             href="mailto:kwierman@gmail.com"
