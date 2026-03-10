@@ -5,33 +5,33 @@ import { FaLink, FaGithub} from 'react-icons/fa6'
 const FeaturedProjects: React.FC = () => {
   const projects = [
     {
-      title: 'Predictive Analytics Platform',
-      description: 'Built a machine learning platform for time-series forecasting with 95% accuracy. Integrated with real-time data pipelines and interactive dashboards.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-      tags: ['Python', 'TensorFlow', 'React', 'PostgreSQL'],
+      title: 'Time Series Analytics and Forecasting',
+      description: 'Forecasting ETL and Analytics Pipeline on Climate Data',
+      image: 'https://github.com/kwierman/PowderPipeline/raw/main/public/SnowAnalytics.png',
+      tags: ['Python', 'PyTorch', 'Plotly', 'Playwright'],
       links: {
-        demo: '#',
-        github: '#',
+        demo: 'https://github.com/kwierman/PowderPipeline/blob/main/notebooks/Ski%20Pass%20Analysis.ipynb',
+        github: 'https://github.com/kwierman/PowderPipeline',
       },
     },
     {
-      title: 'Customer Segmentation Engine',
-      description: 'Developed unsupervised learning model to segment 500K+ customers. Resulted in 40% improvement in marketing campaign ROI.',
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop',
-      tags: ['Python', 'Scikit-learn', 'SQL', 'Tableau'],
+      title: 'Probabilistic Market Analysis',
+      description: 'Using pre-made models for timeseries analysis',
+      image: 'https://github.com/kwierman/CryptoForecaster/raw/main/public/CryptoMCMC.png',
+      tags: ['Python', 'Scikit-learn', 'DuckDB', 'Plotly'],
       links: {
-        demo: '#',
-        github: '#',
+        demo: 'https://github.com/kwierman/CryptoForecaster/blob/main/notebooks/demo.ipynb',
+        github: 'https://github.com/kwierman/CryptoForecaster',
       },
     },
     {
-      title: 'Real-time Data Visualization',
-      description: 'Created interactive dashboard for monitoring 100+ metrics across distributed systems. Handles 1M+ events per minute.',
-      image: 'https://placehold.co/600x400',
-      tags: ['React', 'Node.js', 'WebSocket', 'D3.js'],
+      title: 'Bayesian Estimation of Outcomes',
+      description: 'Bracket Predictor for March Madness',
+      image: 'https://github.com/kwierman/MarchMadness/raw/main/public/Cover.png',
+      tags: ['Python', 'seaborn', 'scipy'],
       links: {
-        demo: '#',
-        github: '#',
+        demo: 'https://github.com/kwierman/MarchMadness/blob/main/public/march_madness_2025.png',
+        github: 'https://github.com/kwierman/MarchMadness',
       },
     },
   ];

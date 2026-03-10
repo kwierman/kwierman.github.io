@@ -29,7 +29,7 @@ const HeroSection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-lg md:text-xl text-foreground/70 mb-8 max-w-2xl mx-auto"
         >
-          I transform complex data into actionable insights and build scalable solutions. Specializing in machine learning, statistical analysis, and full-stack development.
+          I transform complex data into actionable insights and build scalable solutions. Specializing in machine learning, statistical analysis, and data platform development.
         </motion.p>
 
         <motion.div
@@ -39,7 +39,7 @@ const HeroSection: React.FC = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
-            to="/portfolio"
+            to="/projects"
             className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:scale-105 transition-transform duration-200 gap-2"
           >
             View My Work

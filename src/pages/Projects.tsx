@@ -6,40 +6,40 @@ import { motion } from 'framer-motion';
 export default function Portfolio() {
   const allProjects = [
     {
-      title: 'Predictive Analytics Platform',
-      description: 'Machine learning platform for time-series forecasting',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
-      tags: ['Python', 'TensorFlow', 'React'],
+      title: 'Time Series Analytics and Forecasting',
+      description: 'Forecasting ETL and Analytics Pipeline on Climate Data',
+      image: 'https://github.com/kwierman/PowderPipeline/raw/main/public/SnowAnalytics.png',
+      tags: ['Python', 'Playwright', 'PyTorch'],
     },
     {
-      title: 'Customer Segmentation Engine',
-      description: 'Unsupervised learning for customer clustering',
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop',
-      tags: ['Python', 'Scikit-learn', 'SQL'],
+      title: 'Probabilistic Market Analysis',
+      description: 'Using pre-made models for timeseries analysis',
+      image: 'https://github.com/kwierman/CryptoForecaster/raw/main/public/CryptoMCMC.png',
+      tags: ['Python', 'Scikit-learn', 'DuckDB'],
     },
     {
-      title: 'Real-time Data Visualization',
-      description: 'Interactive dashboard for system monitoring',
-      image: 'https://placehold.co/400x300',
-      tags: ['React', 'Node.js', 'WebSocket'],
+      title: 'Bayesian Estimation of Outcomes',
+      description: 'Bracket Predictor for March Madness',
+      image: 'https://github.com/kwierman/MarchMadness/raw/main/public/Cover.png',
+      tags: ['Python', 'seaborn', 'scipy'],
     },
     {
-      title: 'NLP Text Classification',
-      description: 'Deep learning model for document categorization',
-      image: 'https://placehold.co/400x300',
-      tags: ['Python', 'PyTorch', 'NLP'],
+      title: 'Local Multi-Agent Coding Framework with RAG',
+      description: 'A framework for running small language models locally to support software development',
+      image: 'https://github.com/kwierman/LocalCodingAgents/raw/main/public/Cover.png',
+      tags: ['langgraph', 'langchain', 'MCP', 'RAG'],
     },
     {
-      title: 'Recommendation System',
-      description: 'Collaborative filtering for personalized recommendations',
-      image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop',
+      title: 'Sustainability Modelling',
+      description: 'Data pipeline for modelling the sustainability of regions and businesses',
+      image: 'https://github.com/kwierman/EcoTrack/raw/main/public/Cover.png',
       tags: ['Python', 'Pandas', 'Scikit-learn'],
     },
     {
-      title: 'Anomaly Detection Pipeline',
-      description: 'Real-time outlier detection for IoT data',
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
-      tags: ['Python', 'Isolation Forest', 'AWS'],
+      title: 'Geographic Analysis',
+      description: 'Analysis of Data on National Parks, Forests, and other state-owned land',
+      image: 'https://gisgeography.com/wp-content/uploads/2020/01/USA-National-Parks-Map.jpg',
+      tags: ['Python', 'geopy', 'AWS'],
     },
   ];
 
@@ -76,10 +76,10 @@ export default function Portfolio() {
               className="text-center mb-16"
             >
               <h1 className="font-serif text-5xl md:text-6xl font-bold text-foreground mb-4">
-                Projects
+                Current Projects
               </h1>
               <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-                Note: Full Portfolio Coming Soon...
+                Here's a sample of public projects that I'm currently working on
               </p>
             </motion.div>
 
