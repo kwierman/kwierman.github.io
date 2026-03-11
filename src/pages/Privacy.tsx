@@ -1,9 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
-import { FaArrowLeft } from 'react-icons/fa6'
 
 export default function Privacy() {
   return (
@@ -16,7 +13,8 @@ export default function Privacy() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-                <h1>Privacy Policy</h1>
+                <p className="text-3xl font-bold text-primary">Privacy Policy</p>
+                <p className="text-sm text-foreground/60 mt-2">Last Updated: March 11, 2026</p>
                 <div className='items-left justify-left text-left'>
                 <p>This Privacy Policy describes how https://kwierman.github.io ("we," "us," or "our") collects, uses, and discloses your personal information when you visit, use our services, or make a purchase from https://kwierman.github.io (the "Site").</p>
                 <br/>
