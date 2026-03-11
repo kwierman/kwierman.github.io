@@ -11,6 +11,8 @@ import Projects from './src/pages/Projects';
 import CV from './src/pages/CV';
 import Contact from './src/pages/Contact';
 import NotFound from './src/pages/NotFound';
+import Terms from './src/pages/Terms';
+import Privacy from './src/pages/Privacy';
 
 const App: React.FC = () => {
   return (
@@ -22,6 +24,8 @@ const App: React.FC = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/cv" element={<CV />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ToastContainer

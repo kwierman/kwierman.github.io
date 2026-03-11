@@ -15,12 +15,13 @@ const Footer: React.FC = () => {
 
   const footerLinks = {
     Product: [
-      { label: 'Portfolio', path: '/portfolio' },
+      { label: 'Projects', path: '/projects' },
       { label: 'CV', path: '/cv' },
     ],
     Company: [
       { label: 'About', path: '/' },
       { label: 'Contact', path: '/contact' },
+      { label: 'Buy Me A Coffee', path: 'https://buymeacoffee.com/kwierman'}
     ],
     Legal: [
       { label: 'Privacy', path: '/privacy' },
