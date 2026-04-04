@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 
 export default function Portfolio() {
-  const allProjects = [
+  const dataScienceProjects = [
     {
       title: 'Time Series Analytics and Forecasting',
       description: 'Forecasting ETL and Analytics Pipeline on Climate Data',
@@ -24,12 +24,6 @@ export default function Portfolio() {
       tags: ['Python', 'seaborn', 'scipy'],
     },
     {
-      title: 'Local Multi-Agent Coding Framework with RAG',
-      description: 'A framework for running small language models locally to support software development',
-      image: 'https://github.com/kwierman/LocalCodingAgents/raw/main/public/Cover.png',
-      tags: ['langgraph', 'langchain', 'MCP', 'RAG'],
-    },
-    {
       title: 'Sustainability Modelling',
       description: 'Data pipeline for modelling the sustainability of regions and businesses',
       image: 'https://github.com/kwierman/EcoTrack/raw/main/public/Cover.png',
@@ -40,6 +34,15 @@ export default function Portfolio() {
       description: 'Analysis of Data on National Parks, Forests, and other state-owned land',
       image: 'https://gisgeography.com/wp-content/uploads/2020/01/USA-National-Parks-Map.jpg',
       tags: ['Python', 'geopy', 'AWS'],
+    },
+  ];
+
+  const softwareDevProjects = [
+    {
+      title: 'Local Multi-Agent Coding Framework with RAG',
+      description: 'A framework for running small language models locally to support software development',
+      image: 'https://github.com/kwierman/LocalCodingAgents/raw/main/public/Cover.png',
+      tags: ['langgraph', 'langchain', 'MCP', 'RAG'],
     },
   ];
 
@@ -76,7 +79,7 @@ export default function Portfolio() {
               className="text-center mb-16"
             >
               <h1 className="font-serif text-5xl md:text-6xl font-bold text-foreground mb-4">
-                Current Projects
+                Projects
               </h1>
               <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
                 Here's a sample of public projects that I'm currently working on
@@ -84,16 +87,33 @@ export default function Portfolio() {
             </motion.div>
 
             <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-16"
+            >
+              <div className="flex items-center gap-4 mb-2">
+                <span className="w-12 h-1 bg-blue-500 rounded"></span>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
+                  Data Science & Engineering
+                </h2>
+              </div>
+              <p className="text-lg text-foreground/60 ml-16">
+                Machine learning, statistical modeling, and data pipelines
+              </p>
+            </motion.div>
+
+            <motion.div
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
             >
-              {allProjects.map((project) => (
+              {dataScienceProjects.map((project) => (
                 <motion.div
                   key={project.title}
                   variants={itemVariants}
-                  className="group bg-card border border-border/40 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  className="group bg-card border border-blue-500/20 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="relative overflow-hidden h-48">
                     <img
@@ -113,7 +133,65 @@ export default function Portfolio() {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-1 bg-secondary text-foreground/70 text-xs rounded"
+                          className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-16"
+            >
+              <div className="flex items-center gap-4 mb-2">
+                <span className="w-12 h-1 bg-purple-500 rounded"></span>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
+                  Software Development
+                </h2>
+              </div>
+              <p className="text-lg text-foreground/60 ml-16">
+                Tools, frameworks, and applications
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {softwareDevProjects.map((project) => (
+                <motion.div
+                  key={project.title}
+                  variants={itemVariants}
+                  className="group bg-card border border-purple-500/20 rounded-lg overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="relative overflow-hidden h-48">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-semibold text-lg text-foreground mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-foreground/60 mb-4">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-1 bg-purple-500/10 text-purple-400 text-xs rounded"
                         >
                           {tag}
                         </span>
